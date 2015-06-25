@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 # Use rails_12factor to replaces the need for the plugins on Heroku
 gem 'rails_12factor'
+# User NewRelic like performance monitor
+gem 'newrelic_rpm'
+
 
 group :test do
   gem "rspec-rails", "~> 2.14"
