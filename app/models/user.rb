@@ -1,4 +1,5 @@
-class User < ActiveRecord::Base
+class User < ActiveRecord::
+	belongs_to :role
   # Include default devise modules.
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable,
