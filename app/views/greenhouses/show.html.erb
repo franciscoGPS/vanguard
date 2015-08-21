@@ -20,10 +20,16 @@
   <%= @greenhouse.rfc %>
 </p>
 
+
 <p>
   <strong>Category:</strong>
   <%= @greenhouse.category %>
 </p>
 
+<p>
+  <strong>Contacts:</strong>
+  <%= @greenhouse.contacts %>
+</p>
 <%= link_to 'Edit', edit_greenhouse_path(@greenhouse) %> |
 <%= link_to 'Back', greenhouses_path %>
+
