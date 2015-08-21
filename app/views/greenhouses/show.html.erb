@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @greenhouse.business_name %>
+</p>
+
+<p>
+  <strong>Fiscal address:</strong>
+  <%= @greenhouse.fiscal_address %>
+</p>
+
+<p>
+  <strong>Greenhouse address:</strong>
+  <%= @greenhouse.greenhouse_address %>
+</p>
+
+<p>
+  <strong>Rfc:</strong>
+  <%= @greenhouse.rfc %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @greenhouse.category %>
+</p>
+
+<%= link_to 'Edit', edit_greenhouse_path(@greenhouse) %> |
+<%= link_to 'Back', greenhouses_path %>
