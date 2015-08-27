@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :sales
-  devise_for :admins
+  
+  
   devise_for :users
   root "static_pages#index"
+  resources :users
+  resources :roles
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
