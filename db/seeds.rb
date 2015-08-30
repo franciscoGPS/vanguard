@@ -8,4 +8,4 @@
 #
 #   Default user
 
-  User.create(name: 'Admin', role: 'admin', password: '.Agave15!', email: 'hola@agaveti.com')
+  User.create( password: '.Agave15!', email: 'hola@agaveti.com', admin: true)
