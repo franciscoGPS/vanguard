@@ -1,5 +1,6 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
+  <li><%= link_to 'Roles', roles_path %></li>
   <li><%= link_to 'Users', users_path %></li>
   <li><%= link_to 'Greenhouses', greenhouses_path %></li>
   <li><%= link_to 'Contacts', contacts_path %></li>
