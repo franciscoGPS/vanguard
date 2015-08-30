@@ -29,6 +29,7 @@ group :development, :test do
 end
 group :development do
   gem 'rails_layout'			      # Generate layout with framework (boostrap or foundation)
+  gem 'bootstrap-sass-extras'		  # Generate news layouts with bootstrap theme
 end
 
 gem 'meta-tags'                       # Create SEO metatags
