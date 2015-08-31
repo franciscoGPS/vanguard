@@ -16,10 +16,9 @@
   User.create( password: '.Agave15!', email: 'hola@agaveti.com', admin: true)
 
 
-{'chico', 'mediano', 'grande'}.each do |tipo|
-	Package_type.create(name: tipo)
-	Box_type.create(name: tipo)
-	Pallet_type.create(name: tipo)
-	Bag_type.create(name: tipo)
-end
+connection = ActiveRecord::Base.connection()
+connection.execute("INSERT INTO bag_types(name) VALUES ('GRANDE');
+					INSERT INTO package_types(name) VALUES ('GRANDE');
+					INSERT INTO box_types(name) VALUES ('GRANDE');
+					INSERT INTO pallet_types(name) VALUES ('GRANDE');")
 
