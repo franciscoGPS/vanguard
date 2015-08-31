@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-
+  belongs_to :greenhouse
 ##Propiedades del producto. Disponibles en la base de datos, y extraidos de la migración "XXX..._create_products.rb"
 	   #t.string :name
       #t.references :greenhouse
