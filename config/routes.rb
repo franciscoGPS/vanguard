@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :greenhouses
   resources :contacts
   resources :products
-
+  
   
 end
