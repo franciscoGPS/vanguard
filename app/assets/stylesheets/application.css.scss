@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+.btn:hover, .submit:hover, .authform .button:hover, .button-xs:hover, .btn:focus, .submit:focus, .authform .button:focus, .button-xs:focus {
+  color: white;
+  text-decoration: none;
+}
+
+
