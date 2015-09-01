@@ -1,0 +1,7 @@
+<h1>Shipments</h1>
+
+<%= week_calendar table: {class: "table table-bordered table-hover"},
+                      tr: {class: "calendar-row"}, td: {class: "day"},
+                  number_of_weeks: 2 do |date| %>
+  <%= date.day %>
+<% end %>
