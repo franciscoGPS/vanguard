@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # La siguiente línea sigue para bloquear. 
+  before_action :authenticate_user!
   # GET /users
   # GET /users.json
   def index

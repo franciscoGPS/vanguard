@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :greenhouse
+  has_one :package_type
 ##Propiedades del producto. Disponibles en la base de datos, y extraidos de la migración "XXX..._create_products.rb"
 	   #t.string :name
       #t.references :greenhouse
@@ -9,4 +10,5 @@ class Product < ActiveRecord::Base
       #t.references :pallet_type
       #t.references :bag_type
       #t.boolean :active
+
 end
