@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :shipments
   devise_for :users
   root "static_pages#index"
   resources :users
@@ -8,5 +9,5 @@ Rails.application.routes.draw do
   resources :contacts
   resources :products
 
-  get 'shipments' => 'greenhouses#shipments', :as => 'preshipments'
+  get 'preshipments' => 'greenhouses#shipments'
 end

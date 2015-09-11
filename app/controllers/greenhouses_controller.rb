@@ -62,7 +62,7 @@ class GreenhousesController < ApplicationController
   end
 
   def shipments
-
+    @shipments = Shipment.all
   end
 
   private
