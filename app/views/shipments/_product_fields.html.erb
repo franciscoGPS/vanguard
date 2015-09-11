@@ -1,0 +1,3 @@
+<%= f.label "Product" %>
+<%= f.collection_select :product_id, Product.all, :id, :name, :class => 'text_field form-control' %>
+<%= link_to_remove_association "remove product", f %>
