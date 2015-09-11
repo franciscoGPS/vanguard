@@ -14,6 +14,7 @@
 #   Bag_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 
   User.create( password: '.Agave15!', email: 'hola@agaveti.com', admin: true)
+   User.create( password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: true)
 
 
 connection = ActiveRecord::Base.connection()
