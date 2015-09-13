@@ -1,4 +1,5 @@
-
+@import "font-awesome-sprockets";
+@import "font-awesome";
 html, body
 {
 	height: 100%;
@@ -270,7 +271,7 @@ ul.contact li a.icon-rss:before
 
 	#header-wrapper
 {
-	background: url(images/banner5.jpg) no-repeat center;
+	background: image-url("banner5.jpg") no-repeat center;
 	background-size: cover;
 	border-top: 5px solid rgb(245,106,33);
 }

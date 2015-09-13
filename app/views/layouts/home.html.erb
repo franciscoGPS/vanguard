@@ -4,11 +4,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Vanguard" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Vanguard" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+    <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'fonts', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div id="header-wrapper">
+      <div id="header" class="container">
+        <div id="logo">
+          <h1><a href="index.html"><%= image_tag "VanguardWhite.png" %></a></h1>
+        </div>
+        <div id="menu">
+          <ul>
+            <!--<li class="active"><a href="#" accesskey="1" title="">Inicio</a></li>-->
+            <li><%= link_to "Nosotros", about_path %></li>
+            <li><%= link_to "Socios/Proveedores", partners_path %></a></li>
+            <li><%= link_to "Soluciones", solutions_path %></li>
+            <li><%= link_to "Contacto", web_contact_path %></li>
+          </ul>
+        </div>
+      </div>
+      <div id="banner" class="container"><span id="eslogan">Marketing y Desarrollo de Negocios<br />
+        para el Comercio Exterior</span></div>
+      </div>
     <%= yield %>
+    <div id="copyright" class="container">
+      <p>&copy; Vanguard. All rights reserved. | Made with &hearts; by <a href="http://templated.co" rel="nofollow">AgaveTI</a>.</p>
+    </div>
   </body>
 </html>
