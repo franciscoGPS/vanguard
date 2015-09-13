@@ -1,0 +1,58 @@
+<%= form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :greenhouse_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :greenhouse_id,  Greenhouse.all, :id,:business_name, {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :package_type_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :package_type_id,  PackageType.all, :id,:name, {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :box_type_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :box_type_id,  BoxType.all, :id,:name, {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :weights_avail, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :weights_avail, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :pallet_type_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :pallet_type_id,  PalletType.all, :id,:name, {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :bag_type_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :bag_type_id,  BagType.all, :id,:name, {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :active, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :active, :class => 'text_field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  products_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Box Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @box_types.each do |box_type| %>
+      <tr>
+        <td><%= box_type.name %></td>
+        <td><%= link_to 'Show', box_type %></td>
+        <td><%= link_to 'Edit', edit_box_type_path(box_type) %></td>
+        <td><%= link_to 'Destroy', box_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Box type', new_box_type_path %>

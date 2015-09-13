@@ -11,8 +11,11 @@ gem 'jquery-rails'                    # Use jquery as the JavaScript library
 gem 'turbolinks'                      # Turbolinks makes following links in your web application faster.
 gem 'jbuilder', '~> 2.0'              # Build JSON APIs with ease.
 gem 'puma'                            # Use Puma as the app server
-gem 'rails_12factor'                  # Use rails_12factor to replaces the need for the plugins on Heroku
 gem 'newrelic_rpm'                    # User NewRelic like performance monitor
+
+group :production do
+  gem 'rails_12factor'                  # Use rails_12factor to replaces the need for the plugins on Heroku
+end
 
 group :test do
   gem "rspec-rails", "~> 2.14"
@@ -27,7 +30,10 @@ group :development, :test do
   gem 'spring'                        # Spring speeds up development by keeping your application running in the background.
   gem 'mailcatcher'                   # Use mailcatcher to see mail in localhost:1080 (run "mailcatcher" in terminal to activate)
 end
-
+group :development do
+  gem 'rails_layout'			      # Generate layout with framework (boostrap or foundation)
+  gem 'bootstrap-sass-extras'		  # Generate news layouts with bootstrap theme
+end
 
 gem 'meta-tags'                       # Create SEO metatags
 gem 'devise'                          # Auth Users
@@ -35,3 +41,6 @@ gem 'cancan'                          # Give rules & access to users
 gem "paranoia", "~> 2.0"              # Use paranoia to make soft-delete objects
 gem 'mandrill-api'                    # SMTP Settings
 gem 'cocoon'                          # Use Cocoon for nested forms
+
+gem 'bootstrap-sass', '~> 3.2.0'	  # Use bootstrap as CSS framework
+gem 'autoprefixer-rails'			  # Precompile sass and prevent bugs (CSS)
