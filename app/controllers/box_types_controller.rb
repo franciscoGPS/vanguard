@@ -1,5 +1,6 @@
 class BoxTypesController < ApplicationController
   before_action :set_box_type, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /box_types
   # GET /box_types.json

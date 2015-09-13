@@ -1,6 +1,6 @@
 class PalletTypesController < ApplicationController
   before_action :set_pallet_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /pallet_types
   # GET /pallet_types.json
   def index

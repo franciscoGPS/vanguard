@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /customers
   # GET /customers.json
   def index
@@ -19,6 +19,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+    @customer.contacts.build
   end
 
   # POST /customers
@@ -70,7 +71,7 @@ class CustomersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
       params.require(:customer).permit(:business_name, :billing_address,
-       {:contacts => [:name, :email, :phone_office, :phone, :contactable_id, :contactable_type]},
-        :shipping_address, :warehose_address, :tax_id_number, :chep_id_number, :bb_number)
+        :shipping_address, :warehose_address, :tax_id_number, :chep_id_number,
+        :bb_number, contacts_attributes: [:id, :name, :email, :phone, :phone_office, :_destroy])
     end
 end

@@ -1,6 +1,6 @@
 class PackageTypesController < ApplicationController
   before_action :set_package_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /package_types
   # GET /package_types.json
   def index

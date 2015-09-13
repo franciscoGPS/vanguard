@@ -11,8 +11,11 @@ gem 'jquery-rails'                    # Use jquery as the JavaScript library
 gem 'turbolinks'                      # Turbolinks makes following links in your web application faster.
 gem 'jbuilder', '~> 2.0'              # Build JSON APIs with ease.
 gem 'puma'                            # Use Puma as the app server
-gem 'rails_12factor'                  # Use rails_12factor to replaces the need for the plugins on Heroku
 gem 'newrelic_rpm'                    # User NewRelic like performance monitor
+
+group :production do
+  gem 'rails_12factor'                  # Use rails_12factor to replaces the need for the plugins on Heroku
+end
 
 group :test do
   gem "rspec-rails", "~> 2.14"

@@ -39,6 +39,19 @@
     <%= f.label :bb_number %><br>
     <%= f.text_field :bb_number %>
   </div>
+  <div id="contacts">
+    <%= f.fields_for :contacts do |contact| %>
+
+    <%= render 'contact_fields', :f  => contact %>
+
+    <% end %>
+
+  </div>
+  <div class="links">
+
+      <%= link_to_add_association 'add contact', f, :contacts, render_options: { wrapper: 'inline' } %>
+    </div>
+    <!--'data-association-insertion-node' => "#contacts", 'data-association-insertion-method' => "append"-->
   <div class="actions">
     <%= f.submit %>
   </div>

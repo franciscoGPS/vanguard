@@ -1,5 +1,6 @@
 class BagTypesController < ApplicationController
   before_action :set_bag_type, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /bag_types
   # GET /bag_types.json
