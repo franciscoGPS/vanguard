@@ -13,13 +13,13 @@
 # 	Pallet_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 #   Bag_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 
-  User.create( password: '.Agave15!', email: 'hola@agaveti.com', admin: true)
-   User.create( password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: true)
+User.create( password: '.Agave15!', email: 'hola@agaveti.com', admin: true)
+User.create( password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: true)
 
 
-connection = ActiveRecord::Base.connection()
-connection.execute("INSERT INTO bag_types(name) VALUES ('GRANDE');
-					INSERT INTO package_types(name) VALUES ('GRANDE');
-					INSERT INTO box_types(name) VALUES ('GRANDE');
-					INSERT INTO pallet_types(name) VALUES ('GRANDE');")
+#connection = ActiveRecord::Base.connection()
+#connection.execute("INSERT INTO bag_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
+#					INSERT INTO package_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
+#					INSERT INTO box_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
+#					INSERT INTO pallet_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');")
 

@@ -11,20 +11,6 @@
       <th><%= model_class.human_attribute_name(:job) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:deleted_at) %></th>
-      <th><%= model_class.human_attribute_name(:encrypted_password) %></th>
-      <th><%= model_class.human_attribute_name(:reset_password_token) %></th>
-      <th><%= model_class.human_attribute_name(:reset_password_sent_at) %></th>
-      <th><%= model_class.human_attribute_name(:remember_created_at) %></th>
-      <th><%= model_class.human_attribute_name(:current_sign_in_at) %></th>
-      <th><%= model_class.human_attribute_name(:last_sign_in_at) %></th>
-      <th><%= model_class.human_attribute_name(:current_sign_in_ip) %></th>
-      <th><%= model_class.human_attribute_name(:last_sign_in_ip) %></th>
-      <th><%= model_class.human_attribute_name(:failed_attempts) %></th>
-      <th><%= model_class.human_attribute_name(:unlock_token) %></th>
-      <th><%= model_class.human_attribute_name(:locked_at) %></th>
-      <th><%= model_class.human_attribute_name(:role_id) %></th>
-      <th><%= model_class.human_attribute_name(:admin) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -38,20 +24,7 @@
           <td><%= user.job %></td>
           <td><%= user.phone %></td>
           <td><%= user.email %></td>
-          <td><%= user.deleted_at %></td>
-          <td><%= user.encrypted_password %></td>
-          <td><%= user.reset_password_token %></td>
-          <td><%= user.reset_password_sent_at %></td>
-          <td><%= user.remember_created_at %></td>
-          <td><%= user.current_sign_in_at %></td>
-          <td><%= user.last_sign_in_at %></td>
-          <td><%= user.current_sign_in_ip %></td>
-          <td><%= user.last_sign_in_ip %></td>
-          <td><%= user.failed_attempts %></td>
-          <td><%= user.unlock_token %></td>
-          <td><%= user.locked_at %></td>
-          <td><%= user.role_id %></td>
-          <td><%= user.admin %></td>
+
         <td><%=l user.created_at, format: :long %></td>
         <td>
           <%= link_to user_path(user), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

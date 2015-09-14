@@ -1,6 +1,6 @@
 class GreenhousesController < ApplicationController
   before_action :set_greenhouse, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /greenhouses
   # GET /greenhouses.json
   def index

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pallet Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pallet_types.each do |pallet_type| %>
+      <tr>
+        <td><%= pallet_type.name %></td>
+        <td><%= link_to 'Show', pallet_type %></td>
+        <td><%= link_to 'Edit', edit_pallet_type_path(pallet_type) %></td>
+        <td><%= link_to 'Destroy', pallet_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pallet type', new_pallet_type_path %>

@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+
   end
 
   # GET /products/1
@@ -26,13 +27,15 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        #format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        #format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +46,10 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        #format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        #format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +60,7 @@ class ProductsController < ApplicationController
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 
@@ -69,6 +72,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :greenhouse, :package_type, :box_type, :weights_avail, :pallet_type, :bag_type, :active)
+      params.require(:product).permit(:name, :greenhouse_id, :package_type_id,
+        :box_type_id, :weights_avail, :pallet_type_id, :bag_type_id, :active)
     end
 end

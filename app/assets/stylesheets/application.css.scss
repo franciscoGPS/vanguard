@@ -12,10 +12,17 @@
  *
  *= require_tree .
  *= require_self
+ *= stub fonts
+ *= stub home
+ *= stub main
  */
+@import "font-awesome-sprockets";
+@import "font-awesome";
 .btn:hover, .submit:hover, .authform .button:hover, .button-xs:hover, .btn:focus, .submit:focus, .authform .button:focus, .button-xs:focus {
   color: white;
   text-decoration: none;
 }
 
-
+.padding-up {
+  padding-top: 2%;
+}

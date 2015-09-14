@@ -1,0 +1,63 @@
+<%= form_for @customer, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :business_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :business_name, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :billing_address, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :billing_address, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :shipping_address, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :shipping_address, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :warehose_address, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :warehose_address, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :tax_id_number, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :tax_id_number, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :chep_id_number, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :chep_id_number, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :bb_number, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :bb_number, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div id="contacts" class="panel  panel-default">
+    <div class="panel-heading">
+      <h3>Contacts</h3>
+    </div>
+    <div class="panel-body">
+      <%= f.fields_for :contacts do |contact| %>
+        <%= render 'contact_fields', :f  => contact %>
+      <% end %>
+      <%= link_to_add_association 'add contact', f, :contacts, render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  customers_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

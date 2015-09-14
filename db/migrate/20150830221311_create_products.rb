@@ -1,24 +1,5 @@
 class CreateProducts < ActiveRecord::Migration
   def change
-    create_table :package_types do |t|
-      t.string :name
-      
-    end
-
-    create_table :box_types do |t|
-      t.string :name
-      
-    end
-    create_table :pallet_types do |t|
-      t.string :name
-      
-    end
-
-    create_table :bag_types do |t|
-      t.string :name
-      
-    end
-
 
     create_table :products do |t|
       t.string :name

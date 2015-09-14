@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # La siguiente línea sirve para bloquear.
+  before_action :authenticate_user!
   # GET /users
   # GET /users.json
   def index
@@ -30,20 +32,20 @@ class UsersController < ApplicationController
     #if current_user.try(:admin?)
 
 
-      
+
       generated_password = Devise.friendly_token.first(8)
-      
-      
+
+
       @user = User.new(:email => user_params[:email], :password => generated_password, :name => user_params[:name], :role_id => user_params[:role_id], :phone => user_params[:phone])
-    
-      
+
+
       #@user = User.new(:email => "ejemplo@agaveti.com", :password => generated_password)
 
       respond_to do |format|
         if @user.save
-          
+
       RegistrationMailer.welcome(user, generated_password).deliver
-          
+
           #user = User.create!(:email => email, :password => generated_password)
 
           #RegistrationMailer.welcome(user, generated_password).deliver
@@ -64,7 +66,7 @@ class UsersController < ApplicationController
     else #####else del if de current_user.try(:admin?) -############
 
       redirect_to :back, notice: "No tiene permisos "
-    end  
+    end
   end
 
   # PATCH/PUT /users/1
