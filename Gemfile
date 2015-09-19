@@ -31,8 +31,8 @@ group :development, :test do
   gem 'mailcatcher'                   # Use mailcatcher to see mail in localhost:1080 (run "mailcatcher" in terminal to activate)
 end
 group :development do
-  gem 'rails_layout'			      # Generate layout with framework (boostrap or foundation)
-  gem 'bootstrap-sass-extras'		  # Generate news layouts with bootstrap theme
+  gem 'rails_layout'			            # Generate layout with framework (boostrap or foundation)
+  gem 'bootstrap-sass-extras'		      # Generate news layouts with bootstrap theme
 end
 
 gem 'meta-tags'                       # Create SEO metatags
@@ -42,6 +42,9 @@ gem "paranoia", "~> 2.0"              # Use paranoia to make soft-delete objects
 gem 'mandrill-api'                    # SMTP Settings
 gem 'cocoon'                          # Use Cocoon for nested forms
 
+gem 'bootstrap-sass', '~> 3.2.0'	    # Use bootstrap as CSS framework
+gem 'autoprefixer-rails'			        # Precompile sass and prevent bugs (CSS)
 gem 'bootstrap-sass', '~> 3.2.0'	  # Use bootstrap as CSS framework
 gem 'autoprefixer-rails'			  # Precompile sass and prevent bugs (CSS)
 gem 'font-awesome-sass', '~> 4.4.0'	  # Use font-awesome for icons
+gem "simple_calendar", "~> 1.1.0"     # Generate calendars with JQuery

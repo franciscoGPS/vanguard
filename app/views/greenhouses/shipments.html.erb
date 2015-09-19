@@ -1,0 +1,19 @@
+<h1>Shipments</h1>
+
+<div class="pull-right">
+ <%= link_to "New Shipment", new_shipment_path, class: "btn btn-success btn-large" %>
+</div>
+
+<%= week_calendar table: {class: "table table-bordered table-hover"},
+                      tr: {class: "calendar-row"}, td: {class: "day"},
+                  events: @shipments,
+                  number_of_weeks: 2 do |date, shipments| %>
+  <%= date.day %>
+  <% shipments.each do |shipment| %>
+      <% if date == shipment.start_at %>
+        <div class="panel">
+          <%= shipment.name %>
+        </div>
+      <% end %>
+  <% end %>
+<% end %>

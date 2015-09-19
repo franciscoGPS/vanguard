@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  
   root "static_pages#index"
   get 'admin', to: "static_pages#admin"
 
-  scope :admin  do 
+  scope :admin  do
     resources :customers
     resources :box_types
     resources :bag_types
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
     resources :contacts
     resources :products
     resources :customers
+    get 'preshipments' => 'greenhouses#shipments'
   end
 
   # Website pages
