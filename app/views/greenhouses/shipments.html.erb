@@ -15,6 +15,9 @@
           <%= link_to shipment_path(shipment) do %>
             <%= shipment.pallets_number %>
             <%= shipment.product.name %>
+            <% if shipment.cancel? %>
+              <label class="label label-danger">CANCELED</label>
+            <% end %>
           <% end %>
         </div>
       <% end %>
