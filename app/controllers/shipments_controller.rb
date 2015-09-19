@@ -56,7 +56,7 @@ class ShipmentsController < ApplicationController
   def destroy
     @shipment.destroy
     respond_to do |format|
-      format.html { redirect_to shipments_url, notice: 'Shipment was successfully destroyed.' }
+      format.html { redirect_to preshipments_path, notice: 'Shipment was successfully destroyed.' }
       #format.json { head :no_content }
     end
   end

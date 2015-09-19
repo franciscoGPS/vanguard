@@ -39,17 +39,12 @@
       <%= f.text_area :comments, :class => 'text_field form-control' %>
     </div>
   </div>
-  <div class="panel">
-    <%= f.fields_for :product do |product| %>
-      <%= render 'product_fields', f: product %>
-    <% end %>
-    <%= link_to_add_association 'add product', f, :product %>
-  </div>
+
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  shipments_path, :class => 'btn btn-default' %>
+                  preshipments_path, :class => 'btn btn-default' %>
     </div>
   </div>
 <% end %>

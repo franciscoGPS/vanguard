@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :contacts
     resources :products
     resources :customers
+    resources :shipments, :except => [:index]
     get 'preshipments' => 'greenhouses#shipments'
   end
 
