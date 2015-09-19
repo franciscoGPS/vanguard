@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :greenhouse
+  belongs_to :shipment
   has_one :package_type
   has_one :bag_type
   has_one :pallet_type
