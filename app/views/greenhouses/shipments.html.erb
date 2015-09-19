@@ -12,7 +12,10 @@
   <% shipments.each do |shipment| %>
       <% if date == shipment.start_at %>
         <div class="panel">
-          <%= shipment.product.name %>
+          <%= link_to shipment_path(shipment) do %>
+            <%= shipment.pallets_number %>
+            <%= shipment.product.name %>
+          <% end %>
         </div>
       <% end %>
   <% end %>
