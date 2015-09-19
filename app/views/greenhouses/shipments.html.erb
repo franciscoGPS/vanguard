@@ -12,7 +12,7 @@
   <% shipments.each do |shipment| %>
       <% if date == shipment.start_at %>
         <div class="panel">
-          <%= shipment.name %>
+          <%= shipment.product.name %>
         </div>
       <% end %>
   <% end %>

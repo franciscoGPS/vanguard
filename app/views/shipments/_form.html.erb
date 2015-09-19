@@ -1,8 +1,8 @@
 <%= form_for @shipment, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :greenhouse_id, :class => 'control-label col-md-2' %>
+    <%= f.label :product_id, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.collection_select :greenhouse_id, Greenhouse.all, :id, :business_name, class: 'text_field form-control' %>
+      <%= f.collection_select :product_id, Product.all, :id, :name, class: 'text_field form-control' %>
     </div>
   </div>
 
@@ -21,12 +21,6 @@
 
 
   <div class="form-group">
-    <%= f.label :departure_date, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.date_select :departure_date, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
     <%= f.label :pallets_number, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.number_field :pallets_number, :class => 'text_field form-control' %>
@@ -38,12 +32,6 @@
     <div class="col-md-10">
       <%= f.text_area :comments, :class => 'text_field form-control' %>
     </div>
-  </div>
-    <div class="panel">
-    <%= f.fields_for :product do |product| %>
-      <%= render 'product_fields', f: product %>
-    <% end %>
-    <%= link_to_add_association 'add product', f, :product, render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small" %>
   </div>
 
   <div class="form-group">

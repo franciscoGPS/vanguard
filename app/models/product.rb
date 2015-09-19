@@ -1,12 +1,12 @@
 class Product < ActiveRecord::Base
   belongs_to :greenhouse
-  belongs_to :shipment
+
   has_one :package_type
   has_one :bag_type
   has_one :pallet_type
   has_one :box_type
 
-
+  has_many :shipments
 
   acts_as_paranoid                        # Soft-delete
 

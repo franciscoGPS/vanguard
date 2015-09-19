@@ -16,7 +16,7 @@
     <% @shipments.each do |shipment| %>
       <tr>
         <td><%= shipment.id %></td>
-          <td><%= shipment.name %></td>
+          <td><%= shipment.product.name %></td>
           <td><%= shipment.start_at %></td>
         <td><%=l shipment.created_at, format: :long %></td>
         <td>

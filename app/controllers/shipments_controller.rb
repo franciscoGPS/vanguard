@@ -15,6 +15,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/new
   def new
     @shipment = Shipment.new
+    @shipment.product = Product.new
   end
 
   # GET /shipments/1/edit
@@ -25,7 +26,7 @@ class ShipmentsController < ApplicationController
   # POST /shipments.json
   def create
     @shipment = Shipment.new(shipment_params)
-
+    byebug
     respond_to do |format|
       if @shipment.save
         format.html { redirect_to preshipments_path, notice: 'Shipment was successfully created.' }
@@ -69,7 +70,7 @@ class ShipmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
-      params.require(:shipment).permit(:name, :start_at, :greenhouse_id, :shipment_consecutive, :departure_date,
-                                      :pallets_number, :product_id, products_attributes: [:id, :name])
+      params.require(:shipment).permit(:start_at, :shipment_consecutive, :comments,
+                                      :pallets_number, :product_id, product_attributes: [:id, :name, :_destroy])
     end
 end
