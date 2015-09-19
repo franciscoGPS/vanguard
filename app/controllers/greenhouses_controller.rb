@@ -29,10 +29,10 @@ class GreenhousesController < ApplicationController
     respond_to do |format|
       if @greenhouse.save
         format.html { redirect_to @greenhouse, notice: 'Greenhouse was successfully created.' }
-        format.json { render :show, status: :created, location: @greenhouse }
+        #format.json { render :show, status: :created, location: @greenhouse }
       else
         format.html { render :new }
-        format.json { render json: @greenhouse.errors, status: :unprocessable_entity }
+        #format.json { render json: @greenhouse.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +43,10 @@ class GreenhousesController < ApplicationController
     respond_to do |format|
       if @greenhouse.update(greenhouse_params)
         format.html { redirect_to @greenhouse, notice: 'Greenhouse was successfully updated.' }
-        format.json { render :show, status: :ok, location: @greenhouse }
+        #format.json { render :show, status: :ok, location: @greenhouse }
       else
         format.html { render :edit }
-        format.json { render json: @greenhouse.errors, status: :unprocessable_entity }
+        #format.json { render json: @greenhouse.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,8 +57,12 @@ class GreenhousesController < ApplicationController
     @greenhouse.destroy
     respond_to do |format|
       format.html { redirect_to greenhouses_url, notice: 'Greenhouse was successfully destroyed.' }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
+  end
+
+  def shipments
+    @shipments = Shipment.all
   end
 
   private
