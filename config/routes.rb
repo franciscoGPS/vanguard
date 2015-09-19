@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :customers
     resources :shipments, :except => [:index]
     get 'preshipments' => 'greenhouses#shipments'
+    get 'cancel/:id' => 'shipments#cancel', as: 'cancel_shipment'
+    post 'shipments/:id' => 'shipments#cancel_shipment'
   end
 
   # Website pages

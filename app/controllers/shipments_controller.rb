@@ -1,5 +1,5 @@
 class ShipmentsController < ApplicationController
-  before_action :set_shipment, only: [:show, :edit, :update, :destroy]
+  before_action :set_shipment, only: [:show, :edit, :update, :destroy, :cancel, :cancel_shipment]
 
   # GET /shipments
   # GET /shipments.json
@@ -59,6 +59,19 @@ class ShipmentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to preshipments_path, notice: 'Shipment was successfully destroyed.' }
       #format.json { head :no_content }
+    end
+  end
+
+  def cancel_shipment
+
+    respond_to do |format|
+
+      if @shipment.update(shipment_params)
+        @shipment.update(cancel: true) if @shipment.comments.present?
+        format.html { redirect_to preshipments_path, notice: 'Shipment was successfully canceled.'}
+      else
+        format.html { render :cancel }
+      end
     end
   end
 
