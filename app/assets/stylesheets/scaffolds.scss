@@ -27,6 +27,12 @@ a {
     color: #fff;
     background-color: #000;
   }
+  &.btn-default{
+    color: #000;
+  }
+  &.btn-default:hover{
+    color: #3127BC;
+  }
 }
 
 div {
@@ -84,4 +90,7 @@ a div.panel.panel-default:hover{
   -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    2px 2px 3px 0px rgba(50, 50, 50, 0.75);
   box-shadow:         2px 2px 3px 0px rgba(50, 50, 50, 0.75);
+}
+.padding-down {
+  padding-bottom: 2%;
 }
