@@ -16,3 +16,6 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require cocoon
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
