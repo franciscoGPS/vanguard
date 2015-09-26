@@ -26,7 +26,7 @@ class ShipmentsController < ApplicationController
   # POST /shipments.json
   def create
     @shipment = Shipment.new(shipment_params)
-    byebug
+    #byebug
     respond_to do |format|
       if @shipment.save
         format.html { redirect_to preshipments_path, notice: 'Shipment was successfully created.' }
