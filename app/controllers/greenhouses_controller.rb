@@ -73,6 +73,6 @@ class GreenhousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def greenhouse_params
-      params.require(:greenhouse).permit(:business_name, :fiscal_address, :greenhouse_address, :rfc, :product_id, :category, product_attributes: => [:id, :name])
+      params.require(:greenhouse).permit(:business_name, :fiscal_address, :greenhouse_address, :rfc, :product_id, :category)
     end
 end
