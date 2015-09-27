@@ -53,6 +53,12 @@
       Products
     <% end %>
   </li>
+  <li>
+    <%= link_to sales_path do %>
+      <%= glyph 'tags' %>
+      Sales
+    <% end %>
+  </li>
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
 <% end %>
