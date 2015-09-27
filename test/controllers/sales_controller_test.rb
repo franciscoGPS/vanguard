@@ -18,7 +18,7 @@ class SalesControllerTest < ActionController::TestCase
 
   test "should create sale" do
     assert_difference('Sale.count') do
-      post :create, sale: { annotation: @sale.annotation, arrival_date: @sale.arrival_date, comment: @sale.comment, departure_date: @sale.departure_date, manifest: @sale.manifest, season: @sale.season }
+      post :create, sale: {  }
     end
 
     assert_redirected_to sale_path(assigns(:sale))
@@ -35,7 +35,7 @@ class SalesControllerTest < ActionController::TestCase
   end
 
   test "should update sale" do
-    patch :update, id: @sale, sale: { annotation: @sale.annotation, arrival_date: @sale.arrival_date, comment: @sale.comment, departure_date: @sale.departure_date, manifest: @sale.manifest, season: @sale.season }
+    patch :update, id: @sale, sale: {  }
     assert_redirected_to sale_path(assigns(:sale))
   end
 
