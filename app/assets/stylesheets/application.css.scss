@@ -17,6 +17,8 @@
  *= stub main
  *= require font-awesome
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 .btn:hover, .submit:hover, .authform .button:hover, .button-xs:hover, .btn:focus, .submit:focus, .authform .button:focus, .button-xs:focus {
