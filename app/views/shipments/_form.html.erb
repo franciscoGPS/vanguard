@@ -1,0 +1,44 @@
+<%= form_for @shipment, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :product_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :product_id, Product.all, :id, :name, class: 'text_field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :shipment_consecutive, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :shipment_consecutive, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :start_at, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :start_at, :class => 'text_field form-control' %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :pallets_number, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :pallets_number, :class => 'text_field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :comments, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :comments, :class => 'text_field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  preshipments_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
