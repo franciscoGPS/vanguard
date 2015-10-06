@@ -27,7 +27,6 @@
           <td><%= sale.manifest %></td>
           <td><%= sale.annotation %></td>
           <td><%= sale.comment %></td>
-          <td><%= sale.deleted_at %></td>
         <td><%=l sale.created_at, format: :long %></td>
         <td>
           <%= link_to sale_path(sale), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

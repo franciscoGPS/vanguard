@@ -70,6 +70,8 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params[:sale]
+      accessible = [:season, :departure_date, :arrival_date, :manifest, :annotation, :comment, :password_confirmation, :current_password]
+      #accessible << [role_attributes: [:id, :name]]
+      params.require(:sale).permit(accessible)
     end
 end

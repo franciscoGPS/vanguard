@@ -8,7 +8,7 @@ belongs_to :role
 
   acts_as_paranoid
 
-  ROLES = %w[superadmin admin user banned]
+  ROLES = %w[superadmin admin user banned sales]
 
 
   #before_create :set_default_role
