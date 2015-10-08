@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
 belongs_to :role
+has_many :sales
   # Include default devise modules.
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable,
@@ -8,7 +9,7 @@ belongs_to :role
 
   acts_as_paranoid
 
-  ROLES = %w[superadmin admin user banned]
+  ROLES = %w[superadmin admin user banned sales]
 
 
   #before_create :set_default_role

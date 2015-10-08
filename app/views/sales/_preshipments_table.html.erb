@@ -1,0 +1,49 @@
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Use</th>
+      <th>ID</th>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Start At</th>
+      <th>Created At</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shipments.each do |shipment| %>
+      <tr>
+         <td><%= check_box_tag "shipment_ids[]", shipment.id %></td>
+        <td><%= shipment.id %></td>
+        <td><%= shipment.product.name %></td>
+
+        <!-- Ejemplo funcionando-->
+        <!--<td><input step="1.0" min="1.0" max="10000.0" type="number" name="sale[shipment_prices][]"><td>-->
+
+        <!--<td><%# number_field :shipment[shipment.id], :price, in: 1.0..10000.0, step: 1.00  %></td>
+, nil, in: 1.0..100000.0, step: 1.00
+      -->
+
+        <td>$<%= number_field shipment.id %></td>
+        <td><%=l shipment.start_at, format: :long  %></td>
+        <td><%=l shipment.created_at, format: :long %></td>
+        console
+        <td>
+          <%= link_to shipment_path(shipment), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+          <%- end -%>
+          <%= link_to edit_shipment_path(shipment), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to shipment_path(shipment), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+

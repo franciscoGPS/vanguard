@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :sales
+
   root "static_pages#index"
   get 'admin', to: "static_pages#admin"
 
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :contacts
     resources :products
     resources :customers
-    resources :shipments, :except => [:index]
+    resources :shipments
     resources :sales
     get 'preshipments' => 'greenhouses#shipments'
     get 'cancel/:id' => 'shipments#cancel', as: 'cancel_shipment'

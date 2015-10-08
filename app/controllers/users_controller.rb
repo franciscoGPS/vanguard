@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+
     @users = User.all
   end
 
@@ -36,7 +37,9 @@ class UsersController < ApplicationController
       generated_password = Devise.friendly_token.first(8)
 
 
-      @user = User.new(:email => user_params[:email], :password => generated_password, :name => user_params[:name], :role_id => user_params[:role_id], :phone => user_params[:phone])
+      @user = User.new(:email => user_params[:email], :password => generated_password,
+       :name => user_params[:name], :role_id => user_params[:role_id],
+       :phone => user_params[:phone], :job =>user_params[:job])
 
 
       #@user = User.new(:email => "ejemplo@agaveti.com", :password => generated_password)
@@ -44,15 +47,9 @@ class UsersController < ApplicationController
       respond_to do |format|
         if @user.save
 
-      RegistrationMailer.welcome(user, generated_password).deliver
+          UserMailer.welcome_email(@user, generated_password).deliver
 
-          #user = User.create!(:email => email, :password => generated_password)
-
-          #RegistrationMailer.welcome(user, generated_password).deliver
-
-
-
-          format.html { redirect_to @user, notice: 'User was successfully created. \n'  + generated_password }
+          format.html { redirect_to @user, notice: 'User was successfully created. \n'}
           #format.json { render :show, status: :created, location: @user }
 
 
