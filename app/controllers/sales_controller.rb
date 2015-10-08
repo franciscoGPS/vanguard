@@ -11,7 +11,7 @@ class SalesController < ApplicationController
   # GET /sales/1.json
   def show
     @shipments = Shipment.where(sale_id: params[:id])
-    byebug
+
     #Sale.joins(:shipments).where(shipments: { sale_id:  params[:id]})
 
 
@@ -19,8 +19,16 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-    @sale = Sale.new
-    @shipments = Shipment.unconfirmed
+
+    if Shipment.unconfirmed.size > 0
+
+      @sale = Sale.new
+      @shipments = Shipment.unconfirmed
+     else
+        respond_to do |format|
+        format.html { redirect_to Shipment.new, notice: 'No unconfirmed shipments.' }
+      end
+    end
 
   end
 
@@ -31,56 +39,44 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-
     @sale = Sale.new(sale_params)
 
-    @shipments_selected = Shipment.find(params[:shipment_ids])
-
-    #Me quedé trabajando con actualizar solo los precios de los shipments seleccionados con el checkbox
-    #@prices =  params[:sale][:shipment_prices]
-
-#    prices.each_with_index { |val, index|
-
- #     if val != 0
-  #      @prices << val
-   #   end
-
-    # }
+    @shipments_selected = params[:sale].has_key?(:shipment_ids) ? Shipment.find(params[:shipment_ids]) : Array.new
 
 
 
+      if @shipments_selected.present?
 
 
-    respond_to do |format|
+
+        if @sale.save
+            @shipments_selected.each do |shipment|
+              shipment.sale_id = @sale.id
+
+              price = params[shipment.id.to_s]
+
+              # Aquí price tiene un arreglo de valores. Solo obtenemos su único valor.
+              shipment.price = price[0]
+              if shipment.save
+                 respond_to do |format|
+                 format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+               end
+              end
+           end
+          #format.json { render :show, status: :created, location: @sale }
+          #else
+          #format.json { render json: @sale.errors, status: :unprocessable_entity }
+        end # if @sale.save
+
+      else #if !(@shipments_selected.empty?)
+          @shipments = Shipment.unconfirmed
+            respond_to do |format|
+              format.html { redirect_to new_sale_path, error: 'No Shipments added to the Sale. Please verify.' }
+              byebug
+            end
+      end # if !(@shipments_selected.empty?)
 
 
-      byebug
-
-      if @sale.save
-        @shipments_selected.each do |shipment|
-          shipment.sale_id = @sale.id
-          byebug
-          price = params[shipment.id.to_s]
-          byebug
-
-          shipment.price = price[0]
-
-          if shipment.save
-
-
-             # format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-
-          format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-          end
-
-        #format.json { render :show, status: :created, location: @sale }
-        end
-      else
-        format.html { render :new }
-        #format.json { render json: @sale.errors, status: :unprocessable_entity }
-    end
-
-   end
 
   end
 
