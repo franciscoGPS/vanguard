@@ -10,6 +10,11 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
+    @shipments = Shipment.where(sale_id: params[:id])
+    byebug
+    #Sale.joins(:shipments).where(shipments: { sale_id:  params[:id]})
+
+
   end
 
   # GET /sales/new
@@ -32,7 +37,15 @@ class SalesController < ApplicationController
     @shipments_selected = Shipment.find(params[:shipment_ids])
 
     #Me quedé trabajando con actualizar solo los precios de los shipments seleccionados con el checkbox
-    @prices = params[:sale][:shipment_prices]
+    #@prices =  params[:sale][:shipment_prices]
+
+#    prices.each_with_index { |val, index|
+
+ #     if val != 0
+  #      @prices << val
+   #   end
+
+    # }
 
 
 
@@ -41,12 +54,17 @@ class SalesController < ApplicationController
     respond_to do |format|
 
 
+      byebug
 
-    if @prices.size == @shipments_selected.size
       if @sale.save
-        @shipments_selected.each_with_index do |shipment, index|
+        @shipments_selected.each do |shipment|
           shipment.sale_id = @sale.id
-          shipment.price = @prices[index]
+          byebug
+          price = params[shipment.id.to_s]
+          byebug
+
+          shipment.price = price[0]
+
           if shipment.save
 
 
@@ -61,8 +79,9 @@ class SalesController < ApplicationController
         format.html { render :new }
         #format.json { render json: @sale.errors, status: :unprocessable_entity }
     end
-end
-end
+
+   end
+
   end
 
   # PATCH/PUT /sales/1

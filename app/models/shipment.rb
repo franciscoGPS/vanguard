@@ -4,7 +4,7 @@ class Shipment < ActiveRecord::Base
   belongs_to :product
   belongs_to :sale
 
-  scope :unconfirmed, -> { where(price: nil) }
+  scope :unconfirmed, -> { where("price is ? OR price = ? OR price < ?", nil, 0, 0 ) }
 
 
 end

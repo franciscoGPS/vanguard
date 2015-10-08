@@ -6,7 +6,6 @@
       <th>ID</th>
       <th>Product Name</th>
       <th>Price</th>
-      <th>Price</th>
       <th>Start At</th>
       <th>Created At</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -20,11 +19,13 @@
         <td><%= shipment.product.name %></td>
 
         <!-- Ejemplo funcionando-->
-        <td><input step="1.0" min="1.0" max="10000.0" type="number" name="sale[shipment_prices][]"><td>
+        <!--<td><input step="1.0" min="1.0" max="10000.0" type="number" name="sale[shipment_prices][]"><td>-->
 
-        <!--<td><%# number_field :shipment[shipment.id], :price, in: 1.0..10000.0, step: 1.00  %></td>-->
+        <!--<td><%# number_field :shipment[shipment.id], :price, in: 1.0..10000.0, step: 1.00  %></td>
+, nil, in: 1.0..100000.0, step: 1.00
+      -->
 
-        <!--<td><%# number_field "shipment_ids[]", :price, in: 1.0..10000.0, step: 1.00  %></td>-->
+        <td>$<%= number_field shipment.id %></td>
         <td><%=l shipment.start_at, format: :long  %></td>
         <td><%=l shipment.created_at, format: :long %></td>
         console
