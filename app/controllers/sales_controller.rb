@@ -1,7 +1,6 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
   # GET /sales
   # GET /sales.json
   def index
@@ -16,6 +15,8 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @sale = Sale.new
+    @shipments = Shipment.unconfirmed
+
   end
 
   # GET /sales/1/edit
@@ -25,17 +26,43 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
+
     @sale = Sale.new(sale_params)
 
+    @shipments_selected = Shipment.find(params[:shipment_ids])
+
+    #Me quedé trabajando con actualizar solo los precios de los shipments seleccionados con el checkbox
+    @prices = params[:sale][:shipment_prices]
+
+
+
+
+
     respond_to do |format|
+
+
+
+    if @prices.size == @shipments_selected.size
       if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+        @shipments_selected.each_with_index do |shipment, index|
+          shipment.sale_id = @sale.id
+          shipment.price = @prices[index]
+          if shipment.save
+
+
+             # format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+
+          format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+          end
+
         #format.json { render :show, status: :created, location: @sale }
+        end
       else
         format.html { render :new }
         #format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
     end
+end
+end
   end
 
   # PATCH/PUT /sales/1

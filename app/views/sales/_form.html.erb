@@ -17,6 +17,9 @@
       <%= f.date_select :arrival_date, :class => 'text_field form-control' %>
     </div>
   </div>
+
+    <%= render :partial => 'preshipments_table' %>
+
   <div class="form-group">
     <%= f.label :manifest, :class => 'control-label col-md-2' %>
     <div class="col-md-10">

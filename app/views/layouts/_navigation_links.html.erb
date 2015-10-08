@@ -53,11 +53,29 @@
       Products
     <% end %>
   </li>
-  <li>
-    <%= link_to sales_path do %>
+
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
       <%= glyph 'tags' %>
       Sales
-    <% end %>
+      <span class="caret"></span>
+    </a>
+
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to sales_path do %>
+          <%= glyph 'tags' %>
+          Sales
+        <% end %>
+      </li>
+      <li>
+        <%= link_to shipments_path do %>
+          <i class="fa fa-ship fw"></i>
+          Shipments
+        <% end %>
+      </li>
+    </ul>
+
   </li>
 
 <% else %>

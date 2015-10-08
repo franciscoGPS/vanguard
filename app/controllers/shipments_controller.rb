@@ -1,5 +1,6 @@
 class ShipmentsController < ApplicationController
   before_action :set_shipment, only: [:show, :edit, :update, :destroy, :cancel, :cancel_shipment]
+  before_action :authenticate_user!
 
   # GET /shipments
   # GET /shipments.json

@@ -6,7 +6,10 @@ class StaticPagesController < ApplicationController
               :description => t("homedescription"),
               :keywords => 'home, vanguard, business, food'
   end
+
+  #Este método es al unico que se tiene acceso sin autenticar
+  #Se designa en la línea 2 de este doc
   def admin
-  	
+
   end
 end

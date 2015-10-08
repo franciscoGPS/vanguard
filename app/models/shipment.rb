@@ -4,4 +4,7 @@ class Shipment < ActiveRecord::Base
   belongs_to :product
   belongs_to :sale
 
+  scope :unconfirmed, -> { where(price: nil) }
+
+
 end
