@@ -3,27 +3,27 @@
   <li>
        <% if current_user.admin? %>
         <%= link_to roles_path do %>
-          <%= glyph 'lock' %>
+          <i class="fa fa-user-secret fw"></i>
           Roles
         <% end %>
       <% end %>
   </li>
   <li>
     <%= link_to users_path do %>
-      <%= glyph 'user' %>
+      <i class="fa fa-user fw"></i>
       Users
     <% end %>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      <%= glyph 'tree-deciduous' %>
+      <i class='fa fa-pagelines fw'></i>
       Greenhouse
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
       <li>
         <%= link_to greenhouses_path do %>
-          <%= glyph 'leaf' %>
+          <i class="fa fa-leaf fw"></i>
           Greenhouses
         <% end %>
       </li>
@@ -37,7 +37,7 @@
   </li>
   <li>
     <%= link_to contacts_path do %>
-      <%= glyph 'book' %>
+      <i class='fa fa-book fw'></i>
       Contacts
     <% end %>
   </li>
@@ -49,36 +49,24 @@
   </li>
   <li>
     <%= link_to products_path do %>
-      <%= glyph 'shopping-cart' %>
+      <i class='fa fa-shopping-cart  fw'></i>
       Products
     <% end %>
   </li>
-
-<li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      <%= glyph 'tags' %>
+  <li>
+    <%= link_to sales_path do %>
+      <i class='fa fa-tags fw'></i>
       Sales
-      <span class="caret"></span>
-    </a>
-
-    <ul class="dropdown-menu">
-      <li>
-        <%= link_to sales_path do %>
-          <%= glyph 'tags' %>
-          Sales
-        <% end %>
-      </li>
-      <li>
-        <%= link_to shipments_path do %>
-          <i class="fa fa-ship fw"></i>
-          Shipments
-        <% end %>
-      </li>
-    </ul>
-
+    <% end %>
   </li>
+  <li>
+    <%= link_to shipments_path do %>
+      <i class="fa fa-ship fw"></i>
+      Shipments
+    <% end %>
+  </li>
+
 
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
 <% end %>
-
