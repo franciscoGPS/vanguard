@@ -1,8 +1,9 @@
-
 <table class="table table-hover">
   <thead>
     <tr>
+      <% if @action != "edit" %>
       <th>Use</th>
+      <% end %>
       <th>ID</th>
       <th>Product Name</th>
       <th>Price</th>
@@ -14,21 +15,25 @@
   <tbody>
     <% @shipments.each do |shipment| %>
       <tr>
+        <% if @action != "edit" %>
          <td><%= check_box_tag "shipment_ids[]", shipment.id %></td>
+        <% end %>
         <td><%= shipment.id %></td>
         <td><%= shipment.product.name %></td>
 
-        <!-- Ejemplo funcionando-->
-        <!--<td><input step="1.0" min="1.0" max="10000.0" type="number" name="sale[shipment_prices][]"><td>-->
+        <% if @action != "edit" %>
+        <td>$<%= number_field_tag shipment.id, nil, min: 0, max: 1000, step: :any  %></td>
+        <% else %>
+         <td>$<%= number_field_tag shipment.id, shipment.price,  min: 0, max: 1000, step: :any %></td>
+        <% end %>
 
-        <!--<td><%# number_field :shipment[shipment.id], :price, in: 1.0..10000.0, step: 1.00  %></td>
-, nil, in: 1.0..100000.0, step: 1.00
-      -->
 
-        <td>$<%= number_field shipment.id %></td>
+
+
+
         <td><%=l shipment.start_at, format: :long  %></td>
         <td><%=l shipment.created_at, format: :long %></td>
-        console
+
         <td>
           <%= link_to shipment_path(shipment), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
@@ -44,6 +49,7 @@
     <% end %>
   </tbody>
 </table>
+
 
 
 

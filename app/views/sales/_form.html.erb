@@ -44,6 +44,10 @@
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   sales_path, :class => 'btn btn-default' %>
+                  <% if @sale.own?(current_user)%>
+      <%= link_to t('.delete', :default => t("helpers.links.delete")),
+                  sales_path, :class => 'btn btn-danger' %>
+                  <% end %>
     </div>
   </div>
 <% end %>
