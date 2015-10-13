@@ -9,10 +9,12 @@
       <% end %>
   </li>
   <li>
-    <%= link_to users_path do %>
-      <i class="fa fa-user fw"></i>
-      Users
-    <% end %>
+    <% if current_user.admin? %>
+        <%= link_to users_path do %>
+           <i class="fa fa-user fw"></i>
+          Users
+        <% end %>
+      <% end %>
   </li>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -36,9 +38,11 @@
     </ul>
   </li>
   <li>
-    <%= link_to contacts_path do %>
-      <i class='fa fa-book fw'></i>
-      Contacts
+    <% if current_user.admin? %>
+      <%= link_to contacts_path do %>
+        <i class='fa fa-book fw'></i>
+        Contacts
+      <% end %>
     <% end %>
   </li>
   <li>
