@@ -1,4 +1,4 @@
-class System < ApplicationMailer
+class System < UserMailer
   def email_name
     mail :subject => "Notificación del Sistema",
          :to      => "vanguard.com.mx@gmail.com",
