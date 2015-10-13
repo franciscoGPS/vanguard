@@ -6,7 +6,7 @@ class SalesController < ApplicationController
   def index
     @sales = Sale.all
 
-    byebug
+
 
   end
 
@@ -22,7 +22,7 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-byebug
+
     if Shipment.unconfirmed.size > 0
 
       @sale = Sale.new
@@ -47,7 +47,7 @@ byebug
   def create
     @sale = Sale.new(sale_params)
     @shipments_selected = shipments_selected
-    byebug
+
     if @shipments_selected.present?
       @sale.user_id = current_user.id
       if @sale.save
@@ -81,14 +81,14 @@ byebug
       @shipments = Shipment.unconfirmed
       respond_to do |format|
         format.html { redirect_to new_sale_path, error: 'No Shipments added to the Sale. Please verify.' }
-        byebug
+
       end
     end # if !(@shipments_selected.empty?)
   end
 
 
   def shipments_selected
-    return shipments_selected = params.has_key?(:shipment_ids) ? Shipment.find(params[:shipment_ids]) : Array.new
+     shipments_selected = params.has_key?(:shipment_ids) ? Shipment.find(params[:shipment_ids]) : Array.new
   end
 
   # PATCH/PUT /sales/1
@@ -99,7 +99,6 @@ byebug
       #@shipments_to_update = Shipment.find_by_sale_id(@sale_id)
       if @shipments_to_update.present?
         @shipments_to_update.each do |shipment|
-          test_prices = params[shipment.id.to_s]
           shipment.sale_id = @sale.id
           price = params[shipment.id.to_s]
           shipment.price = price
