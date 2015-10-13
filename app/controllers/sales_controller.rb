@@ -6,6 +6,8 @@ class SalesController < ApplicationController
   def index
     @sales = Sale.all
 
+    byebug
+
   end
 
   # GET /sales/1
@@ -20,7 +22,7 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-
+byebug
     if Shipment.unconfirmed.size > 0
 
       @sale = Sale.new
@@ -142,7 +144,7 @@ class SalesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def sale_params
     accessible = [:season, :departure_date, :arrival_date, :manifest, :annotation,
-    :comment, :user_id]
+    :comment, :user_id, :customer_id]
     #accessible << [role_attributes: [:id, :name]]
     params.require(:sale).permit(accessible)
   end

@@ -22,9 +22,9 @@
         <td><%= shipment.product.name %></td>
 
         <% if @action != "edit" %>
-        <td>$<%= number_field_tag shipment.id, nil, min: 0, max: 1000, step: :any  %></td>
+        <td>$<%= number_field_tag shipment.id, nil, min: 0, max: 100000, step: :any  %></td>
         <% else %>
-         <td>$<%= number_field_tag shipment.id, shipment.price,  min: 0, max: 1000, step: :any %></td>
+         <td>$<%= number_field_tag shipment.id, shipment.price,  min: 0, max: 100000, step: :any %></td>
         <% end %>
 
 
