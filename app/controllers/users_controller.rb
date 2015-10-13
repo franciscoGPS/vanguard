@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
   # La siguiente línea sirve para bloquear.
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :verify_is_admin?, only:[:new, :index, :show, :edit, :update, :destroy]
+  private
+  def verify_is_admin?
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(admin_path) unless current_user.admin?)
+  end
+
   # GET /users
   # GET /users.json
   def index
