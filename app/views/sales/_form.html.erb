@@ -1,4 +1,10 @@
 <%= form_for @sale, :html => { :class => 'form-horizontal' } do |f| %>
+    <div class="form-group">
+    <%= f.label :customer, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :customer_id, Customer.all,:id, :business_name, prompt: "Selecciona cliente",:class => 'text_field form-control' %>
+    </div>
+  </div>
   <div class="form-group">
     <%= f.label :season, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -44,6 +50,10 @@
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   sales_path, :class => 'btn btn-default' %>
+                  <% if @sale.own?(current_user)%>
+      <%= link_to t('.delete', :default => t("helpers.links.delete")),
+                  sales_path, :class => 'btn btn-danger' %>
+                  <% end %>
     </div>
   </div>
 <% end %>

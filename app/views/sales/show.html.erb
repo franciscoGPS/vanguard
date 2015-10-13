@@ -5,6 +5,8 @@
 
 <div class="fieldset">
   <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:customer) %></dt>
+      <dd><pre class="prettyprint"><%= @sale.customer.business_name %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:season) %></dt>
       <dd><pre class="prettyprint"><%= @sale.season %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:departure_date) %></dt>
