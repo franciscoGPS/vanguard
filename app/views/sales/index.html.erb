@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:customer) %></th>
       <th><%= model_class.human_attribute_name(:season) %></th>
       <th><%= model_class.human_attribute_name(:departure_date) %></th>
       <th><%= model_class.human_attribute_name(:arrival_date) %></th>
@@ -23,6 +24,7 @@
     <% @sales.each do |sale| %>
       <tr>
         <td><%= sale.id %></td>
+          <td><%= sale.customer.business_name %></td>
           <td><%= sale.season %></td>
           <td><%= sale.departure_date.to_formatted_s(:long) %></td>
           <td><%= sale.arrival_date.to_formatted_s(:long)%></td>
