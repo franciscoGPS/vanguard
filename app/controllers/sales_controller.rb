@@ -5,9 +5,6 @@ class SalesController < ApplicationController
   # GET /sales.json
   def index
     @sales = Sale.all
-
-
-
   end
 
   # GET /sales/1
@@ -47,7 +44,7 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(sale_params)
     @shipments_selected = shipments_selected
-
+    byebug
     if @shipments_selected.present?
       @sale.user_id = current_user.id
       if @sale.save
@@ -56,20 +53,24 @@ class SalesController < ApplicationController
           price = params[shipment.id.to_s]
           # Aquí price tiene un arreglo de valores. Solo obtenemos su único valor.
           shipment.price = price
-          begin
-            shipment.save
-            respond_to do |format|
-              format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-            end
-          rescue Exception => e
-            respond_to do |format|
-              format.html { redirect_to @sale, error: 'No shipments persisted' }
-            end
+          if shipment.save
+            byebug
+          else
+            byebug
+              respond_to do |format|
+                byebug
+                format.html { redirect_to @sale, error: 'No shipments persisted.' }
+              end
           end
         end
+            respond_to do |format|
+                byebug
+                format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
+              end
       else
         respond_to do |format|
-          format.html { redirect_to @sale, error: 'No shipments persisted' }
+          byebug
+          format.html { redirect_to @sale, error: 'No shipments persisted.' }
         end
 
         #format.json { render :show, status: :created, location: @sale }
@@ -80,38 +81,46 @@ class SalesController < ApplicationController
     else #if !(@shipments_selected.empty?)
       @shipments = Shipment.unconfirmed
       respond_to do |format|
+        byebug
         format.html { redirect_to new_sale_path, error: 'No Shipments added to the Sale. Please verify.' }
-
       end
     end # if !(@shipments_selected.empty?)
+
   end
 
 
   def shipments_selected
-     shipments_selected = params.has_key?(:shipment_ids) ? Shipment.find(params[:shipment_ids]) : Array.new
+     params.has_key?(:shipment_ids) ? Shipment.find(params[:shipment_ids]) : Array.new
   end
 
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
+    byebug
     if @sale.update(sale_params)
+      byebug
       @shipments_to_update = Shipment.to_edit(@sale.id)
       #@shipments_to_update = Shipment.find_by_sale_id(@sale_id)
       if @shipments_to_update.present?
+        byebug
         @shipments_to_update.each do |shipment|
+          byebug
           shipment.sale_id = @sale.id
           price = params[shipment.id.to_s]
           shipment.price = price
           begin
+            byebug
             shipment.save
-            respond_to do |format|
-              format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-            end
+          byebug
           rescue Exception => e
-            flash[:error] = 'No shipments persisted'
+            byebug
+            flash[:error] = 'No shipments persisted1.'
           end
-
         end
+         respond_to do |format|
+              byebug
+              format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+            end
 
         #format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
         #format.json { render :show, status: :ok, location: @sale }
@@ -144,7 +153,7 @@ class SalesController < ApplicationController
   def sale_params
     accessible = [:season, :departure_date, :arrival_date, :manifest, :annotation,
     :comment, :user_id, :customer_id]
-    #accessible << [role_attributes: [:id, :name]]
+    accessible << [customer_attributes: [:id, :name]]
     params.require(:sale).permit(accessible)
   end
 end
