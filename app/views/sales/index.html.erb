@@ -13,9 +13,6 @@
       <th><%= model_class.human_attribute_name(:season) %></th>
       <th><%= model_class.human_attribute_name(:departure_date) %></th>
       <th><%= model_class.human_attribute_name(:arrival_date) %></th>
-      <th><%= model_class.human_attribute_name(:manifest) %></th>
-      <th><%= model_class.human_attribute_name(:annotation) %></th>
-      <th><%= model_class.human_attribute_name(:comment) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%= model_class.human_attribute_name(:state) %></th>
       <th><%= model_class.human_attribute_name(:next_event) %></th>
@@ -23,18 +20,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @sales.each do |sale| %>
+    <% $sales.each do |sale| %>
       <tr>
         <td><%= sale.id %></td>
           <td><%= sale.customer.business_name %></td>
           <td><%= sale.season %></td>
           <td><%= sale.departure_date.to_formatted_s(:long) %></td>
           <td><%= sale.arrival_date.to_formatted_s(:long)%></td>
-          <td><%= sale.manifest %></td>
-          <td><%= sale.annotation %></td>
-          <td><%= sale.comment %></td>
         <td><%=l sale.created_at, format: :long %></td>
-          <td><%= sale.state %></td>
+          <td><%= sale.aasm_state %></td>
 <!--states :carrier_courtyard_checkin, :courtyard_to_modules_line, :mexican_modules,
   :american_modules, :fda_inspection, :to_warehouse, :delivered, :payed-
 
@@ -42,24 +36,41 @@
   Make happy <strong><@user.name %></strong>
 < end %>
 -->
-        <td><% if sale.state.to_s == "carrier_courtyard_checkin" %>
-         <%= button_to "To modules line", { action: "to_modules_line",data: { sale_id: sale.id } }%>
+        <td><% if sale.aasm_state.to_s == "carrier_courtyard_checkin" %>
+         <%= button_to "To modules line", { action: "to_modules_line", sale_id: sale.id }%>
 
-         <% elsif sale.state.to_s == "courtyard_to_modules_line" %>
-         <%= button_to "To Mexican modules", { action: "to_mexican_modules",data: { sale_id: sale.id } }%>
+         <% elsif sale.aasm_state.to_s == "courtyard_to_modules_line" %>
+         <%= button_to "To Mexican modules", { action: "to_mexican_modules", sale_id: sale.id }%>
 
 
-         <% elsif sale.state.to_s == "mexican_modules" %>
+         <% elsif sale.aasm_state.to_s == "mexican_modules" %>
 
-         <% elsif sale.state.to_s == "american_modules" %>
+         <%= form_tag("to_american_modules", method: "post") do %>
+          <%= label_tag(:revision, "Rojo") %>
+          <%= check_box_tag(:revision) %>
+          <%= hidden_field_tag(:sale_id, sale.id) %>
+          <%= submit_tag("To American modules") %>
+        <% end %>
+         <!-- button_to "To American modules",
+         { action: "to_american_modules",
+          data: { sale_id: sale.id }, :confirm => "Are you sure?" }%- -->
 
-         <% elsif sale.state.to_s == "fda_inspection" %>
+         <% elsif sale.aasm_state.to_s == "american_modules" %>
+         <%= button_to "To FDA Inspection", { action: "to_fda_inspection", sale_id: sale.id  }%>
 
-         <% elsif sale.state.to_s == "to_warehouse" %>
+         <% elsif sale.aasm_state.to_s == "fda_inspection" %>
+         <%= button_to "To warehouse", { action: "to_warehouse", sale_id: sale.id }%>
 
-         <% elsif sale.state.to_s == "delivered" %>
+         <% elsif sale.aasm_state.to_s == "to_warehouse" %>
+         <%= button_to "Delivered", { action: "delivered",  sale_id: sale.id } %>
 
-         <% elsif sale.state.to_s == "payed" %>
+         <% elsif sale.aasm_state.to_s == "delivered" %>
+         <%= button_to "Pay", { action: "payed", sale_id: sale.id }%>
+
+         <% elsif sale.aasm_state.to_s == "payed" %>
+         <%= link_to sale_path(sale), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <i class="fa fa-info fw"></i>
+          <%- end -%>
 
 
           <% end %>

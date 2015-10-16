@@ -1,5 +1,6 @@
 class Sale < ActiveRecord::Base
-include SimpleStates
+include AASM
+#Documentación https://github.com/rubyist/aasm
   has_many :shipments
   belongs_to :user
   belongs_to :customer
@@ -10,42 +11,59 @@ include SimpleStates
     self.user_id == user.id
   end
 
-  def cur_state
-    @cur_state
-  end
-
-  def cur_state(val)
-    @cur_state = val
-  end
-
-  attr_accessor :state
+ aasm do # default column: aasm_state
 
   #Los siguientes son los estados de la máquina de estados.
-  states :carrier_courtyard_checkin, :courtyard_to_modules_line, :mexican_modules,
-  :american_modules, :fda_inspection, :to_warehouse, :delivered, :payed
-
   # El estado inicial.
-  self.initial_state = :carrier_courtyard_checkin
+    state :carrier_courtyard_checkin, :initial => true
+    state :courtyard_to_modules_line
+    state :mexican_modules
+    state :american_modules
+    state :fda_inspection
+    state :to_warehouse
+    state :delivered
+    state :payed
 
-  #Se declaran los eventos en la siguiente sintaxis
-  #
-  # :from   # valid states to transition from
-  # :to     # target state to transition to
-  # :if     # only proceed if the given method returns true
-  # :unless # only proceed if the given method returns false
-  # :before # run the given method before running `super` and setting the new state
-  # :after  # run the given method at the very end
-  #
-  #
-  event :uno,  :from => :carrier_courtyard_checkin, :to => :courtyard_to_modules_line,  :if => :already_sold?
-  event :dos, :from => :courtyard_to_modules_line, :to => :mexican_modules
-  event :tres, :from => :mexican_modules, :to => :american_modules
-  event :cuatro, :from => :american_modules, :to => :fda_inspection
-  event :cinco, :from => :fda_inspection, :to => :to_warehouse
-  event :seis, :from => [:carrier_courtyard_checkin, :courtyard_to_modules_line, :mexican_modules,
-  :american_modules, :fda_inspection, :to_warehouse, :delivered], :to => :payed
-  #event :tres, :from => , :to => , :if
- # event :finish, :to => :finished, :after => :cleanup
+  #Eventos y trancisiones.
+    event :uno do
+      transitions :from => :carrier_courtyard_checkin, :to => :courtyard_to_modules_line,
+      :after => :state_appropiate?, :guard => :already_sold?
+    end
+
+    event :dos do
+      transitions :from => :courtyard_to_modules_line, :to => :mexican_modules,
+       :guard => true
+    end
+
+    event :tres do
+      transitions :from => :mexican_modules, :to => :american_modules,
+       :guard => true
+    end
+
+    event :cuatro do
+      transitions :from => :american_modules, :to => :fda_inspection,
+       :guard => true
+    end
+
+    event :cinco do
+      transitions :from => :fda_inspection, :to => :to_warehouse,
+       :guard => true
+    end
+
+    event :seis do
+      transitions :from => :to_warehouse, :to => :delivered,
+       :guard => true
+    end
+
+    event :siete do
+      transitions :from => :delivered, :to => :payed,
+       :guard => true
+    end
+  end
+
+  def state_appropiate?
+     self.aasm_state == "carrier_courtyard_checkin" ? true : false
+  end
 
   def already_sold?
     #Se hace una validación para que tenga parámetros válidos:
@@ -59,13 +77,7 @@ include SimpleStates
           is_ready = true
         end
       end
-
       return is_ready
   end
-
-  def state_tos
-
-  end
-
 
 end

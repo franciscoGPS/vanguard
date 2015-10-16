@@ -23,7 +23,12 @@ Rails.application.routes.draw do
     get 'cancel/:id' => 'shipments#cancel', as: 'cancel_shipment'
     post 'shipments/:id' => 'shipments#cancel_shipment'
     post 'to_modules_line' => 'sales#to_modules_line'
-    post 'to_mexcian_modules' => 'sales#to_mexcian_modules'
+    post 'to_mexican_modules' => 'sales#to_mexican_modules'
+    post 'to_american_modules' => 'sales#to_american_modules'
+    post 'to_fda_inspection' => 'sales#to_fda_inspection'
+    post 'to_warehouse' => 'sales#to_warehouse'
+    post 'delivered' => 'sales#delivered'
+    post 'payed' => 'sales#payed'
   end
 
   # Website pages
