@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get 'preshipments' => 'greenhouses#shipments'
     get 'cancel/:id' => 'shipments#cancel', as: 'cancel_shipment'
     post 'shipments/:id' => 'shipments#cancel_shipment'
+    post 'to_modules_line' => 'sales#to_modules_line'
+    post 'to_mexcian_modules' => 'sales#to_mexcian_modules'
   end
 
   # Website pages

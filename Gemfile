@@ -47,3 +47,4 @@ gem 'bootstrap-sass', '~> 3.2.0'	    # Use bootstrap as CSS framework
 gem 'autoprefixer-rails'			        # Precompile sass and prevent bugs (CSS)
 gem 'font-awesome-sass', '~> 4.4.0'	  # Use font-awesome for icons
 gem "simple_calendar", "~> 1.1.0"     # Generate calendars with JQuery
+gem 'simple_states'                   # State Machine

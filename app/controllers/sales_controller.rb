@@ -22,7 +22,7 @@ class SalesController < ApplicationController
 
     if Shipment.unconfirmed.size > 0
 
-      @sale = Sale.new
+      @sale = Sale.new(departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
       @shipments = Shipment.unconfirmed
     else
       respond_to do |format|
@@ -35,6 +35,7 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @shipments = Shipment.where(sale_id: params[:id])
+    byebug
     @action = params[:action]
 
   end
@@ -143,6 +144,22 @@ class SalesController < ApplicationController
     end
   end
 
+
+  def to_modules_line
+    byebug
+
+    sale = Sale.find(params[:data][:sale_id])
+    sale.uno
+    sale.state = "courtyard_to_modules_line"
+    sale.save
+    byebug
+    redirect_to sales_path
+  end
+
+  def to_mexcian_modules
+    redirect_to sales_path
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_sale
@@ -152,10 +169,12 @@ class SalesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def sale_params
     accessible = [:season, :departure_date, :arrival_date, :manifest, :annotation,
-    :comment, :user_id, :customer_id]
+    :comment, :user_id, :customer_id, :state]
     accessible << [customer_attributes: [:id, :name]]
     params.require(:sale).permit(accessible)
   end
+
+
 end
 
 
