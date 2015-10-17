@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <% $sales.each do |sale| %>
+    <% @sales.each do |sale| %>
       <tr>
         <td><%= sale.id %></td>
           <td><%= sale.customer.business_name %></td>
@@ -28,7 +28,7 @@
           <td><%= sale.departure_date.to_formatted_s(:long) %></td>
           <td><%= sale.arrival_date.to_formatted_s(:long)%></td>
         <td><%=l sale.created_at, format: :long %></td>
-          <td><%= sale.aasm_state %></td>
+          <td><%= $states_to_s[sale.aasm_state] %></td>
 <!--states :carrier_courtyard_checkin, :courtyard_to_modules_line, :mexican_modules,
   :american_modules, :fda_inspection, :to_warehouse, :delivered, :payed-
 
@@ -37,7 +37,7 @@
 < end %>
 -->
         <td><% if sale.aasm_state.to_s == "carrier_courtyard_checkin" %>
-         <%= button_to "To modules line", { action: "to_modules_line", sale_id: sale.id }%>
+         <%= button_to "To modules line", { action: "to_modules_line", sale_id: sale.id }, form_class: "boton_rojo"%>
 
          <% elsif sale.aasm_state.to_s == "courtyard_to_modules_line" %>
          <%= button_to "To Mexican modules", { action: "to_mexican_modules", sale_id: sale.id }%>
@@ -59,10 +59,16 @@
          <%= button_to "To FDA Inspection", { action: "to_fda_inspection", sale_id: sale.id  }%>
 
          <% elsif sale.aasm_state.to_s == "fda_inspection" %>
-         <%= button_to "To warehouse", { action: "to_warehouse", sale_id: sale.id }%>
+
+         <%= form_tag("to_warehouse", method: "post") do %>
+          <%= label_tag(:comment, "Observations") %>
+          <%= text_field(:sale, :comment  ) %>
+          <%= hidden_field_tag(:sale_id, sale.id) %>
+          <%= submit_tag("To warehouse") %>
+        <% end %>
 
          <% elsif sale.aasm_state.to_s == "to_warehouse" %>
-         <%= button_to "Delivered", { action: "delivered",  sale_id: sale.id } %>
+         <%= button_to "Delivered", { action: "delivered",  sale_id: sale.id }, {} %>
 
          <% elsif sale.aasm_state.to_s == "delivered" %>
          <%= button_to "Pay", { action: "payed", sale_id: sale.id }%>

@@ -4,7 +4,8 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    $sales = Sale.all
+    @sales = Sale.all
+
   end
 
   # GET /sales/1
@@ -163,13 +164,14 @@ class SalesController < ApplicationController
   end
 
   def to_american_modules
-byebug
+
     sale = Sale.find(params[:sale_id])
+    byebug
     sale.revision = params[:revision]
     #The exclamation point autosaves its state change.
     sale.tres!
     #sale.save
-    byebug
+
     redirect_to sales_path
   end
 
@@ -181,7 +183,14 @@ byebug
 
   def to_warehouse
     sale = Sale.find(params[:sale_id])
-    sale.cinco!
+    byebug
+    sale.comment = params[:sale][:comment]
+    if(sale.comment.length < 5 || sale.comment == nil)
+      flash[:error] = 'A valid comment is needed.'
+    else
+      sale.cinco!
+      sale.save
+    end
     redirect_to sales_path
   end
 

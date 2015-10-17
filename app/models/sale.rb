@@ -11,6 +11,15 @@ include AASM
     self.user_id == user.id
   end
 
+  $states_to_s = {"carrier_courtyard_checkin" => "1.- Carrier Courtyard Arrival",
+                  "courtyard_to_modules_line" => "2.- In course to Modules Line",
+                  "mexican_modules" => "3.- Mexican Modules",
+                  "american_modules" => "4.- American Modules",
+                  "fda_inspection" => "5.- FDA Inspection",
+                  "to_warehouse" => "6.- To Warehowse",
+                  "delivered" => "7.- Delivered",
+                  "payed" => "8.- Payed"}
+
  aasm do # default column: aasm_state
 
   #Los siguientes son los estados de la máquina de estados.
