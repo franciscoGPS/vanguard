@@ -8,7 +8,11 @@
                       tr: {class: "calendar-row"}, td: {class: "day"},
                   events: @shipments,
                   number_of_weeks: 1 do |date, shipments| %>
-  <%= date.day %>
+  <h4 class="text-center">
+    <%= date.day %>
+    <span class="badge" data-toggle="tooltip" data-placement="top" title="Day of the year"><%= date.yday %></span>
+  </h4>
+
   <% shipments.each do |shipment| %>
       <% if date == shipment.start_at %>
         <%= link_to shipment_path(shipment) do %>
