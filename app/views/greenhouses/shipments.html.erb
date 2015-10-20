@@ -7,7 +7,7 @@
 <%= week_calendar table: {class: "table table-bordered table-hover"},
                       tr: {class: "calendar-row"}, td: {class: "day"},
                   events: @shipments,
-                  number_of_weeks: 2 do |date, shipments| %>
+                  number_of_weeks: 1 do |date, shipments| %>
   <%= date.day %>
   <% shipments.each do |shipment| %>
       <% if date == shipment.start_at %>
