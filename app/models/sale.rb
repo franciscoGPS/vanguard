@@ -2,6 +2,7 @@ class Sale < ActiveRecord::Base
 include AASM
 #Documentación https://github.com/rubyist/aasm
   has_many :shipments
+  belongs_to :greenhouse
   belongs_to :user
   belongs_to :customer
   accepts_nested_attributes_for :shipments, :reject_if => :all_blank
@@ -11,14 +12,28 @@ include AASM
     self.user_id == user.id
   end
 
-  $states_to_s = {"carrier_courtyard_checkin" => "1.- Carrier Courtyard Arrival",
-                  "courtyard_to_modules_line" => "2.- In course to Modules Line",
-                  "mexican_modules" => "3.- Mexican Modules",
-                  "american_modules" => "4.- American Modules",
-                  "fda_inspection" => "5.- FDA Inspection",
-                  "to_warehouse" => "6.- To Warehowse",
-                  "delivered" => "7.- Delivered",
-                  "payed" => "8.- Payed"}
+  $states_to_s = {:carrier_courtyard_checkin => {:id => "1", :name => "Carrier Courtyard Arrival"},
+                  :courtyard_to_modules_line => {:id => "2", :name => "In course to Modules Line"},
+                  :mexican_modules => {:id => "3", :name => "Mexican Modules"},
+                  :american_modules => {:id => "4", :name => "American Modules"},
+                  :fda_inspection => {:id => "5", :name => "FDA Inspection"},
+                  :to_warehouse => {:id => "6", :name => "To Warehowse"},
+                  :delivered => {:id => "7", :name => "Delivered"},
+                  :payed => {:id => "8", :name => "Payed"}
+                }
+
+
+ def completed_states_size
+    ($states_to_s[self.aasm_state.to_sym][:id].to_f-1)/8*100
+ end
+
+ def actual_state_size
+    return (100.0/8.0).to_f
+ end
+
+ def pending_states_size
+   (8.0 - $states_to_s[self.aasm_state.to_sym][:id].to_f)/8*100
+ end
 
  aasm do # default column: aasm_state
 

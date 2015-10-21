@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :count_types
   root "static_pages#index"
   get 'admin', to: "static_pages#admin"
 

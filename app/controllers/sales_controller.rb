@@ -3,8 +3,9 @@ class SalesController < ApplicationController
   before_action :authenticate_user!
   # GET /sales
   # GET /sales.json
+
   def index
-    @sales = Sale.all
+    @sales = Sale.order(:id).all
 
   end
 
@@ -12,17 +13,12 @@ class SalesController < ApplicationController
   # GET /sales/1.json
   def show
     @shipments = Shipment.where(sale_id: params[:id])
-
     #Sale.joins(:shipments).where(shipments: { sale_id:  params[:id]})
-
-
   end
 
   # GET /sales/new
   def new
-
     if Shipment.unconfirmed.size > 0
-
       @sale = Sale.new(departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
       @shipments = Shipment.unconfirmed
     else
@@ -30,15 +26,12 @@ class SalesController < ApplicationController
         format.html { redirect_to Shipment.new, notice: 'No unconfirmed shipments.' }
       end
     end
-
   end
 
   # GET /sales/1/edit
   def edit
     @shipments = Shipment.where(sale_id: params[:id])
-
     @action = params[:action]
-
   end
 
   # POST /sales
@@ -46,7 +39,6 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(sale_params)
     @shipments_selected = shipments_selected
-
     if @shipments_selected.present?
       @sale.user_id = current_user.id
       if @sale.save
@@ -56,17 +48,13 @@ class SalesController < ApplicationController
           # Aquí price tiene un arreglo de valores. Solo obtenemos su único valor.
           shipment.price = price
           if shipment.save
-
           else
-
               respond_to do |format|
-
                 format.html { redirect_to @sale, error: 'No shipments persisted.' }
               end
           end
         end
             respond_to do |format|
-
                 format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
               end
       else
@@ -87,7 +75,6 @@ class SalesController < ApplicationController
         format.html { redirect_to new_sale_path, error: 'No Shipments added to the Sale. Please verify.' }
       end
     end # if !(@shipments_selected.empty?)
-
   end
 
 
@@ -98,29 +85,21 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
-
     if @sale.update(sale_params)
-
       @shipments_to_update = Shipment.to_edit(@sale.id)
       #@shipments_to_update = Shipment.find_by_sale_id(@sale_id)
       if @shipments_to_update.present?
-
         @shipments_to_update.each do |shipment|
-
           shipment.sale_id = @sale.id
           price = params[shipment.id.to_s]
           shipment.price = price
           begin
-
             shipment.save
-
           rescue Exception => e
-
-            flash[:error] = 'No shipments persisted1.'
+            flash[:error] = 'No shipments persisted.'
           end
         end
          respond_to do |format|
-
               format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
             end
 
@@ -156,6 +135,7 @@ class SalesController < ApplicationController
 
 
   def to_mexican_modules
+
     sale = Sale.find(params[:sale_id])
     #The exclamation point autosaves its state change.
     sale.dos!
@@ -166,7 +146,7 @@ class SalesController < ApplicationController
   def to_american_modules
 
     sale = Sale.find(params[:sale_id])
-    byebug
+
     sale.revision = params[:revision]
     #The exclamation point autosaves its state change.
     sale.tres!
@@ -183,7 +163,7 @@ class SalesController < ApplicationController
 
   def to_warehouse
     sale = Sale.find(params[:sale_id])
-    byebug
+
     sale.comment = params[:sale][:comment]
     if(sale.comment.length < 5 || sale.comment == nil)
       flash[:error] = 'A valid comment is needed.'
