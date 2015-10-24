@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :bag_types
     resources :pallet_types
     resources :package_types
+    resources :count_types
     devise_for :users
     resources :users
     resources :roles
@@ -30,8 +31,11 @@ Rails.application.routes.draw do
     post 'to_warehouse' => 'sales#to_warehouse'
     post 'delivered' => 'sales#delivered'
     post 'payed' => 'sales#payed'
+    post 'purshase_order' => 'sales#purshase_order'
     get 'order' => 'greenhouses#order'
     get 'invoice' => 'greenhouses#invoice'
+    get 'p_order' => 'greenhouses#purshase_order'
+
 
   end
 

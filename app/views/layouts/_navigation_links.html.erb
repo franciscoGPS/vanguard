@@ -45,6 +45,14 @@
       <% end %>
     <% end %>
   </li>
+  <li>
+
+      <%= link_to sales_path do %>
+        <i class='fa fa-truck fw'></i>
+        Shipments
+      <% end %>
+
+  </li>
 
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>

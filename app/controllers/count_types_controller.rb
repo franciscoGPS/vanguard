@@ -1,5 +1,6 @@
 class CountTypesController < ApplicationController
   before_action :set_count_type, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :verify_is_admin?
 
   # GET /count_types
   # GET /count_types.json
@@ -71,4 +72,10 @@ class CountTypesController < ApplicationController
     def count_type_params
       params.require(:count_type).permit(:name, :product_id)
     end
+
+protected
+    def verify_is_admin?
+        (current_user.nil?) ? redirect_to(root_path) : (redirect_to(admin_path) unless current_user.admin?)
+    end
+
 end

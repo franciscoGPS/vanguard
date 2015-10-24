@@ -15,7 +15,7 @@
     <% @count_types.each do |count_type| %>
       <tr>
         <td><%= count_type.name %></td>
-        <td><%= count_type.product_id %></td>
+        <td><%= Product.find(count_type.product_id).name  %></td>
         <td><%= link_to 'Show', count_type %></td>
         <td><%= link_to 'Edit', edit_count_type_path(count_type) %></td>
         <td><%= link_to 'Destroy', count_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
