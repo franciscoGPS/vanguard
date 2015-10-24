@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get 'cancel/:id' => 'shipments#cancel', as: 'cancel_shipment'
     post 'shipments/:id' => 'shipments#cancel_shipment'
     get 'order' => 'greenhouses#order'
+    get 'invoice' => 'greenhouses#invoice'
   end
 
   # Website pages
