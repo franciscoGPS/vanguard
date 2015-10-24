@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     post 'to_warehouse' => 'sales#to_warehouse'
     post 'delivered' => 'sales#delivered'
     post 'payed' => 'sales#payed'
+    get 'order' => 'greenhouses#order'
+    get 'invoice' => 'greenhouses#invoice'
+
   end
 
   # Website pages
