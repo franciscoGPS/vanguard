@@ -18,14 +18,15 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-    if Shipment.unconfirmed.size > 0
-      @sale = Sale.new(departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
-      @shipments = Shipment.unconfirmed
-    else
-      respond_to do |format|
-        format.html { redirect_to Shipment.new, notice: 'No unconfirmed shipments.' }
-      end
-    end
+    @sale = Sale.new(departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
+    #if Shipment.unconfirmed.size > 0
+     # @sale = Sale.new(departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
+     # @shipments = Shipment.unconfirmed
+    #else
+    #  respond_to do |format|
+     #   format.html { redirect_to Shipment.new, notice: 'No unconfirmed shipments.' }
+      #end
+    #end
   end
 
   # GET /sales/1/edit
@@ -38,43 +39,50 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
-    @shipments_selected = shipments_selected
-    if @shipments_selected.present?
-      @sale.user_id = current_user.id
-      if @sale.save
-        @shipments_selected.each do |shipment|
-          shipment.sale_id = @sale.id
-          price = params[shipment.id.to_s]
-          # Aquí price tiene un arreglo de valores. Solo obtenemos su único valor.
-          shipment.price = price
-          if shipment.save
-          else
-              respond_to do |format|
-                format.html { redirect_to @sale, error: 'No shipments persisted.' }
-              end
-          end
-        end
-            respond_to do |format|
-                format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
-              end
-      else
-        respond_to do |format|
 
-          format.html { redirect_to @sale, error: 'No shipments persisted.' }
-        end
+    @sale.user_id = current_user.id
 
-        #format.json { render :show, status: :created, location: @sale }
-        #else
-        #format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end # if @sale.save
+    @sale.save
+    respond_to do |format|
+    format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
+  end
+    # @shipments_selected = shipments_selected
+    # if @shipments_selected.present?
+    #   @sale.user_id = current_user.id
+    #   if @sale.save
+    #     @shipments_selected.each do |shipment|
+    #       shipment.sale_id = @sale.id
+    #       price = params[shipment.id.to_s]
+    #       # Aquí price tiene un arreglo de valores. Solo obtenemos su único valor.
+    #       shipment.price = price
+    #       if shipment.save
+    #       else
+    #           respond_to do |format|
+    #             format.html { redirect_to @sale, error: 'No shipments persisted.' }
+    #           end
+    #       end
+    #     end
+    #         respond_to do |format|
+    #             format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
+    #           end
+    #   else
+    #     respond_to do |format|
 
-    else #if !(@shipments_selected.empty?)
-      @shipments = Shipment.unconfirmed
-      respond_to do |format|
+    #       format.html { redirect_to @sale, error: 'No shipments persisted.' }
+    #     end
 
-        format.html { redirect_to new_sale_path, error: 'No Shipments added to the Sale. Please verify.' }
-      end
-    end # if !(@shipments_selected.empty?)
+    #     #format.json { render :show, status: :created, location: @sale }
+    #     #else
+    #     #format.json { render json: @sale.errors, status: :unprocessable_entity }
+    #   end # if @sale.save
+
+    # else #if !(@shipments_selected.empty?)
+    #   @shipments = Shipment.unconfirmed
+    #   respond_to do |format|
+
+    #     format.html { redirect_to new_sale_path, error: 'No Shipments added to the Sale. Please verify.' }
+    #   end
+    # end # if !(@shipments_selected.empty?)
   end
 
 
@@ -195,9 +203,12 @@ class SalesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def sale_params
-    accessible = [:season, :departure_date, :arrival_date, :manifest, :annotation,
-    :comment, :user_id, :customer_id, :state]
-    accessible << [customer_attributes: [:id, :name]]
+    accessible = [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
+    :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy,
+    shipments_attributes: [:id, :customer_id, :start_at, :cancel, :product_id,
+    :shipment_consecutive, :pallets_number, :comments, :sale_id, :price, :plu,
+    :count, :product_color, :_destroy]]
+
     params.require(:sale).permit(accessible)
   end
 

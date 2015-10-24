@@ -1,0 +1,17 @@
+<div id="products" class="panel  panel-default">
+    <div class="form-group">
+      <%= f.label :customer, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= collection_select :shipment, :customer_id, Customer.all, :id, :business_name, prompt: "Selecciona cliente",:class => 'text_field form-control' %>
+    </div>
+  </div>
+    <div class="panel-heading">
+      <h3>Products</h3>
+    </div>
+    <div class="panel-body">
+      <%= f.fields_for :shipments do |shipment| %>
+        <%= render 'shipment_fields', :f  => shipment %>
+      <% end %>
+      <%= link_to_add_association 'Add product', f, :shipments, render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small" %>
+    </div>
+</div>

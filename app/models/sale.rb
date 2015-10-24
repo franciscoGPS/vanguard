@@ -1,11 +1,15 @@
 class Sale < ActiveRecord::Base
 include AASM
 #Documentación https://github.com/rubyist/aasm
-  has_many :shipments
   belongs_to :greenhouse
   belongs_to :user
-  belongs_to :customer
-  accepts_nested_attributes_for :shipments, :reject_if => :all_blank
+  has_many :shipments, :dependent => :destroy, :source_type => "Shipment"
+  #has_many :customers, :through => :shipments, :dependent => :destroy
+
+  accepts_nested_attributes_for :shipments,  :allow_destroy => true, :reject_if => :all_blank
+  #accepts_nested_attributes_for :customers, :reject_if => :all_blank
+
+
   acts_as_paranoid
 
   def own? user
