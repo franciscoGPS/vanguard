@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Manifests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sale</th>
+      <th>Date</th>
+      <th>Sold to</th>
+      <th>Sent to</th>
+      <th>Custom broker</th>
+      <th>Carrier</th>
+      <th>Driver</th>
+      <th>Truck</th>
+      <th>Truck licence plate</th>
+      <th>Trailer num</th>
+      <th>Trailer num lp</th>
+      <th>Stamp</th>
+      <th>Thermograph</th>
+      <th>Purshase order</th>
+      <th>Shipment</th>
+      <th>Delivery person</th>
+      <th>Person receiving</th>
+      <th>Trailer size</th>
+      <th>Caat</th>
+      <th>Alpha</th>
+      <th>Fda num</th>
+      <th>Pallet number</th>
+      <th>Comments</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @manifests.each do |manifest| %>
+      <tr>
+        <td><%= manifest.sale_id %></td>
+        <td><%= manifest.date %></td>
+        <td><%= manifest.sold_to %></td>
+        <td><%= manifest.sent_to %></td>
+        <td><%= manifest.custom_broker %></td>
+        <td><%= manifest.carrier %></td>
+        <td><%= manifest.driver %></td>
+        <td><%= manifest.truck %></td>
+        <td><%= manifest.truck_licence_plate %></td>
+        <td><%= manifest.trailer_num %></td>
+        <td><%= manifest.trailer_num_lp %></td>
+        <td><%= manifest.stamp %></td>
+        <td><%= manifest.thermograph %></td>
+        <td><%= manifest.purshase_order %></td>
+        <td><%= manifest.shipment %></td>
+        <td><%= manifest.delivery_person %></td>
+        <td><%= manifest.person_receiving %></td>
+        <td><%= manifest.trailer_size %></td>
+        <td><%= manifest.caat %></td>
+        <td><%= manifest.alpha %></td>
+        <td><%= manifest.fda_num %></td>
+        <td><%= manifest.total_pallets %></td>
+        <td><%= manifest.comments %></td>
+        <td><%= link_to 'Show', manifest %></td>
+        <td><%= link_to 'Edit', edit_manifest_path(manifest) %></td>
+        <td><%= link_to 'Destroy', manifest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

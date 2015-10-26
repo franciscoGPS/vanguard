@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  resources :count_types
+
   root "static_pages#index"
   get 'admin', to: "static_pages#admin"
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :customers
     resources :shipments
     resources :sales
+    resources :manifests
     get 'preshipments' => 'greenhouses#shipments'
     get 'cancel/:id' => 'shipments#cancel', as: 'cancel_shipment'
     post 'shipments/:id' => 'shipments#cancel_shipment'
@@ -32,9 +33,15 @@ Rails.application.routes.draw do
     post 'delivered' => 'sales#delivered'
     post 'payed' => 'sales#payed'
     post 'purshase_order' => 'sales#purshase_order'
+    post 'customs_bill' => 'sales#customs_bill'
+    get 'customs_bill' => 'manifests#new'
+
     get 'order' => 'greenhouses#order'
     get 'invoice' => 'greenhouses#invoice'
     get 'p_order' => 'greenhouses#purshase_order'
+
+
+
 
 
   end

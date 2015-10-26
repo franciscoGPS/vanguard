@@ -200,6 +200,12 @@ class SalesController < ApplicationController
     redirect_to controller: :greenhouses, action: :purshase_order, sale: sale
   end
 
+  def customs_bill
+    sale = Sale.find(params[:sale_id])
+    byebug
+    redirect_to controller: :manifests, action: :new, sale: sale
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.

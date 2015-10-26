@@ -3,6 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
  <%= button_to "Generate Purshase Order", { action: "purshase_order", sale_id: @sale.id  }%>
+ <%= button_to "Generate Customs Bill", { action: "customs_bill", sale_id: @sale.id  }%>
 <div class="fieldset">
   <dl>
       <!--<dt class="label label-default">< model_class.human_attribute_name(:customer) ></dt>
@@ -13,8 +14,6 @@
       <dd><pre class="prettyprint"><%= @sale.departure_date %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:arrival_date) %></dt>
       <dd><pre class="prettyprint"><%= @sale.arrival_date %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:manifest) %></dt>
-      <dd><pre class="prettyprint"><%= @sale.manifest %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:annotation) %></dt>
       <dd><pre class="prettyprint"><%= @sale.annotation %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:comment) %></dt>

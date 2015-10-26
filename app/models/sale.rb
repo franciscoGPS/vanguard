@@ -5,6 +5,7 @@ include AASM
   belongs_to :user
   has_many :shipments, :dependent => :destroy, :source_type => "Shipment"
   #has_many :customers, :through => :shipments, :dependent => :destroy
+  has_one :manifests
 
   accepts_nested_attributes_for :shipments,  :allow_destroy => true, :reject_if => :all_blank
   #accepts_nested_attributes_for :customers, :reject_if => :all_blank
