@@ -21,5 +21,9 @@ class Shipment < ActiveRecord::Base
     def find_by_sale_id(sale_id)
           find(:conditions => [ "sale_id = ?", sale_id]).as_json
     end
+
+
+
+
 end
 

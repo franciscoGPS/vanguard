@@ -22,16 +22,22 @@ Rails.application.routes.draw do
     resources :shipments
     resources :sales
     resources :manifests
+
     get 'preshipments' => 'greenhouses#shipments'
     get 'cancel/:id' => 'shipments#cancel', as: 'cancel_shipment'
     post 'shipments/:id' => 'shipments#cancel_shipment'
-    post 'to_modules_line' => 'sales#to_modules_line'
+
+
+#Estados de la venta###########
+    get 'purshase_order_state_change' => 'sales#purshase_order_state_change'
     post 'to_mexican_modules' => 'sales#to_mexican_modules'
     post 'to_american_modules' => 'sales#to_american_modules'
     post 'to_fda_inspection' => 'sales#to_fda_inspection'
     post 'to_warehouse' => 'sales#to_warehouse'
     post 'delivered' => 'sales#delivered'
     post 'payed' => 'sales#payed'
+#Fin de Estados de la venta###########
+
     post 'purshase_order' => 'sales#purshase_order'
     post 'customs_bill' => 'sales#customs_bill'
     get 'customs_bill' => 'manifests#new'
