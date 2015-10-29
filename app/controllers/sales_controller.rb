@@ -6,7 +6,6 @@ class SalesController < ApplicationController
 
   def index
     @sales = Sale.order(:id).all
-
   end
 
   # GET /sales/1
@@ -86,7 +85,6 @@ class SalesController < ApplicationController
   #la pantalla de generar la ORDEN DE COMPRA.
   def purshase_order
     sale = Sale.find(params[:sale_id])
-    byebug
     redirect_to controller: :greenhouses, action: :purshase_order, sale: sale
   end
 
@@ -95,8 +93,20 @@ class SalesController < ApplicationController
   #la pantalla de generar las FACTURAS PARA LAS ADUANAS, cargar manifiesto y facturas.
   def customs_bill
     sale = Sale.find(params[:sale_id])
-    byebug
-    redirect_to controller: :manifests, action: :new, sale: sale
+    if(Manifest.where(sale_id: params[:sale_id]).count == 0)
+      redirect_to controller: :manifests, action: :new, sale: sale
+    elsif (Manifest.where(sale_id: params[:sale_id]).count == 1)
+      mani = Manifest.where(sale_id: params[:sale_id]).first
+      redirect_to manifest_path(id: mani)
+    end
+
+  end
+
+  #Esta acción es recibida principalmente de la vista show y redirecciona hacia
+  #la pantalla de generar las facturas para LOS CLIENTES
+  def collections_bill
+    sale = Sale.find(params[:sale_id])
+    redirect_to controller: :collections_bill, action: :index, sale: sale
   end
 
 
@@ -106,13 +116,12 @@ class SalesController < ApplicationController
   def purshase_order_state_change
     #Se recoge el parámetro id de la venta con la que se trabajará
     sale = Sale.find(params[:sale_id])
-    byebug                        ##CASO ESPECIAL EL DE AQUÍ ABAJO.
-                                  ##SE USÓ UN NOMBRE DIFERENTE
+  ##CASO ESPECIAL EL DE AQUÍ ABAJO.
+    ##SE USÓ UN NOMBRE DIFERENTE
     if params[:accion].to_sym == :purshase_order_state_check
       #The exclamation point autosaves its state change.
       sale.primera!(current_user)
       sale[:purshase_order] = !sale[:purshase_order]
-      byebug
 
     elsif params[:accion].to_sym == :out_of_packaging
       sale.segunda!(current_user)
@@ -122,39 +131,39 @@ class SalesController < ApplicationController
       sale.tercera!(current_user)
       sale[:docs_reception] = !sale[:docs_reception]
 
-      elsif params[:accion].to_sym == :loading_docs
+    elsif params[:accion].to_sym == :loading_docs
       sale.cuarta!(current_user)
       sale[:loading_docs] = !sale[:loading_docs]
 
-      elsif params[:accion].to_sym == :arrived_to_border
+    elsif params[:accion].to_sym == :arrived_to_border
       sale.quinta!(current_user)
       sale[:arrived_to_border] = !sale[:arrived_to_border]
 
-      elsif params[:accion].to_sym == :out_of_courtyard
+    elsif params[:accion].to_sym == :out_of_courtyard
       sale.sexta!(current_user)
       sale[:out_of_courtyard] = !sale[:out_of_courtyard]
 
-      elsif params[:accion].to_sym == :documents
+    elsif params[:accion].to_sym == :documents
       sale.septima!(current_user)
       sale[:documents] = !sale[:documents]
 
-      elsif params[:accion].to_sym == :mex_customs_mod
+    elsif params[:accion].to_sym == :mex_customs_mod
       sale.octava!(current_user)
       sale[:mex_customs_mod] = !sale[:mex_customs_mod]
 
-      elsif params[:accion].to_sym == :us_customs_mod
+    elsif params[:accion].to_sym == :us_customs_mod
       sale.novena!(current_user)
       sale[:us_customs_mod] = !sale[:us_customs_mod]
 
-      elsif params[:accion].to_sym == :arrived_to_warehouse
+    elsif params[:accion].to_sym == :arrived_to_warehouse
       sale.decima!(current_user)
       sale[:arrived_to_warehouse] = !sale[:arrived_to_warehouse]
 
-      elsif params[:accion].to_sym == :picked_up_by_cust
+    elsif params[:accion].to_sym == :picked_up_by_cust
       sale.undecima!(current_user)
       sale[:picked_up_by_cust] = !sale[:picked_up_by_cust]
 
-      elsif params[:accion].to_sym == :bol
+    elsif params[:accion].to_sym == :bol
       sale.duodecima!(current_user)
       sale[:bol] = !sale[:bol]
     end
@@ -214,7 +223,6 @@ end
   end
 
   def to_american_modules
-    byebug
     sale = Sale.find(params[:sale_id])
 
     sale.revision = params[:revision]
@@ -256,6 +264,9 @@ end
     redirect_to sales_path
   end
 =end
+
+
+
 
 
 

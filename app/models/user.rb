@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 belongs_to :role
 has_many :sales
 has_many :shipments
+has_many :collection_bills
   # Include default devise modules.
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable,

@@ -7,6 +7,7 @@ class Sale < ActiveRecord::Base
   has_many :customers, :through => :shipments, :dependent => :destroy
   has_one :manifests
   has_many :shipment_state_changes
+  has_many :collection_bills
 
   accepts_nested_attributes_for :shipments,  :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :customers, :reject_if => :all_blank

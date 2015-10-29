@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :sold_to %><br>
-    <%= f.text_field :sold_to, :value => @sold_to_cust.business_name %>
+    <%= f.text_field :sold_to, :value => @sold_to_cust.business_name, maxlength: 150 %>
   </div>
   <div class="field">
     <%= f.label :sent_to %><br>
@@ -29,39 +29,39 @@
   </div>
   <div class="field">
     <%= f.label :custom_broker %><br>
-    <%= f.text_field :custom_broker %>
+    <%= f.text_field :custom_broker, maxlength: 220 %>
   </div>
   <div class="field">
     <%= f.label :carrier %><br>
-    <%= f.text_field :carrier %>
+    <%= f.text_field :carrier, maxlength: 200 %>
   </div>
   <div class="field">
     <%= f.label :driver %><br>
-    <%= f.text_field :driver %>
+    <%= f.text_field :driver, maxlength: 80 %>
   </div>
   <div class="field">
     <%= f.label :truck %><br>
-    <%= f.text_field :truck %>
+    <%= f.text_field :truck, maxlength: 15 %>
   </div>
   <div class="field">
     <%= f.label :truck_licence_plate %><br>
-    <%= f.text_field :truck_licence_plate %>
+    <%= f.text_field :truck_licence_plate, maxlength: 15 %>
   </div>
   <div class="field">
     <%= f.label :trailer_num %><br>
-    <%= f.text_field :trailer_num %>
+    <%= f.text_field :trailer_num, maxlength: 15 %>
   </div>
   <div class="field">
     <%= f.label :trailer_num_lp %><br>
-    <%= f.text_field :trailer_num_lp %>
+    <%= f.text_field :trailer_num_lp, maxlength: 15 %>
   </div>
   <div class="field">
     <%= f.label :stamp %><br>
-    <%= f.text_field :stamp %>
+    <%= f.text_field :stamp, maxlength: 40 %>
   </div>
   <div class="field">
     <%= f.label :thermograph %><br>
-    <%= f.text_field :thermograph %>
+    <%= f.text_field :thermograph, maxlength: 15 %>
   </div>
   <div class="field">
     <%= f.label :purshase_order %><br>
@@ -73,11 +73,11 @@
   </div>
   <div class="field">
     <%= f.label :delivery_person %><br>
-    <%= f.text_field :delivery_person %>
+    <%= f.text_field :delivery_person, maxlength: 80 %>
   </div>
   <div class="field">
     <%= f.label :person_receiving %><br>
-    <%= f.text_field :person_receiving %>
+    <%= f.text_field :person_receiving, maxlength: 80 %>
   </div>
   <div class="field">
     <%= f.label :trailer_size %><br>
@@ -85,15 +85,15 @@
   </div>
   <div class="field">
     <%= f.label :caat %><br>
-    <%= f.text_field :caat %>
+    <%= f.text_field :caat, maxlength: 6%>
   </div>
   <div class="field">
     <%= f.label :alpha %><br>
-    <%= f.text_field :alpha %>
+    <%= f.text_field :alpha, maxlength: 15 %>
   </div>
   <div class="field">
     <%= f.label :fda_num %><br>
-    <%= f.text_field :fda_num %>
+    <%= f.text_field :fda_num, maxlength: 20 %>
   </div>
   <div class="field">
     <%= f.label :total_pallets %><br>

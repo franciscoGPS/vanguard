@@ -1,0 +1,2 @@
+module CollectionsBillsHelper
+end

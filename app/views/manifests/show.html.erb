@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div class="col-md-8">
 <p>
   <strong>Sale:</strong>
   <%= @manifest.sale_id %>
@@ -114,6 +114,9 @@
   <strong>Comments:</strong>
   <%= @manifest.comments %>
 </p>
-
+</div>
+<div class="col-md-8">
+    <%= render :partial => 'shipment_products' %>
+</div>
 <%= link_to 'Edit', edit_manifest_path(@manifest) %> |
 <%= link_to 'Back', manifests_path %>

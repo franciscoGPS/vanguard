@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sale:</strong>
+  <%= @collections_bill.sale_id %>
+</p>
+
+<p>
+  <strong>Invoice number:</strong>
+  <%= @collections_bill.invoice_number %>
+</p>
+
+<p>
+  <strong>Shipment consecutive:</strong>
+  <%= @collections_bill.shipment_consecutive %>
+</p>
+
+<p>
+  <strong>Po number:</strong>
+  <%= @collections_bill.po_number %>
+</p>
+
+<p>
+  <strong>Payment terms:</strong>
+  <%= @collections_bill.payment_terms %>
+</p>
+
+<p>
+  <strong>Bol date:</strong>
+  <%= @collections_bill.bol_date %>
+</p>
+
+<p>
+  <strong>Total amt:</strong>
+  <%= @collections_bill.total_amt %>
+</p>
+
+<%= link_to 'Edit', edit_collections_bill_path(@collections_bill) %> |
+<%= link_to 'Back', collections_bills_path %>

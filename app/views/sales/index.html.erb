@@ -24,9 +24,11 @@ Poner aquí el invernadero
   <tr>
     <td><%= radio_button_tag(:selected, sale.id) %></td>
   <td><%= sale.id %></td>
-  <td><%= sale.shipments[0].product.name %></td>
+  <td><<%= sale.shipments[0].product.name %></td>
   <td>
+    <%= link_to sale_path(sale), :class => 'btn btn-xs'  do %>
      <%= sale.shipments[0].customer.customers_in_sale(sale) %>
+      <%- end -%>
   </td>
   <td>
      <%= link_to sale_path(sale), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

@@ -2,10 +2,12 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Use</th>
+      <th>ID</th>
       <th>Qty</th>
       <th>Case</th>
-      <th>Weight</th>
       <th>Product Name</th>
+      <th>Weight</th>
       <th>Price</th>
       <th>Total</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -14,10 +16,12 @@
   <tbody>
     <% @shipments.each do |shipment| %>
       <tr>
+        <td><%= check_box_tag "shipment_ids[]", shipment.id %></td>
+        <td><%= shipment.id %></td>
         <td><%= shipment.pallets_number %></td>
         <td><%= BoxType.find(shipment.box_type_id).name %></td>
+        <td><%= shipment.product.name %></td>
         <td><%= shipment.weight %></td>
-        <td><%=  shipment.product.name %></td>
         <td>$<%= shipment.price %></td>
         <td>$<%= shipment.price * shipment.pallets_number %></td>
         <td>
@@ -35,7 +39,5 @@
     <% end %>
   </tbody>
 </table>
-
-
 
 
