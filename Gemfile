@@ -50,4 +50,3 @@ gem "simple_calendar", "~> 1.1.0"     # Generate calendars with JQuery
 gem 'aasm'                            # State Machine
 gem 'numbers_and_words', '~> 0.10.0'  # Number to word translater
 gem "paperclip", "~> 4.3"             # Upload images
-gem 'jquery-ui-rails'                 # Prettify html tags (like file_field)
