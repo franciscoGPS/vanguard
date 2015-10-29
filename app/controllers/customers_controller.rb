@@ -25,6 +25,7 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+    byebug
     @customer = Customer.new(customer_params)
 
     respond_to do |format|
@@ -55,23 +56,34 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
-    @customer.destroy
-    respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
-      #format.json { head :no_content }
+
+    if Sale.where("customer_id = ?", @customer.id ).count > 0
+      respond_to do |format|
+        format.html { redirect_to customers_url, notice: 'Customer wtih associated transactions cannot be deleted.' }
+      end
+    else
+      @customer.destroy
+      respond_to do |format|
+        format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+        #format.json { head :no_content }
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def customer_params
-      params.require(:customer).permit(:business_name, :billing_address,
-        :shipping_address, :warehose_address, :tax_id_number, :chep_id_number,
-        :bb_number, contacts_attributes: [:id, :name, :email, :phone, :phone_office, :_destroy])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def customer_params
+    params.require(:customer).permit(:id, :business_name, :billing_address,
+    :shipping_address, :warehose_address, :tax_id_number, :chep_id_number,:bb_number, :_destroy,
+    contacts_attributes: [:id, :name, :email, :phone, :phone_office, :_destroy],
+    shipments_attributes: [:id, :product_id, :start_at, :shipment_consecutive, :pallets_number,
+    :comments, :sale_id, :price, :plu, :count, :product_color, :_destroy])
+  end
 end
+
+

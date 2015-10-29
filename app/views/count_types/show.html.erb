@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @count_type.name %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= Product.find(@count_type.product_id).name %>
+</p>
+
+<%= link_to 'Edit', edit_count_type_path(@count_type) %> |
+<%= link_to 'Back', count_types_path %>

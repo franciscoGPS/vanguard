@@ -49,7 +49,7 @@
       <%= f.fields_for :contacts do |contact| %>
         <%= render 'contact_fields', :f  => contact %>
       <% end %>
-      <%= link_to_add_association 'add contact', f, :contacts, render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small" %>
+      <%= link_to_add_association 'Add contact', f, :contacts, render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small" %>
     </div>
   </div>
 

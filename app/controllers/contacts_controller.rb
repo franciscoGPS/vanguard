@@ -1,11 +1,15 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :verify_is_admin?
   # GET /contacts
   # GET /contacts.json
   def index
     @contacts = Contact.all
   end
+
+
+
+
 
   # GET /contacts/1
   # GET /contacts/1.json
@@ -24,6 +28,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
+    byebug
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
@@ -71,4 +76,10 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:id, :name, :email, :phone_office, :phone, :_destroy)
     end
+
+  protected
+    def verify_is_admin?
+        (current_user.nil?) ? redirect_to(root_path) : (redirect_to(admin_path) unless current_user.admin?)
+    end
+
 end

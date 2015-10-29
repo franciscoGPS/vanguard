@@ -11,32 +11,6 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div id="header-wrapper">
-      <div id="header" class="container">
-        <div id="logo">
-          <h1><%= link_to root_path do %>
-          <%= image_tag "VanguardWhite.png" %>
-          <% end %>
-          </h1>
-        </div>
-        <div id="menu">
-          <ul>
-            <!--<li class="active"><a href="#" accesskey="1" title="">Inicio</a></li>-->
-            <li><%= link_to "Nosotros", about_path %></li>
-            <li><%= link_to "Socios/Proveedores", partners_path %></a></li>
-            <li><%= link_to "Soluciones", solutions_path %></li>
-            <li><%= link_to "Contacto", web_contact_path %></li>
-          </ul>
-        </div>
-      </div>
-      <div id="banner" class="container">
-        <span id="eslogan">Marketing y Desarrollo de Negocios<br />
-        para el Comercio Exterior</span>
-      </div>
-    </div>
-    <%= yield %>
-    <div id="copyright" class="container">
-      <p>&copy; Vanguard. All rights reserved. | Made with &hearts; by <a href="http://templated.co" rel="nofollow">AgaveTI</a>.</p>
-    </div>
+    <%= yield %>  
   </body>
 </html>

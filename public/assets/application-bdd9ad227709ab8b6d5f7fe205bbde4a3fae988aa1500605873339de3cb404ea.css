@@ -366,16 +366,16 @@ th {
   }
 }
 @font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url("/assets/bootstrap/glyphicons-halflings-regular-f495f34e4f177cf0115af995bbbfeb3fcabc88502876e76fc51a4ab439bc8431.eot");
-  src: url("/assets/bootstrap/glyphicons-halflings-regular-f495f34e4f177cf0115af995bbbfeb3fcabc88502876e76fc51a4ab439bc8431.eot?#iefix") format("embedded-opentype"), url("/assets/bootstrap/glyphicons-halflings-regular-fc969dc1c6ff531abcf368089dcbaf5775133b0626ff56b52301a059fc0f9e1e.woff") format("woff"), url("/assets/bootstrap/glyphicons-halflings-regular-bd18efd3efd70fec8ad09611a20cdbf99440b2c1d40085c29be036f891d65358.ttf") format("truetype"), url("/assets/bootstrap/glyphicons-halflings-regular-d168d50a88c730b4e6830dc0da2a2b51dae4658a77d9619943c27b8ecfc19d1a.svg#glyphicons_halflingsregular") format("svg");
+  font-family: '<i class="fa fa-info fw"></i>icons Halflings';
+  src: url("/assets/bootstrap/<i class="fa fa-info fw"></i>icons-halflings-regular-f495f34e4f177cf0115af995bbbfeb3fcabc88502876e76fc51a4ab439bc8431.eot");
+  src: url("/assets/bootstrap/<i class="fa fa-info fw"></i>icons-halflings-regular-f495f34e4f177cf0115af995bbbfeb3fcabc88502876e76fc51a4ab439bc8431.eot?#iefix") format("embedded-opentype"), url("/assets/bootstrap/<i class="fa fa-info fw"></i>icons-halflings-regular-fc969dc1c6ff531abcf368089dcbaf5775133b0626ff56b52301a059fc0f9e1e.woff") format("woff"), url("/assets/bootstrap/<i class="fa fa-info fw"></i>icons-halflings-regular-bd18efd3efd70fec8ad09611a20cdbf99440b2c1d40085c29be036f891d65358.ttf") format("truetype"), url("/assets/bootstrap/<i class="fa fa-info fw"></i>icons-halflings-regular-d168d50a88c730b4e6830dc0da2a2b51dae4658a77d9619943c27b8ecfc19d1a.svg#<i class="fa fa-info fw"></i>icons_halflingsregular") format("svg");
 }
-/* line 25, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon {
+/* line 25, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon {
   position: relative;
   top: 1px;
   display: inline-block;
-  font-family: 'Glyphicons Halflings';
+  font-family: '<i class="fa fa-info fw"></i>icons Halflings';
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -383,1003 +383,1003 @@ th {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 38, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-asterisk:before {
+/* line 38, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-asterisk:before {
   content: "\2a";
 }
 
-/* line 39, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-plus:before {
+/* line 39, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-plus:before {
   content: "\2b";
 }
 
-/* line 40, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-euro:before {
+/* line 40, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-euro:before {
   content: "\20ac";
 }
 
-/* line 41, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-minus:before {
+/* line 41, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-minus:before {
   content: "\2212";
 }
 
-/* line 42, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-cloud:before {
+/* line 42, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-cloud:before {
   content: "\2601";
 }
 
-/* line 43, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-envelope:before {
+/* line 43, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-envelope:before {
   content: "\2709";
 }
 
-/* line 44, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-pencil:before {
+/* line 44, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-pencil:before {
   content: "\270f";
 }
 
-/* line 45, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-glass:before {
+/* line 45, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-glass:before {
   content: "\e001";
 }
 
-/* line 46, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-music:before {
+/* line 46, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-music:before {
   content: "\e002";
 }
 
-/* line 47, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-search:before {
+/* line 47, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-search:before {
   content: "\e003";
 }
 
-/* line 48, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-heart:before {
+/* line 48, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-heart:before {
   content: "\e005";
 }
 
-/* line 49, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-star:before {
+/* line 49, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-star:before {
   content: "\e006";
 }
 
-/* line 50, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-star-empty:before {
+/* line 50, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-star-empty:before {
   content: "\e007";
 }
 
-/* line 51, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-user:before {
+/* line 51, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-user:before {
   content: "\e008";
 }
 
-/* line 52, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-film:before {
+/* line 52, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-film:before {
   content: "\e009";
 }
 
-/* line 53, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-th-large:before {
+/* line 53, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-th-large:before {
   content: "\e010";
 }
 
-/* line 54, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-th:before {
+/* line 54, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-th:before {
   content: "\e011";
 }
 
-/* line 55, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-th-list:before {
+/* line 55, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-th-list:before {
   content: "\e012";
 }
 
-/* line 56, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-ok:before {
+/* line 56, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-ok:before {
   content: "\e013";
 }
 
-/* line 57, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-remove:before {
+/* line 57, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-remove:before {
   content: "\e014";
 }
 
-/* line 58, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-zoom-in:before {
+/* line 58, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-zoom-in:before {
   content: "\e015";
 }
 
-/* line 59, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-zoom-out:before {
+/* line 59, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-zoom-out:before {
   content: "\e016";
 }
 
-/* line 60, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-off:before {
+/* line 60, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-off:before {
   content: "\e017";
 }
 
-/* line 61, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-signal:before {
+/* line 61, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-signal:before {
   content: "\e018";
 }
 
-/* line 62, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-cog:before {
+/* line 62, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-cog:before {
   content: "\e019";
 }
 
-/* line 63, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-trash:before {
+/* line 63, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-trash:before {
   content: "\e020";
 }
 
-/* line 64, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-home:before {
+/* line 64, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-home:before {
   content: "\e021";
 }
 
-/* line 65, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-file:before {
+/* line 65, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-file:before {
   content: "\e022";
 }
 
-/* line 66, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-time:before {
+/* line 66, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-time:before {
   content: "\e023";
 }
 
-/* line 67, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-road:before {
+/* line 67, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-road:before {
   content: "\e024";
 }
 
-/* line 68, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-download-alt:before {
+/* line 68, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-download-alt:before {
   content: "\e025";
 }
 
-/* line 69, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-download:before {
+/* line 69, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-download:before {
   content: "\e026";
 }
 
-/* line 70, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-upload:before {
+/* line 70, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-upload:before {
   content: "\e027";
 }
 
-/* line 71, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-inbox:before {
+/* line 71, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-inbox:before {
   content: "\e028";
 }
 
-/* line 72, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-play-circle:before {
+/* line 72, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-play-circle:before {
   content: "\e029";
 }
 
-/* line 73, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-repeat:before {
+/* line 73, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-repeat:before {
   content: "\e030";
 }
 
-/* line 74, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-refresh:before {
+/* line 74, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-refresh:before {
   content: "\e031";
 }
 
-/* line 75, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-list-alt:before {
+/* line 75, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-list-alt:before {
   content: "\e032";
 }
 
-/* line 76, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-lock:before {
+/* line 76, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-lock:before {
   content: "\e033";
 }
 
-/* line 77, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-flag:before {
+/* line 77, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-flag:before {
   content: "\e034";
 }
 
-/* line 78, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-headphones:before {
+/* line 78, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-headphones:before {
   content: "\e035";
 }
 
-/* line 79, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-volume-off:before {
+/* line 79, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-volume-off:before {
   content: "\e036";
 }
 
-/* line 80, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-volume-down:before {
+/* line 80, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-volume-down:before {
   content: "\e037";
 }
 
-/* line 81, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-volume-up:before {
+/* line 81, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-volume-up:before {
   content: "\e038";
 }
 
-/* line 82, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-qrcode:before {
+/* line 82, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-qrcode:before {
   content: "\e039";
 }
 
-/* line 83, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-barcode:before {
+/* line 83, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-barcode:before {
   content: "\e040";
 }
 
-/* line 84, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-tag:before {
+/* line 84, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-tag:before {
   content: "\e041";
 }
 
-/* line 85, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-tags:before {
+/* line 85, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-tags:before {
   content: "\e042";
 }
 
-/* line 86, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-book:before {
+/* line 86, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-book:before {
   content: "\e043";
 }
 
-/* line 87, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-bookmark:before {
+/* line 87, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-bookmark:before {
   content: "\e044";
 }
 
-/* line 88, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-print:before {
+/* line 88, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-print:before {
   content: "\e045";
 }
 
-/* line 89, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-camera:before {
+/* line 89, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-camera:before {
   content: "\e046";
 }
 
-/* line 90, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-font:before {
+/* line 90, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-font:before {
   content: "\e047";
 }
 
-/* line 91, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-bold:before {
+/* line 91, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-bold:before {
   content: "\e048";
 }
 
-/* line 92, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-italic:before {
+/* line 92, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-italic:before {
   content: "\e049";
 }
 
-/* line 93, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-text-height:before {
+/* line 93, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-text-height:before {
   content: "\e050";
 }
 
-/* line 94, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-text-width:before {
+/* line 94, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-text-width:before {
   content: "\e051";
 }
 
-/* line 95, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-align-left:before {
+/* line 95, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-align-left:before {
   content: "\e052";
 }
 
-/* line 96, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-align-center:before {
+/* line 96, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-align-center:before {
   content: "\e053";
 }
 
-/* line 97, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-align-right:before {
+/* line 97, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-align-right:before {
   content: "\e054";
 }
 
-/* line 98, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-align-justify:before {
+/* line 98, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-align-justify:before {
   content: "\e055";
 }
 
-/* line 99, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-list:before {
+/* line 99, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-list:before {
   content: "\e056";
 }
 
-/* line 100, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-indent-left:before {
+/* line 100, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-indent-left:before {
   content: "\e057";
 }
 
-/* line 101, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-indent-right:before {
+/* line 101, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-indent-right:before {
   content: "\e058";
 }
 
-/* line 102, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-facetime-video:before {
+/* line 102, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-facetime-video:before {
   content: "\e059";
 }
 
-/* line 103, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-picture:before {
+/* line 103, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-picture:before {
   content: "\e060";
 }
 
-/* line 104, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-map-marker:before {
+/* line 104, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-map-marker:before {
   content: "\e062";
 }
 
-/* line 105, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-adjust:before {
+/* line 105, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-adjust:before {
   content: "\e063";
 }
 
-/* line 106, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-tint:before {
+/* line 106, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-tint:before {
   content: "\e064";
 }
 
-/* line 107, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-edit:before {
+/* line 107, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-edit:before {
   content: "\e065";
 }
 
-/* line 108, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-share:before {
+/* line 108, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-share:before {
   content: "\e066";
 }
 
-/* line 109, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-check:before {
+/* line 109, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-check:before {
   content: "\e067";
 }
 
-/* line 110, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-move:before {
+/* line 110, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-move:before {
   content: "\e068";
 }
 
-/* line 111, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-step-backward:before {
+/* line 111, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-step-backward:before {
   content: "\e069";
 }
 
-/* line 112, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-fast-backward:before {
+/* line 112, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-fast-backward:before {
   content: "\e070";
 }
 
-/* line 113, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-backward:before {
+/* line 113, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-backward:before {
   content: "\e071";
 }
 
-/* line 114, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-play:before {
+/* line 114, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-play:before {
   content: "\e072";
 }
 
-/* line 115, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-pause:before {
+/* line 115, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-pause:before {
   content: "\e073";
 }
 
-/* line 116, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-stop:before {
+/* line 116, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-stop:before {
   content: "\e074";
 }
 
-/* line 117, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-forward:before {
+/* line 117, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-forward:before {
   content: "\e075";
 }
 
-/* line 118, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-fast-forward:before {
+/* line 118, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-fast-forward:before {
   content: "\e076";
 }
 
-/* line 119, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-step-forward:before {
+/* line 119, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-step-forward:before {
   content: "\e077";
 }
 
-/* line 120, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-eject:before {
+/* line 120, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-eject:before {
   content: "\e078";
 }
 
-/* line 121, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-chevron-left:before {
+/* line 121, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-chevron-left:before {
   content: "\e079";
 }
 
-/* line 122, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-chevron-right:before {
+/* line 122, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-chevron-right:before {
   content: "\e080";
 }
 
-/* line 123, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-plus-sign:before {
+/* line 123, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-plus-sign:before {
   content: "\e081";
 }
 
-/* line 124, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-minus-sign:before {
+/* line 124, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-minus-sign:before {
   content: "\e082";
 }
 
-/* line 125, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-remove-sign:before {
+/* line 125, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-remove-sign:before {
   content: "\e083";
 }
 
-/* line 126, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-ok-sign:before {
+/* line 126, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-ok-sign:before {
   content: "\e084";
 }
 
-/* line 127, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-question-sign:before {
+/* line 127, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-question-sign:before {
   content: "\e085";
 }
 
-/* line 128, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-info-sign:before {
+/* line 128, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-info-sign:before {
   content: "\e086";
 }
 
-/* line 129, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-screenshot:before {
+/* line 129, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-screenshot:before {
   content: "\e087";
 }
 
-/* line 130, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-remove-circle:before {
+/* line 130, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-remove-circle:before {
   content: "\e088";
 }
 
-/* line 131, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-ok-circle:before {
+/* line 131, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-ok-circle:before {
   content: "\e089";
 }
 
-/* line 132, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-ban-circle:before {
+/* line 132, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-ban-circle:before {
   content: "\e090";
 }
 
-/* line 133, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-arrow-left:before {
+/* line 133, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-arrow-left:before {
   content: "\e091";
 }
 
-/* line 134, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-arrow-right:before {
+/* line 134, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-arrow-right:before {
   content: "\e092";
 }
 
-/* line 135, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-arrow-up:before {
+/* line 135, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-arrow-up:before {
   content: "\e093";
 }
 
-/* line 136, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-arrow-down:before {
+/* line 136, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-arrow-down:before {
   content: "\e094";
 }
 
-/* line 137, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-share-alt:before {
+/* line 137, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-share-alt:before {
   content: "\e095";
 }
 
-/* line 138, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-resize-full:before {
+/* line 138, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-resize-full:before {
   content: "\e096";
 }
 
-/* line 139, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-resize-small:before {
+/* line 139, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-resize-small:before {
   content: "\e097";
 }
 
-/* line 140, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-exclamation-sign:before {
+/* line 140, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-exclamation-sign:before {
   content: "\e101";
 }
 
-/* line 141, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-gift:before {
+/* line 141, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-gift:before {
   content: "\e102";
 }
 
-/* line 142, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-leaf:before {
+/* line 142, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-leaf:before {
   content: "\e103";
 }
 
-/* line 143, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-fire:before {
+/* line 143, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-fire:before {
   content: "\e104";
 }
 
-/* line 144, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-eye-open:before {
+/* line 144, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-eye-open:before {
   content: "\e105";
 }
 
-/* line 145, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-eye-close:before {
+/* line 145, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-eye-close:before {
   content: "\e106";
 }
 
-/* line 146, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-warning-sign:before {
+/* line 146, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-warning-sign:before {
   content: "\e107";
 }
 
-/* line 147, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-plane:before {
+/* line 147, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-plane:before {
   content: "\e108";
 }
 
-/* line 148, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-calendar:before {
+/* line 148, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-calendar:before {
   content: "\e109";
 }
 
-/* line 149, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-random:before {
+/* line 149, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-random:before {
   content: "\e110";
 }
 
-/* line 150, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-comment:before {
+/* line 150, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-comment:before {
   content: "\e111";
 }
 
-/* line 151, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-magnet:before {
+/* line 151, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-magnet:before {
   content: "\e112";
 }
 
-/* line 152, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-chevron-up:before {
+/* line 152, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-chevron-up:before {
   content: "\e113";
 }
 
-/* line 153, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-chevron-down:before {
+/* line 153, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-chevron-down:before {
   content: "\e114";
 }
 
-/* line 154, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-retweet:before {
+/* line 154, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-retweet:before {
   content: "\e115";
 }
 
-/* line 155, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-shopping-cart:before {
+/* line 155, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-shopping-cart:before {
   content: "\e116";
 }
 
-/* line 156, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-folder-close:before {
+/* line 156, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-folder-close:before {
   content: "\e117";
 }
 
-/* line 157, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-folder-open:before {
+/* line 157, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-folder-open:before {
   content: "\e118";
 }
 
-/* line 158, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-resize-vertical:before {
+/* line 158, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-resize-vertical:before {
   content: "\e119";
 }
 
-/* line 159, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-resize-horizontal:before {
+/* line 159, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-resize-horizontal:before {
   content: "\e120";
 }
 
-/* line 160, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-hdd:before {
+/* line 160, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-hdd:before {
   content: "\e121";
 }
 
-/* line 161, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-bullhorn:before {
+/* line 161, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-bullhorn:before {
   content: "\e122";
 }
 
-/* line 162, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-bell:before {
+/* line 162, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-bell:before {
   content: "\e123";
 }
 
-/* line 163, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-certificate:before {
+/* line 163, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-certificate:before {
   content: "\e124";
 }
 
-/* line 164, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-thumbs-up:before {
+/* line 164, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-thumbs-up:before {
   content: "\e125";
 }
 
-/* line 165, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-thumbs-down:before {
+/* line 165, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-thumbs-down:before {
   content: "\e126";
 }
 
-/* line 166, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-hand-right:before {
+/* line 166, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-hand-right:before {
   content: "\e127";
 }
 
-/* line 167, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-hand-left:before {
+/* line 167, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-hand-left:before {
   content: "\e128";
 }
 
-/* line 168, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-hand-up:before {
+/* line 168, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-hand-up:before {
   content: "\e129";
 }
 
-/* line 169, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-hand-down:before {
+/* line 169, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-hand-down:before {
   content: "\e130";
 }
 
-/* line 170, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-circle-arrow-right:before {
+/* line 170, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-circle-arrow-right:before {
   content: "\e131";
 }
 
-/* line 171, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-circle-arrow-left:before {
+/* line 171, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-circle-arrow-left:before {
   content: "\e132";
 }
 
-/* line 172, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-circle-arrow-up:before {
+/* line 172, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-circle-arrow-up:before {
   content: "\e133";
 }
 
-/* line 173, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-circle-arrow-down:before {
+/* line 173, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-circle-arrow-down:before {
   content: "\e134";
 }
 
-/* line 174, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-globe:before {
+/* line 174, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-globe:before {
   content: "\e135";
 }
 
-/* line 175, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-wrench:before {
+/* line 175, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-wrench:before {
   content: "\e136";
 }
 
-/* line 176, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-tasks:before {
+/* line 176, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-tasks:before {
   content: "\e137";
 }
 
-/* line 177, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-filter:before {
+/* line 177, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-filter:before {
   content: "\e138";
 }
 
-/* line 178, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-briefcase:before {
+/* line 178, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-briefcase:before {
   content: "\e139";
 }
 
-/* line 179, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-fullscreen:before {
+/* line 179, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-fullscreen:before {
   content: "\e140";
 }
 
-/* line 180, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-dashboard:before {
+/* line 180, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-dashboard:before {
   content: "\e141";
 }
 
-/* line 181, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-paperclip:before {
+/* line 181, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-paperclip:before {
   content: "\e142";
 }
 
-/* line 182, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-heart-empty:before {
+/* line 182, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-heart-empty:before {
   content: "\e143";
 }
 
-/* line 183, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-link:before {
+/* line 183, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-link:before {
   content: "\e144";
 }
 
-/* line 184, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-phone:before {
+/* line 184, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-phone:before {
   content: "\e145";
 }
 
-/* line 185, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-pushpin:before {
+/* line 185, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-pushpin:before {
   content: "\e146";
 }
 
-/* line 186, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-usd:before {
+/* line 186, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-usd:before {
   content: "\e148";
 }
 
-/* line 187, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-gbp:before {
+/* line 187, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-gbp:before {
   content: "\e149";
 }
 
-/* line 188, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sort:before {
+/* line 188, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sort:before {
   content: "\e150";
 }
 
-/* line 189, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sort-by-alphabet:before {
+/* line 189, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sort-by-alphabet:before {
   content: "\e151";
 }
 
-/* line 190, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sort-by-alphabet-alt:before {
+/* line 190, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sort-by-alphabet-alt:before {
   content: "\e152";
 }
 
-/* line 191, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sort-by-order:before {
+/* line 191, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sort-by-order:before {
   content: "\e153";
 }
 
-/* line 192, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sort-by-order-alt:before {
+/* line 192, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sort-by-order-alt:before {
   content: "\e154";
 }
 
-/* line 193, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sort-by-attributes:before {
+/* line 193, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sort-by-attributes:before {
   content: "\e155";
 }
 
-/* line 194, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sort-by-attributes-alt:before {
+/* line 194, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sort-by-attributes-alt:before {
   content: "\e156";
 }
 
-/* line 195, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-unchecked:before {
+/* line 195, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-unchecked:before {
   content: "\e157";
 }
 
-/* line 196, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-expand:before {
+/* line 196, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-expand:before {
   content: "\e158";
 }
 
-/* line 197, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-collapse-down:before {
+/* line 197, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-collapse-down:before {
   content: "\e159";
 }
 
-/* line 198, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-collapse-up:before {
+/* line 198, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-collapse-up:before {
   content: "\e160";
 }
 
-/* line 199, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-log-in:before {
+/* line 199, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-log-in:before {
   content: "\e161";
 }
 
-/* line 200, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-flash:before {
+/* line 200, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-flash:before {
   content: "\e162";
 }
 
-/* line 201, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-log-out:before {
+/* line 201, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-log-out:before {
   content: "\e163";
 }
 
-/* line 202, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-new-window:before {
+/* line 202, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-new-window:before {
   content: "\e164";
 }
 
-/* line 203, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-record:before {
+/* line 203, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-record:before {
   content: "\e165";
 }
 
-/* line 204, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-save:before {
+/* line 204, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-save:before {
   content: "\e166";
 }
 
-/* line 205, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-open:before {
+/* line 205, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-open:before {
   content: "\e167";
 }
 
-/* line 206, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-saved:before {
+/* line 206, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-saved:before {
   content: "\e168";
 }
 
-/* line 207, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-import:before {
+/* line 207, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-import:before {
   content: "\e169";
 }
 
-/* line 208, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-export:before {
+/* line 208, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-export:before {
   content: "\e170";
 }
 
-/* line 209, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-send:before {
+/* line 209, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-send:before {
   content: "\e171";
 }
 
-/* line 210, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-floppy-disk:before {
+/* line 210, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-floppy-disk:before {
   content: "\e172";
 }
 
-/* line 211, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-floppy-saved:before {
+/* line 211, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-floppy-saved:before {
   content: "\e173";
 }
 
-/* line 212, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-floppy-remove:before {
+/* line 212, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-floppy-remove:before {
   content: "\e174";
 }
 
-/* line 213, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-floppy-save:before {
+/* line 213, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-floppy-save:before {
   content: "\e175";
 }
 
-/* line 214, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-floppy-open:before {
+/* line 214, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-floppy-open:before {
   content: "\e176";
 }
 
-/* line 215, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-credit-card:before {
+/* line 215, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-credit-card:before {
   content: "\e177";
 }
 
-/* line 216, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-transfer:before {
+/* line 216, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-transfer:before {
   content: "\e178";
 }
 
-/* line 217, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-cutlery:before {
+/* line 217, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-cutlery:before {
   content: "\e179";
 }
 
-/* line 218, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-header:before {
+/* line 218, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-header:before {
   content: "\e180";
 }
 
-/* line 219, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-compressed:before {
+/* line 219, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-compressed:before {
   content: "\e181";
 }
 
-/* line 220, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-earphone:before {
+/* line 220, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-earphone:before {
   content: "\e182";
 }
 
-/* line 221, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-phone-alt:before {
+/* line 221, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-phone-alt:before {
   content: "\e183";
 }
 
-/* line 222, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-tower:before {
+/* line 222, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-tower:before {
   content: "\e184";
 }
 
-/* line 223, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-stats:before {
+/* line 223, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-stats:before {
   content: "\e185";
 }
 
-/* line 224, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sd-video:before {
+/* line 224, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sd-video:before {
   content: "\e186";
 }
 
-/* line 225, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-hd-video:before {
+/* line 225, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-hd-video:before {
   content: "\e187";
 }
 
-/* line 226, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-subtitles:before {
+/* line 226, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-subtitles:before {
   content: "\e188";
 }
 
-/* line 227, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sound-stereo:before {
+/* line 227, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sound-stereo:before {
   content: "\e189";
 }
 
-/* line 228, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sound-dolby:before {
+/* line 228, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sound-dolby:before {
   content: "\e190";
 }
 
-/* line 229, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sound-5-1:before {
+/* line 229, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sound-5-1:before {
   content: "\e191";
 }
 
-/* line 230, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sound-6-1:before {
+/* line 230, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sound-6-1:before {
   content: "\e192";
 }
 
-/* line 231, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-sound-7-1:before {
+/* line 231, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-sound-7-1:before {
   content: "\e193";
 }
 
-/* line 232, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-copyright-mark:before {
+/* line 232, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-copyright-mark:before {
   content: "\e194";
 }
 
-/* line 233, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-registration-mark:before {
+/* line 233, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-registration-mark:before {
   content: "\e195";
 }
 
-/* line 234, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-cloud-download:before {
+/* line 234, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-cloud-download:before {
   content: "\e197";
 }
 
-/* line 235, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-cloud-upload:before {
+/* line 235, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-cloud-upload:before {
   content: "\e198";
 }
 
-/* line 236, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-tree-conifer:before {
+/* line 236, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-tree-conifer:before {
   content: "\e199";
 }
 
-/* line 237, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_glyphicons.scss */
-.glyphicon-tree-deciduous:before {
+/* line 237, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_<i class="fa fa-info fw"></i>icons.scss */
+.<i class="fa fa-info fw"></i>icon-tree-deciduous:before {
   content: "\e200";
 }
 
@@ -7638,8 +7638,8 @@ button.close {
 /* line 103, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_carousel.scss */
 .carousel-control .icon-prev,
 .carousel-control .icon-next,
-.carousel-control .glyphicon-chevron-left,
-.carousel-control .glyphicon-chevron-right {
+.carousel-control .<i class="fa fa-info fw"></i>icon-chevron-left,
+.carousel-control .<i class="fa fa-info fw"></i>icon-chevron-right {
   position: absolute;
   top: 50%;
   z-index: 5;
@@ -7647,13 +7647,13 @@ button.close {
 }
 /* line 112, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_carousel.scss */
 .carousel-control .icon-prev,
-.carousel-control .glyphicon-chevron-left {
+.carousel-control .<i class="fa fa-info fw"></i>icon-chevron-left {
   left: 50%;
   margin-left: -10px;
 }
 /* line 117, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_carousel.scss */
 .carousel-control .icon-next,
-.carousel-control .glyphicon-chevron-right {
+.carousel-control .<i class="fa fa-info fw"></i>icon-chevron-right {
   right: 50%;
   margin-right: -10px;
 }
@@ -7727,8 +7727,8 @@ button.close {
 
 @media screen and (min-width: 768px) {
   /* line 213, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_carousel.scss */
-  .carousel-control .glyphicon-chevron-left,
-  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .<i class="fa fa-info fw"></i>icon-chevron-left,
+  .carousel-control .<i class="fa fa-info fw"></i>icon-chevron-right,
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
     width: 30px;
@@ -7737,12 +7737,12 @@ button.close {
     font-size: 30px;
   }
   /* line 222, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_carousel.scss */
-  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .<i class="fa fa-info fw"></i>icon-chevron-left,
   .carousel-control .icon-prev {
     margin-left: -15px;
   }
   /* line 226, /home/diana/.rvm/gems/ruby-2.2.2/gems/bootstrap-sass-3.2.0.2/assets/stylesheets/bootstrap/_carousel.scss */
-  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .<i class="fa fa-info fw"></i>icon-chevron-right,
   .carousel-control .icon-next {
     margin-right: -15px;
   }

@@ -27,7 +27,6 @@ class ShipmentsController < ApplicationController
   # POST /shipments.json
   def create
     @shipment = Shipment.new(shipment_params)
-    #byebug
     respond_to do |format|
       if @shipment.save
         format.html { redirect_to preshipments_path, notice: 'Shipment was successfully created.' }
@@ -44,7 +43,7 @@ class ShipmentsController < ApplicationController
   def update
     respond_to do |format|
       if @shipment.update(shipment_params)
-        format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
+        format.html { redirect_to sale_path id: @shipment.sale_id }
         #format.json { render :show, status: :ok, location: @shipment }
       else
         format.html { render :edit }
@@ -76,6 +75,9 @@ class ShipmentsController < ApplicationController
     end
   end
 
+  def order
+    #codei
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shipment
@@ -84,7 +86,10 @@ class ShipmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
-      params.require(:shipment).permit(:start_at, :shipment_consecutive, :comments,
-                                      :pallets_number, :product_id, product_attributes: [:id, :name, :_destroy])
+      params.require(:shipment).permit(:id, :start_at, :created_at, :updated_at,
+        :cancel, :deleted_at, :product_id,  :shipment_consecutive, :pallets_number,
+        :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
+        :box_type_id, :weight,
+        products_attributes: [:id, :name, :_destroy])
     end
 end

@@ -12,9 +12,9 @@
 #   Box_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 # 	Pallet_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 #   Bag_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
-
-User.create( password: '.Agave15!', email: 'hola@agaveti.com', admin: true)
-User.create( password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: true)
+Role.create( name: "Admin")
+User.create( name: "Admin", job: "Systems",password: '.Agave15!', email: 'hola@agaveti.com', admin: true, role_id: 1)
+User.create( name: "Admin", job: "Vanguard Admin", password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: true, role_id: 1)
 
 
 #connection = ActiveRecord::Base.connection()
@@ -22,4 +22,3 @@ User.create( password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: 
 #					INSERT INTO package_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
 #					INSERT INTO box_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
 #					INSERT INTO pallet_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');")
-

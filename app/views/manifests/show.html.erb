@@ -1,0 +1,122 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-8">
+<p>
+  <strong>Sale:</strong>
+  <%= @manifest.sale_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @manifest.date %>
+</p>
+
+<p>
+  <strong>Sold to:</strong>
+  <%= @manifest.sold_to %>
+</p>
+
+<p>
+  <strong>Sent to:</strong>
+  <%= @manifest.sent_to %>
+</p>
+
+<p>
+  <strong>Custom broker:</strong>
+  <%= @manifest.custom_broker %>
+</p>
+
+<p>
+  <strong>Carrier:</strong>
+  <%= @manifest.carrier %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @manifest.driver %>
+</p>
+
+<p>
+  <strong>Truck:</strong>
+  <%= @manifest.truck %>
+</p>
+
+<p>
+  <strong>Truck licence plate:</strong>
+  <%= @manifest.truck_licence_plate %>
+</p>
+
+<p>
+  <strong>Trailer num:</strong>
+  <%= @manifest.trailer_num %>
+</p>
+
+<p>
+  <strong>Trailer num lp:</strong>
+  <%= @manifest.trailer_num_lp %>
+</p>
+
+<p>
+  <strong>Stamp:</strong>
+  <%= @manifest.stamp %>
+</p>
+
+<p>
+  <strong>Thermograph:</strong>
+  <%= @manifest.thermograph %>
+</p>
+
+<p>
+  <strong>Purshase order:</strong>
+  <%= @manifest.purshase_order %>
+</p>
+
+<p>
+  <strong>Shipment:</strong>
+  <%= @manifest.shipment %>
+</p>
+
+<p>
+  <strong>Delivery person:</strong>
+  <%= @manifest.delivery_person %>
+</p>
+
+<p>
+  <strong>Person receiving:</strong>
+  <%= @manifest.person_receiving %>
+</p>
+
+<p>
+  <strong>Trailer size:</strong>
+  <%= @manifest.trailer_size %>
+</p>
+
+<p>
+  <strong>Caat:</strong>
+  <%= @manifest.caat %>
+</p>
+
+<p>
+  <strong>Alpha:</strong>
+  <%= @manifest.alpha %>
+</p>
+
+<p>
+  <strong>Fda num:</strong>
+  <%= @manifest.fda_num %>
+</p>
+
+<p>
+  <strong>Pallet number:</strong>
+  <%= @manifest.total_pallets %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @manifest.comments %>
+</p>
+</div>
+<div class="col-md-8">
+    <%= render :partial => 'shipment_products' %>
+</div>
+<%= link_to 'Edit', edit_manifest_path(@manifest) %> |
+<%= link_to 'Back', manifests_path %>
