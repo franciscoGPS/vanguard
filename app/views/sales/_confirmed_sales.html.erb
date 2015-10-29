@@ -6,7 +6,6 @@
       <th>ID</th>
       <th>Product Name</th>
       <th>Price</th>
-      <th>Start At</th>
       <th>Created At</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,7 +17,6 @@
         <td><%= shipment.id %></td>
         <td><%= shipment.product.name %></td>
         <td>$<%= shipment.price %></td>
-        <td><%=l shipment.start_at, format: :long  %></td>
         <td><%=l shipment.created_at, format: :long %></td>
         <td>
           <%= link_to shipment_path(shipment), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

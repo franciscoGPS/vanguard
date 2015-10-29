@@ -1,10 +1,4 @@
 <%= form_for @sale, :html => { :class => 'form-horizontal' } do |f| %>
-    <div class="form-group">
-    <%= f.label :customer, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.collection_select :customer_id, Customer.all,:id, :business_name, prompt: "Selecciona cliente",:class => 'text_field form-control' %>
-    </div>
-  </div>
   <div class="form-group">
     <%= f.label :season, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -24,26 +18,34 @@
     </div>
   </div>
 
-    <%= render :partial => 'preshipments_table' %>
 
-  <div class="form-group">
-    <%= f.label :manifest, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :manifest, :class => 'text_field form-control' %>
+
+  <div id="products" class="panel  panel-default">
+    <div class="panel-heading">
+      <h3>Products</h3>
+    </div>
+    <div class="panel-body">
+    <%= f.fields_for :shipments do |shipment| %>
+        <%= render 'shipment_fields', :f  => shipment %>
+    <% end %>
+    <%= link_to_add_association 'Add Shipment', f, :shipments, render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small" %>
     </div>
   </div>
+
+
+    <!-- render :partial => 'preshipments_table' %>-->
   <div class="form-group">
     <%= f.label :annotation, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :annotation, :class => 'text_field form-control' %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :comment, :class => 'control-label col-md-2' %>
+  <!--<div class="form-group">
+    < f.label :comment, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :comment, :class => 'text_field form-control' %>
+      < f.text_field :comment, :class => 'text_field form-control' %>
     </div>
-  </div>
+  </div>-->
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>

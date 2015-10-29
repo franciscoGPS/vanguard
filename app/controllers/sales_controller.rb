@@ -3,124 +3,62 @@ class SalesController < ApplicationController
   before_action :authenticate_user!
   # GET /sales
   # GET /sales.json
+
   def index
-    @sales = Sale.all
+    @sales = Sale.order(:id).all
+
   end
 
   # GET /sales/1
   # GET /sales/1.json
   def show
     @shipments = Shipment.where(sale_id: params[:id])
-
-    #Sale.joins(:shipments).where(shipments: { sale_id:  params[:id]})
-
-
   end
 
   # GET /sales/new
   def new
-
-    if Shipment.unconfirmed.size > 0
-
-      @sale = Sale.new
-      @shipments = Shipment.unconfirmed
-    else
-      respond_to do |format|
-        format.html { redirect_to Shipment.new, notice: 'No unconfirmed shipments.' }
-      end
-    end
-
+    @sale = Sale.new(departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
   end
 
   # GET /sales/1/edit
   def edit
     @shipments = Shipment.where(sale_id: params[:id])
     @action = params[:action]
-
   end
 
   # POST /sales
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
-    @shipments_selected = shipments_selected
-    byebug
-    if @shipments_selected.present?
-      @sale.user_id = current_user.id
-      if @sale.save
-        @shipments_selected.each do |shipment|
-          shipment.sale_id = @sale.id
-          price = params[shipment.id.to_s]
-          # Aquí price tiene un arreglo de valores. Solo obtenemos su único valor.
-          shipment.price = price
-          if shipment.save
-            byebug
-          else
-            byebug
-              respond_to do |format|
-                byebug
-                format.html { redirect_to @sale, error: 'No shipments persisted.' }
-              end
-          end
-        end
-            respond_to do |format|
-                byebug
-                format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
-              end
-      else
-        respond_to do |format|
-          byebug
-          format.html { redirect_to @sale, error: 'No shipments persisted.' }
-        end
 
-        #format.json { render :show, status: :created, location: @sale }
-        #else
-        #format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end # if @sale.save
+    @sale.user_id = current_user.id
 
-    else #if !(@shipments_selected.empty?)
-      @shipments = Shipment.unconfirmed
-      respond_to do |format|
-        byebug
-        format.html { redirect_to new_sale_path, error: 'No Shipments added to the Sale. Please verify.' }
-      end
-    end # if !(@shipments_selected.empty?)
-
+    @sale.save
+    respond_to do |format|
+      format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
+    end
   end
 
-
-  def shipments_selected
-     params.has_key?(:shipment_ids) ? Shipment.find(params[:shipment_ids]) : Array.new
-  end
 
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
-    byebug
     if @sale.update(sale_params)
-      byebug
       @shipments_to_update = Shipment.to_edit(@sale.id)
-      #@shipments_to_update = Shipment.find_by_sale_id(@sale_id)
       if @shipments_to_update.present?
-        byebug
         @shipments_to_update.each do |shipment|
-          byebug
           shipment.sale_id = @sale.id
           price = params[shipment.id.to_s]
           shipment.price = price
           begin
-            byebug
             shipment.save
-          byebug
           rescue Exception => e
-            byebug
-            flash[:error] = 'No shipments persisted1.'
+            flash[:error] = 'No shipments persisted.'
           end
         end
-         respond_to do |format|
-              byebug
-              format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
-            end
+        respond_to do |format|
+          format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+        end
 
         #format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
         #format.json { render :show, status: :ok, location: @sale }
@@ -143,6 +81,93 @@ class SalesController < ApplicationController
     end
   end
 
+
+  #Esta acción es recibida principalmente de la vista show y redirecciona hacia
+  #la pantalla de generar la ORDEN DE COMPRA.
+  def purshase_order
+    sale = Sale.find(params[:sale_id])
+    byebug
+    redirect_to controller: :greenhouses, action: :purshase_order, sale: sale
+  end
+
+
+  #Esta acción es recibida principalmente de la vista show y redirecciona hacia
+  #la pantalla de generar las FACTURAS PARA LAS ADUANAS, cargar manifiesto y facturas.
+  def customs_bill
+    sale = Sale.find(params[:sale_id])
+    byebug
+    redirect_to controller: :manifests, action: :new, sale: sale
+  end
+
+
+
+  #Events methods. Son llamados desde las funciones ajax disparadas al accionar
+  #los checkboxes propios a los estados de cada Envío.(Venta)
+  def purshase_order_state_change
+    #Se recoge el parámetro id de la venta con la que se trabajará
+    sale = Sale.find(params[:sale_id])
+    byebug                        ##CASO ESPECIAL EL DE AQUÍ ABAJO.
+                                  ##SE USÓ UN NOMBRE DIFERENTE
+    if params[:accion].to_sym == :purshase_order_state_check
+      #The exclamation point autosaves its state change.
+      sale.primera!(current_user)
+      sale[:purshase_order] = !sale[:purshase_order]
+      byebug
+
+    elsif params[:accion].to_sym == :out_of_packaging
+      sale.segunda!(current_user)
+      sale[:out_of_packaging] = !sale[:out_of_packaging]
+
+    elsif params[:accion].to_sym == :docs_reception
+      sale.tercera!(current_user)
+      sale[:docs_reception] = !sale[:docs_reception]
+
+      elsif params[:accion].to_sym == :loading_docs
+      sale.cuarta!(current_user)
+      sale[:loading_docs] = !sale[:loading_docs]
+
+      elsif params[:accion].to_sym == :arrived_to_border
+      sale.quinta!(current_user)
+      sale[:arrived_to_border] = !sale[:arrived_to_border]
+
+      elsif params[:accion].to_sym == :out_of_courtyard
+      sale.sexta!(current_user)
+      sale[:out_of_courtyard] = !sale[:out_of_courtyard]
+
+      elsif params[:accion].to_sym == :documents
+      sale.septima!(current_user)
+      sale[:documents] = !sale[:documents]
+
+      elsif params[:accion].to_sym == :mex_customs_mod
+      sale.octava!(current_user)
+      sale[:mex_customs_mod] = !sale[:mex_customs_mod]
+
+      elsif params[:accion].to_sym == :us_customs_mod
+      sale.novena!(current_user)
+      sale[:us_customs_mod] = !sale[:us_customs_mod]
+
+      elsif params[:accion].to_sym == :arrived_to_warehouse
+      sale.decima!(current_user)
+      sale[:arrived_to_warehouse] = !sale[:arrived_to_warehouse]
+
+      elsif params[:accion].to_sym == :picked_up_by_cust
+      sale.undecima!(current_user)
+      sale[:picked_up_by_cust] = !sale[:picked_up_by_cust]
+
+      elsif params[:accion].to_sym == :bol
+      sale.duodecima!(current_user)
+      sale[:bol] = !sale[:bol]
+    end
+
+    sale.save
+
+
+
+    render :json => sale.to_json.to_s.to_json
+  end
+
+
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_sale
@@ -151,14 +176,86 @@ class SalesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def sale_params
-    accessible = [:season, :departure_date, :arrival_date, :manifest, :annotation,
-    :comment, :user_id, :customer_id]
-    accessible << [customer_attributes: [:id, :name]]
-    params.require(:sale).permit(accessible)
+    accessible = [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
+      :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy,
+      shipments_attributes: [:id, :customer_id, :start_at, :cancel, :product_id,
+        :shipment_consecutive, :pallets_number, :comments, :sale_id, :price, :plu,
+      :count, :product_color, :_destroy]]
+
+      params.require(:sale).permit(accessible)
+    end
+
+
   end
+
+
+
+=begin
+
+rescue Exception => e
+
 end
+#Events methods. This methods are called from the buttons on the index table
+  def to_modules_line
+    sale = Sale.find(params[:sale_id])
+    #The exclamation point autosaves its state change.
+    sale.uno!
+    redirect_to sales_path
+  end
 
 
+  def to_mexican_modules
+
+    sale = Sale.find(params[:sale_id])
+    #The exclamation point autosaves its state change.
+    sale.dos!
+    #sale.save
+    redirect_to sales_path
+  end
+
+  def to_american_modules
+    byebug
+    sale = Sale.find(params[:sale_id])
+
+    sale.revision = params[:revision]
+    #The exclamation point autosaves its state change.
+    sale.tres!
+    #sale.save
+
+    redirect_to sales_path
+  end
+
+  def to_fda_inspection
+    sale = Sale.find(params[:sale_id])
+    sale.cuatro!
+    redirect_to sales_path
+  end
+
+  def to_warehouse
+    sale = Sale.find(params[:sale_id])
+
+    sale.comment = params[:sale][:comment]
+    if(sale.comment.length < 5 || sale.comment == nil)
+      flash[:error] = 'A valid comment is needed.'
+    else
+      sale.cinco!
+      sale.save
+    end
+    redirect_to sales_path
+  end
+
+  def delivered
+    sale = Sale.find(params[:sale_id])
+    sale.seis!
+    redirect_to sales_path
+  end
+
+  def payed
+    sale = Sale.find(params[:sale_id])
+    sale.siete!
+    redirect_to sales_path
+  end
+=end
 
 
 
