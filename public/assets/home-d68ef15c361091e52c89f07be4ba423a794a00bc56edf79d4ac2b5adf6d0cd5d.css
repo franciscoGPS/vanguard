@@ -1,0 +1,3973 @@
+@charset "UTF-8";
+/*!
+ *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("/assets/font-awesome/fontawesome-webfont-d4f5a99224154f2a808e42a441ddc9248ffe78b7a4083684ce159270b30b912a.eot");
+  src: url("/assets/font-awesome/fontawesome-webfont-d4f5a99224154f2a808e42a441ddc9248ffe78b7a4083684ce159270b30b912a.eot?#iefix") format("embedded-opentype"), url("/assets/font-awesome/fontawesome-webfont-3c4a1bb7ce3234407184f0d80cc4dec075e4ad616b44dcc5778e1cfb1bc24019.woff2") format("woff2"), url("/assets/font-awesome/fontawesome-webfont-a7c7e4930090e038a280fd61d88f0dc03dad4aeaedbd8c9be3dd9aa4c3b6f8d1.woff") format("woff"), url("/assets/font-awesome/fontawesome-webfont-1b7f3de49d68b01f415574ebb82e6110a1d09cda2071ad8451bdb5124131a292.ttf") format("truetype"), url("/assets/font-awesome/fontawesome-webfont-7414288c272f6cc10304aa18e89bf24fb30f40afd644623f425c2c3d71fbe06a.svg#fontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 4, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_core.scss */
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* makes the font 33% larger relative to the icon container */
+/* line 5, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_larger.scss */
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+
+/* line 10, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_larger.scss */
+.fa-2x {
+  font-size: 2em;
+}
+
+/* line 11, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_larger.scss */
+.fa-3x {
+  font-size: 3em;
+}
+
+/* line 12, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_larger.scss */
+.fa-4x {
+  font-size: 4em;
+}
+
+/* line 13, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_larger.scss */
+.fa-5x {
+  font-size: 5em;
+}
+
+/* line 3, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_fixed-width.scss */
+.fa-fw {
+  width: 1.2857142857em;
+  text-align: center;
+}
+
+/* line 4, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_list.scss */
+.fa-ul {
+  padding-left: 0;
+  margin-left: 2.1428571429em;
+  list-style-type: none;
+}
+/* line 8, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_list.scss */
+.fa-ul > li {
+  position: relative;
+}
+
+/* line 10, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_list.scss */
+.fa-li {
+  position: absolute;
+  left: -2.1428571429em;
+  width: 2.1428571429em;
+  top: 0.1428571429em;
+  text-align: center;
+}
+/* line 16, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_list.scss */
+.fa-li.fa-lg {
+  left: -1.8571428571em;
+}
+
+/* line 4, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.fa-border {
+  padding: .2em .25em .15em;
+  border: solid 0.08em #eee;
+  border-radius: .1em;
+}
+
+/* line 10, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.fa-pull-left {
+  float: left;
+}
+
+/* line 11, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.fa-pull-right {
+  float: right;
+}
+
+/* line 14, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.fa.fa-pull-left {
+  margin-right: .3em;
+}
+/* line 15, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.fa.fa-pull-right {
+  margin-left: .3em;
+}
+
+/* Deprecated as of 4.4.0 */
+/* line 19, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.pull-right {
+  float: right;
+}
+
+/* line 20, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.pull-left {
+  float: left;
+}
+
+/* line 23, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.fa.pull-left {
+  margin-right: .3em;
+}
+/* line 24, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_bordered-pulled.scss */
+.fa.pull-right {
+  margin-left: .3em;
+}
+
+/* line 4, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_animated.scss */
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+/* line 9, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_animated.scss */
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+  animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+/* line 4, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_rotated-flipped.scss */
+.fa-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/* line 5, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_rotated-flipped.scss */
+.fa-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* line 6, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_rotated-flipped.scss */
+.fa-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+/* line 8, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_rotated-flipped.scss */
+.fa-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+/* line 9, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_rotated-flipped.scss */
+.fa-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+
+/* line 14, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_rotated-flipped.scss */
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical {
+  -webkit-filter: none;
+          filter: none;
+}
+
+/* line 4, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_stacked.scss */
+.fa-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+
+/* line 12, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_stacked.scss */
+.fa-stack-1x, .fa-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 18, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_stacked.scss */
+.fa-stack-1x {
+  line-height: inherit;
+}
+
+/* line 19, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_stacked.scss */
+.fa-stack-2x {
+  font-size: 2em;
+}
+
+/* line 20, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_stacked.scss */
+.fa-inverse {
+  color: #fff;
+}
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+/* line 4, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-glass:before {
+  content: "";
+}
+
+/* line 5, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-music:before {
+  content: "";
+}
+
+/* line 6, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-search:before {
+  content: "";
+}
+
+/* line 7, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-envelope-o:before {
+  content: "";
+}
+
+/* line 8, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-heart:before {
+  content: "";
+}
+
+/* line 9, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-star:before {
+  content: "";
+}
+
+/* line 10, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-star-o:before {
+  content: "";
+}
+
+/* line 11, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-user:before {
+  content: "";
+}
+
+/* line 12, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-film:before {
+  content: "";
+}
+
+/* line 13, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-th-large:before {
+  content: "";
+}
+
+/* line 14, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-th:before {
+  content: "";
+}
+
+/* line 15, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-th-list:before {
+  content: "";
+}
+
+/* line 16, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-check:before {
+  content: "";
+}
+
+/* line 17, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-remove:before,
+.fa-close:before,
+.fa-times:before {
+  content: "";
+}
+
+/* line 20, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-search-plus:before {
+  content: "";
+}
+
+/* line 21, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-search-minus:before {
+  content: "";
+}
+
+/* line 22, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-power-off:before {
+  content: "";
+}
+
+/* line 23, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-signal:before {
+  content: "";
+}
+
+/* line 24, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-gear:before,
+.fa-cog:before {
+  content: "";
+}
+
+/* line 26, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-trash-o:before {
+  content: "";
+}
+
+/* line 27, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-home:before {
+  content: "";
+}
+
+/* line 28, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-o:before {
+  content: "";
+}
+
+/* line 29, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-clock-o:before {
+  content: "";
+}
+
+/* line 30, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-road:before {
+  content: "";
+}
+
+/* line 31, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-download:before {
+  content: "";
+}
+
+/* line 32, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-circle-o-down:before {
+  content: "";
+}
+
+/* line 33, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-circle-o-up:before {
+  content: "";
+}
+
+/* line 34, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-inbox:before {
+  content: "";
+}
+
+/* line 35, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-play-circle-o:before {
+  content: "";
+}
+
+/* line 36, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-rotate-right:before,
+.fa-repeat:before {
+  content: "";
+}
+
+/* line 38, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-refresh:before {
+  content: "";
+}
+
+/* line 39, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-list-alt:before {
+  content: "";
+}
+
+/* line 40, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-lock:before {
+  content: "";
+}
+
+/* line 41, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-flag:before {
+  content: "";
+}
+
+/* line 42, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-headphones:before {
+  content: "";
+}
+
+/* line 43, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-volume-off:before {
+  content: "";
+}
+
+/* line 44, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-volume-down:before {
+  content: "";
+}
+
+/* line 45, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-volume-up:before {
+  content: "";
+}
+
+/* line 46, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-qrcode:before {
+  content: "";
+}
+
+/* line 47, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-barcode:before {
+  content: "";
+}
+
+/* line 48, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tag:before {
+  content: "";
+}
+
+/* line 49, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tags:before {
+  content: "";
+}
+
+/* line 50, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-book:before {
+  content: "";
+}
+
+/* line 51, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bookmark:before {
+  content: "";
+}
+
+/* line 52, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-print:before {
+  content: "";
+}
+
+/* line 53, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-camera:before {
+  content: "";
+}
+
+/* line 54, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-font:before {
+  content: "";
+}
+
+/* line 55, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bold:before {
+  content: "";
+}
+
+/* line 56, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-italic:before {
+  content: "";
+}
+
+/* line 57, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-text-height:before {
+  content: "";
+}
+
+/* line 58, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-text-width:before {
+  content: "";
+}
+
+/* line 59, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-align-left:before {
+  content: "";
+}
+
+/* line 60, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-align-center:before {
+  content: "";
+}
+
+/* line 61, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-align-right:before {
+  content: "";
+}
+
+/* line 62, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-align-justify:before {
+  content: "";
+}
+
+/* line 63, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-list:before {
+  content: "";
+}
+
+/* line 64, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-dedent:before,
+.fa-outdent:before {
+  content: "";
+}
+
+/* line 66, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-indent:before {
+  content: "";
+}
+
+/* line 67, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-video-camera:before {
+  content: "";
+}
+
+/* line 68, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-photo:before,
+.fa-image:before,
+.fa-picture-o:before {
+  content: "";
+}
+
+/* line 71, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pencil:before {
+  content: "";
+}
+
+/* line 72, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-map-marker:before {
+  content: "";
+}
+
+/* line 73, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-adjust:before {
+  content: "";
+}
+
+/* line 74, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tint:before {
+  content: "";
+}
+
+/* line 75, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-edit:before,
+.fa-pencil-square-o:before {
+  content: "";
+}
+
+/* line 77, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-share-square-o:before {
+  content: "";
+}
+
+/* line 78, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-check-square-o:before {
+  content: "";
+}
+
+/* line 79, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrows:before {
+  content: "";
+}
+
+/* line 80, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-step-backward:before {
+  content: "";
+}
+
+/* line 81, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-fast-backward:before {
+  content: "";
+}
+
+/* line 82, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-backward:before {
+  content: "";
+}
+
+/* line 83, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-play:before {
+  content: "";
+}
+
+/* line 84, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pause:before {
+  content: "";
+}
+
+/* line 85, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-stop:before {
+  content: "";
+}
+
+/* line 86, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-forward:before {
+  content: "";
+}
+
+/* line 87, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-fast-forward:before {
+  content: "";
+}
+
+/* line 88, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-step-forward:before {
+  content: "";
+}
+
+/* line 89, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-eject:before {
+  content: "";
+}
+
+/* line 90, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chevron-left:before {
+  content: "";
+}
+
+/* line 91, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chevron-right:before {
+  content: "";
+}
+
+/* line 92, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-plus-circle:before {
+  content: "";
+}
+
+/* line 93, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-minus-circle:before {
+  content: "";
+}
+
+/* line 94, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-times-circle:before {
+  content: "";
+}
+
+/* line 95, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-check-circle:before {
+  content: "";
+}
+
+/* line 96, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-question-circle:before {
+  content: "";
+}
+
+/* line 97, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-info-circle:before {
+  content: "";
+}
+
+/* line 98, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-crosshairs:before {
+  content: "";
+}
+
+/* line 99, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-times-circle-o:before {
+  content: "";
+}
+
+/* line 100, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-check-circle-o:before {
+  content: "";
+}
+
+/* line 101, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ban:before {
+  content: "";
+}
+
+/* line 102, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-left:before {
+  content: "";
+}
+
+/* line 103, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-right:before {
+  content: "";
+}
+
+/* line 104, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-up:before {
+  content: "";
+}
+
+/* line 105, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-down:before {
+  content: "";
+}
+
+/* line 106, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mail-forward:before,
+.fa-share:before {
+  content: "";
+}
+
+/* line 108, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-expand:before {
+  content: "";
+}
+
+/* line 109, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-compress:before {
+  content: "";
+}
+
+/* line 110, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-plus:before {
+  content: "";
+}
+
+/* line 111, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-minus:before {
+  content: "";
+}
+
+/* line 112, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-asterisk:before {
+  content: "";
+}
+
+/* line 113, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-exclamation-circle:before {
+  content: "";
+}
+
+/* line 114, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-gift:before {
+  content: "";
+}
+
+/* line 115, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-leaf:before {
+  content: "";
+}
+
+/* line 116, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-fire:before {
+  content: "";
+}
+
+/* line 117, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-eye:before {
+  content: "";
+}
+
+/* line 118, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-eye-slash:before {
+  content: "";
+}
+
+/* line 119, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-warning:before,
+.fa-exclamation-triangle:before {
+  content: "";
+}
+
+/* line 121, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-plane:before {
+  content: "";
+}
+
+/* line 122, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-calendar:before {
+  content: "";
+}
+
+/* line 123, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-random:before {
+  content: "";
+}
+
+/* line 124, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-comment:before {
+  content: "";
+}
+
+/* line 125, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-magnet:before {
+  content: "";
+}
+
+/* line 126, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chevron-up:before {
+  content: "";
+}
+
+/* line 127, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chevron-down:before {
+  content: "";
+}
+
+/* line 128, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-retweet:before {
+  content: "";
+}
+
+/* line 129, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-shopping-cart:before {
+  content: "";
+}
+
+/* line 130, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-folder:before {
+  content: "";
+}
+
+/* line 131, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-folder-open:before {
+  content: "";
+}
+
+/* line 132, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrows-v:before {
+  content: "";
+}
+
+/* line 133, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrows-h:before {
+  content: "";
+}
+
+/* line 134, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bar-chart-o:before,
+.fa-bar-chart:before {
+  content: "";
+}
+
+/* line 136, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-twitter-square:before {
+  content: "";
+}
+
+/* line 137, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-facebook-square:before {
+  content: "";
+}
+
+/* line 138, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-camera-retro:before {
+  content: "";
+}
+
+/* line 139, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-key:before {
+  content: "";
+}
+
+/* line 140, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-gears:before,
+.fa-cogs:before {
+  content: "";
+}
+
+/* line 142, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-comments:before {
+  content: "";
+}
+
+/* line 143, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-thumbs-o-up:before {
+  content: "";
+}
+
+/* line 144, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-thumbs-o-down:before {
+  content: "";
+}
+
+/* line 145, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-star-half:before {
+  content: "";
+}
+
+/* line 146, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-heart-o:before {
+  content: "";
+}
+
+/* line 147, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sign-out:before {
+  content: "";
+}
+
+/* line 148, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-linkedin-square:before {
+  content: "";
+}
+
+/* line 149, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-thumb-tack:before {
+  content: "";
+}
+
+/* line 150, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-external-link:before {
+  content: "";
+}
+
+/* line 151, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sign-in:before {
+  content: "";
+}
+
+/* line 152, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-trophy:before {
+  content: "";
+}
+
+/* line 153, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-github-square:before {
+  content: "";
+}
+
+/* line 154, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-upload:before {
+  content: "";
+}
+
+/* line 155, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-lemon-o:before {
+  content: "";
+}
+
+/* line 156, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-phone:before {
+  content: "";
+}
+
+/* line 157, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-square-o:before {
+  content: "";
+}
+
+/* line 158, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bookmark-o:before {
+  content: "";
+}
+
+/* line 159, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-phone-square:before {
+  content: "";
+}
+
+/* line 160, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-twitter:before {
+  content: "";
+}
+
+/* line 161, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-facebook-f:before,
+.fa-facebook:before {
+  content: "";
+}
+
+/* line 163, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-github:before {
+  content: "";
+}
+
+/* line 164, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-unlock:before {
+  content: "";
+}
+
+/* line 165, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-credit-card:before {
+  content: "";
+}
+
+/* line 166, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-feed:before,
+.fa-rss:before {
+  content: "";
+}
+
+/* line 168, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hdd-o:before {
+  content: "";
+}
+
+/* line 169, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bullhorn:before {
+  content: "";
+}
+
+/* line 170, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bell:before {
+  content: "";
+}
+
+/* line 171, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-certificate:before {
+  content: "";
+}
+
+/* line 172, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-o-right:before {
+  content: "";
+}
+
+/* line 173, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-o-left:before {
+  content: "";
+}
+
+/* line 174, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-o-up:before {
+  content: "";
+}
+
+/* line 175, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-o-down:before {
+  content: "";
+}
+
+/* line 176, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-circle-left:before {
+  content: "";
+}
+
+/* line 177, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-circle-right:before {
+  content: "";
+}
+
+/* line 178, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-circle-up:before {
+  content: "";
+}
+
+/* line 179, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-circle-down:before {
+  content: "";
+}
+
+/* line 180, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-globe:before {
+  content: "";
+}
+
+/* line 181, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-wrench:before {
+  content: "";
+}
+
+/* line 182, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tasks:before {
+  content: "";
+}
+
+/* line 183, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-filter:before {
+  content: "";
+}
+
+/* line 184, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-briefcase:before {
+  content: "";
+}
+
+/* line 185, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrows-alt:before {
+  content: "";
+}
+
+/* line 186, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-group:before,
+.fa-users:before {
+  content: "";
+}
+
+/* line 188, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chain:before,
+.fa-link:before {
+  content: "";
+}
+
+/* line 190, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cloud:before {
+  content: "";
+}
+
+/* line 191, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-flask:before {
+  content: "";
+}
+
+/* line 192, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cut:before,
+.fa-scissors:before {
+  content: "";
+}
+
+/* line 194, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-copy:before,
+.fa-files-o:before {
+  content: "";
+}
+
+/* line 196, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-paperclip:before {
+  content: "";
+}
+
+/* line 197, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-save:before,
+.fa-floppy-o:before {
+  content: "";
+}
+
+/* line 199, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-square:before {
+  content: "";
+}
+
+/* line 200, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-navicon:before,
+.fa-reorder:before,
+.fa-bars:before {
+  content: "";
+}
+
+/* line 203, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-list-ul:before {
+  content: "";
+}
+
+/* line 204, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-list-ol:before {
+  content: "";
+}
+
+/* line 205, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-strikethrough:before {
+  content: "";
+}
+
+/* line 206, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-underline:before {
+  content: "";
+}
+
+/* line 207, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-table:before {
+  content: "";
+}
+
+/* line 208, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-magic:before {
+  content: "";
+}
+
+/* line 209, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-truck:before {
+  content: "";
+}
+
+/* line 210, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pinterest:before {
+  content: "";
+}
+
+/* line 211, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pinterest-square:before {
+  content: "";
+}
+
+/* line 212, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-google-plus-square:before {
+  content: "";
+}
+
+/* line 213, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-google-plus:before {
+  content: "";
+}
+
+/* line 214, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-money:before {
+  content: "";
+}
+
+/* line 215, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-caret-down:before {
+  content: "";
+}
+
+/* line 216, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-caret-up:before {
+  content: "";
+}
+
+/* line 217, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-caret-left:before {
+  content: "";
+}
+
+/* line 218, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-caret-right:before {
+  content: "";
+}
+
+/* line 219, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-columns:before {
+  content: "";
+}
+
+/* line 220, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-unsorted:before,
+.fa-sort:before {
+  content: "";
+}
+
+/* line 222, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sort-down:before,
+.fa-sort-desc:before {
+  content: "";
+}
+
+/* line 224, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sort-up:before,
+.fa-sort-asc:before {
+  content: "";
+}
+
+/* line 226, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-envelope:before {
+  content: "";
+}
+
+/* line 227, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-linkedin:before {
+  content: "";
+}
+
+/* line 228, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-rotate-left:before,
+.fa-undo:before {
+  content: "";
+}
+
+/* line 230, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-legal:before,
+.fa-gavel:before {
+  content: "";
+}
+
+/* line 232, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-dashboard:before,
+.fa-tachometer:before {
+  content: "";
+}
+
+/* line 234, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-comment-o:before {
+  content: "";
+}
+
+/* line 235, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-comments-o:before {
+  content: "";
+}
+
+/* line 236, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-flash:before,
+.fa-bolt:before {
+  content: "";
+}
+
+/* line 238, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sitemap:before {
+  content: "";
+}
+
+/* line 239, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-umbrella:before {
+  content: "";
+}
+
+/* line 240, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-paste:before,
+.fa-clipboard:before {
+  content: "";
+}
+
+/* line 242, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-lightbulb-o:before {
+  content: "";
+}
+
+/* line 243, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-exchange:before {
+  content: "";
+}
+
+/* line 244, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cloud-download:before {
+  content: "";
+}
+
+/* line 245, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cloud-upload:before {
+  content: "";
+}
+
+/* line 246, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-user-md:before {
+  content: "";
+}
+
+/* line 247, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-stethoscope:before {
+  content: "";
+}
+
+/* line 248, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-suitcase:before {
+  content: "";
+}
+
+/* line 249, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bell-o:before {
+  content: "";
+}
+
+/* line 250, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-coffee:before {
+  content: "";
+}
+
+/* line 251, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cutlery:before {
+  content: "";
+}
+
+/* line 252, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-text-o:before {
+  content: "";
+}
+
+/* line 253, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-building-o:before {
+  content: "";
+}
+
+/* line 254, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hospital-o:before {
+  content: "";
+}
+
+/* line 255, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ambulance:before {
+  content: "";
+}
+
+/* line 256, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-medkit:before {
+  content: "";
+}
+
+/* line 257, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-fighter-jet:before {
+  content: "";
+}
+
+/* line 258, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-beer:before {
+  content: "";
+}
+
+/* line 259, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-h-square:before {
+  content: "";
+}
+
+/* line 260, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-plus-square:before {
+  content: "";
+}
+
+/* line 261, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angle-double-left:before {
+  content: "";
+}
+
+/* line 262, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angle-double-right:before {
+  content: "";
+}
+
+/* line 263, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angle-double-up:before {
+  content: "";
+}
+
+/* line 264, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angle-double-down:before {
+  content: "";
+}
+
+/* line 265, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angle-left:before {
+  content: "";
+}
+
+/* line 266, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angle-right:before {
+  content: "";
+}
+
+/* line 267, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angle-up:before {
+  content: "";
+}
+
+/* line 268, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angle-down:before {
+  content: "";
+}
+
+/* line 269, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-desktop:before {
+  content: "";
+}
+
+/* line 270, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-laptop:before {
+  content: "";
+}
+
+/* line 271, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tablet:before {
+  content: "";
+}
+
+/* line 272, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mobile-phone:before,
+.fa-mobile:before {
+  content: "";
+}
+
+/* line 274, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-circle-o:before {
+  content: "";
+}
+
+/* line 275, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-quote-left:before {
+  content: "";
+}
+
+/* line 276, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-quote-right:before {
+  content: "";
+}
+
+/* line 277, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-spinner:before {
+  content: "";
+}
+
+/* line 278, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-circle:before {
+  content: "";
+}
+
+/* line 279, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mail-reply:before,
+.fa-reply:before {
+  content: "";
+}
+
+/* line 281, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-github-alt:before {
+  content: "";
+}
+
+/* line 282, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-folder-o:before {
+  content: "";
+}
+
+/* line 283, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-folder-open-o:before {
+  content: "";
+}
+
+/* line 284, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-smile-o:before {
+  content: "";
+}
+
+/* line 285, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-frown-o:before {
+  content: "";
+}
+
+/* line 286, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-meh-o:before {
+  content: "";
+}
+
+/* line 287, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-gamepad:before {
+  content: "";
+}
+
+/* line 288, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-keyboard-o:before {
+  content: "";
+}
+
+/* line 289, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-flag-o:before {
+  content: "";
+}
+
+/* line 290, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-flag-checkered:before {
+  content: "";
+}
+
+/* line 291, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-terminal:before {
+  content: "";
+}
+
+/* line 292, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-code:before {
+  content: "";
+}
+
+/* line 293, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mail-reply-all:before,
+.fa-reply-all:before {
+  content: "";
+}
+
+/* line 295, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-star-half-empty:before,
+.fa-star-half-full:before,
+.fa-star-half-o:before {
+  content: "";
+}
+
+/* line 298, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-location-arrow:before {
+  content: "";
+}
+
+/* line 299, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-crop:before {
+  content: "";
+}
+
+/* line 300, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-code-fork:before {
+  content: "";
+}
+
+/* line 301, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-unlink:before,
+.fa-chain-broken:before {
+  content: "";
+}
+
+/* line 303, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-question:before {
+  content: "";
+}
+
+/* line 304, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-info:before {
+  content: "";
+}
+
+/* line 305, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-exclamation:before {
+  content: "";
+}
+
+/* line 306, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-superscript:before {
+  content: "";
+}
+
+/* line 307, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-subscript:before {
+  content: "";
+}
+
+/* line 308, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-eraser:before {
+  content: "";
+}
+
+/* line 309, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-puzzle-piece:before {
+  content: "";
+}
+
+/* line 310, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-microphone:before {
+  content: "";
+}
+
+/* line 311, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-microphone-slash:before {
+  content: "";
+}
+
+/* line 312, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-shield:before {
+  content: "";
+}
+
+/* line 313, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-calendar-o:before {
+  content: "";
+}
+
+/* line 314, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-fire-extinguisher:before {
+  content: "";
+}
+
+/* line 315, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-rocket:before {
+  content: "";
+}
+
+/* line 316, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-maxcdn:before {
+  content: "";
+}
+
+/* line 317, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chevron-circle-left:before {
+  content: "";
+}
+
+/* line 318, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chevron-circle-right:before {
+  content: "";
+}
+
+/* line 319, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chevron-circle-up:before {
+  content: "";
+}
+
+/* line 320, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chevron-circle-down:before {
+  content: "";
+}
+
+/* line 321, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-html5:before {
+  content: "";
+}
+
+/* line 322, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-css3:before {
+  content: "";
+}
+
+/* line 323, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-anchor:before {
+  content: "";
+}
+
+/* line 324, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-unlock-alt:before {
+  content: "";
+}
+
+/* line 325, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bullseye:before {
+  content: "";
+}
+
+/* line 326, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ellipsis-h:before {
+  content: "";
+}
+
+/* line 327, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ellipsis-v:before {
+  content: "";
+}
+
+/* line 328, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-rss-square:before {
+  content: "";
+}
+
+/* line 329, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-play-circle:before {
+  content: "";
+}
+
+/* line 330, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ticket:before {
+  content: "";
+}
+
+/* line 331, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-minus-square:before {
+  content: "";
+}
+
+/* line 332, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-minus-square-o:before {
+  content: "";
+}
+
+/* line 333, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-level-up:before {
+  content: "";
+}
+
+/* line 334, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-level-down:before {
+  content: "";
+}
+
+/* line 335, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-check-square:before {
+  content: "";
+}
+
+/* line 336, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pencil-square:before {
+  content: "";
+}
+
+/* line 337, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-external-link-square:before {
+  content: "";
+}
+
+/* line 338, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-share-square:before {
+  content: "";
+}
+
+/* line 339, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-compass:before {
+  content: "";
+}
+
+/* line 340, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-toggle-down:before,
+.fa-caret-square-o-down:before {
+  content: "";
+}
+
+/* line 342, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-toggle-up:before,
+.fa-caret-square-o-up:before {
+  content: "";
+}
+
+/* line 344, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-toggle-right:before,
+.fa-caret-square-o-right:before {
+  content: "";
+}
+
+/* line 346, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-euro:before,
+.fa-eur:before {
+  content: "";
+}
+
+/* line 348, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-gbp:before {
+  content: "";
+}
+
+/* line 349, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-dollar:before,
+.fa-usd:before {
+  content: "";
+}
+
+/* line 351, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-rupee:before,
+.fa-inr:before {
+  content: "";
+}
+
+/* line 353, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cny:before,
+.fa-rmb:before,
+.fa-yen:before,
+.fa-jpy:before {
+  content: "";
+}
+
+/* line 357, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ruble:before,
+.fa-rouble:before,
+.fa-rub:before {
+  content: "";
+}
+
+/* line 360, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-won:before,
+.fa-krw:before {
+  content: "";
+}
+
+/* line 362, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bitcoin:before,
+.fa-btc:before {
+  content: "";
+}
+
+/* line 364, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file:before {
+  content: "";
+}
+
+/* line 365, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-text:before {
+  content: "";
+}
+
+/* line 366, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sort-alpha-asc:before {
+  content: "";
+}
+
+/* line 367, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sort-alpha-desc:before {
+  content: "";
+}
+
+/* line 368, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sort-amount-asc:before {
+  content: "";
+}
+
+/* line 369, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sort-amount-desc:before {
+  content: "";
+}
+
+/* line 370, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sort-numeric-asc:before {
+  content: "";
+}
+
+/* line 371, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sort-numeric-desc:before {
+  content: "";
+}
+
+/* line 372, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-thumbs-up:before {
+  content: "";
+}
+
+/* line 373, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-thumbs-down:before {
+  content: "";
+}
+
+/* line 374, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-youtube-square:before {
+  content: "";
+}
+
+/* line 375, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-youtube:before {
+  content: "";
+}
+
+/* line 376, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-xing:before {
+  content: "";
+}
+
+/* line 377, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-xing-square:before {
+  content: "";
+}
+
+/* line 378, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-youtube-play:before {
+  content: "";
+}
+
+/* line 379, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-dropbox:before {
+  content: "";
+}
+
+/* line 380, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-stack-overflow:before {
+  content: "";
+}
+
+/* line 381, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-instagram:before {
+  content: "";
+}
+
+/* line 382, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-flickr:before {
+  content: "";
+}
+
+/* line 383, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-adn:before {
+  content: "";
+}
+
+/* line 384, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bitbucket:before {
+  content: "";
+}
+
+/* line 385, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bitbucket-square:before {
+  content: "";
+}
+
+/* line 386, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tumblr:before {
+  content: "";
+}
+
+/* line 387, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tumblr-square:before {
+  content: "";
+}
+
+/* line 388, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-long-arrow-down:before {
+  content: "";
+}
+
+/* line 389, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-long-arrow-up:before {
+  content: "";
+}
+
+/* line 390, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-long-arrow-left:before {
+  content: "";
+}
+
+/* line 391, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-long-arrow-right:before {
+  content: "";
+}
+
+/* line 392, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-apple:before {
+  content: "";
+}
+
+/* line 393, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-windows:before {
+  content: "";
+}
+
+/* line 394, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-android:before {
+  content: "";
+}
+
+/* line 395, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-linux:before {
+  content: "";
+}
+
+/* line 396, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-dribbble:before {
+  content: "";
+}
+
+/* line 397, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-skype:before {
+  content: "";
+}
+
+/* line 398, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-foursquare:before {
+  content: "";
+}
+
+/* line 399, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-trello:before {
+  content: "";
+}
+
+/* line 400, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-female:before {
+  content: "";
+}
+
+/* line 401, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-male:before {
+  content: "";
+}
+
+/* line 402, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-gittip:before,
+.fa-gratipay:before {
+  content: "";
+}
+
+/* line 404, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sun-o:before {
+  content: "";
+}
+
+/* line 405, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-moon-o:before {
+  content: "";
+}
+
+/* line 406, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-archive:before {
+  content: "";
+}
+
+/* line 407, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bug:before {
+  content: "";
+}
+
+/* line 408, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-vk:before {
+  content: "";
+}
+
+/* line 409, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-weibo:before {
+  content: "";
+}
+
+/* line 410, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-renren:before {
+  content: "";
+}
+
+/* line 411, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pagelines:before {
+  content: "";
+}
+
+/* line 412, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-stack-exchange:before {
+  content: "";
+}
+
+/* line 413, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-circle-o-right:before {
+  content: "";
+}
+
+/* line 414, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-arrow-circle-o-left:before {
+  content: "";
+}
+
+/* line 415, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-toggle-left:before,
+.fa-caret-square-o-left:before {
+  content: "";
+}
+
+/* line 417, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-dot-circle-o:before {
+  content: "";
+}
+
+/* line 418, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-wheelchair:before {
+  content: "";
+}
+
+/* line 419, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-vimeo-square:before {
+  content: "";
+}
+
+/* line 420, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-turkish-lira:before,
+.fa-try:before {
+  content: "";
+}
+
+/* line 422, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-plus-square-o:before {
+  content: "";
+}
+
+/* line 423, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-space-shuttle:before {
+  content: "";
+}
+
+/* line 424, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-slack:before {
+  content: "";
+}
+
+/* line 425, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-envelope-square:before {
+  content: "";
+}
+
+/* line 426, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-wordpress:before {
+  content: "";
+}
+
+/* line 427, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-openid:before {
+  content: "";
+}
+
+/* line 428, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-institution:before,
+.fa-bank:before,
+.fa-university:before {
+  content: "";
+}
+
+/* line 431, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mortar-board:before,
+.fa-graduation-cap:before {
+  content: "";
+}
+
+/* line 433, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-yahoo:before {
+  content: "";
+}
+
+/* line 434, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-google:before {
+  content: "";
+}
+
+/* line 435, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-reddit:before {
+  content: "";
+}
+
+/* line 436, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-reddit-square:before {
+  content: "";
+}
+
+/* line 437, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-stumbleupon-circle:before {
+  content: "";
+}
+
+/* line 438, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-stumbleupon:before {
+  content: "";
+}
+
+/* line 439, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-delicious:before {
+  content: "";
+}
+
+/* line 440, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-digg:before {
+  content: "";
+}
+
+/* line 441, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pied-piper:before {
+  content: "";
+}
+
+/* line 442, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pied-piper-alt:before {
+  content: "";
+}
+
+/* line 443, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-drupal:before {
+  content: "";
+}
+
+/* line 444, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-joomla:before {
+  content: "";
+}
+
+/* line 445, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-language:before {
+  content: "";
+}
+
+/* line 446, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-fax:before {
+  content: "";
+}
+
+/* line 447, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-building:before {
+  content: "";
+}
+
+/* line 448, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-child:before {
+  content: "";
+}
+
+/* line 449, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-paw:before {
+  content: "";
+}
+
+/* line 450, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-spoon:before {
+  content: "";
+}
+
+/* line 451, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cube:before {
+  content: "";
+}
+
+/* line 452, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cubes:before {
+  content: "";
+}
+
+/* line 453, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-behance:before {
+  content: "";
+}
+
+/* line 454, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-behance-square:before {
+  content: "";
+}
+
+/* line 455, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-steam:before {
+  content: "";
+}
+
+/* line 456, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-steam-square:before {
+  content: "";
+}
+
+/* line 457, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-recycle:before {
+  content: "";
+}
+
+/* line 458, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-automobile:before,
+.fa-car:before {
+  content: "";
+}
+
+/* line 460, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cab:before,
+.fa-taxi:before {
+  content: "";
+}
+
+/* line 462, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tree:before {
+  content: "";
+}
+
+/* line 463, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-spotify:before {
+  content: "";
+}
+
+/* line 464, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-deviantart:before {
+  content: "";
+}
+
+/* line 465, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-soundcloud:before {
+  content: "";
+}
+
+/* line 466, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-database:before {
+  content: "";
+}
+
+/* line 467, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-pdf-o:before {
+  content: "";
+}
+
+/* line 468, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-word-o:before {
+  content: "";
+}
+
+/* line 469, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-excel-o:before {
+  content: "";
+}
+
+/* line 470, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-powerpoint-o:before {
+  content: "";
+}
+
+/* line 471, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-photo-o:before,
+.fa-file-picture-o:before,
+.fa-file-image-o:before {
+  content: "";
+}
+
+/* line 474, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-zip-o:before,
+.fa-file-archive-o:before {
+  content: "";
+}
+
+/* line 476, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-sound-o:before,
+.fa-file-audio-o:before {
+  content: "";
+}
+
+/* line 478, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-movie-o:before,
+.fa-file-video-o:before {
+  content: "";
+}
+
+/* line 480, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-file-code-o:before {
+  content: "";
+}
+
+/* line 481, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-vine:before {
+  content: "";
+}
+
+/* line 482, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-codepen:before {
+  content: "";
+}
+
+/* line 483, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-jsfiddle:before {
+  content: "";
+}
+
+/* line 484, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-life-bouy:before,
+.fa-life-buoy:before,
+.fa-life-saver:before,
+.fa-support:before,
+.fa-life-ring:before {
+  content: "";
+}
+
+/* line 489, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-circle-o-notch:before {
+  content: "";
+}
+
+/* line 490, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ra:before,
+.fa-rebel:before {
+  content: "";
+}
+
+/* line 492, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ge:before,
+.fa-empire:before {
+  content: "";
+}
+
+/* line 494, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-git-square:before {
+  content: "";
+}
+
+/* line 495, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-git:before {
+  content: "";
+}
+
+/* line 496, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-y-combinator-square:before,
+.fa-yc-square:before,
+.fa-hacker-news:before {
+  content: "";
+}
+
+/* line 499, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tencent-weibo:before {
+  content: "";
+}
+
+/* line 500, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-qq:before {
+  content: "";
+}
+
+/* line 501, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-wechat:before,
+.fa-weixin:before {
+  content: "";
+}
+
+/* line 503, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-send:before,
+.fa-paper-plane:before {
+  content: "";
+}
+
+/* line 505, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-send-o:before,
+.fa-paper-plane-o:before {
+  content: "";
+}
+
+/* line 507, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-history:before {
+  content: "";
+}
+
+/* line 508, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-circle-thin:before {
+  content: "";
+}
+
+/* line 509, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-header:before {
+  content: "";
+}
+
+/* line 510, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-paragraph:before {
+  content: "";
+}
+
+/* line 511, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sliders:before {
+  content: "";
+}
+
+/* line 512, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-share-alt:before {
+  content: "";
+}
+
+/* line 513, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-share-alt-square:before {
+  content: "";
+}
+
+/* line 514, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bomb:before {
+  content: "";
+}
+
+/* line 515, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-soccer-ball-o:before,
+.fa-futbol-o:before {
+  content: "";
+}
+
+/* line 517, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tty:before {
+  content: "";
+}
+
+/* line 518, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-binoculars:before {
+  content: "";
+}
+
+/* line 519, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-plug:before {
+  content: "";
+}
+
+/* line 520, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-slideshare:before {
+  content: "";
+}
+
+/* line 521, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-twitch:before {
+  content: "";
+}
+
+/* line 522, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-yelp:before {
+  content: "";
+}
+
+/* line 523, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-newspaper-o:before {
+  content: "";
+}
+
+/* line 524, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-wifi:before {
+  content: "";
+}
+
+/* line 525, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-calculator:before {
+  content: "";
+}
+
+/* line 526, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-paypal:before {
+  content: "";
+}
+
+/* line 527, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-google-wallet:before {
+  content: "";
+}
+
+/* line 528, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc-visa:before {
+  content: "";
+}
+
+/* line 529, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc-mastercard:before {
+  content: "";
+}
+
+/* line 530, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc-discover:before {
+  content: "";
+}
+
+/* line 531, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc-amex:before {
+  content: "";
+}
+
+/* line 532, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc-paypal:before {
+  content: "";
+}
+
+/* line 533, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc-stripe:before {
+  content: "";
+}
+
+/* line 534, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bell-slash:before {
+  content: "";
+}
+
+/* line 535, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bell-slash-o:before {
+  content: "";
+}
+
+/* line 536, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-trash:before {
+  content: "";
+}
+
+/* line 537, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-copyright:before {
+  content: "";
+}
+
+/* line 538, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-at:before {
+  content: "";
+}
+
+/* line 539, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-eyedropper:before {
+  content: "";
+}
+
+/* line 540, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-paint-brush:before {
+  content: "";
+}
+
+/* line 541, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-birthday-cake:before {
+  content: "";
+}
+
+/* line 542, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-area-chart:before {
+  content: "";
+}
+
+/* line 543, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pie-chart:before {
+  content: "";
+}
+
+/* line 544, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-line-chart:before {
+  content: "";
+}
+
+/* line 545, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-lastfm:before {
+  content: "";
+}
+
+/* line 546, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-lastfm-square:before {
+  content: "";
+}
+
+/* line 547, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-toggle-off:before {
+  content: "";
+}
+
+/* line 548, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-toggle-on:before {
+  content: "";
+}
+
+/* line 549, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bicycle:before {
+  content: "";
+}
+
+/* line 550, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-bus:before {
+  content: "";
+}
+
+/* line 551, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ioxhost:before {
+  content: "";
+}
+
+/* line 552, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-angellist:before {
+  content: "";
+}
+
+/* line 553, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc:before {
+  content: "";
+}
+
+/* line 554, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-shekel:before,
+.fa-sheqel:before,
+.fa-ils:before {
+  content: "";
+}
+
+/* line 557, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-meanpath:before {
+  content: "";
+}
+
+/* line 558, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-buysellads:before {
+  content: "";
+}
+
+/* line 559, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-connectdevelop:before {
+  content: "";
+}
+
+/* line 560, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-dashcube:before {
+  content: "";
+}
+
+/* line 561, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-forumbee:before {
+  content: "";
+}
+
+/* line 562, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-leanpub:before {
+  content: "";
+}
+
+/* line 563, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sellsy:before {
+  content: "";
+}
+
+/* line 564, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-shirtsinbulk:before {
+  content: "";
+}
+
+/* line 565, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-simplybuilt:before {
+  content: "";
+}
+
+/* line 566, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-skyatlas:before {
+  content: "";
+}
+
+/* line 567, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cart-plus:before {
+  content: "";
+}
+
+/* line 568, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cart-arrow-down:before {
+  content: "";
+}
+
+/* line 569, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-diamond:before {
+  content: "";
+}
+
+/* line 570, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-ship:before {
+  content: "";
+}
+
+/* line 571, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-user-secret:before {
+  content: "";
+}
+
+/* line 572, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-motorcycle:before {
+  content: "";
+}
+
+/* line 573, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-street-view:before {
+  content: "";
+}
+
+/* line 574, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-heartbeat:before {
+  content: "";
+}
+
+/* line 575, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-venus:before {
+  content: "";
+}
+
+/* line 576, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mars:before {
+  content: "";
+}
+
+/* line 577, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mercury:before {
+  content: "";
+}
+
+/* line 578, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-intersex:before,
+.fa-transgender:before {
+  content: "";
+}
+
+/* line 580, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-transgender-alt:before {
+  content: "";
+}
+
+/* line 581, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-venus-double:before {
+  content: "";
+}
+
+/* line 582, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mars-double:before {
+  content: "";
+}
+
+/* line 583, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-venus-mars:before {
+  content: "";
+}
+
+/* line 584, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mars-stroke:before {
+  content: "";
+}
+
+/* line 585, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mars-stroke-v:before {
+  content: "";
+}
+
+/* line 586, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mars-stroke-h:before {
+  content: "";
+}
+
+/* line 587, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-neuter:before {
+  content: "";
+}
+
+/* line 588, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-genderless:before {
+  content: "";
+}
+
+/* line 589, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-facebook-official:before {
+  content: "";
+}
+
+/* line 590, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-pinterest-p:before {
+  content: "";
+}
+
+/* line 591, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-whatsapp:before {
+  content: "";
+}
+
+/* line 592, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-server:before {
+  content: "";
+}
+
+/* line 593, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-user-plus:before {
+  content: "";
+}
+
+/* line 594, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-user-times:before {
+  content: "";
+}
+
+/* line 595, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hotel:before,
+.fa-bed:before {
+  content: "";
+}
+
+/* line 597, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-viacoin:before {
+  content: "";
+}
+
+/* line 598, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-train:before {
+  content: "";
+}
+
+/* line 599, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-subway:before {
+  content: "";
+}
+
+/* line 600, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-medium:before {
+  content: "";
+}
+
+/* line 601, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-yc:before,
+.fa-y-combinator:before {
+  content: "";
+}
+
+/* line 603, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-optin-monster:before {
+  content: "";
+}
+
+/* line 604, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-opencart:before {
+  content: "";
+}
+
+/* line 605, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-expeditedssl:before {
+  content: "";
+}
+
+/* line 606, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-battery-4:before,
+.fa-battery-full:before {
+  content: "";
+}
+
+/* line 608, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-battery-3:before,
+.fa-battery-three-quarters:before {
+  content: "";
+}
+
+/* line 610, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-battery-2:before,
+.fa-battery-half:before {
+  content: "";
+}
+
+/* line 612, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-battery-1:before,
+.fa-battery-quarter:before {
+  content: "";
+}
+
+/* line 614, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-battery-0:before,
+.fa-battery-empty:before {
+  content: "";
+}
+
+/* line 616, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-mouse-pointer:before {
+  content: "";
+}
+
+/* line 617, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-i-cursor:before {
+  content: "";
+}
+
+/* line 618, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-object-group:before {
+  content: "";
+}
+
+/* line 619, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-object-ungroup:before {
+  content: "";
+}
+
+/* line 620, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sticky-note:before {
+  content: "";
+}
+
+/* line 621, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-sticky-note-o:before {
+  content: "";
+}
+
+/* line 622, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc-jcb:before {
+  content: "";
+}
+
+/* line 623, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-cc-diners-club:before {
+  content: "";
+}
+
+/* line 624, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-clone:before {
+  content: "";
+}
+
+/* line 625, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-balance-scale:before {
+  content: "";
+}
+
+/* line 626, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hourglass-o:before {
+  content: "";
+}
+
+/* line 627, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hourglass-1:before,
+.fa-hourglass-start:before {
+  content: "";
+}
+
+/* line 629, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hourglass-2:before,
+.fa-hourglass-half:before {
+  content: "";
+}
+
+/* line 631, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hourglass-3:before,
+.fa-hourglass-end:before {
+  content: "";
+}
+
+/* line 633, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hourglass:before {
+  content: "";
+}
+
+/* line 634, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-grab-o:before,
+.fa-hand-rock-o:before {
+  content: "";
+}
+
+/* line 636, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-stop-o:before,
+.fa-hand-paper-o:before {
+  content: "";
+}
+
+/* line 638, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-scissors-o:before {
+  content: "";
+}
+
+/* line 639, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-lizard-o:before {
+  content: "";
+}
+
+/* line 640, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-spock-o:before {
+  content: "";
+}
+
+/* line 641, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-pointer-o:before {
+  content: "";
+}
+
+/* line 642, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-hand-peace-o:before {
+  content: "";
+}
+
+/* line 643, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-trademark:before {
+  content: "";
+}
+
+/* line 644, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-registered:before {
+  content: "";
+}
+
+/* line 645, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-creative-commons:before {
+  content: "";
+}
+
+/* line 646, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-gg:before {
+  content: "";
+}
+
+/* line 647, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-gg-circle:before {
+  content: "";
+}
+
+/* line 648, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tripadvisor:before {
+  content: "";
+}
+
+/* line 649, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-odnoklassniki:before {
+  content: "";
+}
+
+/* line 650, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-odnoklassniki-square:before {
+  content: "";
+}
+
+/* line 651, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-get-pocket:before {
+  content: "";
+}
+
+/* line 652, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-wikipedia-w:before {
+  content: "";
+}
+
+/* line 653, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-safari:before {
+  content: "";
+}
+
+/* line 654, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-chrome:before {
+  content: "";
+}
+
+/* line 655, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-firefox:before {
+  content: "";
+}
+
+/* line 656, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-opera:before {
+  content: "";
+}
+
+/* line 657, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-internet-explorer:before {
+  content: "";
+}
+
+/* line 658, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-tv:before,
+.fa-television:before {
+  content: "";
+}
+
+/* line 660, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-contao:before {
+  content: "";
+}
+
+/* line 661, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-500px:before {
+  content: "";
+}
+
+/* line 662, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-amazon:before {
+  content: "";
+}
+
+/* line 663, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-calendar-plus-o:before {
+  content: "";
+}
+
+/* line 664, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-calendar-minus-o:before {
+  content: "";
+}
+
+/* line 665, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-calendar-times-o:before {
+  content: "";
+}
+
+/* line 666, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-calendar-check-o:before {
+  content: "";
+}
+
+/* line 667, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-industry:before {
+  content: "";
+}
+
+/* line 668, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-map-pin:before {
+  content: "";
+}
+
+/* line 669, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-map-signs:before {
+  content: "";
+}
+
+/* line 670, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-map-o:before {
+  content: "";
+}
+
+/* line 671, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-map:before {
+  content: "";
+}
+
+/* line 672, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-commenting:before {
+  content: "";
+}
+
+/* line 673, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-commenting-o:before {
+  content: "";
+}
+
+/* line 674, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-houzz:before {
+  content: "";
+}
+
+/* line 675, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-vimeo:before {
+  content: "";
+}
+
+/* line 676, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-black-tie:before {
+  content: "";
+}
+
+/* line 677, /home/diana/.rvm/gems/ruby-2.2.2/gems/font-awesome-sass-4.4.0/assets/stylesheets/font-awesome/_icons.scss */
+.fa-fonticons:before {
+  content: "";
+}
+
+/* line 3, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 8, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+body {
+  margin: 0px;
+  padding: 0px;
+  background: #f56a21;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12pt;
+  font-weight: 300;
+  color: #000000;
+}
+
+/* line 19, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 25, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+p, ol, ul {
+  margin-top: 0;
+}
+
+/* line 30, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ol, ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* line 36, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+p {
+  line-height: 180%;
+}
+
+/* line 45, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+a {
+  color: #CC0000;
+}
+
+/* line 50, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 55, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.container {
+  overflow: hidden;
+  margin: 0em auto;
+  width: 1000px;
+}
+
+/*********************************************************************************/
+/* Image Style                                                                   */
+/*********************************************************************************/
+/* line 66, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.image {
+  display: inline-block;
+}
+
+/* line 71, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.image img {
+  display: block;
+  width: 100%;
+}
+
+/* line 77, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.image-full {
+  display: block;
+  width: 100%;
+  margin: 0 0 2em 0;
+}
+
+/* line 84, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.image-left {
+  float: left;
+  margin: 0 2em 2em 0;
+}
+
+/* line 90, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.image-centered {
+  display: block;
+  margin: 0 0 2em 0;
+}
+
+/* line 96, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.image-centered img {
+  margin: 0 auto;
+  width: auto;
+}
+
+/*********************************************************************************/
+/* List Styles                                                                   */
+/*********************************************************************************/
+/*********************************************************************************/
+/* Social Icon Styles                                                            */
+/*********************************************************************************/
+/* line 114, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact {
+  margin: 0;
+  padding: 2em 0em 0em 0em;
+  list-style: none;
+}
+
+/* line 121, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li {
+  display: inline-block;
+  padding: 0em 0.30em;
+  font-size: 1em;
+}
+
+/* line 128, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li span {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 135, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li a {
+  color: #FFF;
+}
+
+/* line 140, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li a:before {
+  display: inline-block;
+  background: #3f3f3f;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/* line 152, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li a.icon-twitter:before {
+  background: #2DAAE4;
+}
+
+/* line 157, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li a.icon-facebook:before {
+  background: #39599F;
+}
+
+/* line 162, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li a.icon-dribbble:before {
+  background: #C4376B;
+}
+
+/* line 167, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li a.icon-tumblr:before {
+  background: #31516A;
+}
+
+/* line 172, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.contact li a.icon-rss:before {
+  background: #F2600B;
+}
+
+/*********************************************************************************/
+/* Button Style                                                                  */
+/*********************************************************************************/
+/* line 181, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.button {
+  display: inline-block;
+  padding: 1em 3em 1em 2em;
+  letter-spacing: 0.20em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.90em;
+  color: #FFF;
+}
+
+/* line 193, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.button:before {
+  display: inline-block;
+  background: #FFC31F;
+  margin-right: 1em;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: #272925;
+}
+
+/*********************************************************************************/
+/* 4-column                                                                      */
+/*********************************************************************************/
+/* line 210, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.box1, .box2, .box3, .box4 {
+  width: 235px;
+}
+
+/* line 214, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.box1, .box2, .box3 {
+  float: left;
+  margin-right: 20px;
+}
+
+/* line 219, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.box4 {
+  float: right;
+}
+
+/*********************************************************************************/
+/* 3-column                                                                      */
+/*********************************************************************************/
+/* line 228, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.boxA, .boxB, .boxC {
+  width: 300px;
+}
+
+/* line 233, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.boxA, .boxB {
+  float: left;
+  margin-right: 50px;
+}
+
+/* line 239, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.boxC {
+  float: right;
+}
+
+/*********************************************************************************/
+/* 2-column                                                                      */
+/*********************************************************************************/
+/* line 248, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.tbox1, .tbox2 {
+  width: 575px;
+}
+
+/* line 253, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.tbox1 {
+  float: left;
+}
+
+/* line 258, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.tbox2 {
+  float: right;
+}
+
+/* line 263, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#wrapper {
+  background: #FFF;
+}
+
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+/* line 272, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#header-wrapper {
+  background: url(/images/banner5.jpg) no-repeat center;
+  background-size: cover;
+  border-top: 5px solid #f56a21;
+}
+
+/* line 279, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#header {
+  position: relative;
+  padding: 5em 0em;
+}
+
+/*********************************************************************************/
+/* Logo                                                                          */
+/*********************************************************************************/
+/* line 294, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#logo h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1em 1em;
+  background: #f56a21;
+  /*188,61,102 moradito*/
+  /*245,106,33 naranja*/
+  border-radius: 0px 0px 5px 5px;
+}
+
+/* line 306, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#logo a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+/* line 312, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#logo a img {
+  max-width: 300px;
+}
+
+/* line 316, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#content {
+  text-align: left;
+}
+
+/*********************************************************************************/
+/* Menu                                                                          */
+/*********************************************************************************/
+/* line 323, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#menu {
+  position: absolute;
+  top: 4em;
+  right: 0;
+}
+
+/* line 330, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#menu ul {
+  display: inline-block;
+}
+
+/* line 335, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#menu li {
+  display: block;
+  float: left;
+  text-align: center;
+}
+
+/* line 342, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#menu li a, #menu li span {
+  padding: 1em 1.5em;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.90em;
+  font-weight: 600;
+  color: #FFF;
+}
+
+/* line 353, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#menu li:hover a, #menu li.active a, #menu li.active span {
+  background: #f56a21;
+  /*#CC0000;*/
+  border-radius: 5px;
+}
+
+/*********************************************************************************/
+/* Banner                                                                        */
+/*********************************************************************************/
+/* line 372, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#banner {
+  padding: 10em 0em;
+}
+
+/* line 377, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#banner span {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.5em;
+  /*color: #FFF;*/
+  -webkit-text-stroke: 1px black;
+}
+
+/* line 387, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#eslogan {
+  text-align: center;
+  color: #FFF;
+}
+
+/*********************************************************************************/
+/* Page                                                                          */
+/*********************************************************************************/
+/* line 396, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#page {
+  padding-bottom: 5em;
+}
+
+/* line 401, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#page h2 {
+  padding-bottom: 1.5em;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+/*********************************************************************************/
+/* Content                                                                       */
+/*********************************************************************************/
+/*********************************************************************************/
+/* Sidebar                                                                       */
+/*********************************************************************************/
+/*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+/*********************************************************************************/
+/* Copyright                                                                     */
+/*********************************************************************************/
+/* line 436, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#copyright {
+  overflow: hidden;
+  padding: 5em 0em;
+}
+
+/* line 442, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#copyright p {
+  letter-spacing: 0.20em;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.80em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* line 451, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#copyright a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/*********************************************************************************/
+/* Heading Titles                                                                */
+/*********************************************************************************/
+/* line 462, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.title {
+  margin-bottom: 3em;
+  text-transform: uppercase;
+}
+
+/* line 468, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.title h2 {
+  font-size: 2.8em;
+  font-weight: 700;
+}
+
+/* line 474, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.title .byline {
+  font-size: 1.1em;
+  color: #6F6F6F;
+}
+
+/*********************************************************************************/
+/* Staff                                                                         */
+/*********************************************************************************/
+/* line 484, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#staff {
+  padding: 5em 0em;
+  text-align: center;
+}
+
+/*********************************************************************************/
+/* Welcome                                                                       */
+/*********************************************************************************/
+/* line 494, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+#welcome {
+  padding: 5em 0em 5em 0em;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* line 501, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+  color: #6c6c6c;
+}
+
+/* line 510, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 li {
+  padding: 1.6em 0em 0em 0em;
+  margin: 0 0 1em 0;
+}
+
+/* line 516, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 p {
+  margin: 0;
+}
+
+/* line 521, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 a {
+  display: block;
+  text-decoration: none;
+  color: #2D2D2D;
+}
+
+/* line 528, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 a:hover {
+  text-decoration: underline;
+}
+
+/* line 533, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 h3 {
+  padding: 1em 0em 5px 0em;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+/* line 541, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 .first {
+  padding-top: 0;
+  background: none;
+}
+
+/* line 547, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 .date {
+  float: left;
+  position: relative;
+  width: 80px;
+  height: 70px;
+  margin: 0.5em 1.5em 0em 0.5em;
+  padding: 20px 0em 0em 0em;
+  background: #262626;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.1);
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  font-size: 1em;
+  font-weight: 400;
+  color: #FFF;
+}
+
+/* line 567, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 .date:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+
+/* line 579, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 .date b {
+  margin: 0;
+  padding: 0;
+  display: block;
+  margin-top: -5px;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+/* line 590, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 .date a {
+  color: #FFFFFF !important;
+}
+
+/* line 595, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style3 .date a:hover {
+  text-decoration: none;
+}
+
+/* line 600, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style4 {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+/* line 607, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style4 li {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  line-height: 3em;
+}
+
+/* line 613, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style4 a {
+  color: #2D2D2D;
+}
+
+/* line 618, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+ul.style4 .first {
+  padding-top: 0px;
+  border-top: none;
+}
+
+/* line 624, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.title span {
+  background: #f56a21;
+  content: '';
+  display: inline-block;
+  height: 0.2em;
+  max-width: 30em;
+  width: 75%;
+}
+
+/**************************************************************************************************/
+/* --- Contact area --- */
+/* line 637, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.containercontact {
+  /*padding-right: 15px;*/
+  padding-left: 1.1%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*
+.containercontact > .navbar-header,
+.containercontact > .navbar-collapse {
+  margin-right: -5%;
+  margin-left: -5%;
+}
+*/
+/* line 652, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.containercontact:before,
+.containercontact:after {
+  display: table;
+  content: " ";
+}
+
+/* line 658, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.containercontact:after {
+  clear: both;
+}
+
+/* line 662, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.col-lg-6 {
+  position: relative;
+  /*min-height: 1px;*/
+  padding-right: 1.11%;
+  padding-left: 1.11%;
+  float: left;
+  width: 45%;
+}
+
+/*div de la seccion del mapa*/
+/* line 672, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.col-lg-7 {
+  position: static;
+  /*min-height: 1px;*/
+  padding-right: 1.11%;
+  padding-left: 1.11%;
+  float: left;
+  width: 49.9%;
+  height: 100%;
+}
+
+/* --- Map --- */
+/* line 683, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.map {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+/* line 689, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.map iframe {
+  width: 100%;
+  height: 350px;
+  border: 2px solid transparent;
+  border-color: #ddd;
+}
+
+/*******************************************/
+/* line 697, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+form {
+  max-width: 420px;
+  margin: 10% auto;
+}
+
+/* line 702, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.feedback-input {
+  /*color:white;*/
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border: 2px solid #fab692;
+  /*rgb(249,162,115)*/
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+/* line 719, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+.feedback-input:focus {
+  border: 2px solid #f56a21;
+}
+
+/* line 723, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize: vertical;
+}
+
+/* line 729, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+[type="submit"] {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  background: #f56a21;
+  /*rgb(249,155,104)*/
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+
+/* line 744, /home/diana/Dropbox/code/vanguard/app/assets/stylesheets/home.css.scss */
+[type="submit"]:hover {
+  background: #ea590b;
+}
