@@ -4,9 +4,13 @@
       <%= f.label :logo, :class => 'control-label' %>
       <div class="thumbnail logo" id="target_parent">
         <div  id="target">
-          <div class="text-muted" style="padding-top:20%; padding-bottom:20%;">
-            <i class="fa fa-picture-o fa-5x"></i>
-          </div>
+          <% if @greenhouse.persisted? %>
+            <%= image_tag @greenhouse.logo.url %>
+          <% else %>
+            <div class="text-muted" style="padding-top:20%; padding-bottom:20%;">
+              <i class="fa fa-picture-o fa-5x"></i>
+            </div>
+          <% end %>
         </div>
       </div>
       <%= f.file_field :logo, :id => "pictureInput"  %>
