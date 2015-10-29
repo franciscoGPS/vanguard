@@ -1,4 +1,10 @@
-<%= form_for @greenhouse, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @greenhouse, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :logo, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :logo, :class => "file", :data_preview_file_type => "text"  %>
+    </div>
+  </div>
   <div class="form-group">
     <%= f.label :business_name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
