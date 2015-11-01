@@ -2,9 +2,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree .
 //= require cocoon
 //= require confirm
+//= require_tree .
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
@@ -15,4 +15,22 @@ $(function () {
   });
   // FIX Adds form-control to date_select
   $("select").addClass("date-control");
+
+  // Display current image selected (input file)
+  //$("#target_parent").hide();
+  $('#pictureInput').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      //console.log(file);
+      img.src = file.target.result;
+      $('#target').html(img);
+      //$("#target_parent").show();
+    }
+    reader.readAsDataURL(image);
+    //console.log(files);
+  });
+
 });
