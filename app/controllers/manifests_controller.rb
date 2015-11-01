@@ -9,13 +9,12 @@ class ManifestsController < ApplicationController
 
   def greenhouse_index
     @greenhouse = Greenhouse.find(params[:id])
-    @sales = Sale.find_by(:greenhouse_id => params[:id])
-    @manifests = Manifest.find_by(:sale_id => @sales)
+    @sales = Sale.where(greenhouse_id: params[:id])
+    @manifests = Manifest.where(sale_id: @sales)
   end
   # GET /manifests/1
   # GET /manifests/1.json
   def show
-    byebug
     @manifest = Manifest.find(params[:id])
     @sale = Sale.find(@manifest.sale_id)
     @shipments = @sale.shipments
@@ -29,10 +28,12 @@ class ManifestsController < ApplicationController
       #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
     end
-    byebug
-    @manifest = Manifest.new(:sale_id => @sale.id, :total_pallets => @total_pallets, :comments => "Se señala el precio de venta exclusivamente para cubrir con los requisitos de traslado y trámites aduanales, ya que los productos que contiene este documento son vendidos en firme y posteriormente facrurados")
-    #@manifest.sale_id = params[:sale_id]
-    byebug
+    @manifest = Manifest.new(:sale_id => @sale.id, :total_pallets => @total_pallets,
+     :comments => "Se señala el precio de venta exclusivamente para cubrir con los
+      requisitos de traslado y trámites aduanales, ya que los productos que contiene
+       este documento son vendidos en firme y posteriormente facrurados")
+
+
     @sold_to_cust = sold_to_cust(@sale)
     #Se manda a la vista la palabra equivalente de la cantidad enviada
     @total_pallets_words = to_words(@manifest.total_pallets)
@@ -51,7 +52,6 @@ class ManifestsController < ApplicationController
   # POST /manifests
   # POST /manifests.json
   def create
-    byebug
     @manifest = Manifest.new(manifest_params)
 
 
@@ -59,14 +59,11 @@ class ManifestsController < ApplicationController
 
       begin #begin del rescue en caso de tener muchos caracteres
         if @manifest.save
-          byebug
           format.html { redirect_to @manifest, notice: 'Manifest was successfully created.' }
         else
-          byebug
           format.html { render :new }
         end
       rescue => ex
-        byebug
         logger.error ex.message
         format.html { render :edit }
       end

@@ -6,10 +6,10 @@ class SalesController < ApplicationController
 
   def index
 
-    @sales = Sale.order(:id).all
-    @greenhouse = Greenhouse.find(params[:id])
-    @sales = Sale.find_by(:greenhouse_id => @greenhouse)
+    #@sales = Sale.order(:id).all
 
+    @greenhouse = Greenhouse.find(params[:id])
+    @sales = Sale.where(greenhouse_id: @greenhouse.id)
   end
 
   # GET /sales/1
@@ -122,6 +122,7 @@ class SalesController < ApplicationController
     sale = Sale.find(params[:sale_id])
   ##CASO ESPECIAL EL DE AQUÍ ABAJO.
     ##SE USÓ UN NOMBRE DIFERENTE
+
     if params[:accion].to_sym == :purshase_order_state_check
       #The exclamation point autosaves its state change.
       sale.primera!(current_user)
@@ -269,12 +270,4 @@ end
     redirect_to sales_path
   end
 =end
-<<<<<<< HEAD
 
-
-
-
-
-
-=======
->>>>>>> 345fbd90051310e691652072e6a1b6de3dc5f00d
