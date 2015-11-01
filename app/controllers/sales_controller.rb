@@ -5,7 +5,11 @@ class SalesController < ApplicationController
   # GET /sales.json
 
   def index
+
     @sales = Sale.order(:id).all
+    @greenhouse = Greenhouse.find(params[:id])
+    @sales = Sale.find_by(:greenhouse_id => @greenhouse)
+
   end
 
   # GET /sales/1
@@ -51,7 +55,7 @@ class SalesController < ApplicationController
           shipment.price = price
           begin
             shipment.save
-          rescue Exception => e
+          rescue Exception
             flash[:error] = 'No shipments persisted.'
           end
         end
@@ -193,10 +197,10 @@ class SalesController < ApplicationController
       :count, :product_color, :po_number, :quality, :_destroy]]
 
       params.require(:sale).permit(accessible)
-    end
-
-
   end
+
+
+end
 
 
 
@@ -265,9 +269,12 @@ end
     redirect_to sales_path
   end
 =end
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> 345fbd90051310e691652072e6a1b6de3dc5f00d

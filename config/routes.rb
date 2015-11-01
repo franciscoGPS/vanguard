@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     resources :products
     resources :customers
     resources :shipments
-    resources :sales
+    resources :sales, except: :index
+    get 'greenhouses/:id/sales' => 'sales#index', as: 'greenhouse_sales'
     resources :manifests
     resources :collections_bills
 
@@ -37,20 +38,21 @@ Rails.application.routes.draw do
     post 'purshase_order' => 'sales#purshase_order'
     post 'customs_bill' => 'sales#customs_bill'
     get 'customs_bill' => 'manifests#new'
+
     get 'collections_bill' => 'sales#collections_bill'
     post 'collections_bill' => 'collections_bill#index/:sale_id'
     post 'collections_bill' => 'collections_bill#index/:sale_id'
+
+    get 'greenhouses/:id/manifests' => 'manifests#greenhouse_index', as: "manifests_greenhouse"
+
 
     get 'order' => 'greenhouses#order'
     get 'invoice' => 'greenhouses#invoice'
     get 'p_order' => 'greenhouses#purshase_order'
 
 
+  end #Admin scope
 
-
-
-
-  end
 
   # Website pages
   get 'about', to: "static_pages#about"

@@ -53,6 +53,14 @@
       <% end %>
 
   </li>
+  <li>
+
+      <%= link_to products_path do %>
+        <i class='fa fa-tags fw'></i>
+        Products
+      <% end %>
+
+  </li>
 
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
