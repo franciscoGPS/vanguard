@@ -1,3 +1,4 @@
+<%= form_for @sale, :html => { :class => 'form-horizontal' } do |f| %>
 <div class="container-fluid" style="background-color:white;">
 	<div class="row">
 		<div class="col-md-12">
@@ -5,7 +6,7 @@
 				<div class="col-md-12">
 					<div class="page-header">
 						<h1>
-							Invernadero <small>Orden de Compra</small>
+							Invernadero <%= @greenhouse.business_name  %></small>
 						</h1>
 					</div>
 				</div>
@@ -18,7 +19,7 @@
   							<label for="inputEmail3" class="control-label">
   								No. Embarque
   							</label>
-  								<input type="email" class="form-control" id="inputEmail3" placeholder="1231">
+  								<input type="email" class="form-control" id="inputEmail3" value="<%= @sale.id  %>" placeholder="1231">
   						</div>
             </div>
             <div class="col-md-12">
@@ -26,7 +27,12 @@
   							<label for="inputPassword3" class="control-label">
   								Producto
   							</label>
-  								<textarea class="form-control" id="inputPassword3">Producto</textarea>
+
+  								<textarea class="form-control" id="inputPassword3">
+                <% @shipments.each do |shipment|%>
+                    <%= shipment.product.name %>
+                <% end %>
+                </textarea>
   						</div>
             </div>
 
@@ -37,9 +43,13 @@
 						<div class="col-md-12">
               <div class="form-group">
   							<label for="inputEmail3" class="control-label">
-  								Fercha de entrega en Lugar, Estado
+  								Lugar de entrega
   							</label>
-  								<input type="email" class="form-control" id="inputEmail3">
+  								<input type="email" class="form-control" id="inputEmail3" placeholder="Lugar">
+                  <label for="inputEmail3" class="control-label">
+                  Fecha de entrega
+                </label>
+                  <input type="email" class="form-control" id="inputEmail3" value="<%= @sale.arrival_date %>">
   						</div>
 						</div>
 						<div class="col-md-12">
@@ -80,67 +90,28 @@
 							</tr>
 						</thead>
 						<tbody>
-
+              <% @shipments.each do |shipment|%>
 							<tr>
 								<td>
-									9992 Huron Produce
+									<%= shipment.po_number != nil ? shipment.po_number : "" %>  <%= Customer.find(shipment.customer).business_name %>
 								</td>
 								<td>
-									Exportación
+									<%= shipment.quality %>
 								</td>
 								<td>
-									28
+									<%= shipment.pallets_number %>
 								</td>
 								<td>
-									Estufada
+									<%= PalletType.find(shipment.pallet_type_id).name %>
 								</td>
                 <td>
-                  3,120
+                  <%= shipment.box_number %>
                 </td>
                 <td>
-                  11 lb Carton y 15lb Carton
-                </td>
-							</tr>
-							<tr>
-								<td>
-									9992 Huron Produce
-								</td>
-								<td>
-									Exportación
-								</td>
-								<td>
-									28
-								</td>
-								<td>
-									Estufada
-								</td>
-                <td>
-                  3,120
-                </td>
-                <td>
-                  11 lb Carton y 15lb Carton
+                  <%= shipment.weight %> <%= BoxType.find(shipment.box_type_id).name %>
                 </td>
 							</tr>
-							<tr>
-								<td>
-									9992 Huron Produce
-								</td>
-								<td>
-									Exportación
-								</td>
-								<td>
-									28
-								</td>
-								<td>
-									Estufada
-								</td>
-                <td>
-                  3,120
-                </td>
-                <td>
-                  11 lb Carton y 15lb Carton
-                </td>
-							</tr>
+                <% end %>
 
 						</tbody>
 					</table>
@@ -222,3 +193,6 @@
 		</div>
 	</div>
 </div>
+<% end %>
+
+

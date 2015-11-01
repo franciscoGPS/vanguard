@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label :purshase_order_number %><br>
+    <%= f.number_field :purshase_order %>
+  </div>
   <div class="field">
     <%= f.label :sale_id %><br>
     <%= f.number_field :sale_id, :value => @manifest.sale_id, disabled: false %>
@@ -62,10 +65,6 @@
   <div class="field">
     <%= f.label :thermograph %><br>
     <%= f.text_field :thermograph, maxlength: 15 %>
-  </div>
-  <div class="field">
-    <%= f.label :purshase_order %><br>
-    <%= f.number_field :purshase_order %>
   </div>
   <div class="field">
     <%= f.label :shipment %><br>

@@ -85,7 +85,7 @@ class SalesController < ApplicationController
   #la pantalla de generar la ORDEN DE COMPRA.
   def purshase_order
     sale = Sale.find(params[:sale_id])
-    redirect_to controller: :greenhouses, action: :purshase_order, sale: sale
+    redirect_to controller: :greenhouses, action: :purshase_order, sale_id: sale
   end
 
 
@@ -183,13 +183,14 @@ class SalesController < ApplicationController
     @sale = Sale.find(params[:id])
   end
 
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def sale_params
     accessible = [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
-      :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy,
+      :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy, :purshase_order,
       shipments_attributes: [:id, :customer_id, :start_at, :cancel, :product_id,
         :shipment_consecutive, :pallets_number, :comments, :sale_id, :price, :plu,
-      :count, :product_color, :_destroy]]
+      :count, :product_color, :po_number, :quality, :_destroy]]
 
       params.require(:sale).permit(accessible)
     end

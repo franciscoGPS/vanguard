@@ -89,7 +89,7 @@ class ShipmentsController < ApplicationController
       params.require(:shipment).permit(:id, :start_at, :created_at, :updated_at,
         :cancel, :deleted_at, :product_id,  :shipment_consecutive, :pallets_number,
         :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
-        :box_type_id, :weight,
+        :box_type_id, :weight, :po_number, :quality,
         products_attributes: [:id, :name, :_destroy])
     end
 end

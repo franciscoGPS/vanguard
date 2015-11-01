@@ -19,16 +19,16 @@
   </div>
 
 
-
   <div id="products" class="panel  panel-default">
     <div class="panel-heading">
       <h3>Products</h3>
     </div>
     <div class="panel-body">
-    <%= f.fields_for :shipments do |shipment| %>
-        <%= render 'shipment_fields', :f  => shipment %>
-    <% end %>
-    <%= link_to_add_association 'Add Shipment', f, :shipments, render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small" %>
+      <%= link_to_add_association 'Add Product', f, :shipments,
+            render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small margin-up pull-right" %>
+      <%= f.fields_for :shipments do |shipment| %>
+          <%= render 'shipment_fields', :f  => shipment %>
+      <% end %>
     </div>
   </div>
 
