@@ -7,6 +7,11 @@ class ManifestsController < ApplicationController
     @manifests = Manifest.all
   end
 
+  def greenhouse_index
+    @greenhouse = Greenhouse.find(params[:id])
+    @sales = Sale.find_by(:greenhouse_id => params[:id])
+    @manifests = Manifest.find_by(:sale_id => @sales)
+  end
   # GET /manifests/1
   # GET /manifests/1.json
   def show
@@ -114,7 +119,3 @@ class ManifestsController < ApplicationController
     :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :total_pallets, :comments)
   end
 end
-
-
-
-

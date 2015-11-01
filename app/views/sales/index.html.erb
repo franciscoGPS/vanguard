@@ -1,354 +1,357 @@
 <%- model_class = Sale -%>
+<ol class="breadcrumb">
+  <li><%= link_to "#{@greenhouse.business_name}", greenhouse_path(@greenhouse) %></li>
+  <li class="active">Sales</li>
+</ol>
 <div class="page-header">
-<h1>Shipments<!--<=t '.title', :default => model_class.model_name.human.pluralize.titleize %>--></h1>
+  <h1>Shipments</h1>
+  <div class="pull-right">
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+                                              new_sale_path,
+                                            :class => 'btn btn-success btn-lg' %>
+  </div>
 </div>
-<%= link_to t('.new', :default => t("helpers.links.new")),
-new_sale_path,
-:class => 'btn btn-primary' %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-<table class="table table-striped">
-<thead>
-<tr>
-  <th></th>
-<th><%= model_class.human_attribute_name(:id) %></th>
-<th><%= model_class.human_attribute_name(:product) %></th>
-<th><%= model_class.human_attribute_name(:customer) %></th>
-<th><%=t '.actions', :default => t("helpers.actions") %></th>
-</tr>
-</thead>
-Poner aquí el invernadero
-<tbody>
-<% @sales.each do |sale| %>
-  <tr>
-    <td><%= radio_button_tag(:selected, sale.id) %></td>
-  <td><%= sale.id %></td>
-  <td><%= sale.shipments[0].product.name %></td>
-  <td>
-     <%= sale.shipments[0].customer.customers_in_sale(sale) %>
-  </td>
-  <td>
-     <%= link_to sale_path(sale), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-        <i class="fa fa-info fw"></i>
-        <%- end -%>
-        <%= link_to edit_sale_path(sale), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-              <i class="fa fa-pencil fw"></i>
-        <%- end -%>
-       <%= link_to sale_path(sale), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-      <i class="fa fa-trash-o fw"></i>
-     <%- end -%>
-    </td>
-  </tr>
+
+<% if @sales.present? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th><%= model_class.human_attribute_name(:id) %></th>
+              <th><%= model_class.human_attribute_name(:product) %></th>
+              <th><%= model_class.human_attribute_name(:customer) %></th>
+              <th><%=t '.actions', :default => t("helpers.actions") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sales.each do |sale| %>
+            <tr>
+              <td><%= radio_button_tag(:selected, sale.id) %></td>
+              <td><%= sale.id %></td>
+              <td><%= sale.shipments[0].product.name %></td>
+              <td>
+                <%= sale.shipments[0].customer.customers_in_sale(sale) %>
+              </td>
+              <td>
+                <%= link_to sale_path(sale), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+                <i class="fa fa-info fw"></i>
+                <%- end -%>
+                <%= link_to edit_sale_path(sale), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+                <i class="fa fa-pencil fw"></i>
+                <%- end -%>
+                <%= link_to sale_path(sale), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+                <i class="fa fa-trash-o fw"></i>
+                <%- end -%>
+              </td>
+            </tr>
+            <% end %>
+
+            <!-- El contenido retirado va entre los dos <tbody/>-->
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <h2 id="sale_id_status">Status</h2>
+        <div class="row">
+          <div class="col-md-3">
+            <%= hidden_field_tag(:sale_id_hidden, 0)%>
+            <%= label_tag("Orden de Compra") %>
+            <%= check_box_tag(:purshase_order_state_check) %>
+          </div>
+          <div class="col-md-3">
+            <%= label_tag("Cuenta con Documentos") %>
+            <%= check_box_tag(:documents) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= label_tag("Salió de empaque") %>
+            <%= check_box_tag(:out_of_packaging) %>
+          </div>
+          <div class="col-md-3">
+            <%= label_tag("Módulo aduana Mexicana") %>
+            <%= check_box_tag(:mex_customs_mod) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= label_tag("Recepción de documentos") %>
+            <%= check_box_tag(:docs_reception) %>
+          </div>
+          <div class="col-md-3">
+            <%= label_tag("Módulo aduana Americana") %>
+            <%= check_box_tag(:us_customs_mod) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= label_tag("Documentacion de carga") %>
+            <%= check_box_tag(:loading_docs) %>
+          </div>
+          <div class="col-md-3">
+            <%= label_tag("Llegó a bodega") %>
+            <%= check_box_tag(:arrived_to_warehouse) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= label_tag("Legó a frontera") %>
+            <%= check_box_tag(:arrived_to_border) %>
+          </div>
+          <div class="col-md-3">
+            <%= label_tag("Recogió el cliente") %>
+            <%= check_box_tag(:picked_up_by_cust) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= label_tag("Salió del patio") %>
+            <%= check_box_tag(:out_of_courtyard) %>
+          </div>
+          <div class="col-md-3">
+            <%= label_tag("BOL") %>
+            <%= check_box_tag(:bol) %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% else %>
+  <h3 class="text-muted text-center">No data.</h3>
 <% end %>
 
-
-     <!-- El contenido retirado va entre los dos <tbody/>-->
-    </tbody>
-   </table>
-  </div>
-  <div class="col-md-6">
-    <h2 id="sale_id_status">Status</h2>
-    <div class ="row">
-      <div class="col-md-3">
-          <%= hidden_field_tag(:sale_id_hidden, 0)%>
-          <%= label_tag("Orden de Compra") %>
-          <%= check_box_tag(:purshase_order_state_check) %>
-    </div>
-    <div class="col-md-3">
-          <%= label_tag("Cuenta con Documentos") %>
-          <%= check_box_tag(:documents) %>
-    </div>
-   </div>
-       <div class ="row">
-      <div class="col-md-3">
-          <%= label_tag("Salió de empaque") %>
-          <%= check_box_tag(:out_of_packaging) %>
-    </div>
-    <div class="col-md-3">
-          <%= label_tag("Módulo aduana Mexicana") %>
-          <%= check_box_tag(:mex_customs_mod) %>
-    </div>
-   </div>
-          <div class ="row">
-      <div class="col-md-3">
-          <%= label_tag("Recepción de documentos") %>
-          <%= check_box_tag(:docs_reception) %>
-    </div>
-    <div class="col-md-3">
-          <%= label_tag("Módulo aduana Americana") %>
-          <%= check_box_tag(:us_customs_mod) %>
-    </div>
-   </div>
-          <div class ="row">
-      <div class="col-md-3">
-          <%= label_tag("Documentacion de carga") %>
-          <%= check_box_tag(:loading_docs) %>
-    </div>
-    <div class="col-md-3">
-          <%= label_tag("Llegó a bodega") %>
-          <%= check_box_tag(:arrived_to_warehouse) %>
-    </div>
-   </div>
-          <div class ="row">
-      <div class="col-md-3">
-          <%= label_tag("Legó a frontera") %>
-          <%= check_box_tag(:arrived_to_border) %>
-    </div>
-    <div class="col-md-3">
-          <%= label_tag("Recogió el cliente") %>
-          <%= check_box_tag(:picked_up_by_cust) %>
-    </div>
-   </div>
-          <div class ="row">
-      <div class="col-md-3">
-          <%= label_tag("Salió del patio") %>
-          <%= check_box_tag(:out_of_courtyard) %>
-    </div>
-    <div class="col-md-3">
-          <%= label_tag("BOL") %>
-          <%= check_box_tag(:bol) %>
-    </div>
-   </div>
-  </div>
-
- </div>
-</div>
 <script type="text/javascript">
 
+  $(document)
+    .ready(function () {
+      $('input[name=selected]:radio')
+        .on('change', function () {
 
+          //Establece el valor en el campo oculto dependiendo de la venta que que se vaya a actualizar
+          $('#sale_id_hidden').val($(this).val());
+          //Establece el valor de la venta en la parte d elos controles.
+          //Se puede poblar cualquier campo a partir de este id
+          $('#sale_id_status').html("Sale - " + $(this).val());
 
-$(document).ready(function() {
-    $('input[name=selected]:radio').on('change', function() {
+          enviar_ajax("", false);
 
-        //Establece el valor en el campo oculto dependiendo de la venta que que se vaya a actualizar
-        $('#sale_id_hidden').val($(this).val());
-        //Establece el valor de la venta en la parte d elos controles.
-        //Se puede poblar cualquier campo a partir de este id
-        $('#sale_id_status').html("Sale - " + $(this).val());
+        });
 
-        enviar_ajax("", false);
+      //###########   Los 12 eventos de los checkboxes y sus respectivas lógicas...
+      //Ordenados de manera desendente
+      //
+      //=============================================================================
 
-    });
+      //Evento accionado
+      $('#purshase_order_state_check')
+        .on('change', function () {
 
+          if ($('#sale_id_hidden').val() > 0)
+            enviar_ajax(this.name, this.checked);
+        });
 
+      //Segunda 2
+      $('#out_of_packaging')
+        .on('change', function () {
 
-//###########   Los 12 eventos de los checkboxes y sus respectivas lógicas...
-//Ordenados de manera desendente
-//
-//=============================================================================
-
-    //Evento accionado
-    $('#purshase_order_state_check').on('change', function() {
-
-        if ($('#sale_id_hidden').val() > 0)
-
-
-          enviar_ajax(this.name, this.checked);
-
-    });
-
-    //Segunda 2
-    $('#out_of_packaging').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
           }
-    });
+        });
 
-    //Tercera 3
-    $('#docs_reception').on('change', function() {
+      //Tercera 3
+      $('#docs_reception')
+        .on('change', function () {
 
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
           }
-    });
+        });
 
+      //Cuarta 4
+      $('#loading_docs')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //Quinta 5
+      $('#arrived_to_border')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //Sexta 6
+      $('#out_of_courtyard')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //Séptima 7
+      $('#documents')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //Octava 8
+      $('#mex_customs_mod')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //Novena 9
+      $('#us_customs_mod')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //Décima 10
+      $('#arrived_to_warehouse')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //Undécima 11
+      $('#picked_up_by_cust')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //Duodécima 12
+      $('#bol')
+        .on('change', function () {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, this.checked);
+          }
+        });
+
+      //
+      //=============================================================================
+
+      function enviar_ajax(accion_param, checked) {
+
+        var params = {
+          accion: accion_param,
+          valor: checked,
+          sale_id: $('#sale_id_hidden').val()
+        };
+
+        $.ajax({
+          url: 'purshase_order_state_change',
+          type: 'GET',
+          data: $.param(params),
+          dataType: 'json',
+          success: function (dataRes) {
+            //Recibir el objeto venta(Sale) y acomodar sus booleanos de los estados
+            //updated_sale es el objeto tipo venta. Se convierte a objeto y se puede acceder a sus propiedades con el operador .  ej.a lert(updated_sale.aasm_state);
+            var updated_sale = $.parseJSON(dataRes);
+
+            seleccionar_campos(updated_sale);
+
+          }
+        });
+      }
+
+      function seleccionar_campos(sale) {
+
+        $('#purshase_order_state_check').prop('checked', sale.purshase_order);
+        //Segunda 2
+        $('#out_of_packaging').prop('checked', sale.out_of_packaging);
+        //Tercera 3
+        $('#docs_reception').prop('checked', sale.docs_reception);
         //Cuarta 4
-    $('#loading_docs').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
-    });
-
+        $('#loading_docs').prop('checked', sale.loading_docs);
         //Quinta 5
-    $('#arrived_to_border').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
-    });
-
+        $('#arrived_to_border').prop('checked', sale.arrived_to_border);
         //Sexta 6
-    $('#out_of_courtyard').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
-    });
-
+        $('#out_of_courtyard').prop('checked', sale.out_of_courtyard);
         //Séptima 7
-    $('#documents').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
-    });
-
+        $('#documents').prop('checked', sale.documents);
         //Octava 8
-    $('#mex_customs_mod').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
-    });
-
+        $('#mex_customs_mod').prop('checked', sale.mex_customs_mod);
         //Novena 9
-    $('#us_customs_mod').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
-    });
-
+        $('#us_customs_mod').prop('checked', sale.us_customs_mod);
         //Décima 10
-    $('#arrived_to_warehouse').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
-    });
-
+        $('#arrived_to_warehouse').prop('checked', sale.arrived_to_warehouse);
         //Undécima 11
-    $('#picked_up_by_cust').on('change', function() {
-
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
-    });
-
+        $('#picked_up_by_cust').prop('checked', sale.picked_up_by_cust);
         //Duodécima 12
-    $('#bol').on('change', function() {
+        $('#bol').prop('checked', sale.bol);
 
-          if ($('#sale_id_hidden').val() > 0){
-          //Se envían los valores para los parámetros del ajax
-          //Los valores son:
-          //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-          //-El valor de si fue clickado hacia TRUE o FALSE
-          enviar_ajax(this.name, this.checked);
-          }
+      }
+
+      //Fin del ready y 1er function
     });
-
-
-
-
-
-
-
-//
-//=============================================================================
-
-    function enviar_ajax(accion_param, checked) {
-
-    var params = {
-        accion: accion_param,
-        valor: checked,
-        sale_id: $('#sale_id_hidden').val()
-    };
-
-    $.ajax({
-            url: 'purshase_order_state_change',
-            type: 'GET',
-            data: $.param(params),
-            dataType: 'json',
-            success: function(dataRes) {
-                //Recibir el objeto venta(Sale) y acomodar sus booleanos de los estados
-                //updated_sale es el objeto tipo venta. Se convierte a objeto y se puede acceder a sus propiedades con el operador .  ej.a lert(updated_sale.aasm_state);
-                var updated_sale = $.parseJSON(dataRes);
-
-                seleccionar_campos(updated_sale);
-
-            }
-        }
-
-    );
-}
-
-
-function seleccionar_campos(sale){
-
-    $('#purshase_order_state_check').prop('checked', sale.purshase_order);
-    //Segunda 2
-    $('#out_of_packaging').prop('checked', sale.out_of_packaging);
-    //Tercera 3
-    $('#docs_reception').prop('checked', sale.docs_reception);
-        //Cuarta 4
-    $('#loading_docs').prop('checked', sale.loading_docs);
-        //Quinta 5
-    $('#arrived_to_border').prop('checked', sale.arrived_to_border);
-        //Sexta 6
-    $('#out_of_courtyard').prop('checked', sale.out_of_courtyard);
-        //Séptima 7
-    $('#documents').prop('checked', sale.documents);
-        //Octava 8
-    $('#mex_customs_mod').prop('checked', sale.mex_customs_mod);
-        //Novena 9
-    $('#us_customs_mod').prop('checked', sale.us_customs_mod);
-        //Décima 10
-    $('#arrived_to_warehouse').prop('checked', sale.arrived_to_warehouse);
-        //Undécima 11
-    $('#picked_up_by_cust').prop('checked', sale.picked_up_by_cust);
-        //Duodécima 12
-    $('#bol').prop('checked', sale.bol);
-
-}
-
-
-
-
-    //Fin del ready y 1er function
-});
 </script>
-
-
