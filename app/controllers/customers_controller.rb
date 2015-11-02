@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-    byebug
+
     @customer = Customer.new(customer_params)
 
     respond_to do |format|
