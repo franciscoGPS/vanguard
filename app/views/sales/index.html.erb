@@ -148,152 +148,152 @@
 
       //Evento accionado
       $('#purshase_order_state_check')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0)
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
         });
 
       //Segunda 2
       $('#out_of_packaging')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Tercera 3
       $('#docs_reception')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Cuarta 4
       $('#loading_docs')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Quinta 5
       $('#arrived_to_border')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Sexta 6
       $('#out_of_courtyard')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Séptima 7
       $('#documents')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Octava 8
       $('#mex_customs_mod')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Novena 9
       $('#us_customs_mod')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Décima 10
       $('#arrived_to_warehouse')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Undécima 11
       $('#picked_up_by_cust')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
       //Duodécima 12
       $('#bol')
-        .on('change', function () {
+        .on('switchChange.bootstrapSwitch', function (state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, this.checked);
+            enviar_ajax(this.name, state.state);
           }
         });
 
@@ -310,7 +310,7 @@
         };
 
         $.ajax({
-          url: 'purshase_order_state_change',
+          url: '<%= purshase_order_state_change_path %>',
           type: 'GET',
           data: $.param(params),
           dataType: 'json',
@@ -326,30 +326,38 @@
       }
 
       function seleccionar_campos(sale) {
-
-        $('#purshase_order_state_check').prop('checked', sale.purshase_order);
+        /*
+        Special Behaviours
+          The method state can receive an optional third parameter skip. if true,
+          switchChange event is not executed. The default is false.
+          The method toggleState can receive an optional second parameter skip.
+           if true, switchChange event is not executed. The default is false.
+          The method wrapperClass can accepts a falsy value as second parameter.
+           If so, it resets the class to its default.
+         */
+        $('#purshase_order_state_check').bootstrapSwitch('state', sale.purshase_order, true);
         //Segunda 2
-        $('#out_of_packaging').prop('checked', sale.out_of_packaging);
+        $('#out_of_packaging').bootstrapSwitch('state', sale.out_of_packaging, true);
         //Tercera 3
-        $('#docs_reception').prop('checked', sale.docs_reception);
+        $('#docs_reception').bootstrapSwitch('state', sale.docs_reception, true);
         //Cuarta 4
-        $('#loading_docs').prop('checked', sale.loading_docs);
+        $('#loading_docs').bootstrapSwitch('state', sale.loading_docs, true);
         //Quinta 5
-        $('#arrived_to_border').prop('checked', sale.arrived_to_border);
+        $('#arrived_to_border').bootstrapSwitch('state', sale.arrived_to_border, true);
         //Sexta 6
-        $('#out_of_courtyard').prop('checked', sale.out_of_courtyard);
+        $('#out_of_courtyard').bootstrapSwitch('state', sale.out_of_courtyard, true);
         //Séptima 7
-        $('#documents').prop('checked', sale.documents);
+        $('#documents').bootstrapSwitch('state', sale.documents, true);
         //Octava 8
-        $('#mex_customs_mod').prop('checked', sale.mex_customs_mod);
+        $('#mex_customs_mod').bootstrapSwitch('state', sale.mex_customs_mod, true);
         //Novena 9
-        $('#us_customs_mod').prop('checked', sale.us_customs_mod);
+        $('#us_customs_mod').bootstrapSwitch('state', sale.us_customs_mod, true);
         //Décima 10
-        $('#arrived_to_warehouse').prop('checked', sale.arrived_to_warehouse);
+        $('#arrived_to_warehouse').bootstrapSwitch('state', sale.arrived_to_warehouse, true);
         //Undécima 11
-        $('#picked_up_by_cust').prop('checked', sale.picked_up_by_cust);
+        $('#picked_up_by_cust').bootstrapSwitch('state', sale.picked_up_by_cust, true);
         //Duodécima 12
-        $('#bol').prop('checked', sale.bol);
+        $('#bol').bootstrapSwitch('state', sale.bol, true);
 
       }
 

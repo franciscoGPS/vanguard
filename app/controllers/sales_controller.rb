@@ -119,63 +119,67 @@ class SalesController < ApplicationController
   #los checkboxes propios a los estados de cada Envío.(Venta)
   def purshase_order_state_change
     #Se recoge el parámetro id de la venta con la que se trabajará
+
     sale = Sale.find(params[:sale_id])
-  ##CASO ESPECIAL EL DE AQUÍ ABAJO.
+    ##CASO ESPECIAL EL DE AQUÍ ABAJO.
     ##SE USÓ UN NOMBRE DIFERENTE
 
-    if params[:accion].to_sym == :purshase_order_state_check
+    case  params[:accion].to_sym
+    when :purshase_order_state_check
       #The exclamation point autosaves its state change.
       sale.primera!(current_user)
       sale[:purshase_order] = !sale[:purshase_order]
 
-    elsif params[:accion].to_sym == :out_of_packaging
+    when :out_of_packaging
       sale.segunda!(current_user)
       sale[:out_of_packaging] = !sale[:out_of_packaging]
 
-    elsif params[:accion].to_sym == :docs_reception
+    when :docs_reception
       sale.tercera!(current_user)
       sale[:docs_reception] = !sale[:docs_reception]
 
-    elsif params[:accion].to_sym == :loading_docs
+    when :loading_docs
       sale.cuarta!(current_user)
       sale[:loading_docs] = !sale[:loading_docs]
 
-    elsif params[:accion].to_sym == :arrived_to_border
+    when :arrived_to_border
       sale.quinta!(current_user)
       sale[:arrived_to_border] = !sale[:arrived_to_border]
 
-    elsif params[:accion].to_sym == :out_of_courtyard
+    when :out_of_courtyard
       sale.sexta!(current_user)
       sale[:out_of_courtyard] = !sale[:out_of_courtyard]
 
-    elsif params[:accion].to_sym == :documents
+    when :documents
       sale.septima!(current_user)
       sale[:documents] = !sale[:documents]
 
-    elsif params[:accion].to_sym == :mex_customs_mod
+    when :mex_customs_mod
       sale.octava!(current_user)
       sale[:mex_customs_mod] = !sale[:mex_customs_mod]
 
-    elsif params[:accion].to_sym == :us_customs_mod
+    when:us_customs_mod
       sale.novena!(current_user)
       sale[:us_customs_mod] = !sale[:us_customs_mod]
 
-    elsif params[:accion].to_sym == :arrived_to_warehouse
+
+    when :arrived_to_warehouse
       sale.decima!(current_user)
       sale[:arrived_to_warehouse] = !sale[:arrived_to_warehouse]
 
-    elsif params[:accion].to_sym == :picked_up_by_cust
+    when :picked_up_by_cust
       sale.undecima!(current_user)
       sale[:picked_up_by_cust] = !sale[:picked_up_by_cust]
 
-    elsif params[:accion].to_sym == :bol
+    when :bol
       sale.duodecima!(current_user)
       sale[:bol] = !sale[:bol]
-    end
 
+    #No se necesita un else
+    #else
+
+    end # del case
     sale.save
-
-
 
     render :json => sale.to_json.to_s.to_json
   end
@@ -198,10 +202,10 @@ class SalesController < ApplicationController
       :count, :product_color, :po_number, :quality, :_destroy]]
 
       params.require(:sale).permit(accessible)
+    end
+
+
   end
-
-
-end
 
 
 
@@ -270,4 +274,5 @@ end
     redirect_to sales_path
   end
 =end
+
 
