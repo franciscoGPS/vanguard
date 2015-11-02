@@ -118,13 +118,15 @@
 				</div>
 			</div>
 			<div class="row">
+        <% @shipments.each do |shipment|%>
 				<div class="col-md-6">
+          <h4>Cliente: <strong><%= "#{shipment.customer.business_name}" %></strong></h4>
 					<dl class="dl-horizontal">
 						<dt>
 							PO#
 						</dt>
 						<dd>
-							A description list is perfect for defining terms.
+							<%= "#{shipment.po_number}" %>
 						</dd>
 						<dt>
 							Especificación
@@ -133,35 +135,14 @@
 							de empaque
 						</dt>
 						<dd>
-							Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+                <%= "#{shipment.pallets_number} - #{shipment.weight} lb - #{shipment.product.name} - #{shipment.count} - #{shipment.plu_to_string} --> #{shipment.pallet_type.name} " %>
 						</dd>
 						<dd>
 							Donec id elit non mi porta gravida at eget metus.
 						</dd>
 					</dl>
 				</div>
-				<div class="col-md-6">
-					<dl class="dl-horizontal">
-						<dt>
-							PO#
-						</dt>
-						<dd>
-							A description list is perfect for defining terms.
-						</dd>
-						<dt>
-							Especificación
-						</dt>
-						<dt>
-							de empaque
-						</dt>
-						<dd>
-							Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-						</dd>
-						<dd>
-							Donec id elit non mi porta gravida at eget metus.
-						</dd>
-					</dl>
-				</div>
+        <% end %>
 			</div>
 			<div class="row">
 				<div class="col-md-12">

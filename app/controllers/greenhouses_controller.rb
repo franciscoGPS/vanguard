@@ -67,13 +67,13 @@ class GreenhousesController < ApplicationController
 
 #Método que responde al botón de crear orden de compra
   def purshase_order
-
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id)
     respond_to do |format|
     format.html { render :order }
+
   end
   end
 

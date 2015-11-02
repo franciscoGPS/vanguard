@@ -90,6 +90,9 @@ class ShipmentsController < ApplicationController
         :cancel, :deleted_at, :product_id,  :shipment_consecutive, :pallets_number,
         :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
         :box_type_id, :weight, :po_number, :quality,
+        pallet_type_attributes: [:id, :name, :_destroy],
+        bag_type_attributes: [:id, :name, :_destroy],
+        box_type_attributes: [:id, :name, :_destroy],
         products_attributes: [:id, :name, :_destroy])
     end
 end
