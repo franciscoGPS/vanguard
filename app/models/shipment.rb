@@ -30,15 +30,15 @@ class Shipment < ActiveRecord::Base
   end
 
   def package_type
-    PalletType.find(self.pallet_type_id)
+    PackageType.find(self.pallet_type_id)
   end
 
   def box_type
-    PalletType.find(self.pallet_type_id)
+    BoxType.find(self.pallet_type_id)
   end
 
   def bag_type
-    PalletType.find(self.pallet_type_id)
+    BagType.find(self.pallet_type_id)
   end
 
 

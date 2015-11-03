@@ -16,7 +16,7 @@ $red_hover: #FB0606;
 main{
   margin-top: 0;
   padding-top: 17px;
-  height: 100vh;
+  min-height: 100vh;
 }
 .btn:hover, .submit:hover, .authform .button:hover, .button-xs:hover, .btn:focus, .submit:focus, .authform .button:focus, .button-xs:focus {
   color: white;
@@ -50,3 +50,4 @@ main{
   }
 }
 .logo {min-width: 250px;}
+.fix-order { padding-top: 17%;}

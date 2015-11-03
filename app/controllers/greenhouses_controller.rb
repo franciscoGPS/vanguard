@@ -71,6 +71,7 @@ class GreenhousesController < ApplicationController
     @shipments = Shipment.where(sale_id: @sale )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id)
+    @customers = Customer.where()
     respond_to do |format|
     format.html { render :order }
 

@@ -34,7 +34,7 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(sale_params)
 
-    @sale.user_id = current_user.id
+    @sale.user_id =! current_user
 
     @sale.save
     respond_to do |format|
@@ -119,7 +119,6 @@ class SalesController < ApplicationController
   #los checkboxes propios a los estados de cada Envío.(Venta)
   def purshase_order_state_change
     #Se recoge el parámetro id de la venta con la que se trabajará
-
     sale = Sale.find(params[:sale_id])
     ##CASO ESPECIAL EL DE AQUÍ ABAJO.
     ##SE USÓ UN NOMBRE DIFERENTE
@@ -158,10 +157,9 @@ class SalesController < ApplicationController
       sale.octava!(current_user)
       sale[:mex_customs_mod] = !sale[:mex_customs_mod]
 
-    when:us_customs_mod
+    when :us_customs_mod
       sale.novena!(current_user)
       sale[:us_customs_mod] = !sale[:us_customs_mod]
-
 
     when :arrived_to_warehouse
       sale.decima!(current_user)
@@ -175,11 +173,37 @@ class SalesController < ApplicationController
       sale.duodecima!(current_user)
       sale[:bol] = !sale[:bol]
 
-    #No se necesita un else
-    #else
+    when :revision
+      sale.revision_state!(current_user)
+      sale[:revision] = !sale[:revision]
 
-    end # del case
-    sale.save
+    when :usda
+      sale.usda_state!(current_user)
+      sale[:usda] = !sale[:usda]
+
+    when :fda
+      sale.fda_state!(current_user)
+      sale[:fda] = !sale[:fda]
+
+      #Habilitar el campo de Cantidad
+
+    when :ramp
+      sale.ramp_state!(current_user)
+      sale[:ramp] = !sale[:ramp]
+
+    when :hold
+      sale.hold_state!(current_user)
+      sale[:hold] = !sale[:hold]
+
+    when :commit #Es el nombre que se le asigna automático al button_tag
+      byebug
+      sale.hld_qty_state(current_user)
+      sale[:hld_qty] = params[:valor]
+
+    else
+
+    end
+    sale.save!
 
     render :json => sale.to_json.to_s.to_json
   end
@@ -197,15 +221,19 @@ class SalesController < ApplicationController
   def sale_params
     accessible = [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
       :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy, :purshase_order,
+      :out_of_packaging, :docs_reception,
+      :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
+      :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty,
       shipments_attributes: [:id, :customer_id, :start_at, :cancel, :product_id,
         :shipment_consecutive, :pallets_number, :comments, :sale_id, :price, :plu,
       :count, :product_color, :po_number, :quality, :_destroy]]
 
       params.require(:sale).permit(accessible)
-    end
-
-
   end
+
+
+end
 
 
 
@@ -274,5 +302,6 @@ end
     redirect_to sales_path
   end
 =end
+
 
 

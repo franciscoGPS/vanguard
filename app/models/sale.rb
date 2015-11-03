@@ -34,19 +34,25 @@ class Sale < ActiveRecord::Base
 #Se definen los estados que se desea estén como parte del proceso de operaciones de la empresa
 #Vanguard.
 #
-  $states = {:purshase_order => {:id => "1", :name => "Orden de Compra"},
+  $states = {:none => {:id => "0", :name => "None"},
+    :purshase_order => {:id => "1", :name => "Orden de Compra"},
     :out_of_packaging => {:id => "2", :name => "Salio de empaque"},
     :docs_reception => {:id => "3", :name => "Recepción de Documentos"},
     :loading_docs => {:id => "4", :name => "Documentación de carga"},
     :arrived_to_border => {:id => "5", :name => "Legó a Frontera"},
     :out_of_courtyard => {:id => "6", :name => "Salió de Patio"},
-
     :documents => {:id => "7", :name => "Cuenta con documentos"},
     :mex_customs_mod => {:id => "8", :name => "Modulo Aduana Mexicana"},
     :us_customs_mod => {:id => "9", :name => "Modulo Aduana Americana"},
     :arrived_to_warehouse => {:id => "10", :name => "Legó a Bodega"},
     :picked_up_by_cust => {:id => "11", :name => "Recogió el cliente"},
-    :bol => {:id => "12", :name => "BOL"}
+    :bol => {:id => "12", :name => "BOL"},
+    :revision => {:id => "13", :name => "REVISION EN ROJO"},
+    :usda => {:id => "14", :name => "USDA"},
+    :fda => {:id => "15", :name => "FDA"},
+    :ramp => {:id => "16", :name => "RAMP"},
+    :hold => {:id => "17", :name => "HOLD"},
+    :hld_qty => {:id => "18", :name => "QTY"}
   }
 
 
@@ -67,7 +73,7 @@ class Sale < ActiveRecord::Base
 
     #Los siguientes son los estados de la máquina de estados.
     # El estado inicial.
-    state :nome, :initial => true
+    state :none, :initial => true
     state :purshase_order
     state :out_of_packaging
     state :docs_reception
@@ -80,125 +86,210 @@ class Sale < ActiveRecord::Base
     state :arrived_to_warehouse
     state :picked_up_by_cust
     state :bol
+    state :revision
+    state :usda
+    state :fda
+    state :ramp
+    state :hold
+    state :hld_qty
+
+
 
 
 
     #Eventos y trancisiones.
    event :primera do
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-   :to => :purshase_order, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+   :to => :purshase_order, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :segunda do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :out_of_packaging, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :out_of_packaging, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :tercera do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :docs_reception, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :docs_reception, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :cuarta do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :loading_docs, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :loading_docs, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :quinta do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :arrived_to_border, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :arrived_to_border, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :sexta do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :out_of_courtyard, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :out_of_courtyard, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :septima do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :documents, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :documents, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :octava do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :mex_customs_mod, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :mex_customs_mod, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :novena do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :us_customs_mod, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :us_customs_mod, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :decima do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :arrived_to_warehouse, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :arrived_to_warehouse, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :undecima do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :picked_up_by_cust, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :picked_up_by_cust, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
 
     event :duodecima do
 
-      transitions :from => [:nome, :purshase_order, :out_of_packaging, :docs_reception,
+      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
  :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust, :bol],
-  :to => :bol, :after => Proc.new {|id| log_change(id)}
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :bol, :after => Proc.new {|user| log_change(user)}
+      #Aquí se pueden poner todas las conduciones especificadas en la documentación
+      #:after => :state_appropiate?, :guard => :already_sold?
+    end
+
+    event :revision_state do
+
+          transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
+ :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :revision, :after => Proc.new {|user| log_change(user)}
+      #Aquí se pueden poner todas las conduciones especificadas en la documentación
+      #:after => :state_appropiate?, :guard => :already_sold?
+    end
+
+    event :usda_state do
+
+          transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
+ :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :usda, :after => Proc.new {|user| log_change(user)}
+      #Aquí se pueden poner todas las conduciones especificadas en la documentación
+      #:after => :state_appropiate?, :guard => :already_sold?
+    end
+
+    event :fda_state do
+
+          transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
+ :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :fda, :after => Proc.new {|user| log_change(user)}
+      #Aquí se pueden poner todas las conduciones especificadas en la documentación
+      #:after => :state_appropiate?, :guard => :already_sold?
+    end
+    event :ramp_state do
+
+          transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
+ :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :ramp, :after => Proc.new {|user| log_change(user)}
+      #Aquí se pueden poner todas las conduciones especificadas en la documentación
+      #:after => :state_appropiate?, :guard => :already_sold?
+    end
+
+    event :hold_state do
+
+          transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
+ :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :hold, :after => Proc.new {|user| log_change(user)}
+      #Aquí se pueden poner todas las conduciones especificadas en la documentación
+      #:after => :state_appropiate?, :guard => :already_sold?
+    end
+
+    event :hld_qty_state do
+
+          transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
+ :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
+  :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+   :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+  :to => :hld_qty, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
@@ -209,6 +300,7 @@ class Sale < ActiveRecord::Base
   def log_change(user)
     #En los eventos after, se puede hacer uso de los auxilares aasm
     ##puts "changing from #{aasm.from_state} to #{aasm.to_state} (event: #{aasm.current_event})"
+
 
     state_change = ShipmentStateChanges.new
     state_change.sale_id = self.id

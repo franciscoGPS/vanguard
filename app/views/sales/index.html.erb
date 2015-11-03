@@ -74,6 +74,13 @@
           <div class="col-md-3">
             <%= label_tag("Módulo aduana Mexicana") %>
             <%= check_box_tag(:mex_customs_mod) %>
+            <div class="row">
+              <div class="col-md-2">
+                <%= label_tag("Rojo al pasar?") %>
+                <%= check_box_tag(:revision) %>
+
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -86,6 +93,37 @@
             <%= check_box_tag(:us_customs_mod) %>
           </div>
         </div>
+            <div class="row">
+              <div class="col-md-3">
+                <%= label_tag("USDA") %>
+                <%= check_box_tag(:usda) %>
+               </div>
+              <div class="col-md-3">
+                <%= label_tag("FDA") %>
+                <%= check_box_tag(:fda) %>
+              </div>
+            </div>
+             <div class="row">
+              <div class="col-md-3">
+                <%= label_tag("Rampa") %>
+                <%= check_box_tag(:ramp) %>
+              </div>
+              <div class="col-md-3">
+                <%= label_tag("Hold") %>
+                <%= check_box_tag(:hold) %>
+              </div>
+             </div>
+             <div class="row">
+              <div class="col-md-3">
+               <%= label_tag :cantidad %>
+               <%= number_field_tag :hld_qty %>
+              </div>
+              <div class="col-md-3">
+               <!-- button_tag ("Save", :id => "save_qty") %>-->
+               <%= submit_tag "Save", id: "save_qty" %>
+              </div>
+             </div>
+
         <div class="row">
           <div class="col-md-3">
             <%= label_tag("Documentacion de carga") %>
@@ -128,6 +166,8 @@
 
   $(document)
     .ready(function () {
+            $('#save_qty').prop('disabled', true);
+            $('#hld_qty').prop('disabled', true);
       $('input[name=selected]:radio')
         .on('change', function () {
 
@@ -141,6 +181,14 @@
 
         });
 
+        $('#save_qty').on("click", function(){
+
+          var qty = $("#hld_qty").val();
+
+          enviar_ajax(this.name, qty);
+
+        });
+
       //###########   Los 12 eventos de los checkboxes y sus respectivas lógicas...
       //Ordenados de manera desendente
       //
@@ -148,182 +196,268 @@
 
       //Evento accionado
       $('#purshase_order_state_check')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0)
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
         });
 
       //Segunda 2
       $('#out_of_packaging')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Tercera 3
       $('#docs_reception')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Cuarta 4
       $('#loading_docs')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Quinta 5
       $('#arrived_to_border')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Sexta 6
       $('#out_of_courtyard')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Séptima 7
       $('#documents')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Octava 8
       $('#mex_customs_mod')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Novena 9
       $('#us_customs_mod')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Décima 10
       $('#arrived_to_warehouse')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Undécima 11
       $('#picked_up_by_cust')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
 
       //Duodécima 12
       $('#bol')
-        .on('switchChange.bootstrapSwitch', function (state) {
+        .on('switchChange.bootstrapSwitch', function (event, state) {
 
           if ($('#sale_id_hidden').val() > 0) {
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
             //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
             //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state.state);
+            enviar_ajax(this.name, state);
           }
         });
+
+        //revision 13
+      $('#revision')
+        .on('switchChange.bootstrapSwitch', function (event, state) {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+
+            enviar_ajax(this.name, state);
+          }
+        });
+
+      //usda 14
+      $('#usda')
+        .on('switchChange.bootstrapSwitch', function (event, state) {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, state);
+          }
+        });
+
+      //fda 15
+      $('#fda')
+        .on('switchChange.bootstrapSwitch', function (event, state) {
+          debugger;
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se verifica el estado del switch para saber si activar o desactivar
+            //los campos de qty on hold
+          if (state == false){
+            $('#save_qty').prop('disabled', true);
+            $('#hld_qty').prop('disabled', true);
+          }else{
+            $('#save_qty').prop('disabled', false);
+            $('#hld_qty').prop('disabled', false);
+          }
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, state);
+          }
+        });
+
+      //Rampa 16
+      $('#ramp')
+        .on('switchChange.bootstrapSwitch', function (event, state) {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, state);
+          }
+        });
+
+      //hold 17
+      $('#hold')
+        .on('switchChange.bootstrapSwitch', function (event, state) {
+
+          if ($('#sale_id_hidden').val() > 0) {
+            //Se envían los valores para los parámetros del ajax
+            //Los valores son:
+            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
+            //-El valor de si fue clickado hacia TRUE o FALSE
+            enviar_ajax(this.name, state);
+          }
+        });
+
 
       //
       //=============================================================================
 
       function enviar_ajax(accion_param, checked) {
 
-        var params = {
-          accion: accion_param,
+          var params = {
+            accion: accion_param,
+            //Cuando la función es llamada desde el botón para guardar la cantidad,
+            //el valor de checked es un número y la acción es save_qty
+            valor: checked,
+            sale_id: $('#sale_id_hidden').val()
+          };
 
-          valor: checked,
-          sale_id: $('#sale_id_hidden').val()
-        };
+          $.ajax({
+            url: '<%= purshase_order_state_change_path %>',
+            type: 'GET',
+            data: $.param(params),
+            dataType: 'json',
+            success: function (dataRes) {
 
-        $.ajax({
-          url: '<%= purshase_order_state_change_path %>',
-          type: 'GET',
-          data: $.param(params),
-          dataType: 'json',
-          success: function (dataRes) {
-            //Recibir el objeto venta(Sale) y acomodar sus booleanos de los estados
-            //updated_sale es el objeto tipo venta. Se convierte a objeto y se puede acceder a sus propiedades con el operador .  ej.a lert(updated_sale.aasm_state);
-            var updated_sale = $.parseJSON(dataRes);
+              //Recibir el objeto venta(Sale) y acomodar sus booleanos de los estados
+              //updated_sale es el objeto tipo venta. Se convierte a objeto y se puede acceder a sus propiedades con el operador .  ej.a lert(updated_sale.aasm_state);
+              var updated_sale = $.parseJSON(dataRes);
 
-            seleccionar_campos(updated_sale);
+              seleccionar_campos(updated_sale);
 
-          }
-        });
+            }
+          });
+
+
+
+
       }
+
+
+
+
 
       function seleccionar_campos(sale) {
         /*
@@ -358,6 +492,18 @@
         $('#picked_up_by_cust').bootstrapSwitch('state', sale.picked_up_by_cust, true);
         //Duodécima 12
         $('#bol').bootstrapSwitch('state', sale.bol, true);
+        //Revisión 13
+        $('#revision').bootstrapSwitch('state', sale.revision, true);
+        // usda 14
+        $('#usda').bootstrapSwitch('state', sale.usda, true);
+        //fda 15
+        $('#fda').bootstrapSwitch('state', sale.fda, true);
+        //rampa 16
+        $('#ramp').bootstrapSwitch('state', sale.ramp, true);
+        //hold 17
+        $('#hold').bootstrapSwitch('state', sale.hold, true);
+        //cantidad retenida en FDA 18
+        $('#hld_qty').val(sale.hld_qty);
 
       }
 
