@@ -6,10 +6,8 @@ class Shipment < ActiveRecord::Base
 
 #Estos 4 son parámetros del Shipment
 #La tabla Shipments en la DB contiene los siguientes id's
-  has_one :package_type
-  has_one :bag_type
-  has_one :pallet_type
-  has_one :box_type
+
+  has_one :count_type
   belongs_to :product
   belongs_to :sale
   belongs_to :customer
@@ -23,6 +21,25 @@ class Shipment < ActiveRecord::Base
     end
 
 
+  def plu_to_string
+    self.plu ? "PLU STICKERED" : "NO PLU STICKERED"
+  end
+
+  def pallet_type
+    PalletType.find(self.pallet_type_id)
+  end
+
+  def package_type
+    PackageType.find(self.pallet_type_id)
+  end
+
+  def box_type
+    BoxType.find(self.pallet_type_id)
+  end
+
+  def bag_type
+    BagType.find(self.pallet_type_id)
+  end
 
 
 end
