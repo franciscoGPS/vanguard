@@ -71,11 +71,22 @@ class GreenhousesController < ApplicationController
     @shipments = Shipment.where(sale_id: @sale )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id)
-    @customers = Customer.where()
-    respond_to do |format|
-    format.html { render :order }
+    @customers = @sale.sold_to
 
-  end
+    @shipments_by_cust = {}
+
+
+    @customers.each do |customer|
+      @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
+    end
+
+
+
+    byebug
+    respond_to do |format|
+      format.html { render :order }
+
+      end
   end
 
   private
@@ -86,8 +97,8 @@ class GreenhousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def greenhouse_params
-      params.require(:greenhouse).permit(:business_name, :fiscal_address,
+      params.require(:greenhouse).permit(:id, :business_name, :fiscal_address,
                                           :greenhouse_address, :rfc, :product_id,
-                                          :category, :logo)
+                                          :category, :logo, :_destroy)
     end
 end

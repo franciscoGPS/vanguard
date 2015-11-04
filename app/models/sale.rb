@@ -95,8 +95,6 @@ class Sale < ActiveRecord::Base
 
 
 
-
-
     #Eventos y trancisiones.
    event :primera do
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
@@ -330,6 +328,14 @@ class Sale < ActiveRecord::Base
     end
     return is_ready
   end
+
+  def sold_to
+    Customer.find_by_sql("SELECT customers.* FROM customers
+        INNER JOIN shipments ON shipments.customer_id IN (customers.id)
+        AND shipments.sale_id = #{self.id} GROUP BY customers.id")
+  end
+
+
 
 end
 
