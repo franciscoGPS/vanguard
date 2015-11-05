@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
     get 'order' => 'greenhouses#order'
     get 'invoice' => 'greenhouses#invoice'
-    get 'p_order' => 'greenhouses#purshase_order'
+    get 'p_order/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
 
 
   end #Admin scope

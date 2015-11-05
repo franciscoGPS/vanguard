@@ -50,3 +50,5 @@ gem "simple_calendar", "~> 1.1.0"     # Generate calendars with JQuery
 gem 'aasm'                            # State Machine
 gem 'numbers_and_words', '~> 0.10.0'  # Number to word translater
 gem "paperclip", "~> 4.3"             # Upload images
+gem 'wicked_pdf'                      # A PDF generation plugin for Ruby on Rails
+gem 'wkhtmltopdf-binary'              # Because wicked_pdf is a wrapper for wkhtmltopdf, you'll need to install that, too.

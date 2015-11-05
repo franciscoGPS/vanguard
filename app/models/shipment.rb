@@ -42,5 +42,7 @@ class Shipment < ActiveRecord::Base
   end
 
 
+
+
 end
 

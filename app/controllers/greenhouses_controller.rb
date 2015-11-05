@@ -80,11 +80,14 @@ class GreenhousesController < ApplicationController
       @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
     end
 
-
-
-    byebug
     respond_to do |format|
-      format.html { render :order }
+      format.html {render :order}
+      format.pdf do
+        render :pdf => 'orden_de_compra',
+        :template => 'greenhouses/purshase_order.pdf.erb',
+        :layout => 'pdf.html.erb',
+        :show_as_html => params[:debug].present?
+      end
 
       end
   end
