@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resources :manifests
     resources :collections_bills
 
+    #Hash key => value
+    #what the client see => what the system does, as: alias you can use in the system
     get 'preshipments' => 'greenhouses#shipments'
     get 'cancel/:id' => 'shipments#cancel', as: 'cancel_shipment'
     post 'shipments/:id' => 'shipments#cancel_shipment'
@@ -48,7 +50,8 @@ Rails.application.routes.draw do
 
     get 'order' => 'greenhouses#order'
     get 'invoice' => 'greenhouses#invoice'
-    get 'p_order/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
+    get 'purshase_order/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
+    get 'customs_invoice/manifests/:id' => 'greenhouses#customs_invoice', as: 'customs_invoice'
 
 
   end #Admin scope

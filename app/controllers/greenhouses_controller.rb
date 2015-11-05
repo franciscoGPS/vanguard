@@ -73,8 +73,7 @@ class GreenhousesController < ApplicationController
     @manifest = Manifest.where(sale_id: @sale.id)
     @customers = @sale.sold_to
 
-    @shipments_by_cust = {}
-
+    @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
 
     @customers.each do |customer|
       @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
@@ -86,10 +85,17 @@ class GreenhousesController < ApplicationController
         render :pdf => 'orden_de_compra',
         :template => 'greenhouses/purshase_order.pdf.erb',
         :layout => 'pdf.html.erb',
-        :show_as_html => params[:debug].present?
+        :show_as_html => params[:debug].present?,
+        :page_size => 'Letter',
+        :encoding => 'UTF-8'
       end
 
       end
+  end
+
+
+  def customs_invoince
+
   end
 
   private
