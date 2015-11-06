@@ -93,9 +93,34 @@ class GreenhousesController < ApplicationController
       end
   end
 
+#Este método es llamado desde el controlador de Manifest.
+#El método que lo llama se llama to_customs_invoice.
+#Envía el ID de la venta a la que se le hará la factura de cruce
+  def customs_invoice
+    @sale = Sale.find(params[:sale_id])
+    @shipments = Shipment.where(sale_id: @sale )
+    @greenhouse = Greenhouse.find(@sale.greenhouse_id)
+    @manifest = Manifest.where(sale_id: @sale.id)
+    @customers = @sale.sold_to
 
-  def customs_invoince
+    @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
 
+    @customers.each do |customer|
+      @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
+    end
+
+    respond_to do |format|
+      format.html {render :customs_invoice}
+      format.pdf do
+        render :pdf => 'Factura de Aduana',
+        :template => 'greenhouses/customs_invoice.pdf.erb',
+        :layout => 'pdf.html.erb',
+        :show_as_html => params[:debug].present?,
+        :page_size => 'Letter',
+        :encoding => 'UTF-8'
+      end
+
+      end
   end
 
   private

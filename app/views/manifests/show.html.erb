@@ -1,4 +1,5 @@
-<%= link_to 'Printable Receipt (PDF)', customs_invoice_path(@sale.id) %>
+ <%- model_class = Sale -%>
+ <%= button_to "Manifiesto y Factura", { action: :to_customs_invoice, sale_id: @sale.id  }%>
 <div class="col-md-8">
 <p>
   <strong>Sale:</strong>

@@ -4,6 +4,7 @@ class ManifestsController < ApplicationController
   # GET /manifests
   # GET /manifests.json
   def index
+    byebug
     @manifests = Manifest.all
   end
 
@@ -15,6 +16,7 @@ class ManifestsController < ApplicationController
   # GET /manifests/1
   # GET /manifests/1.json
   def show
+    byebug
     @manifest = Manifest.find(params[:id])
     @sale = Sale.find(@manifest.sale_id)
     @shipments = @sale.shipments
@@ -90,6 +92,13 @@ def destroy
     format.html { redirect_to manifests_url, notice: 'Manifest was successfully destroyed.' }
   end
 end
+
+  def to_customs_invoice
+    byebug
+    sale = Sale.find(params[:sale_id])
+    redirect_to controller: :greenhouses, action: :customs_invoice, sale_id: sale.id
+  end
+
 
 protected
 def to_words(number)

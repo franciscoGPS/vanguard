@@ -109,6 +109,7 @@ class SalesController < ApplicationController
   #Esta acción es recibida principalmente de la vista show y redirecciona hacia
   #la pantalla de generar las facturas para LOS CLIENTES
   def collections_bill
+    byebug
     sale = Sale.find(params[:sale_id])
     redirect_to controller: :collections_bill, action: :index, sale: sale
   end
