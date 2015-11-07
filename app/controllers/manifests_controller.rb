@@ -28,17 +28,20 @@ class ManifestsController < ApplicationController
       #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
     end
-    @manifest = Manifest.new(:sale_id => @sale.id, :total_pallets => @total_pallets,
-     :comments => "Se señala el precio de venta exclusivamente para cubrir con los
-      requisitos de traslado y trámites aduanales, ya que los productos que contiene
+    @sold_to_cust = sold_to_cust(@sale)
+
+    @manifest = Manifest.new(:sold_to_id: @sold_to_cust.id, :sent_to => @sold_to_cust.business_name + " " +
+      @sold_to_cust.shipping_address,
+      :total_pallets => @total_pallets, :comments => "Se señala el precio
+       de venta exclusivamente para cubrir con los requisitos de traslado
+       y trámites aduanales, ya que los productos que contiene
        este documento son vendidos en firme y posteriormente facrurados")
 
-
-    @sold_to_cust = sold_to_cust(@sale)
+    @manifest.sale = @sale
     #Se manda a la vista la palabra equivalente de la cantidad enviada
     @total_pallets_words = to_words(@manifest.total_pallets)
-  end
 
+  end
 
 
   # GET /manifests/1/edit
@@ -91,12 +94,11 @@ def destroy
   end
 end
 
-protected
-def to_words(number)
-  number_in_words = I18n.with_locale(:en) { number.to_words }
-  number_in_words = number_in_words.slice(0,1).capitalize + number_in_words.slice(1..-1)
-  return number_in_words
+def to_customs_invoice
+    sale = Sale.find(params[:sale_id])
+    redirect_to controller: :greenhouses, action: :customs_invoice, sale_id: sale.id
 end
+
 
 private
 # Use callbacks to share common setup or constraints between actions.
@@ -105,22 +107,23 @@ def set_manifest
 end
 
 def sold_to_cust(sale)
-  if @sale.shipments.count == 1
-    @manifest.sold_to_id = @sale.shipments.first.customer_id
-    return Customer.find(@manifest.sold_to_id)
+  sale = Sale.find(sale)
+  if sale.shipments.count == 1
+    #@manifest.sold_to_id = sale.shipments.first.customer_id
+    return Customer.find(sale.shipments.first.customer_id)
   elsif @sale.shipments.count > 1
     #Agregar lógica para seleccionar al cliente con más producto
-    @manifest.sold_to_id = @sale.shipments.to_a[0].customer_id
-    return Customer.find(@manifest.sold_to_id)
+    return Customer.find(sale.shipments.to_a[0].customer_id)
 
   end
 end
 
 # Never trust parameters from the scary internet, only allow the white list through.
 def manifest_params
-  params.require(:manifest).permit(:sale_id, :date, :sold_to, :sent_to,
-  :custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
+  params.require(:manifest).permit(:sale_id, :date, :sold_to, :sent_to, :sold_to_id,
+  :mex_custom_broker, :usa_custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
   :trailer_num, :trailer_num_lp, :stamp, :thermograph, :purshase_order, :shipment,
-  :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :total_pallets, :comments)
+  :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
+  :total_pallets, :comments, :manifest_number)
 end
 end

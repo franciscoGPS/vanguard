@@ -43,9 +43,9 @@
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <!-- Este siguiente botón es usado al editar los "Shipmentes" o product_config
+      <!-- Este siguiente botón es usado al editar los "Shipments" o product_config
         Al cancelar la acción redirige automaticamente al show de la venta propietaria de este shipment-->
-      <%= link_to "Cancel", {controller: "sales", action: "show", id: @shipment.sale_id}, {:class => 'btn btn-default'} %>
+      <%= link_to "Cancel", :back, {:class => 'btn btn-default'} %>
       console
     </div>
   </div>

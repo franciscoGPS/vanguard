@@ -11,6 +11,10 @@
     </div>
   <% end %>
   <div class="field">
+    <%= f.label :manifest_number %><br>
+    <%= f.number_field :manifest_number %>
+  </div>
+  <div class="field">
     <%= f.label :purshase_order_number %><br>
     <%= f.number_field :purshase_order %>
   </div>
@@ -31,8 +35,12 @@
     <%= f.text_area :sent_to %>
   </div>
   <div class="field">
-    <%= f.label :custom_broker %><br>
-    <%= f.text_field :custom_broker, maxlength: 220 %>
+    <%= f.label :mex_custom_broker %><br>
+    <%= f.text_field :mex_custom_broker%>
+  </div>
+  <div class="field">
+    <%= f.label :usa_custom_broker %><br>
+    <%= f.text_field :usa_custom_broker%>
   </div>
   <div class="field">
     <%= f.label :carrier %><br>
