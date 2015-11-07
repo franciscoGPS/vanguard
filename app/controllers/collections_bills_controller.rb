@@ -7,8 +7,6 @@ class CollectionsBillsController < ApplicationController
   # GET /collections_bills.json
   def index
     @collections_bills = CollectionsBill.all
-
-
   end
 
   # GET /collections_bills/1

@@ -71,11 +71,68 @@ class GreenhousesController < ApplicationController
     @shipments = Shipment.where(sale_id: @sale )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id)
-    @customers = Customer.where()
-    respond_to do |format|
-    format.html { render :order }
+    @customers = @sale.sold_to
 
+    @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
+
+    @customers.each do |customer|
+      @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
+    end
+
+    respond_to do |format|
+      format.html {render :order}
+      format.pdf do
+        render :pdf => 'orden_de_compra',
+        :template => 'greenhouses/purshase_order.pdf.erb',
+        :layout => 'pdf.html.erb',
+        :show_as_html => params[:debug].present?,
+        :page_size => 'Letter',
+        :encoding => 'UTF-8'
+      end
+
+      end
   end
+
+#Este método es llamado desde el controlador de Manifest.
+#El método que lo llama se llama to_customs_invoice.
+#Envía el ID de la venta a la que se le hará la factura de cruce
+  def customs_invoice
+    @sale = Sale.find(params[:sale_id])
+    @shipments = Shipment.where(sale_id: @sale )
+    @greenhouse = Greenhouse.find(@sale.greenhouse_id)
+    @manifest = Manifest.where(sale_id: @sale.id)[0]
+    @customers_in_sale = @sale.sold_to
+    @customers_in_sale.each do |cust|
+      if cust.id == @manifest.sold_to_id
+        @manifest_customer =  cust
+      end
+    end
+    @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
+    @transportist_data = "Tractor\#: " + @manifest.truck + " Placas tractor: " +
+    @manifest.truck_licence_plate + " Caja\#: " + @manifest.trailer_num + " Placas Caja: " +
+    @manifest.trailer_num_lp + "Seal (Uniseal \#): " + @manifest.stamp +
+    " Thermometer: " + @manifest.thermograph
+
+    @customers_in_sale.each do |customer|
+      @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
+    end
+
+    @total_pallets_words = to_words(@manifest.total_pallets)
+
+    @total_ammount_money =  @shipments.map { |r| r[:price] * r[:pallets_number] }.sum
+    byebug
+    respond_to do |format|
+      format.html {render :customs_invoice}
+      format.pdf do
+        render :pdf => 'Factura de Aduana',
+        :template => 'greenhouses/customs_invoice.pdf.erb',
+        :layout => 'pdf.html.erb',
+        :show_as_html => params[:debug].present?,
+        :page_size => 'Letter',
+        :encoding => 'UTF-8'
+      end
+
+      end
   end
 
   private
@@ -86,8 +143,8 @@ class GreenhousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def greenhouse_params
-      params.require(:greenhouse).permit(:business_name, :fiscal_address,
+      params.require(:greenhouse).permit(:id, :business_name, :fiscal_address,
                                           :greenhouse_address, :rfc, :product_id,
-                                          :category, :logo)
+                                          :category, :logo, :_destroy)
     end
 end
