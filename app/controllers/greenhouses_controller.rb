@@ -100,12 +100,20 @@ class GreenhousesController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
-    @manifest = Manifest.where(sale_id: @sale.id)
-    @customers = @sale.sold_to
-
+    @manifest = Manifest.where(sale_id: @sale.id)[0]
+    @customers_in_sale = @sale.sold_to
+    @customers_in_sale.each do |cust|
+      if cust.id == @manifest.sold_to_id
+        @manifest_customer =  cust
+      end
+    end
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
+    @transportist_data = "Tractor\#: " + @manifest.truck + " Placas tractor: " +
+    @manifest.truck_licence_plate + " Caja\#: " + @manifest.trailer_num + " Placas Caja: " +
+    @manifest.trailer_num_lp + "Seal (Uniseal \#): " + @manifest.stamp +
+    " Thermometer: " + @manifest.thermograph
 
-    @customers.each do |customer|
+    @customers_in_sale.each do |customer|
       @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
     end
 

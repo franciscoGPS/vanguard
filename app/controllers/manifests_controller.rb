@@ -4,7 +4,6 @@ class ManifestsController < ApplicationController
   # GET /manifests
   # GET /manifests.json
   def index
-    byebug
     @manifests = Manifest.all
   end
 
@@ -16,7 +15,6 @@ class ManifestsController < ApplicationController
   # GET /manifests/1
   # GET /manifests/1.json
   def show
-    byebug
     @manifest = Manifest.find(params[:id])
     @sale = Sale.find(@manifest.sale_id)
     @shipments = @sale.shipments
@@ -30,11 +28,15 @@ class ManifestsController < ApplicationController
       #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
     end
-    @manifest = Manifest.new(:sale_id => @sale.id, :total_pallets => @total_pallets,
+
+    byebug
+
+    @manifest = Manifest.new(:total_pallets => @total_pallets,
      :comments => "Se señala el precio de venta exclusivamente para cubrir con los
       requisitos de traslado y trámites aduanales, ya que los productos que contiene
        este documento son vendidos en firme y posteriormente facrurados")
 
+    @manifest.sale = @sale
 
     @sold_to_cust = sold_to_cust(@sale)
     #Se manda a la vista la palabra equivalente de la cantidad enviada
@@ -94,7 +96,6 @@ def destroy
 end
 
   def to_customs_invoice
-    byebug
     sale = Sale.find(params[:sale_id])
     redirect_to controller: :greenhouses, action: :customs_invoice, sale_id: sale.id
   end
@@ -128,9 +129,10 @@ end
 # Never trust parameters from the scary internet, only allow the white list through.
 def manifest_params
   params.require(:manifest).permit(:sale_id, :date, :sold_to, :sent_to,
-  :custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
+  :mex_custom_broker, :usa_custom_broker :carrier, :driver, :truck, :truck_licence_plate,
   :trailer_num, :trailer_num_lp, :stamp, :thermograph, :purshase_order, :shipment,
-  :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :total_pallets, :comments)
+  :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
+  :total_pallets, :comments, :manifest_number)
 end
 end
 

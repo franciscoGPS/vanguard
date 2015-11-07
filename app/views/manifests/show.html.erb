@@ -1,6 +1,10 @@
- <%- model_class = Sale -%>
  <%= button_to "Manifiesto y Factura", { action: :to_customs_invoice, sale_id: @sale.id  }%>
 <div class="col-md-8">
+
+<p>
+  <strong>Manifest:</strong>
+  <%= @manifest.manifest_number %>
+</p>
 <p>
   <strong>Sale:</strong>
   <%= @manifest.sale_id %>
@@ -22,8 +26,13 @@
 </p>
 
 <p>
-  <strong>Custom broker:</strong>
-  <%= @manifest.custom_broker %>
+  <strong>MEX Custom broker:</strong>
+  <%= @manifest.mex_custom_broker %>
+</p>
+
+<p>
+  <strong>USA Custom broker:</strong>
+  <%= @manifest.usa_custom_broker %>
 </p>
 
 <p>

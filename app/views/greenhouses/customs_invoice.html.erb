@@ -15,7 +15,8 @@
 						<div class="col-md-6">
 							 <span class="label label-primary">Domicilio fiscal</span>
 							<address>
-								 <strong>Twitter, Inc.</strong><br> 795 Folsom Ave, Suite 600<br> San Francisco, CA 94107<br> <abbr title="Phone">P:</abbr> (123) 456-7890
+								 <strong><%= @greenhouse.business_name %></strong>
+								 <%= @greenhouse.fiscal_address %>
 							</address>
 						</div>
 						<div class="col-md-6">
@@ -24,7 +25,7 @@
 									 <span class="label label-primary">Factura Comercial</span>
 								</div>
 								<div class="col-md-6">
-										12345
+										<%= text_field_tag nil, @sale.id.to_s + "-" + DateTime.now.to_s, class: "form-control" %>
 								</div>
 							</div>
 							<div class="row">
@@ -32,7 +33,7 @@
 									 <span class="label label-primary">Fecha</span>
 								</div>
 								<div class="col-md-6">
-										22 - Marzo - 2015
+										<%= text_field_tag nil, DateTime.now.to_date, class: "form-control" %>
 								</div>
 							</div>
 						</div>
@@ -40,11 +41,11 @@
 					<div class="row">
 						<div class="col-md-6">
 							 <span class="label label-primary">Orden de Compra</span>
-								1234
+								<%= text_field_tag nil, @manifest.purshase_order, class: "form-control"  %>
 						</div>
 						<div class="col-md-6">
 							 <span class="label label-primary">Manifiesto</span>
-								12344
+								<%=text_field_tag nil, @manifest.manifest_number, class: "form-control" %>
 						</div>
 					</div>
 				</div>
@@ -63,10 +64,10 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									Nombre / RFC
+									<%=text_field_tag nil, @manifest_customer.business_name , class: "form-control" %>
 								</div>
 								<div class="panel-footer">
-									Dirección
+									<%=text_field_tag nil, @manifest_customer.billing_address , class: "form-control" %>
 								</div>
 							</div>
 						</div>
@@ -78,11 +79,11 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									Nombre / RFC
+									<%=text_field_tag nil, @manifest.sent_to , class: "form-control" %>
 								</div>
-								<div class="panel-footer">
-									Dirección
-								</div>
+								<!--<div class="panel-footer">
+									<text_field_tag nil, @manifest_customer.shipping_address , class: "form-control" %>
+								</div>-->
 							</div>
 						</div>
 					</div>
@@ -95,10 +96,10 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									Agencia Mexico / Dirección
+									<%=text_field_tag :mex_custom_broker, @manifest.mex_custom_broker, class: "form-control" %>
 								</div>
 								<div class="panel-footer">
-									Agencia USA / Dirección
+									<%=text_field_tag :usa_custom_broker, @manifest.usa_custom_broker, class: "form-control" %>
 								</div>
 							</div>
 						</div>
@@ -110,10 +111,10 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									Operadora / Compañia
+									<%=text_field_tag :transportist_data, @transportist_data , class: "form-control" %>
 								</div>
 								<div class="panel-footer">
-									Datos de la Caja
+
 								</div>
 							</div>
 						</div>
@@ -128,210 +129,76 @@
 								<th>Cantidad</th>
 								<th>Unidad</th>
 								<th>Peso</th>
+								<th>Cantidad Pallets</th>
 								<th>Descripción</th>
                 <th>Precio Unitario</th>
-                <th>Monto total</th>
+                <th>Monto total(pallets*price)</th>
 							</tr>
 						</thead>
 						<tbody>
+ 						<% @shipments.each do |shipment|%>
 							<tr>
-								<td>1</td>
-								<td>RPC</td>
-								<td>13 lb</td>
-								<td>01/04/2012</td>
-								<td>Default</td>
-								<td>Default</td>
+								<td>
+									<%= shipment.box_number %>
+								</td>
+								<td>
+									<%= BoxType.find(shipment.box_type_id).name %>
+								</td>
+								<td>
+									<%=  shipment.weight %>
+								</td>
+								<td>
+								  <%= shipment.pallets_number %>
+								</td>
+								<td>
+									<%= shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name %>
+								</td>
+                <td>
+                  <%= shipment.price %>
+                </td>
+                <td>
+                  <%= shipment.price * shipment.pallets_number %>
+                </td>
 							</tr>
-							<tr class="active">
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Approved
-								</td>
-							</tr>
-							<tr class="success">
-								<td>
-									2
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									02/04/2012
-								</td>
-								<td>
-									Declined
-								</td>
-							</tr>
-							<tr class="warning">
-								<td>
-									3
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									03/04/2012
-								</td>
-								<td>
-									Pending
-								</td>
-							</tr>
-							<tr class="danger">
-								<td>
-									4
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									04/04/2012
-								</td>
-								<td>
-									Call in to confirm
-								</td>
-							</tr>
+                <% end %>
+
 						</tbody>
 					</table>
 					<div class="row">
 						<div class="col-md-6">
 							<dl>
 								<dt>
-									CAAT
+									CAAT:
 								</dt>
 								<dd>
-									A description list is perfect for defining terms.
+									<%=text_field_tag nil, @manifest.caat , class: "form-control" %>
 								</dd>
 								<dt>
-									Peso por caja
+									Tipo de Caja:
 								</dt>
 								<dd>
-									Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+									<%=text_field_tag nil, "Refrigerated Box " + @manifest.trailer_size.to_s + "\"", class: "form-control" %>
 								</dd>
 								<dt>
-									Codigo Alpha
+									Transfer/Código Alpha Transfer:
 								</dt>
 								<dd>
-									Etiam porta sem malesuada magna mollis euismod.
+									<%=text_field_tag nil, @manifest.alpha, class: "form-control" %>
 								</dd>
 								<dt>
 									FDA
 								</dt>
 								<dt>
-									<span>Fusce dapibus, tellus ac cursus commodo</span>
+									<%=text_field_tag nil, @manifest.fda_num, class: "form-control" %>
 								</dt>
 								<dt>
 									No. Pallets
 								</dt>
 								<dd>
-									Fusce dapibus, tellus ac cursus commodo.
+									<%=text_field_tag nil, @manifest.total_pallets.to_s , class: "form-control" %>
 								</dd>
 
 							</dl>
-						</div>
-						<div class="col-md-6">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>
-											#
-										</th>
-										<th>
-											Product
-										</th>
-										<th>
-											Payment Taken
-										</th>
-										<th>
-											Status
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											1
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											01/04/2012
-										</td>
-										<td>
-											Default
-										</td>
-									</tr>
-									<tr class="active">
-										<td>
-											1
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											01/04/2012
-										</td>
-										<td>
-											Approved
-										</td>
-									</tr>
-									<tr class="success">
-										<td>
-											2
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											02/04/2012
-										</td>
-										<td>
-											Declined
-										</td>
-									</tr>
-									<tr class="warning">
-										<td>
-											3
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											03/04/2012
-										</td>
-										<td>
-											Pending
-										</td>
-									</tr>
-									<tr class="danger">
-										<td>
-											4
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											04/04/2012
-										</td>
-										<td>
-											Call in to confirm
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<blockquote>
-								<p>
-									Importe con letra
-								</p>
-							</blockquote>
 						</div>
 					</div>
 					<div class="row">
@@ -364,13 +231,13 @@
 						<div class="col-md-6">
 							 <span class="label label-primary">Entregó</span>
 							<p>
-								Aliquam eget sapien sapien.
+								<%=text_field_tag nil, @manifest.delivery_person, class: "form-control" %>
 							</p>
 						</div>
 						<div class="col-md-6">
 							 <span class="label label-primary">Recibió</span>
 							<p>
-								Aliquam eget sapien sapien.
+								<%=text_field_tag nil, @manifest.person_receiving, class: "form-control" %>
 							</p>
 						</div>
 					</div>

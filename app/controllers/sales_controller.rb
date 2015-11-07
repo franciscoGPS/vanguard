@@ -226,15 +226,20 @@ class SalesController < ApplicationController
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
       :bol, :usda, :fda, :ramp, :hold, :hld_qty,
+
       shipments_attributes: [:id, :customer_id, :start_at, :cancel, :product_id,
         :shipment_consecutive, :pallets_number, :comments, :sale_id, :price, :plu,
-      :count, :product_color, :po_number, :quality, :_destroy]]
+      :count, :product_color, :po_number, :quality, :_destroy],
+      manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
+        :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
+        :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
+      :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments, :deleted_at] ]
 
       params.require(:sale).permit(accessible)
+    end
+
+
   end
-
-
-end
 
 
 
@@ -303,6 +308,7 @@ end
     redirect_to sales_path
   end
 =end
+
 
 
 
