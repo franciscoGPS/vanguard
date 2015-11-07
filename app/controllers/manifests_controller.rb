@@ -68,7 +68,7 @@ class ManifestsController < ApplicationController
         format.html { render :edit }
       end
     end
-end
+  end
 
 # PATCH/PUT /manifests/1
 # PATCH/PUT /manifests/1.json
@@ -124,5 +124,3 @@ def manifest_params
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :total_pallets, :comments)
 end
 end
-
-
