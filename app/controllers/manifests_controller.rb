@@ -24,12 +24,17 @@ class ManifestsController < ApplicationController
   def new
     @sale = Sale.find(params[:sale])
     @total_pallets = 0
+    po_number = 0
     @sale.shipments.each do |shipment|
       #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
+      po_number = shipment.po_number
     end
     @sold_to_cust = sold_to_cust(@sale)
+
+
     @manifest = Manifest.new(:sold_to_id => @sold_to_cust.id,
+      :purshase_order => po_number,
       :sent_to => (@sold_to_cust.business_name + " " +
       @sold_to_cust.shipping_address),
       :total_pallets => @total_pallets, :comments => "Se señala el precio
@@ -40,6 +45,8 @@ class ManifestsController < ApplicationController
     @manifest.sale = @sale
     #Se manda a la vista la palabra equivalente de la cantidad enviada
     @total_pallets_words = to_words(@manifest.total_pallets)
+
+    byebug
 
   end
 
@@ -56,6 +63,7 @@ class ManifestsController < ApplicationController
   # POST /manifests.json
   def create
     @manifest = Manifest.new(manifest_params)
+    byebug
 
 
     respond_to do |format|
@@ -70,13 +78,8 @@ class ManifestsController < ApplicationController
         logger.error ex.message
         format.html { render :edit }
       end
-<<<<<<< HEAD
-    ends
-end
-=======
     end
   end
->>>>>>> 7a3053fc9f503ae85ba8117af0f0bd339792c508
 
 # PATCH/PUT /manifests/1
 # PATCH/PUT /manifests/1.json
@@ -111,7 +114,7 @@ def set_manifest
   @manifest = Manifest.find(params[:id])
 end
 
-def s(sale)
+def sold_to_cust(sale)
   sale = Sale.find(sale)
   if sale.shipments.count == 1
     #@manifest.sold_to_id = sale.shipments.first.customer_id
