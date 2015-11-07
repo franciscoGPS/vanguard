@@ -30,7 +30,7 @@ class ManifestsController < ApplicationController
     end
     @sold_to_cust = sold_to_cust(@sale)
 
-    @manifest = Manifest.new(:sold_to_id: @sold_to_cust.id, :sent_to => @sold_to_cust.business_name + " " +
+    @manifest = Manifest.new(:sold_to_id @sold_to_cust.id, :sent_to => @sold_to_cust.business_name + " " +
       @sold_to_cust.shipping_address,
       :total_pallets => @total_pallets, :comments => "Se señala el precio
        de venta exclusivamente para cubrir con los requisitos de traslado
