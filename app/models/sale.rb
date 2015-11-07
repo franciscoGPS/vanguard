@@ -9,6 +9,9 @@ class Sale < ActiveRecord::Base
   has_many :shipment_state_changes
   has_many :collection_bills
 
+  $IVA = 1.16
+  $TAX = 1.18
+
   accepts_nested_attributes_for :shipments,  :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :customers, :reject_if => :all_blank
   accepts_nested_attributes_for :manifests, :allow_destroy => true

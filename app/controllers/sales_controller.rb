@@ -109,7 +109,6 @@ class SalesController < ApplicationController
   #Esta acción es recibida principalmente de la vista show y redirecciona hacia
   #la pantalla de generar las facturas para LOS CLIENTES
   def collections_bill
-    byebug
     sale = Sale.find(params[:sale_id])
     redirect_to controller: :collections_bill, action: :index, sale: sale
   end
@@ -197,7 +196,6 @@ class SalesController < ApplicationController
       sale[:hold] = !sale[:hold]
 
     when :commit #Es el nombre que se le asigna automático al button_tag
-      byebug
       sale.hld_qty_state(current_user)
       sale[:hld_qty] = params[:valor]
 

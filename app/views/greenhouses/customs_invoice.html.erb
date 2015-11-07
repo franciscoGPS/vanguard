@@ -157,7 +157,7 @@
                   <%= shipment.price %>
                 </td>
                 <td>
-                  <%= shipment.price * shipment.pallets_number %>
+                  <strong><%= shipment.price * shipment.pallets_number %></strong>
                 </td>
 							</tr>
                 <% end %>
@@ -195,10 +195,40 @@
 									No. Pallets
 								</dt>
 								<dd>
-									<%=text_field_tag nil, @manifest.total_pallets.to_s , class: "form-control" %>
+									<%=text_field_tag nil, "#{@manifest.total_pallets} - #{@total_pallets_words}" , class: "form-control" %>
 								</dd>
-
 							</dl>
+						</div>
+						<div class="col-md-6">
+							<table class="table text-center">
+								<thead>
+									<tr>
+										<th>
+											Subtotal
+										</th>
+										<th>
+											Total
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<%= number_to_currency(@total_ammount_money) %>
+										</td>
+										<td>
+											<strong><%=  number_to_currency(@total_ammount_money*$TAX) %></strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+										</td>
+										<td>
+											<%=  to_words((@total_ammount_money*$TAX).to_f) %>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 					<div class="row">
