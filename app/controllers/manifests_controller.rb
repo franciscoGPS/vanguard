@@ -29,10 +29,9 @@ class ManifestsController < ApplicationController
       @total_pallets += shipment.pallets_number
     end
     @sold_to_cust = sold_to_cust(@sale)
-
-    @manifest = Manifest.new(:sold_to_id: @sold_to_cust.id,
+    @manifest = Manifest.new(:sold_to_id => @sold_to_cust.id,
       :sent_to => (@sold_to_cust.business_name + " " +
-      @sold_to_cust.warehouse_address),
+      @sold_to_cust.shipping_address),
       :total_pallets => @total_pallets, :comments => "Se señala el precio
        de venta exclusivamente para cubrir con los requisitos de traslado
        y trámites aduanales, ya que los productos que contiene
@@ -71,8 +70,13 @@ class ManifestsController < ApplicationController
         logger.error ex.message
         format.html { render :edit }
       end
+<<<<<<< HEAD
     ends
 end
+=======
+    end
+  end
+>>>>>>> 7a3053fc9f503ae85ba8117af0f0bd339792c508
 
 # PATCH/PUT /manifests/1
 # PATCH/PUT /manifests/1.json
@@ -128,5 +132,3 @@ def manifest_params
   :total_pallets, :comments, :manifest_number)
 end
 end
-
-
