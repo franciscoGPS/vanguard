@@ -33,10 +33,19 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
+    byebug
 
+    # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
 
+    product_id = params[:sale][:shipments_attributes].first[1][:product_id]
+
+    @sale.greenhouse = Product.find(product_id).greenhouse
+
     @sale.save
+
+    byebug
+
     respond_to do |format|
       format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
     end
@@ -225,19 +234,22 @@ class SalesController < ApplicationController
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
       :bol, :usda, :fda, :ramp, :hold, :hld_qty,
 
-      shipments_attributes: [:id, :customer_id, :start_at, :cancel, :product_id,
-        :shipment_consecutive, :pallets_number, :comments, :sale_id, :price, :plu,
-      :count, :product_color, :po_number, :quality, :_destroy],
+      shipments_attributes: [:id, :start_at, :created_at, :updated_at,
+        :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
+        :package_type_id, :bag_type_id, :pallet_type_id,
+        :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
+        :box_type_id, :weight, :po_number, :quality],
+
       manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
         :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
         :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
       :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments, :deleted_at] ]
 
       params.require(:sale).permit(accessible)
-    end
-
-
   end
+
+
+end
 
 
 
