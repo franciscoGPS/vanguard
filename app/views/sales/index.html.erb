@@ -31,10 +31,10 @@
             <tr>
               <td><%= radio_button_tag(:selected, sale.id) %></td>
               <td><%= sale.id %></td>
-              <td><%= sale.shipments[0].product.name %></td>
-              <td>
+              <td><a href="<%= sale_path(sale) %>"><%= sale.shipments[0].product.name %></a></td>
+              <td><a href="<%= sale_path(sale) %>">
                 <%= sale.shipments[0].customer.customers_in_sale(sale) %>
-              </td>
+              </a></td>
               <td>
                 <%= link_to sale_path(sale), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
                 <i class="fa fa-info fw"></i>
@@ -123,7 +123,6 @@
                <%= submit_tag "Save", id: "save_qty" %>
               </div>
              </div>
-
         <div class="row">
           <div class="col-md-3">
             <%= label_tag("Documentacion de carga") %>
@@ -155,7 +154,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 <% else %>
@@ -168,6 +166,15 @@
     .ready(function () {
             $('#save_qty').prop('disabled', true);
             $('#hld_qty').prop('disabled', true);
+
+
+      $("tr[data-link]").click(function() {
+          debugger;
+          window.location = $(this).data("link")
+      }).children('input[name=selected]:radio').click(function(e) {
+          return false;
+      });
+
       $('input[name=selected]:radio')
         .on('change', function () {
 
@@ -375,7 +382,6 @@
       //fda 15
       $('#fda')
         .on('switchChange.bootstrapSwitch', function (event, state) {
-          debugger;
           if ($('#sale_id_hidden').val() > 0) {
             //Se verifica el estado del switch para saber si activar o desactivar
             //los campos de qty on hold

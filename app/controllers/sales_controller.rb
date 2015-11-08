@@ -9,7 +9,7 @@ class SalesController < ApplicationController
     #@sales = Sale.order(:id).all
 
     @greenhouse = Greenhouse.find(params[:id])
-    @sales = Sale.where(greenhouse_id: @greenhouse.id)
+    @sales = Sale.where(greenhouse_id: @greenhouse.id).order("id ASC")
   end
 
   # GET /sales/1

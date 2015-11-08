@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     get 'order' => 'greenhouses#order'
     get 'invoice' => 'greenhouses#invoice'
     get 'purshase_order/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
+    get 'customs_invoice/sales/:sale_id' => 'greenhouses#customs_invoice', as: "cust_inv_pdf"
     get 'customs_invoice/manifests/:sale_id' => 'greenhouses#customs_invoice', as: 'customs_invoice'
 
 

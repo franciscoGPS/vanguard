@@ -1,4 +1,4 @@
-<%= form_for @manifest.update, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @sale, :html => { :class => 'form-horizontal' } do |f| %>
 <div class="container-fluid" style="background-color:white;">
 	<div class="row">
 		<div class="col-md-12">
@@ -41,11 +41,11 @@
 					<div class="row">
 						<div class="col-md-6">
 							 <span class="label label-primary">Orden de Compra</span>
-								<%= f.text_field :purshase_order, class: "form-control"  %>
+								<%= text_field_tag nil, @manifest.purshase_order, class: "form-control"  %>
 						</div>
 						<div class="col-md-6">
 							 <span class="label label-primary">Manifiesto</span>
-								<%= f.text_field :manifest_number, class: "form-control" %>
+								<%=text_field_tag nil, @manifest.manifest_number, class: "form-control" %>
 						</div>
 					</div>
 				</div>
@@ -64,10 +64,10 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									<%= text_field_tag nil, @manifest_customer.business_name , class: "form-control" %>
+									<%=text_field_tag nil, @manifest_customer.business_name , class: "form-control" %>
 								</div>
 								<div class="panel-footer">
-									<%= text_field_tag nil, @manifest_customer.billing_address , class: "form-control" %>
+									<%=text_field_tag nil, @manifest_customer.billing_address , class: "form-control" %>
 								</div>
 							</div>
 						</div>
@@ -79,7 +79,7 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									<%= f.text_field :sent_to, class: "form-control" %>
+									<%=text_field_tag nil, @manifest.sent_to , class: "form-control" %>
 								</div>
 								<!--<div class="panel-footer">
 									<text_field_tag nil, @manifest_customer.shipping_address , class: "form-control" %>
@@ -96,10 +96,10 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									<%= f.text_field :mex_custom_broker, class: "form-control" %>
+									<%=text_field_tag :mex_custom_broker, @manifest.mex_custom_broker, class: "form-control" %>
 								</div>
 								<div class="panel-footer">
-									<%= f.text_field :usa_custom_broker, class: "form-control" %>
+									<%=text_field_tag :usa_custom_broker, @manifest.usa_custom_broker, class: "form-control" %>
 								</div>
 							</div>
 						</div>
@@ -276,6 +276,4 @@
 		</div>
 	</div>
 </div>
-<%= f.submit %>
-<%= link_to 'Printable Receipt (PDF)', cust_inv_pdf_path(@sale.id, format: 'pdf') %>
 <% end %>

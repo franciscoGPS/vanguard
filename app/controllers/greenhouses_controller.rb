@@ -101,11 +101,10 @@ class GreenhousesController < ApplicationController
     @shipments = Shipment.where(sale_id: @sale )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id)[0]
-
+byebug
 
 
     @customers_in_sale = @sale.sold_to
-    byebug
 
 
     @customers_in_sale.each do |cust|
@@ -113,7 +112,6 @@ class GreenhousesController < ApplicationController
         @manifest_customer =  cust
       end
     end
-    byebug
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
     @transportist_data = "Tractor\#: " + @manifest.truck + " Placas tractor: " +
     @manifest.truck_licence_plate + " Caja\#: " + @manifest.trailer_num + " Placas Caja: " +
@@ -127,7 +125,6 @@ class GreenhousesController < ApplicationController
     @total_pallets_words = to_words(@manifest.total_pallets)
 
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:pallets_number] }.sum
-    byebug
     respond_to do |format|
       format.html {render :customs_invoice}
       format.pdf do
