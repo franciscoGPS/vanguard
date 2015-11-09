@@ -82,7 +82,7 @@ class CustomersController < ApplicationController
     :shipping_address, :warehose_address, :tax_id_number, :chep_id_number,:bb_number,
     :ships,  :_destroy,
     contacts_attributes: [:id, :name, :email, :phone, :phone_office, :_destroy],
-    shipments_attributes: [:id, :product_id, :start_at, :shipment_consecutive, :pallets_number,
+    shipments_attributes: [:id, :product_id, :start_at, :pallets_number,
     :comments, :sale_id, :price, :plu, :count, :product_color, :_destroy])
   end
 end

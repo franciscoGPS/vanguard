@@ -24,13 +24,18 @@ class ManifestsController < ApplicationController
   def new
     @sale = Sale.find(params[:sale])
     @total_pallets = 0
+    po_number = 0
     @sale.shipments.each do |shipment|
       #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
+      po_number = shipment.po_number
     end
     @sold_to_cust = sold_to_cust(@sale)
 
-    @manifest = Manifest.new(:sold_to_id => @sold_to_cust.id, :sent_to => (@sold_to_cust.business_name + " " +
+
+    @manifest = Manifest.new(:sold_to_id => @sold_to_cust.id,
+      :purshase_order => po_number,
+      :sent_to => (@sold_to_cust.business_name + " " +
       @sold_to_cust.shipping_address),
       :total_pallets => @total_pallets, :comments => "Se señala el precio
        de venta exclusivamente para cubrir con los requisitos de traslado
@@ -40,6 +45,8 @@ class ManifestsController < ApplicationController
     @manifest.sale = @sale
     #Se manda a la vista la palabra equivalente de la cantidad enviada
     @total_pallets_words = to_words(@manifest.total_pallets)
+
+    byebug
 
   end
 
@@ -56,6 +63,7 @@ class ManifestsController < ApplicationController
   # POST /manifests.json
   def create
     @manifest = Manifest.new(manifest_params)
+    byebug
 
 
     respond_to do |format|

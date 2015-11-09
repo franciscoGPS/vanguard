@@ -101,7 +101,12 @@ class GreenhousesController < ApplicationController
     @shipments = Shipment.where(sale_id: @sale )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id)[0]
+byebug
+
+
     @customers_in_sale = @sale.sold_to
+
+
     @customers_in_sale.each do |cust|
       if cust.id == @manifest.sold_to_id
         @manifest_customer =  cust
@@ -120,7 +125,6 @@ class GreenhousesController < ApplicationController
     @total_pallets_words = to_words(@manifest.total_pallets)
 
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:pallets_number] }.sum
-    byebug
     respond_to do |format|
       format.html {render :customs_invoice}
       format.pdf do

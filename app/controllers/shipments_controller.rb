@@ -87,7 +87,8 @@ class ShipmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
       params.require(:shipment).permit(:id, :start_at, :created_at, :updated_at,
-        :cancel, :deleted_at, :product_id,  :shipment_consecutive, :pallets_number,
+        :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
+        :package_type_id, :bag_type_id, :pallet_type_id,
         :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
         :box_type_id, :weight, :po_number, :quality,
         pallet_type_attributes: [:id, :name, :_destroy],
