@@ -33,7 +33,6 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
-    byebug
 
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
@@ -43,8 +42,6 @@ class SalesController < ApplicationController
     @sale.greenhouse = Product.find(product_id).greenhouse
 
     @sale.save
-
-    byebug
 
     respond_to do |format|
       format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
@@ -238,12 +235,13 @@ class SalesController < ApplicationController
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
         :package_type_id, :bag_type_id, :pallet_type_id,
         :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
-        :box_type_id, :weight, :po_number, :quality],
+        :box_type_id, :weight, :po_number, :quality,:_destroy],
 
       manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
         :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
         :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
-      :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments, :deleted_at] ]
+      :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
+      :sold_to_id, :deleted_at, :_destroy] ]
 
       params.require(:sale).permit(accessible)
   end
