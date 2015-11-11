@@ -5,9 +5,7 @@ class SalesController < ApplicationController
   # GET /sales.json
 
   def index
-
     #@sales = Sale.order(:id).all
-
     @greenhouse = Greenhouse.find(params[:id])
     @sales = Sale.where(greenhouse_id: @greenhouse.id).order("id ASC")
   end
@@ -33,14 +31,10 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
-
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
-
     product_id = params[:sale][:shipments_attributes].first[1][:product_id]
-
     @sale.greenhouse = Product.find(product_id).greenhouse
-
     @sale.save
 
     respond_to do |format|
@@ -112,14 +106,10 @@ class SalesController < ApplicationController
 
   end
 
-  #Esta acción es recibida principalmente de la vista show y redirecciona hacia
-  #la pantalla de generar las facturas para LOS CLIENTES
   def collections_bill
     sale = Sale.find(params[:sale_id])
-    redirect_to controller: :collections_bill, action: :index, sale: sale
+    redirect_to new_collections_bill_path(sale_id: sale.id)
   end
-
-
 
   #Events methods. Son llamados desde las funciones ajax disparadas al accionar
   #los checkboxes propios a los estados de cada Envío.(Venta)

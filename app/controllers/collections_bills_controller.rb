@@ -1,5 +1,5 @@
 class CollectionsBillsController < ApplicationController
-  before_action :authenticate_user!, :only => [:admin]
+  before_action :authenticate_user!
   before_action :set_collections_bill, only: [:show, :edit, :update, :destroy]
 
 
@@ -16,7 +16,26 @@ class CollectionsBillsController < ApplicationController
 
   # GET /collections_bills/new
   def new
-    @collections_bill = CollectionsBill.new
+    sale = Sale.find(params[:sale_id])
+    @collections_bill = CollectionsBill.new(:sale_id => sale.id)
+    @total_ammount_money =  sale.shipments.map { |r| r[:price] * r[:pallets_number] }.sum
+    manifest = Manifest.where("sale_id = ?", sale.id).first
+    if manifest != nil
+      @collections_bill.po_number = manifest.purshase_order
+      @collections_bill.shipment_consecutive = manifest.shipment
+      @collections_bill.total_amt = @total_ammount_money
+      #Fixed 12 is because the state "bol"
+      #This following where conditions are for the last time the bol state was updated to true
+      bol_event = ShipmentStateChanges.where("sale_id = ? AND to_state = ? AND
+      to_state_new_value = TRUE", sale.id, 12).last
+      if  bol_event != nil
+        @collections_bill.bol_date = bol_event.created_at
+      else
+
+      end
+    else # del if manifest != nil
+      @collections_bill.po_number = sale.shipments.first.po_number
+    end
   end
 
   # GET /collections_bills/1/edit
@@ -59,13 +78,14 @@ class CollectionsBillsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_collections_bill
-      @collections_bill = CollectionsBill.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_collections_bill
+    @collections_bill = CollectionsBill.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def collections_bill_params
-      params.require(:collections_bill).permit(:sale_id, :invoice_number, :shipment_consecutive, :po_number, :payment_terms, :bol_date, :total_amt)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def collections_bill_params
+    params.require(:collections_bill).permit(:sale_id, :invoice_number, :shipment_consecutive, :po_number, :payment_terms, :bol_date, :total_amt)
+  end
 end
+

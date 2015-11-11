@@ -44,7 +44,7 @@ class Sale < ActiveRecord::Base
   #
   $states = {:none => {:id => "0", :name => "None"},
     :purshase_order => {:id => "1", :name => "Orden de Compra"},
-    :out_of_packaging => {:id => "2", :name => "Salio de empaque"},
+    :out_of_packaging => {:id => "2", :name => "Salió de empaque"},
     :docs_reception => {:id => "3", :name => "Recepción de Documentos"},
     :loading_docs => {:id => "4", :name => "Documentación de carga"},
     :arrived_to_border => {:id => "5", :name => "Legó a Frontera"},
@@ -315,9 +315,7 @@ class Sale < ActiveRecord::Base
     state_change.change_time = DateTime.now
     state_change.user_id_changed = user[:id]
     state_change.to_state_new_value = !self[aasm.to_state.to_sym]
-
-
-    ##state_change.save
+    state_change.save
 
   end
 

@@ -131,11 +131,7 @@ class GreenhousesController < ApplicationController
         :encoding => 'UTF-8'
       end
 
-      end
-  end
-
-  def collections_invoice
-
+    end
   end
 
   private

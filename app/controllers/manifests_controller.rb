@@ -12,6 +12,7 @@ class ManifestsController < ApplicationController
     @sales = Sale.where(greenhouse_id: params[:id])
     @manifests = Manifest.where(sale_id: @sales)
   end
+
   # GET /manifests/1
   # GET /manifests/1.json
   def show
@@ -24,29 +25,27 @@ class ManifestsController < ApplicationController
   def new
     @sale = Sale.find(params[:sale])
     @total_pallets = 0
-    po_number = 0
+    @po_numbers = {}
+    i=0
+
     @sale.shipments.each do |shipment|
       #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
-      po_number = shipment.po_number
+      @po_numbers[i] = shipment.po_number
+      i = i+1
     end
     @sold_to_cust = sold_to_cust(@sale)
 
-
     @manifest = Manifest.new(:sold_to_id => @sold_to_cust.id,
-      :purshase_order => po_number,
+      :purshase_order => @po_numbers[0],
       :sent_to => (@sold_to_cust.business_name + " " +
       @sold_to_cust.shipping_address),
-      :total_pallets => @total_pallets, :comments => "Se señala el precio
-       de venta exclusivamente para cubrir con los requisitos de traslado
-       y trámites aduanales, ya que los productos que contiene
-       este documento son vendidos en firme y posteriormente facrurados")
+      :total_pallets => @total_pallets,
+      :comments => "Se señala el precio de venta exclusivamente para cubrir con los requisitos de traslado y trámites aduanales, ya que los productos que contiene este documento son vendidos en firme y posteriormente facrurados")
 
     @manifest.sale = @sale
     #Se manda a la vista la palabra equivalente de la cantidad enviada
     @total_pallets_words = to_words(@manifest.total_pallets)
-
-    byebug
 
   end
 
@@ -56,18 +55,13 @@ class ManifestsController < ApplicationController
     @manifest = Manifest.find(params[:id])
     @sale = Sale.find(@manifest.sale_id)
     @sold_to_cust = sold_to_cust(@sale)
-
   end
 
   # POST /manifests
   # POST /manifests.json
   def create
     @manifest = Manifest.new(manifest_params)
-    byebug
-
-
     respond_to do |format|
-
       begin #begin del rescue en caso de tener muchos caracteres
         if @manifest.save
           format.html { redirect_to @manifest, notice: 'Manifest was successfully created.' }
@@ -114,6 +108,8 @@ def set_manifest
   @manifest = Manifest.find(params[:id])
 end
 
+#Regresa un cliente solamente. Tendrá lógica para seleccionar al cliente
+#en caso de ser varios por Sale.
 def sold_to_cust(sale)
   sale = Sale.find(sale)
   if sale.shipments.count == 1
@@ -122,7 +118,6 @@ def sold_to_cust(sale)
   elsif @sale.shipments.count > 1
     #Agregar lógica para seleccionar al cliente con más producto
     return Customer.find(sale.shipments.to_a[0].customer_id)
-
   end
 end
 
