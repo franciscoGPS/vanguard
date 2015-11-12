@@ -5,9 +5,7 @@ class SalesController < ApplicationController
   # GET /sales.json
 
   def index
-
     #@sales = Sale.order(:id).all
-
     @greenhouse = Greenhouse.find(params[:id])
     @sales = Sale.where(greenhouse_id: @greenhouse.id).order("id ASC")
   end
@@ -15,7 +13,9 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
-    @shipments = Shipment.where(sale_id: params[:id])
+    @s = Sale.find(params[:id])
+    @shipments = Shipment.where(sale_id: @s.id).order(customer_id: :asc)
+    @customers = @s.sold_to
   end
 
   # GET /sales/new
@@ -33,18 +33,11 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
-    byebug
-
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
-
     product_id = params[:sale][:shipments_attributes].first[1][:product_id]
-
     @sale.greenhouse = Product.find(product_id).greenhouse
-
     @sale.save
-
-    byebug
 
     respond_to do |format|
       format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
@@ -106,23 +99,32 @@ class SalesController < ApplicationController
   #la pantalla de generar las FACTURAS PARA LAS ADUANAS, cargar manifiesto y facturas.
   def customs_bill
     sale = Sale.find(params[:sale_id])
-    if(Manifest.where(sale_id: params[:sale_id]).count == 0)
+    manifests = Manifest.where(sale_id: sale.id)
+    if(manifests.count == 0)
       redirect_to controller: :manifests, action: :new, sale: sale
-    elsif (Manifest.where(sale_id: params[:sale_id]).count == 1)
-      mani = Manifest.where(sale_id: params[:sale_id]).first
+    elsif (manifests.count == 1)
+      mani = manifests.first
       redirect_to manifest_path(id: mani)
     end
 
   end
 
-  #Esta acción es recibida principalmente de la vista show y redirecciona hacia
-  #la pantalla de generar las facturas para LOS CLIENTES
   def collections_bill
+    byebug
     sale = Sale.find(params[:sale_id])
-    redirect_to controller: :collections_bill, action: :index, sale: sale
+    customer_id = params[:customer_id]
+    manifest = Manifest.where("sale_id = ?", sale.id).first
+    bills = CollectionsBill.where("sale_id = ? AND po_number = ? AND customer_id = ? ",
+     sale.id, manifest.purshase_order, customer_id)
+   if(bills.count == 0)
+    redirect_to new_collections_bill_path(:sale_id => sale.id, :customer_id => customer_id)
+   elsif (bills.count == 1)
+    bill = bills.first
+    redirect_to collections_bill_path(id: bill.id)
+   end
+
+
   end
-
-
 
   #Events methods. Son llamados desde las funciones ajax disparadas al accionar
   #los checkboxes propios a los estados de cada Envío.(Venta)
@@ -238,12 +240,13 @@ class SalesController < ApplicationController
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
         :package_type_id, :bag_type_id, :pallet_type_id,
         :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
-        :box_type_id, :weight, :po_number, :quality],
+        :box_type_id, :weight, :po_number, :quality,:_destroy],
 
       manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
         :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
         :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
-      :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments, :deleted_at] ]
+      :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
+      :sold_to_id, :deleted_at, :_destroy] ]
 
       params.require(:sale).permit(accessible)
   end

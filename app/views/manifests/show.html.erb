@@ -21,6 +21,11 @@
 </p>
 
 <p>
+  <strong>Sold to id:</strong>
+  <%= @manifest.sold_to_id %>
+</p>
+
+<p>
   <strong>Sent to:</strong>
   <%= @manifest.sent_to %>
 </p>
@@ -129,4 +134,4 @@
     <%= render :partial => 'shipment_products' %>
 </div>
 <%= link_to 'Edit', edit_manifest_path(@manifest) %> |
-<%= link_to 'Back', manifests_path %>
+<%= link_to "Back", sale_path(@manifest.sale) %>

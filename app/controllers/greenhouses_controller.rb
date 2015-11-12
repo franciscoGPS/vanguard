@@ -100,13 +100,8 @@ class GreenhousesController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
-    @manifest = Manifest.where(sale_id: @sale.id)[0]
-byebug
-
-
+    @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
-
-
     @customers_in_sale.each do |cust|
       if cust.id == @manifest.sold_to_id
         @manifest_customer =  cust
@@ -136,7 +131,16 @@ byebug
         :encoding => 'UTF-8'
       end
 
-      end
+    end
+  end
+
+  def invoice
+    byebug
+    @bill = CollectionsBill.find(params[:collections_bill_id])
+    @sale = Sale.find(@bill.sale_id)
+    @customers = @sale.sold_to
+
+
   end
 
   private

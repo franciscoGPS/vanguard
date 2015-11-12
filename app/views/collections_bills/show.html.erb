@@ -1,3 +1,7 @@
+
+
+<%= button_to "Facturar", to_invoice_path(@bill)  %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -18,6 +22,16 @@
 <p>
   <strong>Po number:</strong>
   <%= @collections_bill.po_number %>
+</p>
+
+<p>
+  <strong>Sold to:</strong>
+  <%= @customer.business_name %>
+</p>
+
+<p>
+  <strong>Bill to:</strong>
+  <%= @customer.business_name %>
 </p>
 
 <p>
