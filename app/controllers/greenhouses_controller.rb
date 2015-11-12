@@ -134,6 +134,15 @@ class GreenhousesController < ApplicationController
     end
   end
 
+  def invoice
+    byebug
+    @bill = CollectionsBill.find(params[:collections_bill_id])
+    @sale = Sale.find(@bill.sale_id)
+    @customers = @sale.sold_to
+
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_greenhouse

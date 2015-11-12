@@ -20,7 +20,6 @@ class Sale < ActiveRecord::Base
   accepts_nested_attributes_for :customers, :reject_if => :all_blank
   accepts_nested_attributes_for :manifests, :allow_destroy => true
 
-
   acts_as_paranoid
 
   def own? user
@@ -340,7 +339,7 @@ class Sale < ActiveRecord::Base
   def sold_to
     Customer.find_by_sql("SELECT customers.* FROM customers
     INNER JOIN shipments ON shipments.customer_id IN (customers.id)
-    AND shipments.sale_id = #{self.id} GROUP BY customers.id")
+    AND shipments.sale_id = #{self.id} GROUP BY customers.id ORDER BY customers.id ASC")
   end
 
 

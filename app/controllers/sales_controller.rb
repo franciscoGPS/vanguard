@@ -13,7 +13,9 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
-    @shipments = Shipment.where(sale_id: params[:id])
+    @s = Sale.find(params[:id])
+    @shipments = Shipment.where(sale_id: @s.id).order(customer_id: :asc)
+    @customers = @s.sold_to
   end
 
   # GET /sales/new
@@ -97,18 +99,31 @@ class SalesController < ApplicationController
   #la pantalla de generar las FACTURAS PARA LAS ADUANAS, cargar manifiesto y facturas.
   def customs_bill
     sale = Sale.find(params[:sale_id])
-    if(Manifest.where(sale_id: params[:sale_id]).count == 0)
+    manifests = Manifest.where(sale_id: sale.id)
+    if(manifests.count == 0)
       redirect_to controller: :manifests, action: :new, sale: sale
-    elsif (Manifest.where(sale_id: params[:sale_id]).count == 1)
-      mani = Manifest.where(sale_id: params[:sale_id]).first
+    elsif (manifests.count == 1)
+      mani = manifests.first
       redirect_to manifest_path(id: mani)
     end
 
   end
 
   def collections_bill
+    byebug
     sale = Sale.find(params[:sale_id])
-    redirect_to new_collections_bill_path(sale_id: sale.id)
+    customer_id = params[:customer_id]
+    manifest = Manifest.where("sale_id = ?", sale.id).first
+    bills = CollectionsBill.where("sale_id = ? AND po_number = ? AND customer_id = ? ",
+     sale.id, manifest.purshase_order, customer_id)
+   if(bills.count == 0)
+    redirect_to new_collections_bill_path(:sale_id => sale.id, :customer_id => customer_id)
+   elsif (bills.count == 1)
+    bill = bills.first
+    redirect_to collections_bill_path(id: bill.id)
+   end
+
+
   end
 
   #Events methods. Son llamados desde las funciones ajax disparadas al accionar

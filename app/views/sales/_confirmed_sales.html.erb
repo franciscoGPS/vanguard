@@ -6,6 +6,7 @@
       <th>Case</th>
       <th>Weight</th>
       <th>Product Name</th>
+      <td>Customer</td>
       <th>Price</th>
       <th>Total</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -18,6 +19,7 @@
         <td><%= BoxType.find(shipment.box_type_id).name %></td>
         <td><%= shipment.weight %></td>
         <td><%=  shipment.product.name %></td>
+        <td><%= shipment.customer.business_name %></td>
         <td>$<%= shipment.price %></td>
         <td>$<%= shipment.price * shipment.pallets_number %></td>
         <td>

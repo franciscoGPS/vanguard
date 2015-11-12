@@ -39,7 +39,8 @@ Rails.application.routes.draw do
     post 'customs_bill' => 'sales#customs_bill'
     get 'customs_bill' => 'manifests#new'
 
-    post 'manifests/customs_invoice' => 'manifests#to_customs_invoice', as: "to_customs_invoice"
+    get 'manifests/customs_invoice' => 'manifests#to_customs_invoice', as: "to_customs_invoice"
+    post 'collections_bills/invoice/:collections_bill_id' => 'collections_bills#to_invoice', as: "to_invoice"
 
     get 'collections_bill' => 'sales#collections_bill', as: "sales_collections_bills"
     #get 'collections_bill/:sale_id' => 'collections_bills#index', as: "collections_bills_index"
@@ -50,7 +51,7 @@ Rails.application.routes.draw do
 
 
     get 'order' => 'greenhouses#order'
-    get 'invoice' => 'greenhouses#invoice'
+    get 'invoice/:collections_bill_id' => 'greenhouses#invoice', as: "billing_invoice"
     get 'purshase_order/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
     get 'customs_invoice/sales/:sale_id' => 'greenhouses#customs_invoice', as: "cust_inv_pdf"
     get 'customs_invoice/manifests/:sale_id' => 'greenhouses#customs_invoice', as: 'customs_invoice'

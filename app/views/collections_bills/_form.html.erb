@@ -38,7 +38,11 @@
   <div class="field">
     <%= f.label :total_amt %><br>
     <%= f.text_field :total_amt %>
+    <%= @total_ammount_money_words %>
   </div>
+   <%= f.hidden_field(:user_id, :value => @collections_bill.user_id) %>
+   <%= f.hidden_field(:customer_id, :value => @collections_bill.customer_id) %>
+   <!-- hidden_field(:collections_bill, :customer_id) %>-->
   <div class="actions">
     <%= f.submit %>
   </div>
