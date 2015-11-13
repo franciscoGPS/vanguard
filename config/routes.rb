@@ -5,15 +5,16 @@ Rails.application.routes.draw do
   get 'admin', to: "static_pages#admin"
 
   scope :admin  do
+
+    devise_for :users
+    resources :users
+    resources :roles
     resources :customers
     resources :box_types
     resources :bag_types
     resources :pallet_types
     resources :package_types
     resources :count_types
-    devise_for :users
-    resources :users
-    resources :roles
     resources :greenhouses
     resources :contacts
     resources :products

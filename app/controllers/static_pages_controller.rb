@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
   #Este método es al unico que se tiene acceso sin autenticar
   #Se designa en la línea 2 de este doc
   def admin
-
+    @sales = Sale.group_by_day(:created_at).count
+    #@sales_by_customer = Sale
   end
 end

@@ -5,6 +5,7 @@
 //= require cocoon
 //= require confirm
 //= require_tree .
+//= require chartkick
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();

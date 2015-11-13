@@ -17,6 +17,10 @@ User.create( name: "Admin", job: "Systems",password: '.Agave15!', email: 'hola@a
 User.create( name: "Admin", job: "Vanguard Admin", password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: true, role_id: 1)
 
 
+# Sets superadmin attribute
+x = User.find_by(:email => "hola@agaveti.com")
+x.update(superadmin: true)
+x.save
 #connection = ActiveRecord::Base.connection()
 #connection.execute("INSERT INTO bag_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
 #					INSERT INTO package_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
