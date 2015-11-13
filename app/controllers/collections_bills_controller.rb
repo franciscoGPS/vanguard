@@ -95,7 +95,6 @@ class CollectionsBillsController < ApplicationController
 #This method is called from the CollectionsBill Show view and it redirects to
 #the greenhouse invoice method
   def to_invoice
-    byebug
     bill = CollectionsBill.find(params[:collections_bill_id])
     redirect_to billing_invoice_path(bill.id)
   end

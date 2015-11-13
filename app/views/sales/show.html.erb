@@ -6,9 +6,9 @@
  <%= button_to "Manifiesto y Factura", { action: "customs_bill", sale_id: @sale.id  }%>
 
 
-<%@customers.each do |cust|%>
+|<%@customers.each do |cust|%>
 
- <%= link_to "Facturar a "+ cust.business_name, sales_collections_bills_path(:sale_id => @sale.id, :customer_id => cust.id) %> |
+  <%= link_to "Facturar a "+ cust.business_name, sales_collections_bills_path(:sale_id => @sale.id, :customer_id => cust.id) %> |
 <% end %>
 
  <div class="container">

@@ -110,7 +110,6 @@ class SalesController < ApplicationController
   end
 
   def collections_bill
-    byebug
     sale = Sale.find(params[:sale_id])
     customer_id = params[:customer_id]
     manifest = Manifest.where("sale_id = ?", sale.id).first

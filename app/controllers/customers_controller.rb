@@ -80,7 +80,7 @@ class CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:id, :business_name, :billing_address,
     :shipping_address, :warehose_address, :tax_id_number, :chep_id_number,:bb_number,
-    :ships,  :_destroy,
+    :ships,  :logo, :_destroy,
     contacts_attributes: [:id, :name, :email, :phone, :phone_office, :_destroy],
     shipments_attributes: [:id, :product_id, :start_at, :pallets_number,
     :comments, :sale_id, :price, :plu, :count, :product_color, :_destroy])
