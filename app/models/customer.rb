@@ -1,9 +1,12 @@
 class Customer < ActiveRecord::Base
+  include Paperclip::Glue
   acts_as_paranoid
   has_many :contacts, :as => :contactable, :class_name => "Contact", dependent: :destroy
   has_many :shipments, dependent: :destroy, :source_type => "Shipment"
   has_many :shipment_state_changes
   has_many :sales, :through => :shipments, :dependent => :destroy
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "no-logo.png"
+  validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
 
   accepts_nested_attributes_for :contacts,  :allow_destroy => true

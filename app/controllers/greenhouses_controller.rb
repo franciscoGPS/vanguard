@@ -135,12 +135,10 @@ class GreenhousesController < ApplicationController
   end
 
   def invoice
-    byebug
     @bill = CollectionsBill.find(params[:collections_bill_id])
     @sale = Sale.find(@bill.sale_id)
-    @customers = @sale.sold_to
-
-
+    @customer = Customer.find(@bill.customer_id)
+    @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id)
   end
 
   private
