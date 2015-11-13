@@ -32,18 +32,22 @@
       <li>
         <%= link_to preshipments_path do %>
           <i class="fa fa-ship fw"></i>
-          Preshipments
+          Shipments
         <% end %>
       </li>
     </ul>
   </li>
   <li>
-    <% if current_user.admin? %>
+      <%= link_to customers_path do %>
+        <i class='fa fa-book fw'></i>
+        Customers
+      <% end %>
+  </li>
+  <li>
       <%= link_to contacts_path do %>
         <i class='fa fa-book fw'></i>
         Contacts
       <% end %>
-    <% end %>
   </li>
   <li>
 
