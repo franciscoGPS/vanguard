@@ -93,7 +93,7 @@
             <%= f.label :price %>
           </div>
           <div class="col-md-12">
-            <%= f.number_field :price, :class => 'text_field form-control' %>
+            <%= f.number_field :price, min: 0, max: 100000, step: :any, :class => 'text_field form-control' %>
           </div>
         </div>
       </div>
