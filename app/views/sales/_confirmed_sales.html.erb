@@ -2,7 +2,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Qty</th>
+      <th>Box Qty</th>
       <th>Case</th>
       <th>Weight</th>
       <th>Product Name</th>
@@ -15,13 +15,13 @@
   <tbody>
     <% @shipments.each do |shipment| %>
       <tr>
-        <td><%= shipment.pallets_number %></td>
+        <td><%= shipment.box_number %></td>
         <td><%= BoxType.find(shipment.box_type_id).name %></td>
         <td><%= shipment.weight %></td>
         <td><%=  shipment.product.name %></td>
         <td><%= shipment.customer.business_name %></td>
         <td>$<%= shipment.price %></td>
-        <td>$<%= shipment.price * shipment.pallets_number %></td>
+        <td>$<%= shipment.price * shipment.box_number %></td>
         <td>
           <%= link_to shipment_path(shipment), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <i class="fa fa-info fw"></i>
