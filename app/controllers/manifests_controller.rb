@@ -98,7 +98,7 @@ end
 
 def to_customs_invoice
     sale = Sale.find(params[:sale_id])
-    redirect_to controller: :greenhouses, action: :customs_invoice, sale_id: sale.id
+    redirect_to customs_invoice_path(sale)
 end
 
 

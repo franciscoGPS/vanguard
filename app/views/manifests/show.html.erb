@@ -1,137 +1,180 @@
- <%= button_to "Manifiesto y Factura", { action: :to_customs_invoice, sale_id: @sale.id  }%>
-<div class="col-md-8">
+ <div class="well">
+  <%= link_to "Manifiesto y Factura", customs_invoice_path(@sale), class: "btn btn-primary" %>
+  <div class="pull-right">
+    <%= link_to 'Edit', edit_manifest_path(@manifest) %> |
+    <%= link_to "Back", sale_path(@manifest.sale) %>
+  </div>
+ </div>
+ <div class="panel">
+   <div class="row text-justify">
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Manifest</small>
+                  <strong><%= @manifest.manifest_number %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Sale</small>
+                  <strong><%= @manifest.sale_id %></strong>
+                </p>
+              </div>
 
-<p>
-  <strong>Manifest:</strong>
-  <%= @manifest.manifest_number %>
-</p>
-<p>
-  <strong>Sale:</strong>
-  <%= @manifest.sale_id %>
-</p>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Date</small>
+                  <strong><%= @manifest.date %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">MEX Custom Broker</small>
+                  <strong><%= @manifest.mex_custom_broker %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">USA Custom Broker</small>
+                  <strong><%= @manifest.usa_custom_broker %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Purshase Order</small>
+                  <strong><%= @manifest.purshase_order %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Shipment</small>
+                  <strong><%= @manifest.shipment %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Delivery Person</small>
+                  <strong><%= @manifest.delivery_person %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Persib Receiving</small>
+                  <strong><%= @manifest.person_receiving %></strong>
+                </p>
+              </div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @manifest.date %>
-</p>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Stamp</small>
+                  <strong><%= @manifest.stamp %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Thermograph</small>
+                  <strong><%= @manifest.thermograph %></strong>
+                </p>
+              </div>
 
-<p>
-  <strong>Sold to:</strong>
-  <%= @manifest.sold_to %>
-</p>
+                  <div class="col-md-3">
+                    <p>
+                      <small class="label label-primary">Trailer Size</small>
+                      <strong><%= @manifest.trailer_size %></strong>
+                    </p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>
+                      <small class="label label-primary">Caat</small>
+                      <strong><%= @manifest.caat %></strong>
+                    </p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>
+                      <small class="label label-primary">Alpha</small>
+                      <strong><%= @manifest.alpha %></strong>
+                    </p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>
+                      <small class="label label-primary">FDA NUM</small>
+                      <strong><%= @manifest.fda_num %></strong>
+                    </p>
+                  </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Sold to</small>
+                <strong><%= @manifest.sold_to %></strong>
+              </p>
+            </div>
 
-<p>
-  <strong>Sold to id:</strong>
-  <%= @manifest.sold_to_id %>
-</p>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Sold to ID</small>
+                <strong><%= @manifest.sold_to_id %></strong>
+              </p>
+            </div>
 
-<p>
-  <strong>Sent to:</strong>
-  <%= @manifest.sent_to %>
-</p>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Send to</small>
+                <strong><%= @manifest.sent_to %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Carrier</small>
+                <strong><%= @manifest.carrier %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Driver</small>
+                <strong><%= @manifest.driver %></strong>
+              </p>
+            </div>
 
-<p>
-  <strong>MEX Custom broker:</strong>
-  <%= @manifest.mex_custom_broker %>
-</p>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Truck</small>
+                <strong><%= @manifest.truck %></strong>
+              </p>
+            </div>
 
-<p>
-  <strong>USA Custom broker:</strong>
-  <%= @manifest.usa_custom_broker %>
-</p>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Truck Licence Plate</small>
+                <strong><%= @manifest.truck_licence_plate %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Traile Num</small>
+                <strong><%= @manifest.trailer_num %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Trailer Num LP</small>
+                <strong><%= @manifest.trailer_num_lp %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Total Pallets</small>
+                <strong><%= @manifest.total_pallets %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Comments</small>
+                <strong><%= @manifest.comments %></strong>
+              </p>
+            </div>
+       <div class="col-md-12">
+         <div class="well">
+             <%= render :partial => 'shipment_products' %>
+         </div>
+       </div>
+   </div>
 
-<p>
-  <strong>Carrier:</strong>
-  <%= @manifest.carrier %>
-</p>
-
-<p>
-  <strong>Driver:</strong>
-  <%= @manifest.driver %>
-</p>
-
-<p>
-  <strong>Truck:</strong>
-  <%= @manifest.truck %>
-</p>
-
-<p>
-  <strong>Truck licence plate:</strong>
-  <%= @manifest.truck_licence_plate %>
-</p>
-
-<p>
-  <strong>Trailer num:</strong>
-  <%= @manifest.trailer_num %>
-</p>
-
-<p>
-  <strong>Trailer num lp:</strong>
-  <%= @manifest.trailer_num_lp %>
-</p>
-
-<p>
-  <strong>Stamp:</strong>
-  <%= @manifest.stamp %>
-</p>
-
-<p>
-  <strong>Thermograph:</strong>
-  <%= @manifest.thermograph %>
-</p>
-
-<p>
-  <strong>Purshase order:</strong>
-  <%= @manifest.purshase_order %>
-</p>
-
-<p>
-  <strong>Shipment:</strong>
-  <%= @manifest.shipment %>
-</p>
-
-<p>
-  <strong>Delivery person:</strong>
-  <%= @manifest.delivery_person %>
-</p>
-
-<p>
-  <strong>Person receiving:</strong>
-  <%= @manifest.person_receiving %>
-</p>
-
-<p>
-  <strong>Trailer size:</strong>
-  <%= @manifest.trailer_size %>
-</p>
-
-<p>
-  <strong>Caat:</strong>
-  <%= @manifest.caat %>
-</p>
-
-<p>
-  <strong>Alpha:</strong>
-  <%= @manifest.alpha %>
-</p>
-
-<p>
-  <strong>Fda num:</strong>
-  <%= @manifest.fda_num %>
-</p>
-
-<p>
-  <strong>Pallet number:</strong>
-  <%= @manifest.total_pallets %>
-</p>
-
-<p>
-  <strong>Comments:</strong>
-  <%= @manifest.comments %>
-</p>
-</div>
-<div class="col-md-8">
-    <%= render :partial => 'shipment_products' %>
-</div>
-<%= link_to 'Edit', edit_manifest_path(@manifest) %> |
-<%= link_to "Back", sale_path(@manifest.sale) %>
+ </div>
