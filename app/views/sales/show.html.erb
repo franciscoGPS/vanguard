@@ -33,6 +33,19 @@
 
 </div>
  </div>
+
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              greenhouse_sales_path(@sale.greenhouse_id) , :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_sale_path(@sale), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              sale_path(@sale),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
+
  <div class="row">
    <div class="col-md-6">
         <h2 id="sale_id_status">Status - <%= @sale.id %></h2>
@@ -137,19 +150,6 @@
       </div>
  </div>
  </div>
-
-
-<div class="form-group">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              greenhouse_sales_path(@sale.greenhouse_id) , :class => 'btn btn-default'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_sale_path(@sale), :class => 'btn btn-default' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              sale_path(@sale),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
 
 <script type="text/javascript">
 
