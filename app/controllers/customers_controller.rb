@@ -57,7 +57,7 @@ class CustomersController < ApplicationController
   # DELETE /customers/1.json
   def destroy
 
-    if Sale.where("customer_id = ?", @customer.id ).count > 0
+    if Shipment.where("customer_id = ?", @customer.id ).count > 0
       respond_to do |format|
         format.html { redirect_to customers_url, notice: 'Customer wtih associated transactions cannot be deleted.' }
       end
