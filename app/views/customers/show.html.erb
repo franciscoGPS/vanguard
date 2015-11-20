@@ -4,13 +4,13 @@
 </div>
   <div class="col-md-3 col-sm-12">
     <div class="form-group text-center">
-      <%= label_tag :logo, :class => 'control-label' %>
+      <%= label_tag :logo %>
       <div class="thumbnail logo" id="target_parent">
         <div  id="target">
             <%= image_tag @customer.logo.url %>
         </div>
       </div>
-      <%= f.file_field :logo, :id => "pictureInput"  %>
+
     </div>
   </div>
 <div class="fieldset">

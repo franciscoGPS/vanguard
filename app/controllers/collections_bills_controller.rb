@@ -21,7 +21,6 @@ class CollectionsBillsController < ApplicationController
   def new
     sale = Sale.find(params[:sale_id])
     customer_id = params[:customer_id]
-    byebug
     manifest = Manifest.where("sale_id = ?", sale.id).first
     @collections_bill = CollectionsBill.new(:sale_id => sale.id, :customer_id =>
       customer_id, :user_id => current_user.id)
@@ -59,7 +58,6 @@ class CollectionsBillsController < ApplicationController
   # POST /collections_bills
   # POST /collections_bills.json
   def create
-    byebug
     @collections_bill = CollectionsBill.new(collections_bill_params)
     @collections_bill.user_id = current_user.id
     respond_to do |format|
