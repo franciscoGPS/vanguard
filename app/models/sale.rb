@@ -20,6 +20,7 @@ class Sale < ActiveRecord::Base
   accepts_nested_attributes_for :customers, :reject_if => :all_blank
   accepts_nested_attributes_for :manifests, :allow_destroy => true
 
+
   acts_as_paranoid
 
   def own? user
