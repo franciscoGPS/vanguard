@@ -108,10 +108,6 @@
                 <%= label_tag("Rampa") %>
                 <%= check_box_tag(:ramp) %>
               </div>
-              <div class="col-md-3">
-                <%= label_tag("Hold") %>
-                <%= check_box_tag(:hold) %>
-              </div>
              </div>
              <div class="row">
               <div class="col-md-3">
@@ -413,20 +409,6 @@
           }
         });
 
-      //hold 17
-      $('#hold')
-        .on('switchChange.bootstrapSwitch', function (event, state) {
-
-          if ($('#sale_id_hidden').val() > 0) {
-            //Se envían los valores para los parámetros del ajax
-            //Los valores son:
-            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-            //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state);
-          }
-        });
-
-
       //
       //=============================================================================
 
@@ -500,7 +482,7 @@
         //rampa 16
         $('#ramp').bootstrapSwitch('state', sale.ramp, true);
         //hold 17
-        $('#hold').bootstrapSwitch('state', sale.hold, true);
+        //$('#hold').bootstrapSwitch('state', sale.hold, true);
         //cantidad retenida en FDA 18
         $('#hld_qty').val(sale.hld_qty);
 

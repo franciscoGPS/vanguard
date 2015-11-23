@@ -217,14 +217,14 @@
 											<%= number_to_currency(@total_ammount_money) %>
 										</td>
 										<td>
-											<strong><%=  number_to_currency(@total_ammount_money*$TAX) %></strong>
+											<strong><%=  number_to_currency(@total_ammount_money) %></strong>
 										</td>
 									</tr>
 									<tr>
 										<td>
 										</td>
 										<td>
-											<%=  to_words((@total_ammount_money*$TAX).to_f) %>
+											<%=  to_words((@total_ammount_money).to_f) %>
 										</td>
 									</tr>
 								</tbody>

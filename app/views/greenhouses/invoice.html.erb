@@ -117,14 +117,14 @@
                       <%= number_to_currency(@bill.total_amt) %>
                     </td>
                     <td>
-                      <strong><%=  number_to_currency(@bill.total_amt*$TAX) %></strong>
+                      <strong><%=  number_to_currency(@bill.total_amt) %></strong>
                     </td>
                   </tr>
                   <tr>
                     <td>
                     </td>
                     <td>
-                      <%=  to_words((@bill.total_amt*$TAX).round(2)) %>
+                      <%=  to_words((@bill.total_amt).round(2)) %>
                     </td>
                   </tr>
                 </tbody>

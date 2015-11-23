@@ -35,13 +35,17 @@ class ManifestsController < ApplicationController
       i = i+1
     end
     @sold_to_cust = sold_to_cust(@sale)
-
+    @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.new(:sold_to_id => @sold_to_cust.id,
       :purshase_order => @po_numbers[0],
       :sent_to => (@sold_to_cust.business_name + " " +
       @sold_to_cust.shipping_address),
+      :fda_num => @greenhouse.fda_num,
       :total_pallets => @total_pallets,
-      :comments => "Se señala el precio de venta exclusivamente para cubrir con los requisitos de traslado y trámites aduanales, ya que los productos que contiene este documento son vendidos en firme y posteriormente facrurados")
+      :comments => "Se señala el precio de venta exclusivamente para cubrir
+       con los requisitos de traslado y trámites aduanales,
+        ya que los productos que contiene este documento son vendidos en
+         firme y posteriormente facrurados")
 
     @manifest.sale = @sale
     #Se manda a la vista la palabra equivalente de la cantidad enviada
@@ -61,6 +65,7 @@ class ManifestsController < ApplicationController
   # POST /manifests.json
   def create
     @manifest = Manifest.new(manifest_params)
+    @manifest.person_receiving = @manifest.driver
     respond_to do |format|
       begin #begin del rescue en caso de tener muchos caracteres
         if @manifest.save

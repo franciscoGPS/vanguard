@@ -28,11 +28,11 @@
   								Producto
   							</label>
 
-  							<textarea class="form-control" id="inputPassword3" rows="4">
+
                   <% @shipments.each do |shipment|%>
                       <%= shipment.product.name %>
                   <% end %>
-                </textarea>
+
   						</div>
             </div>
 
@@ -42,14 +42,11 @@
 					<form class="form-horizontal" role="form">
 						<div class="col-md-12">
               <div class="form-group">
-  							<label for="inputEmail3" class="control-label">
-  								Lugar de entrega
-  							</label>
-  								<input type="text" class="form-control" id="inputEmail3" placeholder="Lugar">
+
                   <label class="control-label">
                     Fecha de entrega
                   </label>
-                  <%= text_field_tag nil, @sale.arrival_date, class: "form-control" %>
+                  <strong><%=@sale.arrival_date %></strong>
   						</div>
 						</div>
 						<div class="col-md-12">
@@ -57,7 +54,7 @@
   							<label for="inputPassword3" class="control-label">
   								Color
   							</label>
-  								<input type="text" class="form-control">
+
   						</div>
 						</div>
 
