@@ -108,6 +108,9 @@ class GreenhousesController < ApplicationController
       end
     end
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
+
+    #SEPARAR ESTOS DATOS
+
     @transportist_data = "Tractor\#: " + @manifest.truck + " Placas tractor: " +
     @manifest.truck_licence_plate + " Caja\#: " + @manifest.trailer_num + " Placas Caja: " +
     @manifest.trailer_num_lp + "Seal (Uniseal \#): " + @manifest.stamp +

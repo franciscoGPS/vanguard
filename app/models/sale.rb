@@ -9,9 +9,6 @@ class Sale < ActiveRecord::Base
   has_many :shipment_state_changes
   has_many :collection_bills
 
-  $IVA = 1.16
-  $TAX = 1.18
-
   accepts_nested_attributes_for :shipments,  :allow_destroy => true,
   reject_if: proc { |attributes| attributes['price'].blank? ||
    attributes['pallets_number'].blank? || attributes['package_type_id'].blank? ||
@@ -59,7 +56,6 @@ class Sale < ActiveRecord::Base
     :usda => {:id => "14", :name => "USDA"},
     :fda => {:id => "15", :name => "FDA"},
     :ramp => {:id => "16", :name => "RAMP"},
-    :hold => {:id => "17", :name => "HOLD"},
     :hld_qty => {:id => "18", :name => "QTY"}
   }
 
@@ -98,7 +94,8 @@ class Sale < ActiveRecord::Base
     state :usda
     state :fda
     state :ramp
-    state :hold
+    #Se pidió unir la propiedad hold + fda. Solo dejamos fda.
+    #state :hold
     state :hld_qty
 
 
@@ -108,7 +105,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :purshase_order, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -119,7 +116,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :out_of_packaging, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -130,7 +127,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :docs_reception, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -141,7 +138,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :loading_docs, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -152,7 +149,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :arrived_to_border, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -163,7 +160,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :out_of_courtyard, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -174,7 +171,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :documents, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -185,7 +182,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :mex_customs_mod, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -196,7 +193,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :us_customs_mod, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -207,7 +204,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :arrived_to_warehouse, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -218,7 +215,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :picked_up_by_cust, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -229,7 +226,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :bol, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -240,7 +237,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :revision, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -251,7 +248,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :usda, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -262,7 +259,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :fda, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -272,19 +269,8 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :ramp, :after => Proc.new {|user| log_change(user)}
-      #Aquí se pueden poner todas las conduciones especificadas en la documentación
-      #:after => :state_appropiate?, :guard => :already_sold?
-    end
-
-    event :hold_state do
-
-      transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
-        :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
-        :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
-      :to => :hold, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
     end
@@ -294,7 +280,7 @@ class Sale < ActiveRecord::Base
       transitions :from => [:none, :purshase_order, :out_of_packaging, :docs_reception,
         :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
         :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :revision, :usda, :fda, :ramp, :hold, :hld_qty],
+      :bol, :revision, :usda, :fda, :ramp, :hld_qty],
       :to => :hld_qty, :after => Proc.new {|user| log_change(user)}
       #Aquí se pueden poner todas las conduciones especificadas en la documentación
       #:after => :state_appropiate?, :guard => :already_sold?
@@ -320,6 +306,8 @@ class Sale < ActiveRecord::Base
   end
 
 
+
+  #Método en DESUSO
   def already_sold?
     #Se hace una validación para que tenga parámetros válidos:
     #1.- Que el precio de cada shipment de la venta tenga precio mayor a cero,

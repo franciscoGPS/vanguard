@@ -31,10 +31,6 @@
     <%= f.text_field :sold_to, :value => @sold_to_cust.business_name, maxlength: 150 %>
   </div>
   <div class="field">
-    <%= f.label :sold_to_id %><br>
-    <%= f.number_field :sold_to_id, :value => @sold_to_cust.id, disabled: false %>
-  </div>
-  <div class="field">
     <%= f.label :sent_to %><br>
     <%= f.text_area :sent_to %>
   </div>
@@ -85,10 +81,6 @@
   <div class="field">
     <%= f.label :delivery_person %><br>
     <%= f.text_field :delivery_person, maxlength: 80 %>
-  </div>
-  <div class="field">
-    <%= f.label :person_receiving %><br>
-    <%= f.text_field :person_receiving, maxlength: 80 %>
   </div>
   <div class="field">
     <%= f.label :trailer_size %><br>
