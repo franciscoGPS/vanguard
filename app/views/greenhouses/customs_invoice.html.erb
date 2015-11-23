@@ -224,7 +224,7 @@
 										<td>
 										</td>
 										<td>
-											<%=  to_words((@total_ammount_money*$TAX).round(2)) %>
+											<%=  to_words((@total_ammount_money*$TAX).round(2).to_f) %>
 										</td>
 									</tr>
 								</tbody>

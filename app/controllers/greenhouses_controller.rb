@@ -151,6 +151,6 @@ class GreenhousesController < ApplicationController
     def greenhouse_params
       params.require(:greenhouse).permit(:id, :business_name, :fiscal_address,
                                           :greenhouse_address, :rfc, :product_id,
-                                          :category, :logo, :_destroy)
+                                          :category, :logo, :fda_num, :_destroy)
     end
 end
