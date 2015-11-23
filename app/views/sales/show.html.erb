@@ -149,6 +149,11 @@
         </div>
       </div>
  </div>
+
+
+  <div class="row">
+     <%= render :partial => 'state_changes' %>
+  </div>
  </div>
 
 <script type="text/javascript">
@@ -391,18 +396,7 @@
           }
         });
 
-      //hold 17
-      $('#hold')
-        .on('switchChange.bootstrapSwitch', function (event, state) {
 
-          if ($('#sale_id_hidden').val() > 0) {
-            //Se envían los valores para los parámetros del ajax
-            //Los valores son:
-            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-            //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state);
-          }
-        });
 
 
       //
@@ -484,8 +478,7 @@
         $('#fda').bootstrapSwitch('state', sale.fda, true);
         //rampa 16
         $('#ramp').bootstrapSwitch('state', sale.ramp, true);
-        //hold 17
-        $('#hold').bootstrapSwitch('state', sale.hold, true);
+
         //cantidad retenida en FDA 18
         $('#hld_qty').val(sale.hld_qty);
 

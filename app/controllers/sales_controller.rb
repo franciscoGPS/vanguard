@@ -16,6 +16,9 @@ class SalesController < ApplicationController
     @s = Sale.find(params[:id])
     @shipments = Shipment.where(sale_id: @s.id).order(customer_id: :asc)
     @customers = @s.sold_to
+
+    @state_changes = ShipmentStateChanges.where(sale_id: @s.id)
+
   end
 
   # GET /sales/new
