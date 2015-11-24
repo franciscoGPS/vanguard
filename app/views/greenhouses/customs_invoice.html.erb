@@ -33,7 +33,7 @@
 									 <span class="label label-primary">Fecha</span>
 								</div>
 								<div class="col-md-6">
-										<%= text_field_tag nil, DateTime.now.to_date, class: "form-control" %>
+										<%= DateTime.now.to_date %>
 								</div>
 							</div>
 						</div>
@@ -171,31 +171,31 @@
 									CAAT:
 								</dt>
 								<dd>
-									<%=text_field_tag nil, @manifest.caat , class: "form-control" %>
+									<%= @manifest.caat %>
 								</dd>
 								<dt>
 									Tipo de Caja:
 								</dt>
 								<dd>
-									<%=text_field_tag nil, "Refrigerated Box " + @manifest.trailer_size.to_s + "\"", class: "form-control" %>
+									<%= "Refrigerated Box " + @manifest.trailer_size.to_s + "\"" %>
 								</dd>
 								<dt>
 									Transfer/Código Alpha Transfer:
 								</dt>
 								<dd>
-									<%=text_field_tag nil, @manifest.alpha, class: "form-control" %>
+									<%=  @manifest.alpha %>
 								</dd>
 								<dt>
 									FDA
 								</dt>
 								<dt>
-									<%=text_field_tag nil, @manifest.fda_num, class: "form-control" %>
+									<%=@manifest.fda_num %>
 								</dt>
 								<dt>
 									No. Pallets
 								</dt>
 								<dd>
-									<%=text_field_tag nil, "#{@manifest.total_pallets} - #{@total_pallets_words}" , class: "form-control" %>
+									<%= "#{@manifest.total_pallets} - #{@total_pallets_words}" %>
 								</dd>
 							</dl>
 						</div>
@@ -261,13 +261,13 @@
 						<div class="col-md-6">
 							 <span class="label label-primary">Entregó</span>
 							<p>
-								<%=text_field_tag nil, @manifest.delivery_person, class: "form-control" %>
+								<%= @manifest.delivery_person %>
 							</p>
 						</div>
 						<div class="col-md-6">
 							 <span class="label label-primary">Recibió</span>
 							<p>
-								<%=text_field_tag nil, @manifest.person_receiving, class: "form-control" %>
+								<%= @manifest.person_receiving %>
 							</p>
 						</div>
 					</div>

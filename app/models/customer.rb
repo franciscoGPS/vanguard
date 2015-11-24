@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
   include Paperclip::Glue
   acts_as_paranoid
+  belongs_to :greenhouse, dependent: :destroy
   has_many :contacts, :as => :contactable, :class_name => "Contact", dependent: :destroy
   has_many :shipments, dependent: :destroy, :source_type => "Shipment"
   has_many :shipment_state_changes
