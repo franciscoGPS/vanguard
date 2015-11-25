@@ -17,6 +17,12 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :greenhouse_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :greenhouse_id,  Greenhouse.all, :id,:business_name, {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :business_name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :business_name, :class => 'text_field form-control' %>

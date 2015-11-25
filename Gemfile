@@ -54,3 +54,4 @@ gem 'wicked_pdf'                      # A PDF generation plugin for Ruby on Rail
 gem 'wkhtmltopdf-binary'              # Because wicked_pdf is a wrapper for wkhtmltopdf, you'll need to install that, too.
 gem 'groupdate'                       # Generate more ActiveRecord methods
 gem "chartkick"                       # Charts with JS
+gem 'kaminari'                        # A Scope & Engine based paginator for modern web app frameworks and ORMs

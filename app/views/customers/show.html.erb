@@ -15,6 +15,8 @@
   </div>
 <div class="fieldset">
   <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:greenhouse) %></dt>
+      <dd><pre class="prettyprint"><%= @customer.greenhouse.business_name %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:business_name) %></dt>
       <dd><pre class="prettyprint"><%= @customer.business_name %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:billing_address) %></dt>
