@@ -1,0 +1,21 @@
+Precondiciones.-
+
+1.- Se debe Crear en la base de datos los roles.
+2.- Se deben crear los usuarios en la DB con un rol asignado.
+3.- Se deben crear los invernaderos con los que se va a trabajar.
+Cada invernadero tendrá su flujo independiente.
+4.- Se deben crear los clientes a los que éstos invernaderos les venderán.
+4.1.- Se deben crear los productos que éstos invernaderos enviarán a sus clientes.
+4.2.1.- Se deben crear los distintos pallet_types, package_type, bag_type, box_type, estos para ser usados por cualquier producto en una configuración de producto en una Orden de Compra, Factura Comercial o Factura de Cobro.
+
+Flujo.
+
+1.- Se selecciona del menú "Crear nuevo embarque."
+
+Se selecciona la temporada, fechas de salida y entrega, y los productos de la orden de compra.
+
+La orden de compra, es la que se le envía al invernadero.
+Esta puede contar con uno o varios productos, para uno o varios clientes.
+
+
+
