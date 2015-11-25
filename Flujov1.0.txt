@@ -12,10 +12,23 @@ Flujo.
 
 1.- Se selecciona del menú "Crear nuevo embarque."
 
-Se selecciona la temporada, fechas de salida y entrega, y los productos de la orden de compra.
+Se selecciona la temporada, fechas de salida y entrega, y los productos de la orden de compra que son los mismos productos que estarán presentes en el embarque tentativamente.
 
 La orden de compra, es la que se le envía al invernadero.
 Esta puede contar con uno o varios productos, para uno o varios clientes.
+
+
+Una vez creado el embarque es cuando el flujo realmente comienza.
+
+2.- Al tener creado el embarque es cuando realmente podemos crear los documentos para cubrir el modelo de negocio de la empresa Vanguard Co.
+
+Estando en el listado de embarques por ivernadero, y pudiendo ser filtrados por fecha, se podrá seleccionar cada venta y se le podrá cambiar el estado de la máquina de estados. (Lista la implementación, falta el detalle de frontend)
+
+Si en vez de solo seleccionarla en el radiobutton, se selecciona para ver los detales, se podrá revisar los detalles propios de cada embarque, así como generar la orden de compra en formato PDF, capturar el manifiesto de dicho embarque y generar las facturas comerciales, así como generar la factura propia de ese embarque para cada uno de los clientes.
+
+3.- En el mismo menú en el que se tiene actualmente el "Nuevo embarque" para el invernadero, se encuentra el "Seguimiento de Embarques". Este enlace nos llevará a observaer entre muchos otros, el estatus financiero de cada embarque, pudiendo ser filtrados por fecha al menos. así como si último estado de la máquina de estados.
+
+
 
 
 
