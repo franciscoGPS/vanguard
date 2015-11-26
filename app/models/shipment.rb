@@ -41,6 +41,12 @@ class Shipment < ActiveRecord::Base
     BagType.find(self.bag_type_id)
   end
 
+  def product_color
+    if self.product_color = nil
+      self.sale.product_color
+    end
+  end
+
 
 
 

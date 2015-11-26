@@ -13,6 +13,9 @@ class Customer < ActiveRecord::Base
   accepts_nested_attributes_for :contacts,  :allow_destroy => true
   accepts_nested_attributes_for :shipments, :allow_destroy => true
 
+  scope :own_customers, -> (greenhouse_id) { where(:greenhouse_id => greenhouse_id) }
+
+
   def customers_in_sale(sale)
     many_customers = ""
 

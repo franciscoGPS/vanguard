@@ -56,8 +56,15 @@ class Sale < ActiveRecord::Base
     :usda => {:id => "14", :name => "USDA"},
     :fda => {:id => "15", :name => "FDA"},
     :ramp => {:id => "16", :name => "RAMP"},
-    :hld_qty => {:id => "18", :name => "QTY"}
+    :hld_qty => {:id => "17", :name => "QTY"}
   }
+
+  #$product_colors = [["Green", 1], ["Breakers", 2], ["Turning", 3], ["Pink", 4],
+   #["Light Red", 5], ["Red", 6]]
+
+ # $product_colors = {:green => 1, :breakers => 2, :turning => 3, :pink  => 4,
+  #:light_red =>  5, :red =>  6 }
+
 
 
   def completed_states_size

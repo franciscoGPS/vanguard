@@ -15,5 +15,9 @@ class Product < ActiveRecord::Base
       #t.references :pallet_type
       #t.references :bag_type
       #t.boolean :active
+      #
+      #
+
+  $product_colors = {}
 
 end

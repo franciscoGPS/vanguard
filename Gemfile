@@ -34,6 +34,8 @@ end
 group :development do
   gem 'rails_layout'			            # Generate layout with framework (boostrap or foundation)
   gem 'bootstrap-sass-extras'		      # Generate news layouts with bootstrap theme
+  gem "better_errors"                 # Replaces the standard Rails error page with a much better and more useful error page.
+  gem "binding_of_caller"             # Better Errors' advanced features (REPL, local/instance variable inspection, pretty stack frame names)
 end
 
 gem 'meta-tags'                       # Create SEO metatags

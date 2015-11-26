@@ -1,4 +1,4 @@
-<%= form_for @sale, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @sale, :url => new_greenhouse_sale_path(@greenhouse.id, @sale), :html => { :class => 'form-horizontal' } do |f| %>
   <div class="form-group">
     <%= f.label :season, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -17,7 +17,13 @@
       <%= f.date_select :arrival_date, :class => 'text_field form-control' %>
     </div>
   </div>
-
+  <div class="form-group">
+    <%= f.label :product_color, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.select :product_color, product_colors,
+                              {prompt: "Selecciona producto"}, :class => "text_field form-control" %>
+    </div>
+  </div>
   <div id="products" class="panel  panel-default">
     <div class="panel-heading">
       <h3>Products</h3>
@@ -53,7 +59,7 @@
                   :back, :class => 'btn btn-default' %>
                   <% if @sale.own?(current_user)%>
       <%= link_to t('.delete', :default => t("helpers.links.delete")),
-                  sales_path, :class => 'btn btn-danger' %>
+                  greenhouse_sales_path, :class => 'btn btn-danger' %>
                   <% end %>
     </div>
   </div>

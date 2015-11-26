@@ -25,7 +25,7 @@
             <%= f.label :customer_id %>
           </div>
           <div class="col-md-12">
-            <%= f.collection_select :customer_id, Customer.all, :id, :business_name,
+            <%= f.collection_select :customer_id, @customers, :id, :business_name,
                               {prompt: "Selecciona cliente"}, :class => 'text_field form-control' %>
           </div>
         </div>
@@ -37,7 +37,7 @@
             <%= f.label :product_id %>
           </div>
           <div class="col-md-12">
-            <%= f.collection_select :product_id, Product.where(greenhouse_id: 1), :id, :name,
+            <%= f.collection_select :product_id, @products, :id, :name,
                               {prompt: "Selecciona producto"}, :class => "text_field form-control" %>
           </div>
         </div>

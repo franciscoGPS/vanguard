@@ -6,7 +6,7 @@ class SalesController < ApplicationController
 
   def index
     #@sales = Sale.order(:id).all
-    @greenhouse = Greenhouse.find(params[:id])
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sales = Sale.where(greenhouse_id: @greenhouse.id).order("id ASC")
   end
 
@@ -16,20 +16,26 @@ class SalesController < ApplicationController
     @s = Sale.find(params[:id])
     @shipments = Shipment.where(sale_id: @s.id).order(customer_id: :asc)
     @customers = @s.sold_to
-
     @state_changes = ShipmentStateChanges.where(sale_id: @s.id).order(created_at: :desc ).page(params[:page])
 
   end
 
   # GET /sales/new
   def new
-    @sale = Sale.new(departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
+    @customers = Customer.own_customers(params[:greenhouse_id])
+    @products = Product.where(greenhouse_id: params[:greenhouse_id])
   end
 
   # GET /sales/1/edit
   def edit
+    #@sale = Sale.find(params[:id])
     @shipments = Shipment.where(sale_id: params[:id])
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @action = params[:action]
+    @customers = Customer.own_customers(params[:greenhouse_id])
+    @products = Product.where(greenhouse_id: params[:greenhouse_id])
   end
 
   # POST /sales
@@ -233,7 +239,7 @@ class SalesController < ApplicationController
   def sale_params
     accessible = [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
       :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy, :purshase_order,
-      :out_of_packaging, :docs_reception,
+      :out_of_packaging, :docs_reception, :product_color,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
       :bol, :usda, :fda, :ramp, :hold, :hld_qty,
