@@ -51,3 +51,7 @@ main{
 }
 .logo {min-width: 250px;}
 .fix-order { padding-top: 17%;}
+.fix-admin-dashboard {
+  & h3 {padding: 0 15px;}
+  & .panel-body {padding: 0; padding-bottom: 5px;}
+}
