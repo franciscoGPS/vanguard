@@ -1,4 +1,9 @@
-<%# add navigation links to this file %>
+<li>
+  <%=link_to admin_path do %>
+    <i class="fa fa-dashboard"></i>
+    Home
+  <% end %>
+</li>
 <% if user_signed_in? %>
   <li>
        <% if current_user.admin? %>
