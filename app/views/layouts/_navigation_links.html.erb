@@ -46,35 +46,8 @@
           Greenhouses
         <% end %>
       </li>
-      <li>
-        <%= link_to preshipments_path do %>
-          <i class="fa fa-ship fw"></i>
-          Shipments
-        <% end %>
-      </li>
     </ul>
   </li>
-  <li>
-      <%= link_to customers_path do %>
-        <i class='fa fa-book fw'></i>
-        Customers
-      <% end %>
-  </li>
-  <li>
-      <%= link_to contacts_path do %>
-        <i class='fa fa-book fw'></i>
-        Contacts
-      <% end %>
-  </li>
-  <li>
-
-      <%= link_to products_path do %>
-        <i class='fa fa-tags fw'></i>
-        Products
-      <% end %>
-
-  </li>
-
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
 <% end %>

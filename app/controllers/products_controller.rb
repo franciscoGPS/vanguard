@@ -5,28 +5,31 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
   end
 
   # GET /products/new
   def new
     @product = Product.new(:active => true)
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
   end
 
   # GET /products/1/edit
   def edit
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
 
 
     respond_to do |format|
