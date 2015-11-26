@@ -1,4 +1,11 @@
+<h2>Dashboard</h2>
 <div class="col-md-6">
-  <h2>Sales</h2>
-  <%= line_chart @sales %>
+  <div class="row">
+    <h3>Week Sales</h3>
+    <%= line_chart @week_sales %>
+  </div>
+  <div class="row">
+    <h3>Month Sales</h3>
+    <%= pie_chart @month_sales %>
+  </div>
 </div>

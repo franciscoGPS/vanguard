@@ -8,10 +8,8 @@ class StaticPagesController < ApplicationController
     redirect_to 'public/index.html'
   end
 
-  #Este método es al unico que se tiene acceso sin autenticar
-  #Se designa en la línea 2 de este doc
   def admin
-    @sales = Sale.group_by_day(:created_at).count
-    #@sales_by_customer = Sale
+    @week_sales = Sale.group_by_day(:created_at, range: 1.weeks.ago.midnight..Time.now).count
+    @month_sales = Greenhouse.all_sales_per_month.group(:business_name).count
   end
 end
