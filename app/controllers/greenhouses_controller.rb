@@ -79,8 +79,11 @@ class GreenhousesController < ApplicationController
       @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
     end
 
-   # @distincts_products = distincts_products(@sale.id)
-    byebug
+    @string_products = ""
+    diffs_prods = Shipment.different_products_in_sale(@sale.id)
+    diffs_prods.each_with_index do |product, index|
+      @string_products += (index+1).to_s + ".- " + product.name
+    end
 
     respond_to do |format|
       format.html {render :order}
@@ -160,7 +163,7 @@ class GreenhousesController < ApplicationController
                                           :category, :logo, :fda_num, :_destroy,
                                           shipments_attributes: [:id],
                                           sales_attributes: [:id],
-                                          products_attributes: [:id, :name]
+                                          products_attributes: [:id, :name, :_destroy]
 
                                           )
     end
