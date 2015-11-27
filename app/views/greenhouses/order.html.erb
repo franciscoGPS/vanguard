@@ -1,4 +1,4 @@
-<%= form_for @sale, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for  @sale, :url => greenhouse_sales_path(@greenhouse.id, @sale.id), :html => { :class => 'form-horizontal' } do |f| %>
 <div class="container-fluid" style="background-color:white;">
 	<div class="row">
 		<div class="col-md-12">
@@ -25,14 +25,9 @@
             <div class="col-md-12">
               <div class="form-group">
   							<label for="inputPassword3" class="control-label">
-  								Producto
+  								Producto en embarque
   							</label>
-
-
-                  <% @shipments.each do |shipment|%>
-                      <%= shipment.product.name %>
-                  <% end %>
-
+                  <%= @string_products %>
   						</div>
             </div>
 
