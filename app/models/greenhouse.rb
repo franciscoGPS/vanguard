@@ -9,4 +9,9 @@ class Greenhouse < ActiveRecord::Base
 
   accepts_nested_attributes_for :sales, :allow_destroy => false
 
+  scope :all_sales_per_month, -> { joins(:sales).where("EXTRACT(MONTH FROM sales.created_at) = #{Time.now.month}")  }
+
+  def sales_per_month
+    sales.where("EXTRACT(MONTH FROM created_at) = #{Time.now.month}")
+  end
 end

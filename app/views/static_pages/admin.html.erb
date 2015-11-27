@@ -1,4 +1,34 @@
-<div class="col-md-6">
-  <h2>Sales</h2>
-  <%= line_chart @sales %>
+<h2>Dashboard</h2>
+<div class="col-md-6 col-sm-12">
+  <div class="row">
+    <div class="panel panel-default fix-admin-dashboard">
+        <h3>Week Sales</h3>
+        <div class="panel-body">
+          <%= line_chart @week_sales %>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default fix-admin-dashboard">
+        <h3>Month Sales</h3>
+        <div class="panel-body">
+          <%= pie_chart @month_sales.group(:business_name).count %>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Total month sales</h4>
+      </div>
+        <div class="panel-body">
+          <div class="col-md-6 col-sm-12">
+            <p class="text-center">
+              <strong>Sales</strong> <br>
+              <%= @month_sales.count %>
+            </p>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
