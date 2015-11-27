@@ -16,9 +16,18 @@ class Shipment < ActiveRecord::Base
   scope :confirmed, -> { where("price is ? OR price = ? OR price < ?", nil, 0, 0 ) }
   scope :to_edit, -> (sale_id) { where(:sale_id => sale_id) }
 
+
+  scope :different_products_in_sale, -> (sale_id) { where(sale_id: sale_id ).joins(:product).select("products.id","products.name").uniq }
+   #def different_products_in_sale(sale_id)
+    #  Shipment.where(sale_id: @sale ).joins(:product).select("products.id","products.name").uniq
+    #end
+
+  #scope :distinct_products_in_sale, -> (sale_id) { where (sale_id: => sale_id).join(:products).group(:name) }
+
     def find_by_sale_id(sale_id)
           find(:conditions => [ "sale_id = ?", sale_id]).as_json
     end
+
 
 
   def plu_to_string
