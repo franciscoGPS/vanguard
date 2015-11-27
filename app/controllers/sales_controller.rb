@@ -41,15 +41,17 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
+    byebug
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(sale_params)
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
     product_id = params[:sale][:shipments_attributes].first[1][:product_id]
-    @sale.greenhouse = Product.find(product_id).greenhouse
+    @sale.greenhouse = @greenhouse
     @sale.save
 
     respond_to do |format|
-      format.html { redirect_to @sale, notice: 'Sale and shipments persisted successfully.' }
+      format.html { redirect_to url: greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
     end
   end
 
