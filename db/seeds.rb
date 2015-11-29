@@ -13,7 +13,7 @@
 # 	Pallet_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 #   Bag_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 Role.create!( name: "Admin")
-User.new (name: "Admin", job: "Systems", password: '.Agave15!', email: 'hola@agaveti.com', admin: true, role_id: 1).save
+User.new(name: "Admin", job: "Systems", password: '.Agave15!', email: 'hola@agaveti.com', admin: true, role_id: 1).save
 User.new( name: "Admin", job: "Vanguard Admin", password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: true, role_id: 1).save
 
 
