@@ -13,10 +13,13 @@
 # 	Pallet_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 #   Bag_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 Role.create( name: "Admin")
-User.create!( :name => "Admin", :job => "Systems", :password => '.Agave15!',
+s = User.new( :name => "Admin", :job => "Systems", :password => '.Agave15!',
 :password_confirmation => ".Agave15!", :email => 'hola@agaveti.com', :admin => true, :role_id => 1)
-User.create!( :name => "Admin", :job => "Vanguard Admin", :password => 'Prueba123!',
+s.save!
+r = User.new( :name => "Admin", :job => "Vanguard Admin", :password => 'Prueba123!',
 :password_confirmation => "Prueba123!", :email => 'diana.s@vanguardco.com.mx', :admin => true, :role_id => 1)
+r.save!
+
 
 
 # Sets superadmin attribute
