@@ -5,7 +5,7 @@ has_many :sales
 has_many :shipments
 has_many :collection_bills
   # Include default devise modules.
-  devise :recoverable,
+  devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable,
          :lockable
 
