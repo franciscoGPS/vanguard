@@ -13,8 +13,8 @@
 # 	Pallet_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 #   Bag_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 Role.create( name: "Admin")
-User.create(name: "Admin", job: "Systems", password: 'Agave15', email: 'hola@agaveti.com', admin: true)
-User.create(name: "Vanguard", job: "Vanguard Admin", password: 'Prueba123!', encrypted_password: '$2a$04$tJ629HYGiDfpcDYJ3TuAB.iFnADsER2sVqgMR9SgShWIYGUBUawYy', email: 'diana.s@vanguardco.com.mx', admin: true, role_id: 1)
+User.create(name: "Admin", job: "Systems", "password=" 'Agave15', email: 'hola@agaveti.com', admin: true)
+User.create(name: "Vanguard", job: "Vanguard Admin", "password=" 'Prueba123!', encrypted_password: '$2a$04$tJ629HYGiDfpcDYJ3TuAB.iFnADsER2sVqgMR9SgShWIYGUBUawYy', email: 'diana.s@vanguardco.com.mx', admin: true, role_id: 1)
 
 
 # Sets superadmin attribute
