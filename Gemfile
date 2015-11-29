@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'              # Build JSON APIs with ease.
 gem 'puma'                            # Use Puma as the app server
 gem 'newrelic_rpm'                    # User NewRelic like performance monitor
 gem 'sprockets-rails', :require => 'sprockets/railtie' # Use Sprockets to precompile assets
+gem 'devise'                          # Auth Users
 
 group :production do
   gem 'rails_12factor'                  # Use rails_12factor to replaces the need for the plugins on Heroku
@@ -39,7 +40,7 @@ group :development do
 end
 
 gem 'meta-tags'                       # Create SEO metatags
-gem 'devise'                          # Auth Users
+
 gem 'cancan'                          # Give rules & access to users
 gem "paranoia", "~> 2.0"              # Use paranoia to make soft-delete objects
 gem 'mandrill-api'                    # SMTP Settings
