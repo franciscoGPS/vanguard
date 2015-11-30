@@ -58,6 +58,7 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     if @sale.update(sale_params)
       @shipments_to_update = Shipment.to_edit(@sale.id)
       if @shipments_to_update.present?
@@ -72,7 +73,7 @@ class SalesController < ApplicationController
           end
         end
         respond_to do |format|
-          format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+          format.html { redirect_to  greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale was successfully updated.' }
         end
 
         #format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
@@ -89,9 +90,10 @@ class SalesController < ApplicationController
   # DELETE /sales/1
   # DELETE /sales/1.json
   def destroy
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale.destroy
     respond_to do |format|
-      format.html { redirect_to sales_url, notice: 'Sale was successfully destroyed.' }
+      format.html { redirect_to greenhouse_sales_path(@greenhouse.id), notice: 'Sale was successfully destroyed.' }
       #format.json { head :no_content }
     end
   end

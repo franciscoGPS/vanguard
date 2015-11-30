@@ -54,6 +54,7 @@ class GreenhousesController < ApplicationController
   # DELETE /greenhouses/1
   # DELETE /greenhouses/1.json
   def destroy
+
     @greenhouse.destroy
     respond_to do |format|
       format.html { redirect_to greenhouses_url, notice: 'Greenhouse was successfully destroyed.' }

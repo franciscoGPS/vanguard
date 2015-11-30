@@ -40,7 +40,7 @@
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_greenhouse_sale_path(@sale.greenhouse_id, @sale.id), :class => 'btn btn-default' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              greenhouse_sale_path(@sale.id, @sale.greenhouse_id),
+              greenhouse_sale_path(@sale.greenhouse_id, @sale.id),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
