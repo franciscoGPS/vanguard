@@ -1,4 +1,4 @@
-<%= form_for @product,:url => new_greenhouse_product_path(@greenhouse.id, @product.id), :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @product,:url => greenhouse_products_path(@greenhouse.id, @product.id), :html => { :class => 'form-horizontal' } do |f| %>
   <div class="form-group">
     <%= f.label :name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
