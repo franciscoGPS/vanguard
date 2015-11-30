@@ -22,7 +22,7 @@ class Customer < ActiveRecord::Base
     i = 1;
     Customer.where(id: sale.customers).select(:business_name).distinct.select(:id).each_with_index do |customer|
       if i == 1
-        many_customers = customer.business_name
+        many_customers = customer.business_name.to_s
         i = i+1
       else
         many_customers = many_customers +', ' + customer.business_name.to_s

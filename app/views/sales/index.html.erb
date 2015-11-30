@@ -30,12 +30,12 @@
             <% @sales.each do |sale| %>
             <tr>
 
-              <%= link_to greenhouse_sale_path(sale.greenhouse_id, sale.id), :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+              <%= link_to greenhouse_sale_path(@greenhouse.id, sale.id), :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
                 <td><%= radio_button_tag(:selected, sale.id) %></td>
                 <td><%= sale.id %></td>
-                <td><a href="<%= greenhouse_sale_path(sale.greenhouse_id, sale.id) %>"><%= sale.shipments[0].product.name %></a></td>
-                <td><a href="<%= greenhouse_sale_path(sale.greenhouse_id, sale.id) %>">
-                  <%= sale.shipments[0].customer.customers_in_sale(sale) %>
+                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>"><%= sale.shipments.first.product.name %></a></td>
+                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
+                  <%= sale.shipments.first.customer.customers_in_sale(sale) %>
                 </a></td>
                 <td>
                   <%= link_to edit_greenhouse_sale_path(sale.greenhouse_id, sale.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
