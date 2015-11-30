@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to greenhouse_products_path(@greenhouse.id, @product.id), notice: 'Product was successfully updated.' }
@@ -60,6 +61,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @product.destroy
     respond_to do |format|
       format.html { redirect_to greenhouse_products_path(@greenhouse.id), notice: 'Product was successfully destroyed.' }
