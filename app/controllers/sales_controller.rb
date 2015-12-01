@@ -30,7 +30,7 @@ class SalesController < ApplicationController
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = Product.where("greenhouse_id = ? AND deleted_at IS NULL AND active = 1" ,
-     params[:greenhouse_id])
+     params[:greenhouse_id] )
   end
 
   # GET /sales/1/edit
