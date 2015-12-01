@@ -32,7 +32,7 @@ class CustomersController < ApplicationController
   def create
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @customer = Customer.new(customer_params)
-
+    @customer.greenhouse_id = @greenhouse.id
     respond_to do |format|
       if @customer.save
         format.html { redirect_to greenhouse_customers_path(@greenhouse.id), notice: 'Customer was successfully created.' }
