@@ -15,10 +15,11 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
-    @s = Sale.find(params[:id])
-    @shipments = Shipment.where(sale_id: @s.id).order(customer_id: :asc)
-    @customers = @s.sold_to
-    @state_changes = ShipmentStateChanges.where(sale_id: @s.id).order(created_at: :desc ).page(params[:page])
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    @sale = Sale.find(params[:id])
+    @shipments = Shipment.where(sale_id: @sale.id).order(customer_id: :asc)
+    @customers = @sale.sold_to
+    @state_changes = ShipmentStateChanges.where(sale_id: @sale.id).order(created_at: :desc ).page(params[:page])
 
   end
 
@@ -104,6 +105,7 @@ class SalesController < ApplicationController
   #Esta acción es recibida principalmente de la vista show y redirecciona hacia
   #la pantalla de generar la ORDEN DE COMPRA.
   def purshase_order
+    byebug
     sale = Sale.find(params[:sale_id])
     redirect_to controller: :greenhouses, action: :purshase_order, sale_id: sale
   end
@@ -257,7 +259,7 @@ class SalesController < ApplicationController
         pallet_type_attributes: [:id, :name, :_destroy],
         bag_type_attributes: [:id, :name, :_destroy],
         box_type_attributes: [:id, :name, :_destroy],
-        products_attributes: [:id, :name, :_destroy]],
+        product_attributes: [:id, :name, :_destroy]],
 
       manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
         :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,

@@ -68,9 +68,11 @@ class GreenhousesController < ApplicationController
 
 #Método que responde al botón de crear orden de compra
   def purshase_order
+    byebug
+
     @sale = Sale.find(params[:sale_id])
-    @shipments = Shipment.where(sale_id: @sale )
-    @greenhouse = Greenhouse.find(@sale.greenhouse_id)
+    @shipments = Shipment.where(sale_id: @sale.id )
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @manifest = Manifest.where(sale_id: @sale.id)
     @customers = @sale.sold_to
 
@@ -177,7 +179,7 @@ class GreenhousesController < ApplicationController
                 pallet_type_attributes: [:id, :name, :_destroy],
                 bag_type_attributes: [:id, :name, :_destroy],
                 box_type_attributes: [:id, :name, :_destroy],
-                products_attributes: [:id, :name, :_destroy]],
+                product_attributes: [:id, :name, :_destroy]],
 
           manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
             :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,

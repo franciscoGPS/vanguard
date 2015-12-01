@@ -4,7 +4,7 @@ class Sale < ActiveRecord::Base
   belongs_to :greenhouse
   belongs_to :user
   has_many :shipments, :dependent => :destroy, :source_type => "Shipment"
-  has_many :customers, :through => :shipments, :dependent => :destroy
+  has_many :customers, :through => :shipments
   has_one :manifests
   has_many :shipment_state_changes
   has_many :collection_bills

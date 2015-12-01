@@ -156,7 +156,7 @@
 		</div>
 	</div>
 </div>
-<%= link_to 'Printable Receipt (PDF)', p_order_path(@sale.id, format: 'pdf') %>
+<%= link_to 'Printable Receipt (PDF)', p_order_path(@greenhouse.id, @sale.id, format: 'pdf') %>
 <% end %>
 
 

@@ -94,6 +94,6 @@ class ShipmentsController < ApplicationController
         pallet_type_attributes: [:id, :name, :_destroy],
         bag_type_attributes: [:id, :name, :_destroy],
         box_type_attributes: [:id, :name, :_destroy],
-        products_attributes: [:id, :name, :_destroy])
+        product_attributes: [:id, :name, :_destroy])
     end
 end

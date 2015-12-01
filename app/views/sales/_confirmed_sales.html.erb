@@ -17,7 +17,7 @@
         <td><%= shipment.box_number %></td>
         <td><%= BoxType.find(shipment.box_type_id).name %></td>
         <td><%= shipment.weight %></td>
-        <td><%=  shipment.product.name %></td>
+        <td><%= shipment.product.name %></td>
         <td><%= shipment.customer.business_name %></td>
         <td>$<%= shipment.price %></td>
         <td>$<%= shipment.price * shipment.box_number %></td>

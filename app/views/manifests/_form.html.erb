@@ -1,4 +1,4 @@
-<%= form_for(@manifest) do |f| %>
+<%= form_for @sale, :url => greenhouse_manifests_path(@greenhouse.id, @manifest.id) do |f| %>
   <% if @manifest.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@manifest.errors.count, "error") %> prohibited this manifest from being saved:</h2>

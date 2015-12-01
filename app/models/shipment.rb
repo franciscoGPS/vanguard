@@ -12,6 +12,8 @@ class Shipment < ActiveRecord::Base
   belongs_to :sale
   belongs_to :customer
 
+  accepts_nested_attributes_for :product, :reject_if => :all_blank
+
   scope :unconfirmed, -> { where("price is ? OR price = ? OR price < ?", nil, 0, 0 ) }
   scope :confirmed, -> { where("price is ? OR price = ? OR price < ?", nil, 0, 0 ) }
   scope :to_edit, -> (sale_id) { where(:sale_id => sale_id) }
