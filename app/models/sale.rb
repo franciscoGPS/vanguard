@@ -11,7 +11,7 @@ class Sale < ActiveRecord::Base
 
   accepts_nested_attributes_for :shipments,  :allow_destroy => true,
   reject_if: proc { |attributes| attributes['price'].blank? ||
-   attributes['pallets_number'].blank? || attributes['package_type_id'].blank? ||
+   attributes['box_number'].blank? || attributes['package_type_id'].blank? ||
    attributes['pallet_type_id'].blank? || attributes['box_type_id'].blank? ||
    attributes['bag_type_id'].blank? }
 

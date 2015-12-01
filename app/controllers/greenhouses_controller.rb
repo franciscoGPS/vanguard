@@ -160,11 +160,36 @@ class GreenhousesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def greenhouse_params
       params.require(:greenhouse).permit(:id, :business_name, :fiscal_address,
-                                          :greenhouse_address, :rfc, :product_id,
-                                          :category, :logo, :fda_num, :_destroy,
-                                          shipments_attributes: [:id],
-                                          sales_attributes: [:id],
-                                          products_attributes: [:id, :name, :_destroy]
+        :greenhouse_address, :rfc, :product_id, :category, :logo, :fda_num, :_destroy,
+
+       sales_attributes:  [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
+      :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy, :purshase_order,
+      :out_of_packaging, :docs_reception, :product_color,
+      :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
+      :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty,
+
+          shipments_attributes: [:id, :start_at, :created_at, :updated_at,
+            :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
+            :package_type_id, :bag_type_id, :pallet_type_id,
+            :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
+            :box_type_id, :weight, :po_number, :quality,
+                pallet_type_attributes: [:id, :name, :_destroy],
+                bag_type_attributes: [:id, :name, :_destroy],
+                box_type_attributes: [:id, :name, :_destroy],
+                products_attributes: [:id, :name, :_destroy]],
+
+          manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
+            :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
+            :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
+          :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
+          :sold_to_id, :deleted_at, :_destroy] ]
+
+
+
+
+
+
 
                                           )
     end

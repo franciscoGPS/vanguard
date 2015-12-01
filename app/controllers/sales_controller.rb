@@ -1,11 +1,13 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   # GET /sales
   # GET /sales.json
 
   def index
     #@sales = Sale.order(:id).all
+    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sales = Sale.where(greenhouse_id: @greenhouse.id).order("id ASC")
   end
@@ -43,14 +45,14 @@ class SalesController < ApplicationController
   def create
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(sale_params)
+    @shipments = params[:sale][:shipments_attributes]
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
-    product_id = params[:sale][:shipments_attributes].first[1][:product_id]
     @sale.greenhouse = @greenhouse
     @sale.save
 
     respond_to do |format|
-      format.html { redirect_to url: greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
+      format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
     end
   end
 
