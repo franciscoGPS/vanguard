@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
   include Paperclip::Glue
   acts_as_paranoid
-  belongs_to :greenhouse, dependent: :destroy
+  belongs_to :greenhouse
   has_many :contacts, :as => :contactable, :class_name => "Contact", dependent: :destroy
   has_many :shipments, dependent: :destroy, :source_type => "Shipment"
   has_many :shipment_state_changes
@@ -10,7 +10,7 @@ class Customer < ActiveRecord::Base
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
 
-  accepts_nested_attributes_for :contacts,  :allow_destroy => true
+  accepts_nested_attributes_for :contacts, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :shipments, :allow_destroy => true
 
   scope :own_customers, -> (greenhouse_id) { where(:greenhouse_id => greenhouse_id) }

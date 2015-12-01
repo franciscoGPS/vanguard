@@ -19,11 +19,13 @@ Rails.application.routes.draw do
         resources :sales
         resources :manifests
         resources :shipments
-        resources :customers
+        resources :customers do
+          resources :contacts
+        end
         resources :products
         resources :collections_bills
     end
-    resources :contacts
+
 
 
 
@@ -32,6 +34,11 @@ Rails.application.routes.draw do
     #Hash key => value
     #what the client see => what the system does, as: alias you can use in the system
 
+
+   #Estas siguientes direcciones de PATCH se requieren para que se puedan actualizar
+   #los modelos anidados
+   patch '/greenhouses/:greenhouse_id/customers.:id' => 'customers#update'
+   patch '/greenhouses/:greenhouse_id/products.:id' => 'products#update'
 
 #Acción al cambiar de estados en la venta
     get 'purshase_order_state_change' => 'sales#purshase_order_state_change'

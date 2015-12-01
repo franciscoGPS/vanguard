@@ -14,6 +14,7 @@ class Sale < ActiveRecord::Base
    attributes['pallets_number'].blank? || attributes['package_type_id'].blank? ||
    attributes['pallet_type_id'].blank? || attributes['box_type_id'].blank? ||
    attributes['bag_type_id'].blank? }
+
   accepts_nested_attributes_for :customers, :reject_if => :all_blank
   accepts_nested_attributes_for :manifests, :allow_destroy => true
 
