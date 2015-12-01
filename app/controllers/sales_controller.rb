@@ -28,7 +28,9 @@ class SalesController < ApplicationController
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
     @customers = Customer.own_customers(params[:greenhouse_id])
-    @products = Product.where(greenhouse_id: params[:greenhouse_id])
+    #Poner validaciones de productos no borrados y activos
+    @products = Product.where("greenhouse_id = ? AND deleted_at IS NULL AND active = 1" ,
+     params[:greenhouse_id])
   end
 
   # GET /sales/1/edit
