@@ -40,6 +40,7 @@ Rails.application.routes.draw do
    patch '/greenhouses/:greenhouse_id/customers.:id' => 'customers#update'
    patch '/greenhouses/:greenhouse_id/products.:id' => 'products#update'
    patch '/greenhouses/:greenhouse_id/manifests.:id' => 'manifests#update'
+   patch '/greenhouses/:greenhouse_id/sales.:id' => 'sales#update'
 
 #Acción al cambiar de estados en la venta
     get 'purshase_order_state_change' => 'sales#purshase_order_state_change'

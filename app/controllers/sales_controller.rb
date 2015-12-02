@@ -29,8 +29,7 @@ class SalesController < ApplicationController
     @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
-    @products = Product.where("greenhouse_id = ? AND deleted_at IS NULL AND active = 1" ,
-     params[:greenhouse_id] )
+    @products = @greenhouse.active_products
   end
 
   # GET /sales/1/edit
@@ -46,6 +45,7 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
+    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(sale_params)
     @shipments = params[:sale][:shipments_attributes]
@@ -65,12 +65,14 @@ class SalesController < ApplicationController
   def update
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     if @sale.update(sale_params)
+
       @shipments_to_update = Shipment.to_edit(@sale.id)
       if @shipments_to_update.present?
         @shipments_to_update.each do |shipment|
           shipment.sale_id = @sale.id
-          price = params[shipment.id.to_s]
-          shipment.price = price
+          byebug
+          #price = params[shipment.id.to_s]
+          #shipment.price = price
           begin
             shipment.save
           rescue Exception

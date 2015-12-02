@@ -28,6 +28,14 @@
               <%= @month_sales.count %>
             </p>
           </div>
+          <div class="col-md-6 col-sm-12">
+            <p class="text-center">
+              <strong>Total sold this month</strong> <br>
+
+              <%= number_to_currency(@total_sales_ammount) %>
+
+            </p>
+          </div>
         </div>
     </div>
   </div>

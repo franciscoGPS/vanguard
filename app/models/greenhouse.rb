@@ -14,4 +14,9 @@ class Greenhouse < ActiveRecord::Base
   def sales_per_month
     sales.where("EXTRACT(MONTH FROM created_at) = #{Time.now.month}")
   end
+
+  def active_products
+    products.where("active = true")
+  end
+
 end

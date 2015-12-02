@@ -16,7 +16,8 @@ module ApplicationHelper
 
 
   def product_colors
-   return ["Green","Breakers", "Turning", "Pink", "Light Red", "Red"]
+   #return ["1-2", "2-3", "3-4", "4-5", "5-6"]
+   return ["1.- Green","2.- Breakers", "3.- Turning", "4.- Pink", "5.- Light Red", "6.- Red"]
   end
 
 
