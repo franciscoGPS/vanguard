@@ -68,8 +68,6 @@ class GreenhousesController < ApplicationController
 
 #Método que responde al botón de crear orden de compra
   def purshase_order
-    byebug
-
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale.id )
     @greenhouse = Greenhouse.find(params[:greenhouse_id])

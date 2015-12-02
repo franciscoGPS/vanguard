@@ -7,7 +7,6 @@ class SalesController < ApplicationController
 
   def index
     #@sales = Sale.order(:id).all
-    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sales = Sale.where(greenhouse_id: @greenhouse.id).order("id ASC")
   end
@@ -45,7 +44,6 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(sale_params)
     @shipments = params[:sale][:shipments_attributes]
@@ -70,7 +68,6 @@ class SalesController < ApplicationController
       if @shipments_to_update.present?
         @shipments_to_update.each do |shipment|
           shipment.sale_id = @sale.id
-          byebug
           #price = params[shipment.id.to_s]
           #shipment.price = price
           begin
@@ -109,7 +106,6 @@ class SalesController < ApplicationController
   #Esta acción es recibida principalmente de la vista show y redirecciona hacia
   #la pantalla de generar la ORDEN DE COMPRA.
   def purshase_order
-    byebug
     sale = Sale.find(params[:sale_id])
     redirect_to controller: :greenhouses, action: :purshase_order, sale_id: sale
   end
