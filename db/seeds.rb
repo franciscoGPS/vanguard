@@ -13,7 +13,7 @@
 # 	Pallet_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 #   Bag_type.create([{name: 'chico'},{name: 'mediano'},{name: 'grande'}])
 Role.create( name: "Admin")
-User.create(name: "Admin", job: "Systems", password: 'Agave15', email: 'hola@agaveti.com', admin: true)
+User.create(name: "Admin", job: "Systems", password: 'Agave15', email: 'hola@agaveti.com', admin: true, superadmin: true, role_id: 1)
 User.create(name: "Vanguard", job: "Vanguard Admin", password: 'Prueba123!', email: 'diana.s@vanguardco.com.mx', admin: true, role_id: 1)
 
 
@@ -25,9 +25,9 @@ User.create(name: "Vanguard", job: "Vanguard Admin", password: 'Prueba123!', ema
 
 
 # Sets superadmin attribute
-x = User.find_by(:email => "hola@agaveti.com")
-x.update(superadmin: true)
-x.save
+#x = User.find_by(:email => "hola@agaveti.com")
+#x.update(superadmin: true)
+#x.save
 #connection = ActiveRecord::Base.connection()
 #connection.execute("INSERT INTO bag_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
 #					INSERT INTO package_types(name, created_at, updated_at) VALUES ('GRANDE', '#{Date.today}', '#{Date.today}');
