@@ -20,10 +20,13 @@ class ManifestsController < ApplicationController
     @manifest = Manifest.find(params[:id])
     @sale = Sale.find(params[:sale_id])
     @shipments = @sale.shipments
+    byebug
+    @sold_to_cust = Customer.find(@manifest.sold_to_id)
   end
 
   # GET /manifests/new
   def new
+    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.find(params[:sale_id])
     @total_pallets = 0
@@ -36,6 +39,7 @@ class ManifestsController < ApplicationController
       @po_numbers[i] = shipment.po_number
       i = i+1
     end
+    byebug
     @sold_to_cust = sold_to_cust(@sale)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.new
@@ -75,16 +79,16 @@ class ManifestsController < ApplicationController
     @manifest = Manifest.new(manifest_params)
     @manifest.person_receiving = @manifest.driver
     respond_to do |format|
-      begin #begin del rescue en caso de tener muchos caracteres
+      #begin #begin del rescue en caso de tener muchos caracteres
         if @manifest.save
           format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), notice: 'Manifest was successfully created.' }
         else
-          format.html { render :new }
+          format.html { redirect_to new_greenhouse_sale_manifest_path(@greenhouse.id, @sale.id), notice: 'Manifest was NOT created. Verify Data' }
         end
-      rescue => ex
-        logger.error ex.message
-        format.html { render :edit }
-      end
+      #rescue => ex
+       # logger.error ex.message
+       # format.html { render :edit }
+      #end
     end
   end
 
@@ -128,7 +132,7 @@ end
 #Regresa un cliente solamente. Tendrá lógica para seleccionar al cliente
 #en caso de ser varios por Sale.
 def sold_to_cust(sale)
-  sale = Sale.find(sale)
+  sale = Sale.find(sale.id)
   if sale.shipments.count == 1
     #@manifest.sold_to_id = sale.shipments.first.customer_id
     return Customer.find(sale.shipments.first.customer_id)

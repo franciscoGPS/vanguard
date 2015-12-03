@@ -96,7 +96,6 @@ class GreenhousesController < ApplicationController
         :page_size => 'Letter',
         :encoding => 'UTF-8'
       end
-
       end
   end
 
@@ -105,7 +104,7 @@ class GreenhousesController < ApplicationController
 #Envía el ID de la venta a la que se le hará la factura de cruce
   def customs_invoice
     @sale = Sale.find(params[:sale_id])
-    @shipments = Shipment.where(sale_id: @sale )
+    @shipments = Shipment.where(sale_id: @sale.id )
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
@@ -139,6 +138,7 @@ class GreenhousesController < ApplicationController
     @total_pallets_words = to_words(@manifest.total_pallets)
 
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:pallets_number] }.sum
+
     respond_to do |format|
       format.html {render :customs_invoice}
       format.pdf do
