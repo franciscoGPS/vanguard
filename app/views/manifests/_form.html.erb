@@ -1,4 +1,4 @@
-<%= form_for @sale, :url => greenhouse_manifests_path(@greenhouse.id, @manifest.id) do |f| %>
+<%= form_for @manifest, :url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id) do |f| %>
   <% if @manifest.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@manifest.errors.count, "error") %> prohibited this manifest from being saved:</h2>
@@ -19,8 +19,7 @@
     <%= f.number_field :purshase_order %>
   </div>
   <div class="field">
-    <%= f.label :sale_id %><br>
-    <%= f.number_field :sale_id, :value => @manifest.sale_id, disabled: false %>
+    <%= f.hidden_field :sale_id, :value => @manifest.sale_id %>
   </div>
   <div class="field">
     <%= f.label :date %><br>

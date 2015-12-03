@@ -16,8 +16,9 @@ Rails.application.routes.draw do
     resources :package_types
     resources :count_types
     resources :greenhouses do
-        resources :sales
-        resources :manifests
+        resources :sales do
+          resources :manifests
+        end
         resources :shipments
         resources :customers do
           resources :contacts
@@ -39,7 +40,7 @@ Rails.application.routes.draw do
    #los modelos anidados
    patch '/greenhouses/:greenhouse_id/customers.:id' => 'customers#update'
    patch '/greenhouses/:greenhouse_id/products.:id' => 'products#update'
-   patch '/greenhouses/:greenhouse_id/manifests.:id' => 'manifests#update'
+   #patch '/greenhouses/:greenhouse_id/manifests.:id' => 'manifests#update'
    patch '/greenhouses/:greenhouse_id/sales.:id' => 'sales#update'
 
 #Acción al cambiar de estados en la venta
@@ -47,8 +48,8 @@ Rails.application.routes.draw do
 #Fin###########
 
     post 'purshase_order/greenhouses/:greenhouse_id/sales/:sale_id' => 'sales#purshase_order', as: "purshase_order"
-    post 'customs_bill' => 'sales#customs_bill'
-    get 'customs_bill' => 'manifests#new'
+    get 'customs_billing/sales/:greenhouse_id/:sale_id' => 'sales#customs_bill', as: "customs_billing"
+    get 'customs_bill/greenhouses/:greenhouse_id/sales/:sale_id' => 'manifests#new', as: 'customs'
 
     get 'manifests/customs_invoice' => 'manifests#to_customs_invoice', as: "to_customs_invoice"
     post 'collections_bills/invoice/:collections_bill_id' => 'collections_bills#to_invoice', as: "to_invoice"

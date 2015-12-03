@@ -1,8 +1,8 @@
  <div class="well">
   <%= link_to "Manifiesto y Factura", customs_invoice_path(@sale), class: "btn btn-primary" %>
   <div class="pull-right">
-    <%= link_to 'Edit', edit_manifest_path(@manifest) %> |
-    <%= link_to "Back", sale_path(@manifest.sale) %>
+    <%= link_to 'Edit', edit_greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id) %> |
+    <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id) %>
   </div>
  </div>
  <div class="panel">

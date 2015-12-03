@@ -16,14 +16,16 @@ class ManifestsController < ApplicationController
   # GET /manifests/1
   # GET /manifests/1.json
   def show
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @manifest = Manifest.find(params[:id])
-    @sale = Sale.find(@manifest.sale_id)
+    @sale = Sale.find(params[:sale_id])
     @shipments = @sale.shipments
   end
 
   # GET /manifests/new
   def new
-    @sale = Sale.find(params[:sale])
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    @sale = Sale.find(params[:sale_id])
     @total_pallets = 0
     @po_numbers = {}
     i=0
@@ -36,16 +38,18 @@ class ManifestsController < ApplicationController
     end
     @sold_to_cust = sold_to_cust(@sale)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
-    @manifest = Manifest.new(:sold_to_id => @sold_to_cust.id,
-      :purshase_order => @po_numbers[0],
-      :sent_to => (@sold_to_cust.business_name + " " +
-      @sold_to_cust.shipping_address),
-      :fda_num => @greenhouse.fda_num,
-      :total_pallets => @total_pallets,
-      :comments => "Se señala el precio de venta exclusivamente para cubrir
+    @manifest = Manifest.new
+
+      @manifest.sold_to_id = @sold_to_cust.id
+      @manifest.purshase_order = @po_numbers[0]   #---->>>>>> TODO: PONER EL PO MAYOR
+      @manifest.sent_to = (@sold_to_cust.business_name + " " +
+      @sold_to_cust.shipping_address)
+      @manifest.fda_num = @greenhouse.fda_num
+      @manifest.total_pallets = @total_pallets
+      @manifest.comments = "Se señala el precio de venta exclusivamente para cubrir
        con los requisitos de traslado y trámites aduanales,
         ya que los productos que contiene este documento son vendidos en
-         firme y posteriormente facrurados")
+         firme y posteriormente facrurados"
 
     @manifest.sale = @sale
     #Se manda a la vista la palabra equivalente de la cantidad enviada
@@ -56,20 +60,24 @@ class ManifestsController < ApplicationController
 
   # GET /manifests/1/edit
   def edit
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @manifest = Manifest.find(params[:id])
-    @sale = Sale.find(@manifest.sale_id)
+    @sale = Sale.find(params[:sale_id])
     @sold_to_cust = sold_to_cust(@sale)
   end
 
   # POST /manifests
   # POST /manifests.json
   def create
+    byebug
+    @sale = Sale.find(params[:sale_id])
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @manifest = Manifest.new(manifest_params)
     @manifest.person_receiving = @manifest.driver
     respond_to do |format|
       begin #begin del rescue en caso de tener muchos caracteres
         if @manifest.save
-          format.html { redirect_to @manifest, notice: 'Manifest was successfully created.' }
+          format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), notice: 'Manifest was successfully created.' }
         else
           format.html { render :new }
         end
@@ -83,6 +91,8 @@ class ManifestsController < ApplicationController
 # PATCH/PUT /manifests/1
 # PATCH/PUT /manifests/1.json
 def update
+  @greenhouse = Greenhouse.find(params[:greenhouse_id])
+  @sale = Sale.find(params[:sale_id])
   respond_to do |format|
     if @manifest.update(manifest_params)
       format.html { redirect_to @manifest, notice: 'Manifest was successfully updated.' }
@@ -95,6 +105,7 @@ end
 # DELETE /manifests/1
 # DELETE /manifests/1.json
 def destroy
+  @greenhouse = Greenhouse.find(params[:greenhouse_id])
   @manifest.destroy
   respond_to do |format|
     format.html { redirect_to manifests_url, notice: 'Manifest was successfully destroyed.' }
@@ -102,6 +113,7 @@ def destroy
 end
 
 def to_customs_invoice
+  @greenhouse = Greenhouse.find(params[:greenhouse_id])
     sale = Sale.find(params[:sale_id])
     redirect_to customs_invoice_path(sale)
 end

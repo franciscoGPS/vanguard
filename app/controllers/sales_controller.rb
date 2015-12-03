@@ -114,13 +114,16 @@ class SalesController < ApplicationController
   #Esta acción es recibida principalmente de la vista show y redirecciona hacia
   #la pantalla de generar las FACTURAS PARA LAS ADUANAS, cargar manifiesto y facturas.
   def customs_bill
+    byebug
+    byebug
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     sale = Sale.find(params[:sale_id])
     manifests = Manifest.where(sale_id: sale.id)
     if(manifests.count == 0)
-      redirect_to controller: :manifests, action: :new, sale: sale
-    elsif (manifests.count == 1)
+      redirect_to new_greenhouse_sale_manifest_path(@greenhouse.id, id: sale)
+    elsif (manifests.count >= 1)
       mani = manifests.first
-      redirect_to manifest_path(id: mani)
+      redirect_to greenhouse_sale_manifest_path(@greenhouse.id, sale.id, id: mani)
     end
 
   end

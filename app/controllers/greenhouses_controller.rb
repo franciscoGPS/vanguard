@@ -109,10 +109,19 @@ class GreenhousesController < ApplicationController
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
+
+    #Aquí se selecciona el cliente que está en el manifiesto
+    #y será el mismo que se pondrá en la factura comercial. (La que se envía a las aduanas)
+
     @customers_in_sale.each do |cust|
       if cust.id == @manifest.sold_to_id
         @manifest_customer =  cust
       end
+    end
+    #Si por cualquier cosa, el cliente seleccionado para el manifiesto, es cambiado por otro,
+    #se seleccionará cualquiera el primero de la lista de clientes
+    if(@manifest_customer == nil)
+      @manifest_customer = @customers_in_sale.first
     end
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
 

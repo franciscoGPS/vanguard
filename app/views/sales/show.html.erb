@@ -2,12 +2,17 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
- <%= button_to "Generate Purshase Order", { action: "purshase_order", sale_id: @sale.id  }%>
+
  <!-- button_to "Manifiesto y Factura", { action: "customs_bill", sale_id: @sale.id  }%>-->
 
   <%=link_to(purshase_order_path(@greenhouse.id, @sale.id)) do %>
+    Generar Orden de Compra.
+  <%end%>
+
+  <%=link_to(customs_billing_path(@greenhouse.id, @sale.id)) do %>
     Manifiesto y Factura
   <%end%>
+
 </br>
 |<%@customers.each do |cust|%>
 
