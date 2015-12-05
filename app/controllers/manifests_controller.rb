@@ -31,21 +31,22 @@ class ManifestsController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @total_pallets = 0
     @po_numbers = {}
-    i=0
+    biggest_po_number = 0
 
-    @sale.shipments.each do |shipment|
+    @sale.shipments.each_with_index do |shipment, index|
       #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
-      @po_numbers[i] = shipment.po_number
-      i = i+1
+      @po_numbers[index] = shipment.po_number
+      if(shipment.po_number > biggest_po_number)
+        biggest_po_number = shipment.po_number
+      end
     end
-    byebug
     @sold_to_cust = sold_to_cust(@sale)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
-    @manifest = Manifest.new
 
+      @manifest = Manifest.new
       @manifest.sold_to_id = @sold_to_cust.id
-      @manifest.purshase_order = @po_numbers[0]   #---->>>>>> TODO: PONER EL PO MAYOR
+      @manifest.purshase_order = biggest_po_number
       @manifest.sent_to = (@sold_to_cust.business_name + " " +
       @sold_to_cust.shipping_address)
       @manifest.fda_num = @greenhouse.fda_num

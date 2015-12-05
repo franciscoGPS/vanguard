@@ -7,7 +7,7 @@
 				<div class="col-md-6">
 					<div class="page-header">
 						<h1>
-							Logo <small>Custom Invoice</small>
+							<%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :class => "img-circle") %>  <%= "#{@greenhouse.business_name}"  %> <small>Customs Invoice</small>
 						</h1>
 					</div>
 				</div>
@@ -16,8 +16,8 @@
 						<div class="col-md-6">
 							 <span class="label label-primary">Domicilio fiscal</span>
 							<address>
-								 <strong><%= @greenhouse.business_name %></strong>
-								 <%= @greenhouse.fiscal_address %>
+								 <strong><%= "#{@greenhouse.business_name}" %></strong>
+								 <%= "#{@greenhouse.fiscal_address}" %>
 							</address>
 						</div>
 						<div class="col-md-6">
@@ -26,7 +26,7 @@
 									 <span class="label label-primary">Factura Comercial</span>
 								</div>
 								<div class="col-md-6">
-										<%=  @sale.id.to_s + "-" + DateTime.now.to_s %>
+										<%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
 								</div>
 							</div>
 							<div class="row">
@@ -34,7 +34,7 @@
 									 <span class="label label-primary">Fecha</span>
 								</div>
 								<div class="col-md-6">
-										<%= DateTime.now.to_date %>
+										<%= "#{DateTime.now.to_date}" %>
 								</div>
 							</div>
 						</div>
@@ -42,11 +42,11 @@
 					<div class="row">
 						<div class="col-md-6">
 							 <span class="label label-primary">Orden de Compra</span>
-								<%= @manifest.purshase_order%>
+								<%= "#{@manifest.purshase_order}" %>
 						</div>
 						<div class="col-md-6">
 							 <span class="label label-primary">Manifiesto</span>
-								<%= @manifest.manifest_number %>
+								<%= "#{@manifest.manifest_number}" %>
 						</div>
 					</div>
 				</div>
@@ -65,10 +65,10 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									<%= @manifest_customer.business_name + " " +@manifest_customer.tax_id_number %>
+									<%= "#{@manifest_customer.business_name + " " +@manifest_customer.tax_id_number }"%>
 								</div>
 								<div class="panel-footer">
-									<%= @manifest_customer.billing_address  %>
+									<%= "#{@manifest_customer.billing_address}"  %>
 								</div>
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									<%= @manifest.sent_to %>
+									<%= "#{@manifest.sent_to}" %>
 								</div>
 								<!--<div class="panel-footer">
 									<text_field_tag nil, @manifest_customer.shipping_address , class: "form-control" %>
@@ -97,10 +97,10 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									<%= @manifest.mex_custom_broker %>
+									<%= "#{@manifest.mex_custom_broker}" %>
 								</div>
 								<div class="panel-footer">
-									<%= @manifest.usa_custom_broker %>
+									<%= "#{@manifest.usa_custom_broker}" %>
 								</div>
 							</div>
 						</div>
@@ -112,7 +112,7 @@
 									</h3>
 								</div>
 								<div class="panel-body">
-									<%=  @transportist_data %>
+									<%=  "#{@transportist_data}" %>
 								</div>
 								<div class="panel-footer">
 
@@ -140,25 +140,25 @@
  						<% @shipments.each do |shipment|%>
 							<tr>
 								<td>
-									<%= shipment.box_number %>
+									<%="#{shipment.box_number}" %>
 								</td>
 								<td>
-									<%= BoxType.find(shipment.box_type_id).name %>
+									<%= "#{BoxType.find(shipment.box_type_id).name}" %>
 								</td>
 								<td>
-									<%=  shipment.weight %>
+									<%=  "#{shipment.weight}" %>
 								</td>
 								<td>
-								  <%= shipment.pallets_number %>
+								  <%= "#{shipment.pallets_number }"%>
 								</td>
 								<td>
-									<%= shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name %>
+									<%= "#{shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name}" %>
 								</td>
                 <td>
-                  <%= shipment.price %>
+                  <%= "#{shipment.price}" %>
                 </td>
                 <td>
-                  <strong><%= shipment.price * shipment.box_number %></strong>
+                  <strong><%= "#{shipment.price * shipment.box_number}" %></strong>
                 </td>
 							</tr>
                 <% end %>
@@ -172,25 +172,25 @@
 									CAAT:
 								</dt>
 								<dd>
-									<%= @manifest.caat %>
+									<%= "#{@manifest.caat}" %>
 								</dd>
 								<dt>
 									Tipo de Caja:
 								</dt>
 								<dd>
-									<%= "Refrigerated Box " + @manifest.trailer_size.to_s + "\"" %>
+									<%= "Refrigerated Box " + "#{@manifest.trailer_size.to_s + "\""}" %>
 								</dd>
 								<dt>
 									Transfer/Código Alpha Transfer:
 								</dt>
 								<dd>
-									<%=  @manifest.alpha %>
+									<%=  "#{@manifest.alpha}" %>
 								</dd>
 								<dt>
 									FDA
 								</dt>
 								<dt>
-									<%=@manifest.fda_num %>
+									<%="#{@manifest.fda_num}" %>
 								</dt>
 								<dt>
 									No. Pallets
@@ -215,17 +215,17 @@
 								<tbody>
 									<tr>
 										<td>
-											<%= number_to_currency(@total_ammount_money) %>
+											<%= "#{number_to_currency(@total_ammount_money)}" %>
 										</td>
 										<td>
-											<strong><%=  number_to_currency(@total_ammount_money) %></strong>
+											<strong><%=  "#{number_to_currency(@total_ammount_money)}" %></strong>
 										</td>
 									</tr>
 									<tr>
 										<td>
 										</td>
 										<td>
-											<%=  to_words((@total_ammount_money).round(2).to_f) %>
+											<%=  "#{to_words((@total_ammount_money).round(2).to_f) }"%>
 										</td>
 									</tr>
 								</tbody>
@@ -262,13 +262,13 @@
 						<div class="col-md-6">
 							 <span class="label label-primary">Entregó</span>
 							<p>
-								<%= @manifest.delivery_person %>
+								<%= "#{@manifest.delivery_person}" %>
 							</p>
 						</div>
 						<div class="col-md-6">
 							 <span class="label label-primary">Recibió</span>
 							<p>
-								<%= @manifest.person_receiving %>
+								<%= "#{@manifest.person_receiving}" %>
 							</p>
 						</div>
 					</div>

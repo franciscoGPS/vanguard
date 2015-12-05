@@ -71,7 +71,7 @@ class GreenhousesController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale.id )
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    @manifest = Manifest.where(sale_id: @sale.id)
+    @manifest = Manifest.where(sale_id: @sale.id).first
     @customers = @sale.sold_to
 
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
@@ -85,6 +85,8 @@ class GreenhousesController < ApplicationController
     diffs_prods.each_with_index do |product, index|
       @string_products += (index+1).to_s + ".- " + product.name
     end
+
+
 
     respond_to do |format|
       format.html {render :order}
