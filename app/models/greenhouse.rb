@@ -20,5 +20,8 @@ class Greenhouse < ActiveRecord::Base
   def active_products
     products.where("active = true")
   end
+  def week_sales
+    sales.group_by_day(:created_at, range: 1.weeks.ago.midnight..Time.now)
+  end
 
 end

@@ -15,6 +15,15 @@ class GreenhousesController < ApplicationController
   # GET /greenhouses/1.json
   def show
     @sales = @greenhouse.sales
+
+    # Get chart pie of sold products
+    @sold_products = Hash.new(0)
+    @greenhouse.sales.each do |sale|
+      sale.shipments.each do |sh|
+        @sold_products[sh.product.name] += 1
+      end
+    end
+
   end
 
   # GET /greenhouses/new
