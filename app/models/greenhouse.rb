@@ -4,12 +4,14 @@ class Greenhouse < ActiveRecord::Base
   has_many :products
   has_many :sales
   has_many :customers, dependent: :destroy
-  has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "no-logo.png"
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" },
+                          default_url: "no-logo.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
   accepts_nested_attributes_for :sales, :allow_destroy => false
 
-  scope :all_sales_per_month, -> { joins(:sales).where("EXTRACT(MONTH FROM sales.created_at) = #{Time.now.month}")  }
+  scope :all_sales_per_month, -> { joins(:sales)
+                                .where("EXTRACT(MONTH FROM sales.created_at) = #{Time.now.month}")  }
 
   def sales_per_month
     sales.where("EXTRACT(MONTH FROM created_at) = #{Time.now.month}")

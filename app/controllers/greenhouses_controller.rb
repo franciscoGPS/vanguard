@@ -7,9 +7,14 @@ class GreenhousesController < ApplicationController
     @greenhouses = Greenhouse.all
   end
 
+  # GET /greenhouses/1/info
+  def info
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+  end
   # GET /greenhouses/1
   # GET /greenhouses/1.json
   def show
+    @sales = @greenhouse.sales
   end
 
   # GET /greenhouses/new

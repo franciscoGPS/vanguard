@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :package_types
     resources :count_types
     resources :greenhouses do
+        get 'info' => 'greenhouses#info', as: 'info'
         resources :sales do
           resources :manifests
         end
@@ -26,10 +27,6 @@ Rails.application.routes.draw do
         resources :products
         resources :collections_bills
     end
-
-
-
-
 
 
     #Hash key => value
