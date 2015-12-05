@@ -20,13 +20,11 @@ class ManifestsController < ApplicationController
     @manifest = Manifest.find(params[:id])
     @sale = Sale.find(params[:sale_id])
     @shipments = @sale.shipments
-    byebug
     @sold_to_cust = Customer.find(@manifest.sold_to_id)
   end
 
   # GET /manifests/new
   def new
-    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.find(params[:sale_id])
     @total_pallets = 0
@@ -74,7 +72,6 @@ class ManifestsController < ApplicationController
   # POST /manifests
   # POST /manifests.json
   def create
-    byebug
     @sale = Sale.find(params[:sale_id])
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @manifest = Manifest.new(manifest_params)

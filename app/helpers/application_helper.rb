@@ -14,11 +14,10 @@ module ApplicationHelper
     return number_in_words
   end
 
-  def pdf_image_tag(image, options = {})
-    byebug
-    options[:src] =  Rails.root + '/public' + image
-    image_tag(:img, options)
-  end
+  #def pdf_image_tag(image, options = {})
+   # options[:src] =  Rails.root + '/public' + image
+   # image_tag(:img, options)
+  #end
 
   #def wicked_pdf_image_tag(img, options={})
    # if img[0].chr == "/" # images from paperclip
