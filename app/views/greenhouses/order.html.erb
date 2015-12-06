@@ -74,7 +74,7 @@
 							<tr>
 								<td>
 									<%= shipment.po_number != nil ? shipment.po_number : "" %>
-                  <%= Customer.find(shipment.customer).business_name %>
+                  <%= Customer.find(shipment.customer.id).business_name %>
 								</td>
 								<td>
 									<%= shipment.quality %>
@@ -149,7 +149,7 @@
 				</div>
 				<div class="col-md-4">
 					<p class="text-right text-muted fix-order">
-						20/10/15 18:35
+						<%= "#{Date.today}" %>
 					</p>
 				</div>
 			</div>

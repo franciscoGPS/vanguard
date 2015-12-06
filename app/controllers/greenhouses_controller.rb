@@ -71,7 +71,8 @@ class GreenhousesController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale.id )
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    @manifest = Manifest.where(sale_id: @sale.id).first
+    #@manifest = Manifest.where(sale_id: @sale.id).first
+
     @customers = @sale.sold_to
 
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
@@ -139,7 +140,7 @@ class GreenhousesController < ApplicationController
 
     @total_pallets_words = to_words(@manifest.total_pallets)
 
-    @total_ammount_money =  @shipments.map { |r| r[:price] * r[:pallets_number] }.sum
+    @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
 
     respond_to do |format|
       format.html {render :customs_invoice}
@@ -156,10 +157,24 @@ class GreenhousesController < ApplicationController
   end
 
   def invoice
-    @bill = CollectionsBill.find(params[:collections_bill_id])
+    @bill = CollectionsBill.find(params[:id])
     @sale = Sale.find(@bill.sale_id)
+    @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @customer = Customer.find(@bill.customer_id)
     @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id)
+
+
+    respond_to do |format|
+      format.html {render :invoice}
+      format.pdf do
+        render :pdf => 'factura_de_cobranza',
+        :template => 'greenhouses/invoice.pdf.erb',
+        :layout => 'pdf.html.erb',
+        :show_as_html => params[:debug].present?,
+        :page_size => 'Letter',
+        :encoding => 'UTF-8'
+      end
+    end
   end
 
   private

@@ -18,13 +18,14 @@ Rails.application.routes.draw do
     resources :greenhouses do
         resources :sales do
           resources :manifests
+          resources :collections_bills
         end
         resources :shipments
         resources :customers do
           resources :contacts
         end
         resources :products
-        resources :collections_bills
+
     end
 
 
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
    #los modelos anidados
    patch '/greenhouses/:greenhouse_id/customers.:id' => 'customers#update'
    patch '/greenhouses/:greenhouse_id/products.:id' => 'products#update'
-   #patch '/greenhouses/:greenhouse_id/manifests.:id' => 'manifests#update'
+
    patch '/greenhouses/:greenhouse_id/sales.:id' => 'sales#update'
 
 #Acción al cambiar de estados en la venta
@@ -52,7 +53,7 @@ Rails.application.routes.draw do
     get 'customs_bill/greenhouses/:greenhouse_id/sales/:sale_id' => 'manifests#new', as: 'customs'
 
     get 'manifests/customs_invoice' => 'manifests#to_customs_invoice', as: "to_customs_invoice"
-    post 'collections_bills/invoice/:collections_bill_id' => 'collections_bills#to_invoice', as: "to_invoice"
+    post 'collections_bills/invoice/:id' => 'collections_bills#to_invoice', as: "to_invoice"
 
     get 'collections_bill' => 'sales#collections_bill', as: "sales_collections_bills"
     #get 'collections_bill/:sale_id' => 'collections_bills#index', as: "collections_bills_index"
@@ -61,8 +62,10 @@ Rails.application.routes.draw do
 
 
 
+
+
     get 'order' => 'greenhouses#order'
-    get 'invoice/:collections_bill_id' => 'greenhouses#invoice', as: "billing_invoice"
+    get 'greenhouse/:greenhouse_id/:customer_id/:sale_id/invoice/:id' => 'greenhouses#invoice', as: "billing_invoice"
     get 'purshase_order/greenhouses/:greenhouse_id/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
     #get 'purshase_order/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
     get 'customs_invoice/sales/:sale_id' => 'greenhouses#customs_invoice', as: "cust_inv_pdf"

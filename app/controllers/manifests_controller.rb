@@ -44,6 +44,7 @@ class ManifestsController < ApplicationController
 
       @manifest = Manifest.new
       @manifest.sold_to_id = @sold_to_cust.id
+      @manifest.sold_to = @sold_to_cust.business_name
       @manifest.purshase_order = biggest_po_number
       @manifest.sent_to = (@sold_to_cust.business_name + " " +
       @sold_to_cust.shipping_address)

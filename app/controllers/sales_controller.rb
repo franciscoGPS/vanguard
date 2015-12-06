@@ -128,12 +128,13 @@ class SalesController < ApplicationController
 
   def collections_bill
     sale = Sale.find(params[:sale_id])
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     customer_id = params[:customer_id]
     manifest = Manifest.where("sale_id = ?", sale.id).first
     bills = CollectionsBill.where("sale_id = ? AND po_number = ? AND customer_id = ? ",
      sale.id, manifest.purshase_order, customer_id)
    if(bills.count == 0)
-    redirect_to new_collections_bill_path(:sale_id => sale.id, :customer_id => customer_id)
+    redirect_to new_greenhouse_sale_collections_bill_path(greenhouse.id, sale.id, :customer_id => customer_id)
    elsif (bills.count == 1)
     bill = bills.first
     redirect_to collections_bill_path(id: bill.id)

@@ -16,7 +16,7 @@
 </br>
 |<%@customers.each do |cust|%>
 
-  <%= link_to "Facturar a "+ cust.business_name, sales_collections_bills_path(:sale_id => @sale.id, :customer_id => cust.id) %> |
+  <%= link_to "Facturar a "+ cust.business_name, new_greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id, :customer_id => cust.id) %> |
 <% end %>
 
  <div class="container">
