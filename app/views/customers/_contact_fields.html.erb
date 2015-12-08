@@ -1,28 +1,37 @@
-<div class="padding-up">
-  <div class="form-group">
-    <%= f.label :name, :class => "control-label col-md-2" %>
+<div class="row">
+  <div class="padding-up">
     <div class="col-md-10">
-      <%= f.text_field :name, :class => "form-control text_field" %>
+      <div class="col-md-6 col-sm-12 form-group">
+        <%= f.label :name, :class => "control-label col-md-2" %>
+        <div class="col-md-10">
+          <%= f.text_field :name, :class => "form-control text_field" %>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group">
+        <%= f.label :email, :class => "control-label col-md-2" %>
+        <div class="col-md-10">
+          <%= f.email_field :email, :class => "form-control text_field" %>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group">
+        <%= f.label :phone_office, :class => "control-label col-md-2" %>
+        <div class="col-md-10">
+          <%= f.text_field :phone_office, :class => "form-control text_field" %>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group">
+        <%= f.label :phone, :class => "control-label col-md-2" %>
+        <div class="col-md-10">
+          <%= f.text_field :phone, :class => "form-control text_field" %>
+        </div>
+      </div>
     </div>
+      <div class="col-md-2">
+        <div class="pull-right">
+          <%= link_to_remove_association f,  data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-remove fa-lg text-danger"></i>
+          <% end %>
+        </div>
+      </div>
   </div>
-  <div class="form-group">
-    <%= f.label :email, :class => "control-label col-md-2" %>
-    <div class="col-md-10">
-      <%= f.email_field :email, :class => "form-control text_field" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :phone_office, :class => "control-label col-md-2" %>
-    <div class="col-md-10">
-      <%= f.text_field :phone_office, :class => "form-control text_field" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :phone, :class => "control-label col-md-2" %>
-    <div class="col-md-10">
-      <%= f.text_field :phone, :class => "form-control text_field" %>
-    </div>
-  </div>
-  <%= link_to_remove_association "remove contact", f, :class => "btn btn-small btn-danger" %>
-
 </div>

@@ -7,9 +7,23 @@ class GreenhousesController < ApplicationController
     @greenhouses = Greenhouse.all
   end
 
+  # GET /greenhouses/1/info
+  def info
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+  end
   # GET /greenhouses/1
   # GET /greenhouses/1.json
   def show
+    @sales = @greenhouse.sales
+
+    # Get chart pie of sold products
+    @sold_products = Hash.new(0)
+    @greenhouse.sales.each do |sale|
+      sale.shipments.each do |sh|
+        @sold_products[sh.product.name] += 1
+      end
+    end
+
   end
 
   # GET /greenhouses/new

@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    @customers = Customer.where(greenhouse_id: @greenhouse.id).order(id: :asc)
+    @customers = @greenhouse.customers.order(id: :asc)
   end
 
   # GET /customers/1

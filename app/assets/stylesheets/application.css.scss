@@ -48,9 +48,17 @@ main{
      color: $red_hover !important;
   }
 }
-.logo {min-width: 250px;}
+.logo {
+  min-width: 250px;
+  -webkit-box-shadow: 3px 2px 13px -1px rgba(0,0,0,0.77);
+  -moz-box-shadow: 3px 2px 13px -1px rgba(0,0,0,0.77);
+  box-shadow: 3px 2px 13px -1px rgba(0,0,0,0.77);
+}
 .fix-order { padding-top: 17%;}
 .fix-admin-dashboard {
   & h3 {padding: 0 15px;}
   & .panel-body {padding: 0; padding-bottom: 5px;}
+}
+tr[data-link]:hover {
+  cursor: pointer;
 }

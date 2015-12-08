@@ -1,32 +1,21 @@
-<div class="col-md-12 shipment-fields nested-fields padding-up">
+<div class="col-md-4 col-sm-12$ shipment-fields nested-fields padding-up">
   <div class="well">
     <div class="row form-inline ">
-      <div class="pull-right">
-         <%= link_to_remove_association f,  data: { confirm: 'Are you sure?' } do %>
-          <i class="fa fa-remove fa-lg text-danger"></i>
-         <% end %>
-      </div>
-      <div class="col-md-3">
+      <div class="col-md-10">
         <div class="form-group">
-          <div class="col-md-12">
+          <div class="col-md-2">
             <%= f.label :name %>
           </div>
-          <div class="col-md-12">
+          <div class="col-md-10">
             <%= f.text_field :name, :class => 'text_field form-control' %>
           </div>
         </div>
       </div>
+      <div class="col-md-2 pull-right">
+        <%= link_to_remove_association f,  data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-remove fa-lg text-danger"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-function submitForm() {
-      alert("checked the button - worked");
-      $.ajax({
-           type:'POST',
-           url: '/pagetimes/create',
-           data: $.param({ pagetime: {pagename: "whatever", start: 7, end: 21 }})
-      });
- }
- </script>
-
