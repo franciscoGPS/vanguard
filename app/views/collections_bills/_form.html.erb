@@ -1,4 +1,4 @@
-<%= form_for(@collections_bill) do |f| %>
+<%= form_for(@collections_bill, :url => greenhouse_sale_collections_bills_path(@greenhouse.id, @sale.id)) do |f| %>
   <% if @collections_bill.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@collections_bill.errors.count, "error") %> prohibited this collections_bill from being saved:</h2>

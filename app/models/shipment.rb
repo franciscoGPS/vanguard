@@ -52,6 +52,10 @@ class Shipment < ActiveRecord::Base
     BagType.find(self.bag_type_id)
   end
 
+  def count_type
+    CountType.find(self.count_type_id)
+  end
+
   def product_color_one
     if self.product_color = nil
       if self.sale.product_color = nil

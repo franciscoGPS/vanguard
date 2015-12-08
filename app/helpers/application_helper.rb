@@ -14,6 +14,19 @@ module ApplicationHelper
     return number_in_words
   end
 
+  #def pdf_image_tag(image, options = {})
+   # options[:src] =  Rails.root + '/public' + image
+   # image_tag(:img, options)
+  #end
+
+  #def wicked_pdf_image_tag(img, options={})
+   # if img[0].chr == "/" # images from paperclip
+   #  new_image = img.slice 1..-1
+   #  image_tag "file://#{Rails.root.join('public', new_image)}", options
+   # else
+   #  image_tag "file://#{Rails.root.join('public', 'images', img)}", options
+   # end
+  #end
 
   def product_colors
    #return ["1-2", "2-3", "3-4", "4-5", "5-6"]

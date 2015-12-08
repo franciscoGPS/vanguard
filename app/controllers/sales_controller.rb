@@ -29,6 +29,13 @@ class SalesController < ApplicationController
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
+
+    products_id_array = []
+    @products.each do |p|
+      products_id_array.push p.id
+    end
+
+    @counts = CountType.where(product_id: products_id_array)
   end
 
   # GET /sales/1/edit
@@ -114,7 +121,6 @@ class SalesController < ApplicationController
   #Esta acción es recibida principalmente de la vista show y redirecciona hacia
   #la pantalla de generar las FACTURAS PARA LAS ADUANAS, cargar manifiesto y facturas.
   def customs_bill
-    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     sale = Sale.find(params[:sale_id])
     manifests = Manifest.where(sale_id: sale.id)
@@ -129,12 +135,13 @@ class SalesController < ApplicationController
 
   def collections_bill
     sale = Sale.find(params[:sale_id])
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     customer_id = params[:customer_id]
     manifest = Manifest.where("sale_id = ?", sale.id).first
     bills = CollectionsBill.where("sale_id = ? AND po_number = ? AND customer_id = ? ",
      sale.id, manifest.purshase_order, customer_id)
    if(bills.count == 0)
-    redirect_to new_collections_bill_path(:sale_id => sale.id, :customer_id => customer_id)
+    redirect_to new_greenhouse_sale_collections_bill_path(greenhouse.id, sale.id, :customer_id => customer_id)
    elsif (bills.count == 1)
     bill = bills.first
     redirect_to collections_bill_path(id: bill.id)
@@ -256,7 +263,7 @@ class SalesController < ApplicationController
       shipments_attributes: [:id, :start_at, :created_at, :updated_at,
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
         :package_type_id, :bag_type_id, :pallet_type_id,
-        :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
+        :comments, :sale_id, :price, :plu, :count_type_id, :product_color, :customer_id,
         :box_type_id, :weight, :po_number, :quality,
         pallet_type_attributes: [:id, :name, :_destroy],
         bag_type_attributes: [:id, :name, :_destroy],

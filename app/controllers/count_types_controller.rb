@@ -62,6 +62,13 @@ class CountTypesController < ApplicationController
     end
   end
 
+  #Esta se llama desde _shipment_fields.html.erb
+  #para cargar los tipos de conteo adecuados por cada producto.
+  def get_product_count_types
+    types = CountType.where(product_id: params[:product_id]).map { |type| [type.id, type.name] }
+    render :json => types.to_json.to_s.to_json
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_count_type
@@ -70,7 +77,7 @@ class CountTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def count_type_params
-      params.require(:count_type).permit(:name, :product_id)
+      params.require(:count_type).permit(:id, :name, :product_id, :_destroy)
     end
 
 protected

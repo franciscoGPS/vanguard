@@ -2,7 +2,7 @@
 
 <%= button_to "Facturar", to_invoice_path(@bill)  %>
 
- 
+
 
 <p>
   <strong>Sale:</strong>
@@ -49,5 +49,5 @@
   <%= @collections_bill.total_amt %>
 </p>
 
-<%= link_to 'Edit', edit_collections_bill_path(@collections_bill) %> |
-<%= link_to 'Back', collections_bills_path %>
+<%= link_to 'Edit', edit_greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill) %> |
+<%= link_to 'Back', greenhouse_sale_path(@greenhouse.id, @sale.id) %>

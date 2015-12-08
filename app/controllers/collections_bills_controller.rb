@@ -12,6 +12,7 @@ class CollectionsBillsController < ApplicationController
   # GET /collections_bills/1
   # GET /collections_bills/1.json
   def show
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @bill = CollectionsBill.find(params[:id])
     @sale = Sale.find(@bill.sale_id)
     @customer = Customer.find(@bill.customer_id)
@@ -19,31 +20,33 @@ class CollectionsBillsController < ApplicationController
 
   # GET /collections_bills/new
   def new
-    sale = Sale.find(params[:sale_id])
-    customer_id = params[:customer_id]
-    manifest = Manifest.where("sale_id = ?", sale.id).first
-    @collections_bill = CollectionsBill.new(:sale_id => sale.id, :customer_id =>
-      customer_id, :user_id => current_user.id)
+    @sale = Sale.find(params[:sale_id])
+    @customer = Customer.find(params[:customer_id])
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+
+    @manifest = Manifest.where("sale_id = ?", @sale.id).first
+    @collections_bill = CollectionsBill.new(:sale_id => @sale.id, :customer_id =>
+      @customer.id, :user_id => current_user.id)
 
     #Shipments filtered by sale and customer
-    @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", sale.id, customer_id )
-    @total_ammount_money =  @shipments.map { |r| r[:price] * r[:pallets_number] }.sum
+    @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id )
+    @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
 
-    if manifest != nil
-      @collections_bill.po_number = manifest.purshase_order
-      @collections_bill.shipment_consecutive = manifest.shipment
+    if @manifest != nil
+      @collections_bill.po_number = @manifest.purshase_order
+      @collections_bill.shipment_consecutive = @manifest.shipment
       @collections_bill.total_amt = @total_ammount_money
       #Fixed 12 is because the state "bol"
       #This following where conditions are for the last time the bol state was updated to true
       bol_event = ShipmentStateChanges.where("sale_id = ? AND to_state = ? AND
-      to_state_new_value = TRUE", sale.id, 12).last
+      to_state_new_value = TRUE", @sale.id, 12).last
       if  bol_event != nil
         @collections_bill.bol_date = bol_event.created_at
       else
 
       end
     else # del if manifest != nil
-      @collections_bill.po_number = sale.shipments.first.po_number
+      @collections_bill.po_number = @sale.shipments.first.po_number
     end
 
     @total_ammount_money_words = to_words(@total_ammount_money.to_f)
@@ -58,11 +61,16 @@ class CollectionsBillsController < ApplicationController
   # POST /collections_bills
   # POST /collections_bills.json
   def create
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    @sale = Sale.find(params[:sale_id])
+    #@customer = Customer.find(params[:customer_id])
+
     @collections_bill = CollectionsBill.new(collections_bill_params)
     @collections_bill.user_id = current_user.id
     respond_to do |format|
       if @collections_bill.save
-        format.html { redirect_to @collections_bill, notice: 'Collections bill was successfully created.' }
+        format.html { redirect_to greenhouse_sale_collections_bill_path(@greenhouse.id,
+          @sale.id, @collections_bill.id), notice: 'Collections bill was successfully created.' }
       else
         format.html { render :new }
       end
@@ -93,8 +101,12 @@ class CollectionsBillsController < ApplicationController
 #This method is called from the CollectionsBill Show view and it redirects to
 #the greenhouse invoice method
   def to_invoice
-    bill = CollectionsBill.find(params[:collections_bill_id])
-    redirect_to billing_invoice_path(bill.id)
+    bill = CollectionsBill.find(params[:id])
+    sale = Sale.find(bill.sale_id)
+    greenhouse = Greenhouse.find(sale.greenhouse_id)
+    customer = Customer.find(bill.customer_id)
+
+    redirect_to billing_invoice_path(greenhouse.id, customer.id, sale.id, bill.id)
   end
 
   private
