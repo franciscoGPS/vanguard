@@ -28,9 +28,7 @@
           </thead>
           <tbody>
             <% @sales.each do |sale| %>
-            <tr>
-
-              <%= link_to greenhouse_sale_path(@greenhouse.id, sale.id), :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <tr data-link="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
                 <td><%= radio_button_tag(:selected, sale.id) %></td>
                 <td><%= sale.id %></td>
                 <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
@@ -52,10 +50,8 @@
                   <i class="fa fa-pencil fw"></i>
                   <%- end -%>
                 </td>
-              <%- end -%>
             </tr>
             <% end %>
-
             <!-- El contenido retirado va entre los dos <tbody/>-->
           </tbody>
         </table>
