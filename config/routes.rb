@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :colors
   root "static_pages#index"
   get 'admin', to: "static_pages#admin"
 
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
     resources :pallet_types
     resources :package_types
     resources :count_types
+
     resources :greenhouses do
         resources :sales do
           resources :manifests
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
           resources :contacts
         end
         resources :products
+        resources :colors
 
     end
 
