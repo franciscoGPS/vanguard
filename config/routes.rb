@@ -48,6 +48,10 @@ Rails.application.routes.draw do
     get 'purshase_order_state_change' => 'sales#purshase_order_state_change'
 #Fin###########
 
+    #Acción que se manda a llamar para cargar los conteos adecuados para cada producto.
+    get 'get_product_count_types' => 'count_types#get_product_count_types'
+    #Fin de esta petición ajax que se llama desde _shipment_fields.html.erb
+
     post 'purshase_order/greenhouses/:greenhouse_id/sales/:sale_id' => 'sales#purshase_order', as: "purshase_order"
     get 'customs_billing/sales/:greenhouse_id/:sale_id' => 'sales#customs_bill', as: "customs_billing"
     get 'customs_bill/greenhouses/:greenhouse_id/sales/:sale_id' => 'manifests#new', as: 'customs'

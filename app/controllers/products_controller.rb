@@ -30,8 +30,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-
-
+    @product.greenhouse_id = @greenhouse.id
+    #@count_types = params[:product][:count_types_attributes]
+    #@product.count_types = @count_types
     respond_to do |format|
       if @product.save
         format.html { redirect_to greenhouse_products_path(@greenhouse.id), notice: 'Product was successfully created.' }
@@ -82,6 +83,7 @@ class ProductsController < ApplicationController
         pallet_type_attributes: [:id, :name, :_destroy],
         package_type_attributes: [:id, :name, :_destroy],
         box_type_attributes: [:id, :name, :_destroy],
-        bag_type_attributes: [:id, :name, :_destroy])
+        bag_type_attributes: [:id, :name, :_destroy],
+        count_types_attributes: [:id, :name, :_destroy])
     end
 end

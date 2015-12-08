@@ -29,6 +29,13 @@ class SalesController < ApplicationController
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
+
+    products_id_array = []
+    @products.each do |p|
+      products_id_array.push p.id
+    end
+
+    @counts = CountType.where(product_id: products_id_array)
   end
 
   # GET /sales/1/edit
@@ -256,7 +263,7 @@ class SalesController < ApplicationController
       shipments_attributes: [:id, :start_at, :created_at, :updated_at,
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
         :package_type_id, :bag_type_id, :pallet_type_id,
-        :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
+        :comments, :sale_id, :price, :plu, :count_type_id, :product_color, :customer_id,
         :box_type_id, :weight, :po_number, :quality,
         pallet_type_attributes: [:id, :name, :_destroy],
         bag_type_attributes: [:id, :name, :_destroy],

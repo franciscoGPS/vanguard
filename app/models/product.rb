@@ -6,17 +6,8 @@ class Product < ActiveRecord::Base
 
   acts_as_paranoid                        # Soft-delete
 
-##Propiedades del producto. Disponibles en la base de datos, y extraidos de la migración "XXX..._create_products.rb"
-	   #t.string :name
-      #t.references :greenhouse
-      #t.references :package_type
-      #t.references :box_type
-      #t.string :weights_avail
-      #t.references :pallet_type
-      #t.references :bag_type
-      #t.boolean :active
-      #
-      #
+  accepts_nested_attributes_for :count_types, :allow_destroy => true,
+  reject_if: proc { |attributes| attributes['name'].blank?  }
 
   $product_colors = {}
 
