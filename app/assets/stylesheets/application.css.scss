@@ -54,3 +54,6 @@ main{
   & h3 {padding: 0 15px;}
   & .panel-body {padding: 0; padding-bottom: 5px;}
 }
+tr[data-link]:hover {
+  cursor: pointer;
+}

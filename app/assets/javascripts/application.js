@@ -33,5 +33,9 @@ $(function () {
     reader.readAsDataURL(image);
     //console.log(files);
   });
+  //Conver tr into link_to
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link");
+  });
 
 });
