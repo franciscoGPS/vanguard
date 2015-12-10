@@ -101,7 +101,7 @@ def update
   @sale = Sale.find(params[:sale_id])
   respond_to do |format|
     if @manifest.update(manifest_params)
-      format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), notice: 'Manifest was successfully updated.' }
+      format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id) , notice: 'Manifest was successfully updated.' }
     else
       format.html { render :edit }
     end

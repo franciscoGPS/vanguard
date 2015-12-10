@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Address</th>
       <th>Tax ID</th>
+      <th>Phone</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +19,10 @@
         <td><%= warehouse.name %></td>
         <td><%= warehouse.address %></td>
         <td><%= warehouse.tax_id %></td>
+        <td><%= warehouse.phone %></td>
         <td><%= link_to 'Show', greenhouse_warehouse_path(@greenhouse.id, warehouse.id) %></td>
         <td><%= link_to 'Edit', edit_greenhouse_warehouse_path(@greenhouse.id, warehouse.id) %></td>
-        <td><%= link_to 'Destroy', greenhouse_warehouse_path(@greenhouse.id, warehouse.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', greenhouse_warehouse_path(@greenhouse.id, warehouse.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
