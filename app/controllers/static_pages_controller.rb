@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!, :only => [:admin]
-  layout "home", :except => [:admin]
+  before_action :authenticate_user!, :except => [:index]
+  layout "home", :only => [:index]
   def index
     set_meta_tags :title => t("home"),
               :description => t("homedescription"),
@@ -13,5 +13,11 @@ class StaticPagesController < ApplicationController
     @month_sales = Greenhouse.all_sales_per_month
     @total_sales_ammount = Sale.total_month_sales_ammount[0][:total_ammount]
 
+    # Generates Fb-wall like activities
+    @activities = PublicActivity::Activity.limit(4).order("created_at DESC")
+  end
+
+  def activities
+    @activities = PublicActivity::Activity.all.order("created_at DESC").page(params[:page]).per(15)
   end
 end

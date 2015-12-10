@@ -19,4 +19,9 @@ has_many :collection_bills
   #def set_default_role
   #  self.role ||= Role.find_by_name('registered')
   #end
+  #
+
+  # Public Activity
+  include PublicActivity::Model
+  tracked owner:  ->(controller, model) { controller.c_user }
 end

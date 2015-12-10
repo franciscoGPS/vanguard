@@ -15,6 +15,11 @@ class Greenhouse < ActiveRecord::Base
   scope :all_sales_per_month, -> { joins(:sales)
                                 .where("EXTRACT(MONTH FROM sales.created_at) = #{Time.now.month}")  }
 
+
+  # Public Activity
+  include PublicActivity::Model
+  tracked owner:  ->(controller, model) { controller.c_user }
+
   def sales_per_month
     sales.where("EXTRACT(MONTH FROM created_at) = #{Time.now.month}")
   end

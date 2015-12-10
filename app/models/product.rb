@@ -9,4 +9,8 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :count_types, :allow_destroy => true,
   reject_if: proc { |attributes| attributes['name'].blank?  }
 
+  # Public Activity
+  include PublicActivity::Model
+  tracked owner:  ->(controller, model) { controller.c_user }
+
 end
