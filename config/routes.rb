@@ -72,15 +72,9 @@ Rails.application.routes.draw do
     get 'customs_invoice/sales/:sale_id' => 'greenhouses#customs_invoice', as: "cust_inv_pdf"
     get 'customs_invoice/manifests/:sale_id' => 'greenhouses#customs_invoice', as: 'customs_invoice'
 
+    get 'activities' => 'static_pages#activities'
 
 
   end #Admin scope
-
-
-  # Website pages
-  get 'about', to: "static_pages#about"
-  get 'partners', to: "static_pages#partners"
-  get 'contact', to: "static_pages#contact", as: "web_contact"
-  get 'solutions', to: "static_pages#solutions"
 
 end

@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!, :only => [:admin]
-  layout "home", :except => [:admin]
+  before_action :authenticate_user!, :except => [:index]
+  layout "home", :only => [:index]
   def index
     set_meta_tags :title => t("home"),
               :description => t("homedescription"),
@@ -14,6 +14,10 @@ class StaticPagesController < ApplicationController
     @total_sales_ammount = Sale.total_month_sales_ammount[0][:total_ammount]
 
     # Generates Fb-wall like activities
-    @activities = PublicActivity::Activity.all
+    @activities = PublicActivity::Activity.limit(4).order("created_at DESC")
+  end
+
+  def activities
+    @activities = PublicActivity::Activity.all.order("created_at DESC").page(params[:page]).per(15)
   end
 end

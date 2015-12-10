@@ -1,22 +1,24 @@
 <h2>Dashboard</h2>
-<div class="col-md-6 col-sm-12">
-  <div class="row">
+<div class="col-md-12 col-sm-12">
+  <div class="col-md-6 col-sm-12">
     <div class="panel panel-default fix-admin-dashboard">
         <h3>Week Sales</h3>
         <div class="panel-body">
-          <%= line_chart @week_sales %>
+          <%= line_chart @week_sales, height: "180px" %>
         </div>
     </div>
   </div>
-  <div class="row">
+  <div class="col-md-6 col-sm-12">
     <div class="panel panel-default fix-admin-dashboard">
         <h3>Month Sales</h3>
         <div class="panel-body">
-          <%= pie_chart @month_sales.group(:business_name).count %>
+          <%= pie_chart @month_sales.group(:business_name).count, height: "180px" %>
         </div>
     </div>
   </div>
-  <div class="row">
+</div>
+<div class="col-md-12 col-sm-12">
+  <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Total month sales</h4>
@@ -39,12 +41,36 @@
         </div>
     </div>
   </div>
-</div>
-<div class="col-md-6 col-sm-12">
-  <div class="panel panel-default fix-admin-dashboard">
-    <h3>Activities</h3>
-    <%= @activities.each do |activity| %>
-      <%= activity.as_json %>
-    <% end %>
+  <div class="col-md-8 col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>
+          Activities
+          <%= link_to activities_path do %>
+            <i class="fa fa-external-link" data-toggle="tooltip" data-placement="right" title="See all"></i>
+          <% end %>
+        </h4>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-12">
+          <% @activities.each do |activity| %>
+            <div class="col-md-6 col-sm-12">
+              <small>
+                <i class="<%= find_icon_activity(activity.key.split(".")[1]) %>"></i>
+                <strong><%= User.find(activity.owner_id).name %></strong>
+                <%= activity.key.split(".")[1] %>
+                a
+                <strong data-toggle="tooltip" data-placement="top" title="<%= find_activity(activity.key.split(".")[0].capitalize, activity.trackable_id).as_json.to_a.to(1) %>">
+                  <%= activity.key.split(".")[0] %>
+                </strong>
+                <i>
+                  <%= activity.created_at.strftime("at %A, %d %b %Y %l:%M %p") %>
+                </i>
+              </small>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
