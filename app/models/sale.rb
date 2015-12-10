@@ -38,6 +38,9 @@ class Sale < ActiveRecord::Base
   #       }
 
 
+  # Public Activity
+  include PublicActivity::Model
+  tracked owner:  ->(controller, model) { controller.c_user }
 
   #Se definen los estados que se desea estén como parte del proceso de operaciones de la empresa
   #Vanguard.

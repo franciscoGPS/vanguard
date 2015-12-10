@@ -11,4 +11,9 @@ class Product < ActiveRecord::Base
 
   $product_colors = {}
 
+
+  # Public Activity
+  include PublicActivity::Model
+  tracked owner:  ->(controller, model) { controller.c_user }
+
 end

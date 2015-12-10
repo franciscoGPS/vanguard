@@ -16,6 +16,10 @@ class Customer < ActiveRecord::Base
   scope :own_customers, -> (greenhouse_id) { where(:greenhouse_id => greenhouse_id) }
 
 
+  # Public Activity
+  include PublicActivity::Model
+  tracked owner:  ->(controller, model) { controller.c_user }
+
   def customers_in_sale(sale)
     many_customers = ""
 

@@ -13,5 +13,7 @@ class StaticPagesController < ApplicationController
     @month_sales = Greenhouse.all_sales_per_month
     @total_sales_ammount = Sale.total_month_sales_ammount[0][:total_ammount]
 
+    # Generates Fb-wall like activities
+    @activities = PublicActivity::Activity.all
   end
 end

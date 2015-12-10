@@ -40,3 +40,11 @@
     </div>
   </div>
 </div>
+<div class="col-md-6 col-sm-12">
+  <div class="panel panel-default fix-admin-dashboard">
+    <h3>Activities</h3>
+    <%= @activities.each do |activity| %>
+      <%= activity.as_json %>
+    <% end %>
+  </div>
+</div>
