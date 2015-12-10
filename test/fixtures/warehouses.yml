@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  tax_id: MyString
+  greenhouse_id:
+  deleted_at: 2015-12-09
+
+two:
+  name: MyString
+  address: MyString
+  tax_id: MyString
+  greenhouse_id:
+  deleted_at: 2015-12-09

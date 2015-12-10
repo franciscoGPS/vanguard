@@ -98,7 +98,7 @@ class GreenhousesController < ApplicationController
     @string_products = ""
     diffs_prods = Shipment.different_products_in_sale(@sale.id)
     diffs_prods.each_with_index do |product, index|
-      @string_products += (index+1).to_s + ".- " + product.name
+      @string_products += (index+1).to_s + ".- " + product.name + " "
     end
 
 
@@ -125,6 +125,7 @@ class GreenhousesController < ApplicationController
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
+    @warehouse = Warehouse.find(@manifest.warehouse_id)
 
     #Aquí se selecciona el cliente que está en el manifiesto
     #y será el mismo que se pondrá en la factura comercial. (La que se envía a las aduanas)
@@ -219,11 +220,15 @@ class GreenhousesController < ApplicationController
                 box_type_attributes: [:id, :name, :_destroy],
                 product_attributes: [:id, :name, :_destroy]],
 
-          manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
+          manifests_attributes: [:id, :sale_id, :date, :mex_custom_broker,
             :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
             :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
           :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
-          :sold_to_id, :deleted_at, :_destroy] ]
+          :sold_to_id, :deleted_at, :warehouse_id, :_destroy],
+
+          warehouses_attributes: [:id, :name, :address, :tax_id, :greenhouses_id, :_destroy],
+          colors_attributes: [:id, :name, :greenhouses_id, :_destroy]
+           ]
 
 
 

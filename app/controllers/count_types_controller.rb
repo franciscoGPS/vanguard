@@ -30,10 +30,10 @@ class CountTypesController < ApplicationController
     respond_to do |format|
       if @count_type.save
         format.html { redirect_to @count_type, notice: 'Count type was successfully created.' }
-        format.json { render :show, status: :created, location: @count_type }
+        #format.json { render :show, status: :created, location: @count_type }
       else
         format.html { render :new }
-        format.json { render json: @count_type.errors, status: :unprocessable_entity }
+        #format.json { render json: @count_type.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,10 +44,10 @@ class CountTypesController < ApplicationController
     respond_to do |format|
       if @count_type.update(count_type_params)
         format.html { redirect_to @count_type, notice: 'Count type was successfully updated.' }
-        format.json { render :show, status: :ok, location: @count_type }
+        #format.json { render :show, status: :ok, location: @count_type }
       else
         format.html { render :edit }
-        format.json { render json: @count_type.errors, status: :unprocessable_entity }
+        #format.json { render json: @count_type.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +58,7 @@ class CountTypesController < ApplicationController
     @count_type.destroy
     respond_to do |format|
       format.html { redirect_to count_types_url, notice: 'Count type was successfully destroyed.' }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 

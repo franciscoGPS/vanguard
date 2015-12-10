@@ -17,6 +17,8 @@
         <li><%= link_to "Info", greenhouse_info_path(id) %></li>
         <li><%= link_to "Products", greenhouse_products_path(id) %></li>
         <li><%= link_to "Customers", greenhouse_customers_path(id) %></li>
+        <li><%= link_to "Warehouses", greenhouse_warehouses_path(greenhouse_id: id) %></li>
+        <li><%= link_to "Colors", greenhouse_colors_path(greenhouse_id: id) %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

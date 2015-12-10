@@ -22,6 +22,7 @@ class ManifestsController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @shipments = @sale.shipments
     @sold_to_cust = Customer.find(@manifest.sold_to_id)
+    @warehouse = Warehouse.find(@manifest.warehouse_id)
   end
 
   # GET /manifests/new
@@ -47,8 +48,6 @@ class ManifestsController < ApplicationController
       @manifest.sold_to_id = @sold_to_cust.id
       @manifest.sold_to = @sold_to_cust.business_name
       @manifest.purshase_order = biggest_po_number
-      @manifest.sent_to = (@sold_to_cust.business_name + " " +
-      @sold_to_cust.shipping_address)
       @manifest.fda_num = @greenhouse.fda_num
       @manifest.total_pallets = @total_pallets
       @manifest.comments = "Se señala el precio de venta exclusivamente para cubrir
@@ -60,12 +59,15 @@ class ManifestsController < ApplicationController
     #Se manda a la vista la palabra equivalente de la cantidad enviada
     @total_pallets_words = to_words(@manifest.total_pallets)
 
+    @warehouses = Warehouse.where(greenhouse_id: @greenhouse.id)
+
   end
 
 
   # GET /manifests/1/edit
   def edit
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    @warehouses = Warehouse.where(greenhouse_id: @greenhouse.id)
     @manifest = Manifest.find(params[:id])
     @sale = Sale.find(params[:sale_id])
     @sold_to_cust = sold_to_cust(@sale)
@@ -99,7 +101,7 @@ def update
   @sale = Sale.find(params[:sale_id])
   respond_to do |format|
     if @manifest.update(manifest_params)
-      format.html { redirect_to @manifest, notice: 'Manifest was successfully updated.' }
+      format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id) , notice: 'Manifest was successfully updated.' }
     else
       format.html { render :edit }
     end
@@ -144,10 +146,10 @@ end
 
 # Never trust parameters from the scary internet, only allow the white list through.
 def manifest_params
-  params.require(:manifest).permit(:sale_id, :date, :sold_to, :sent_to, :sold_to_id,
+  params.require(:manifest).permit(:sale_id, :date, :sold_to, :sold_to_id,
   :mex_custom_broker, :usa_custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
   :trailer_num, :trailer_num_lp, :stamp, :thermograph, :purshase_order, :shipment,
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
-  :total_pallets, :comments, :manifest_number)
+  :total_pallets, :comments, :manifest_number, :warehouse_id)
 end
 end

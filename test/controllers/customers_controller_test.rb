@@ -18,7 +18,7 @@ class CustomersControllerTest < ActionController::TestCase
 
   test "should create customer" do
     assert_difference('Customer.count') do
-      post :create, customer: { bb_number: @customer.bb_number, billing_address: @customer.billing_address, business_name: @customer.business_name, chep_id_number: @customer.chep_id_number, shipping_address: @customer.shipping_address, tax_id_number: @customer.tax_id_number, warehose_address: @customer.warehose_address }
+      post :create, customer: { bb_number: @customer.bb_number, billing_address: @customer.billing_address, business_name: @customer.business_name, chep_id_number: @customer.chep_id_number, shipping_address: @customer.shipping_address, tax_id_number: @customer.tax_id_number }
     end
 
     assert_redirected_to customer_path(assigns(:customer))
@@ -35,7 +35,7 @@ class CustomersControllerTest < ActionController::TestCase
   end
 
   test "should update customer" do
-    patch :update, id: @customer, customer: { bb_number: @customer.bb_number, billing_address: @customer.billing_address, business_name: @customer.business_name, chep_id_number: @customer.chep_id_number, shipping_address: @customer.shipping_address, tax_id_number: @customer.tax_id_number, warehose_address: @customer.warehose_address }
+    patch :update, id: @customer, customer: { bb_number: @customer.bb_number, billing_address: @customer.billing_address, business_name: @customer.business_name, chep_id_number: @customer.chep_id_number, shipping_address: @customer.shipping_address, tax_id_number: @customer.tax_id_number }
     assert_redirected_to customer_path(assigns(:customer))
   end
 

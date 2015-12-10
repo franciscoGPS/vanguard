@@ -14,6 +14,9 @@ module ApplicationHelper
     return number_in_words
   end
 
+
+
+
   #def pdf_image_tag(image, options = {})
    # options[:src] =  Rails.root + '/public' + image
    # image_tag(:img, options)
@@ -28,9 +31,21 @@ module ApplicationHelper
    # end
   #end
 
-  def product_colors
+  def tomatoes_colors
    #return ["1-2", "2-3", "3-4", "4-5", "5-6"]
    return ["1.- Green","2.- Breakers", "3.- Turning", "4.- Pink", "5.- Light Red", "6.- Red"]
+  end
+
+  def get_customer_name(cust_id)
+    Customer.find(cust_id).business_name
+  end
+
+  def get_pallet_name(id)
+    PalletType.find(id).name
+  end
+
+  def get_box_name(id)
+    BoxType.find(id).name
   end
 
 

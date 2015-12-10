@@ -4,7 +4,6 @@ one:
   business_name: MyString
   billing_address: MyString
   shipping_address: MyString
-  warehose_address: MyString
   tax_id_number: MyString
   chep_id_number: MyString
   bb_number: MyString
@@ -13,7 +12,6 @@ two:
   business_name: MyString
   billing_address: MyString
   shipping_address: MyString
-  warehose_address: MyString
   tax_id_number: MyString
   chep_id_number: MyString
   bb_number: MyString

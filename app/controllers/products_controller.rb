@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to greenhouse_products_path(@greenhouse.id, @product.id), notice: 'Product was successfully updated.' }
+        format.html { redirect_to greenhouse_product_path(@greenhouse.id, @product.id), notice: 'Product was successfully updated.' }
         #format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }

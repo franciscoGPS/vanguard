@@ -3,6 +3,8 @@ class Greenhouse < ActiveRecord::Base
   has_many :contacts, :as => :contactable, :class_name => "Contact"
   has_many :products
   has_many :sales
+  has_many :colors
+  has_many :warehouses
   has_many :customers, dependent: :destroy
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" },
                           default_url: "no-logo.png"

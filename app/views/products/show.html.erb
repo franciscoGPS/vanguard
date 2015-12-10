@@ -14,6 +14,24 @@
       <dt class="label label-default"><%= model_class.human_attribute_name(:active) %></dt>
       <dd><pre class="prettyprint"><%= @product.active %></pre></dd>
   </dl>
+          <% if @product.count_types.any? %>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Count Types</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @product.count_types.each do |type| %>
+                <tr>
+                  <td><%= type.name %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h4>No contacts.</h4>
+        <% end %>
 </div>
 
 <div class="form-group">

@@ -29,7 +29,6 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th><%= model_class.human_attribute_name(:id) %></th>
             <th><%= model_class.human_attribute_name(:business_name) %></th>
             <th><%= model_class.human_attribute_name(:billing_address) %></th>
             <th><%= model_class.human_attribute_name(:tax_id_number) %></th>
@@ -39,7 +38,6 @@
         <tbody>
           <% @customers.each do |customer| %>
             <tr data-link="<%= greenhouse_customer_path(@greenhouse.id, customer.id) %>" >
-                <td><%= customer.id %></td>
                 <td><%= customer.business_name %></td>
                 <td><%= customer.billing_address %></td>
                 <td><%= customer.tax_id_number %></td>
