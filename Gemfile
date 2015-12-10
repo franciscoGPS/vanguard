@@ -17,6 +17,7 @@ gem 'devise'                          # Auth Users
 
 group :production do
   gem 'rails_12factor'                  # Use rails_12factor to replaces the need for the plugins on Heroku
+  gem 'wkhtmltopdf-heroku'              # Wicked_pdf binaries for heroku
 end
 
 group :test do
