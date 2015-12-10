@@ -1,5 +1,6 @@
 class ManifestsController < ApplicationController
   before_action :set_manifest, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /manifests
   # GET /manifests.json
