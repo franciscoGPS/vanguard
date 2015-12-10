@@ -58,3 +58,4 @@ gem 'wkhtmltopdf-binary'              # Because wicked_pdf is a wrapper for wkht
 gem 'groupdate'                       # Generate more ActiveRecord methods
 gem "chartkick"                       # Charts with JS
 gem 'kaminari'                        # A Scope & Engine based paginator for modern web app frameworks and ORMs
+gem 'public_activity'                 # Generate tracking of users
