@@ -1,4 +1,4 @@
-<%= form_for @manifest, :url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id) do |f| %>
+<%= form_for @manifest, :url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id, @manifest) do |f| %>
   <% if @manifest.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@manifest.errors.count, "error") %> prohibited this manifest from being saved:</h2>
@@ -33,8 +33,9 @@
     <%= hidden_field( :manifest, :sold_to_id )%>
   </div>
   <div class="field">
-    <%= f.label :sent_to %><br>
-    <%= f.text_area :sent_to %>
+  <%= f.label :warehouse_id %><br>
+  <%= f.collection_select :warehouse_id, @warehouses, :id, :name_address,
+           {prompt: "Selecciona bodega"} %>
   </div>
   <div class="field">
     <%= f.label :mex_custom_broker %><br>
@@ -46,35 +47,35 @@
   </div>
   <div class="field">
     <%= f.label :carrier %><br>
-    <%= f.text_field :carrier, maxlength: 200 %>
+    <%= f.text_field :carrier %>
   </div>
   <div class="field">
     <%= f.label :driver %><br>
-    <%= f.text_field :driver, maxlength: 80 %>
+    <%= f.text_field :driver %>
   </div>
   <div class="field">
     <%= f.label :truck %><br>
-    <%= f.text_field :truck, maxlength: 15 %>
+    <%= f.text_field :truck %>
   </div>
   <div class="field">
     <%= f.label :truck_licence_plate %><br>
-    <%= f.text_field :truck_licence_plate, maxlength: 15 %>
+    <%= f.text_field :truck_licence_plate %>
   </div>
   <div class="field">
     <%= f.label :trailer_num %><br>
-    <%= f.text_field :trailer_num, maxlength: 15 %>
+    <%= f.text_field :trailer_num  %>
   </div>
   <div class="field">
     <%= f.label :trailer_num_lp %><br>
-    <%= f.text_field :trailer_num_lp, maxlength: 15 %>
+    <%= f.text_field :trailer_num_lp %>
   </div>
   <div class="field">
     <%= f.label :stamp %><br>
-    <%= f.text_field :stamp, maxlength: 40 %>
+    <%= f.text_field :stamp  %>
   </div>
   <div class="field">
     <%= f.label :thermograph %><br>
-    <%= f.text_field :thermograph, maxlength: 15 %>
+    <%= f.text_field :thermograph %>
   </div>
   <div class="field">
     <%= f.label :shipment %><br>
@@ -82,7 +83,7 @@
   </div>
   <div class="field">
     <%= f.label :delivery_person %><br>
-    <%= f.text_field :delivery_person, maxlength: 80 %>
+    <%= f.text_field :delivery_person  %>
   </div>
   <div class="field">
     <%= f.label :trailer_size %><br>
@@ -90,15 +91,15 @@
   </div>
   <div class="field">
     <%= f.label :caat %><br>
-    <%= f.text_field :caat, maxlength: 6%>
+    <%= f.text_field :caat %>
   </div>
   <div class="field">
     <%= f.label :alpha %><br>
-    <%= f.text_field :alpha, maxlength: 15 %>
+    <%= f.text_field :alpha %>
   </div>
   <div class="field">
     <%= f.label :fda_num %><br>
-    <%= f.text_field :fda_num, maxlength: 20 %>
+    <%= f.text_field :fda_num %>
   </div>
   <div class="field">
     <%= f.label :total_pallets %><br>
@@ -113,3 +114,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+

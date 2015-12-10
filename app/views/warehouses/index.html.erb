@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', greenhouse_path(@greenhouse.id) %>
+<h1>Listing Warehouses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Tax ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @warehouses.each do |warehouse| %>
+      <tr>
+        <td><%= warehouse.name %></td>
+        <td><%= warehouse.address %></td>
+        <td><%= warehouse.tax_id %></td>
+        <td><%= link_to 'Show', greenhouse_warehouse_path(@greenhouse.id, warehouse.id) %></td>
+        <td><%= link_to 'Edit', edit_greenhouse_warehouse_path(@greenhouse.id, warehouse.id) %></td>
+        <td><%= link_to 'Destroy', greenhouse_warehouse_path(@greenhouse.id, warehouse.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Warehouse', new_greenhouse_warehouse_path %>

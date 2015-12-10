@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @color %> |
-<%= link_to 'Back', colors_path %>
+<%= link_to 'Show', greenhouse_color_path(@greenhouse.id, @color.id) %> |
+<%= link_to 'Back', greenhouse_colors_path(@greenhouse.id) %>

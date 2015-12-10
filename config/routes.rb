@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-  resources :colors
   root "static_pages#index"
   get 'admin', to: "static_pages#admin"
 
@@ -18,6 +16,7 @@ Rails.application.routes.draw do
     resources :count_types
 
     resources :greenhouses do
+        get 'info' => 'greenhouses#info', as: 'info'
         resources :sales do
           resources :manifests
           resources :collections_bills
@@ -28,12 +27,9 @@ Rails.application.routes.draw do
         end
         resources :products
         resources :colors
+        resources :warehouses
 
     end
-
-
-
-
 
 
     #Hash key => value
@@ -44,8 +40,10 @@ Rails.application.routes.draw do
    #los modelos anidados
    patch '/greenhouses/:greenhouse_id/customers.:id' => 'customers#update'
    patch '/greenhouses/:greenhouse_id/products.:id' => 'products#update'
-
    patch '/greenhouses/:greenhouse_id/sales.:id' => 'sales#update'
+   patch '/greenhouses/:greenhouse_id/colors.:id' => 'colors#update'
+   patch '/greenhouses/:greenhouse_id/warehouses.:id' => 'warehouses#update'
+   patch '/greenhouses/:greenhouse_id/sales/:sale_id/manifests.:id' => 'manifests#update'
 
 #Acción al cambiar de estados en la venta
     get 'purshase_order_state_change' => 'sales#purshase_order_state_change'

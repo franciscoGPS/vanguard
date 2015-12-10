@@ -30,12 +30,15 @@ class SalesController < ApplicationController
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
 
+    @counts = CountType.where(product_id: get_products_in_array(@products))
+    @colors = Color.where(greenhouse_id: @greenhouse.id)
+  end
+
+  def get_products_in_array(products)
     products_id_array = []
-    @products.each do |p|
+    products.each do |p|
       products_id_array.push p.id
     end
-
-    @counts = CountType.where(product_id: products_id_array)
   end
 
   # GET /sales/1/edit
@@ -46,6 +49,10 @@ class SalesController < ApplicationController
     @action = params[:action]
     @customers = Customer.own_customers(params[:greenhouse_id])
     @products = Product.where(greenhouse_id: params[:greenhouse_id])
+
+
+    @counts = CountType.where(product_id: get_products_in_array(@products))
+    @colors = Color.where(greenhouse_id: @greenhouse.id)
   end
 
   # POST /sales
@@ -53,7 +60,8 @@ class SalesController < ApplicationController
   def create
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(sale_params)
-    @shipments = params[:sale][:shipments_attributes]
+    #@shipments = params[:sale][:shipments_attributes]
+
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
     @sale.greenhouse = @greenhouse
@@ -63,7 +71,6 @@ class SalesController < ApplicationController
       format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
     end
   end
-
 
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
@@ -270,11 +277,11 @@ class SalesController < ApplicationController
         box_type_attributes: [:id, :name, :_destroy],
         product_attributes: [:id, :name, :_destroy]],
 
-      manifests_attributes: [:id, :sale_id, :date, :sent_to, :mex_custom_broker,
+      manifests_attributes: [:id, :sale_id, :date, :mex_custom_broker,
         :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
         :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
       :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
-      :sold_to_id, :deleted_at, :_destroy] ]
+      :sold_to_id, :deleted_at, :warehouse_id, :_destroy] ]
 
       params.require(:sale).permit(accessible)
   end

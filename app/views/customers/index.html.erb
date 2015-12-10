@@ -1,50 +1,60 @@
 <%- model_class = Customer -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:business_name) %></th>
-      <th><%= model_class.human_attribute_name(:billing_address) %></th>
-      <th><%= model_class.human_attribute_name(:shipping_address) %></th>
-      <th><%= model_class.human_attribute_name(:warehose_address) %></th>
-      <th><%= model_class.human_attribute_name(:tax_id_number) %></th>
-      <th><%= model_class.human_attribute_name(:chep_id_number) %></th>
-      <th><%= model_class.human_attribute_name(:bb_number) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.id %></td>
-          <td><%= customer.business_name %></td>
-          <td><%= customer.billing_address %></td>
-          <td><%= customer.shipping_address %></td>
-          <td><%= customer.warehose_address %></td>
-          <td><%= customer.tax_id_number %></td>
-          <td><%= customer.chep_id_number %></td>
-          <td><%= customer.bb_number %></td>
-        <td><%=l customer.created_at, format: :long %></td>
-        <td>
-          <%= link_to greenhouse_customer_path(@greenhouse.id, customer.id), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <i class="fa fa-info fw"></i>
-          <%- end -%>
-          <%= link_to edit_greenhouse_customer_path(@greenhouse.id, customer.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-            <i class="fa fa-pencil fw"></i>
-          <%- end -%>
-          <%= link_to greenhouse_customer_path(@greenhouse.id, customer.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <i class="fa fa-trash-o fw"></i>
-          <%- end -%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <div class="col-md-9 col-sm-12">
+        <h1>
+          <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+          - <%= @greenhouse.business_name %>
+        </h1>
+      </div>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_greenhouse_customer_path(@greenhouse.id),
-            :class => 'btn btn-primary' %>
+      <div class="col-md-3 col-sm-12">
+        <div class="pull-right">
+          <%= link_to t('.new', :default => t("helpers.links.new")),
+                      new_greenhouse_customer_path(@greenhouse.id),
+                      :class => 'btn btn-lg btn-success' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <%= render :partial => "greenhouses/submenu", :locals => {:id => @greenhouse.id } %>
+</div>
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= model_class.human_attribute_name(:business_name) %></th>
+            <th><%= model_class.human_attribute_name(:billing_address) %></th>
+            <th><%= model_class.human_attribute_name(:tax_id_number) %></th>
+            <th><%=t '.actions', :default => t("helpers.actions") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr data-link="<%= greenhouse_customer_path(@greenhouse.id, customer.id) %>" >
+                <td><%= customer.business_name %></td>
+                <td><%= customer.billing_address %></td>
+                <td><%= customer.tax_id_number %></td>
+              <td>
+                <%= link_to edit_greenhouse_customer_path(@greenhouse.id, customer.id), :class => 'btn btn-primary btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+                  <i class="fa fa-pencil fw"></i>
+                  Edit
+                <%- end -%>
+                <%= link_to greenhouse_customer_path(@greenhouse.id, customer.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+                  <i class="fa fa-trash-o fw"></i>
+                  Delete
+                <%- end -%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

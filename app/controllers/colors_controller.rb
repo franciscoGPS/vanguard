@@ -1,10 +1,10 @@
 class ColorsController < ApplicationController
   before_action :set_color, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /colors
   # GET /colors.json
   def index
-    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @colors = Color.where(greenhouse_id: @greenhouse.id)
   end
@@ -12,13 +12,11 @@ class ColorsController < ApplicationController
   # GET /colors/1
   # GET /colors/1.json
   def show
-    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
   end
 
   # GET /colors/new
   def new
-    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @color = Color.new(greenhouse_id: @greenhouse.id)
   end

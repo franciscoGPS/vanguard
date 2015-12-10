@@ -9,6 +9,4 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :count_types, :allow_destroy => true,
   reject_if: proc { |attributes| attributes['name'].blank?  }
 
-  $product_colors = {}
-
 end

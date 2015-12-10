@@ -38,10 +38,23 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :product_id, @products, :id, :name,
-                              {prompt: "Selecciona producto"}, {:class => "text_field form-control prod" } %>
+                              {prompt: "Producto"}, {:class => "text_field form-control prod" } %>
           </div>
         </div>
       </div>
+
+     <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :product_color %>
+          </div>
+          <div class="col-md-12">
+             <%= f.collection_select :product_color, @colors, :id, :name, {prompt: "Color"}, {:class => "text_field form-control" }%>
+          </div>
+        </div>
+      </div>
+
+
 
       <div class="col-md-3">
         <div class="form-group">
@@ -49,7 +62,7 @@
             <%= f.label :count_type_id %>
           </div>
           <div class="col-md-12">
-            <%= f.collection_select :count_type_id, @counts, :id, :name, {:prompt => "Selecciona conteo"}, {:class => "text_field form-control count" } %>
+            <%= f.collection_select :count_type_id, @counts, :id, :name, {:prompt => "Conteo"}, {:class => "text_field form-control count" } %>
           </div>
         </div>
       </div>

@@ -1,47 +1,77 @@
 <%- model_class = Customer -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1>
+    <%=t '.title', :default => model_class.model_name.human.titleize %> -
+    <%= @customer.greenhouse.business_name %>
+  </h1>
 </div>
-  <div class="col-md-3 col-sm-12">
-    <div class="form-group text-center">
-      <%= label_tag :logo %>
-      <div class="thumbnail logo" id="target_parent">
-        <div  id="target">
-            <%= image_tag @customer.logo.url %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-md-3 col-sm-12">
+      <div class="form-group text-center">
+        <%= label_tag :logo %>
+        <div class="thumbnail logo" id="target_parent">
+          <div  id="target">
+              <%= image_tag @customer.logo.url %>
+          </div>
         </div>
       </div>
-
     </div>
+    <div class="col-md-9">
+      <div class="fieldset">
+        <dl>
+            <dt class="label label-default"><%= model_class.human_attribute_name(:business_name) %></dt>
+            <dd><pre class="prettyprint"><%= @customer.business_name %></pre></dd>
+            <dt class="label label-default"><%= model_class.human_attribute_name(:billing_address) %></dt>
+            <dd><pre class="prettyprint"><%= @customer.billing_address %></pre></dd>
+            <dt class="label label-default"><%= model_class.human_attribute_name(:shipping_address) %></dt>
+            <dd><pre class="prettyprint"><%= @customer.shipping_address %></pre></dd>
+            <dt class="label label-default"><%= model_class.human_attribute_name(:tax_id_number) %></dt>
+            <dd><pre class="prettyprint"><%= @customer.tax_id_number %></pre></dd>
+            <dt class="label label-default"><%= model_class.human_attribute_name(:chep_id_number) %></dt>
+            <dd><pre class="prettyprint"><%= @customer.chep_id_number %></pre></dd>
+            <dt class="label label-default"><%= model_class.human_attribute_name(:bb_number) %></dt>
+            <dd><pre class="prettyprint"><%= @customer.bb_number %></pre></dd>
+        </dl>
+        <% if @customer.contacts.any? %>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Office</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @customer.contacts.each do |contact| %>
+                <tr>
+                  <td><%= contact.name %></td>
+                  <td><%= contact.email %></td>
+                  <td><%= contact.phone_office %></td>
+                  <td><%= contact.phone %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h4>No contacts.</h4>
+        <% end %>
+      </div>
   </div>
-<div class="fieldset">
-  <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:greenhouse) %></dt>
-      <dd><pre class="prettyprint"><%= @customer.greenhouse.business_name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:business_name) %></dt>
-      <dd><pre class="prettyprint"><%= @customer.business_name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:billing_address) %></dt>
-      <dd><pre class="prettyprint"><%= @customer.billing_address %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:shipping_address) %></dt>
-      <dd><pre class="prettyprint"><%= @customer.shipping_address %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:warehose_address) %></dt>
-      <dd><pre class="prettyprint"><%= @customer.warehose_address %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:tax_id_number) %></dt>
-      <dd><pre class="prettyprint"><%= @customer.tax_id_number %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:chep_id_number) %></dt>
-      <dd><pre class="prettyprint"><%= @customer.chep_id_number %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:bb_number) %></dt>
-      <dd><pre class="prettyprint"><%= @customer.bb_number %></pre></dd>
-  </dl>
 </div>
 
-<div class="form-group">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              greenhouse_customers_path(@greenhouse.id), :class => 'btn btn-default'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_greenhouse_customer_path(@greenhouse.id, @customer.id), :class => 'btn btn-default' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              greenhouse_customer_path(@greenhouse.id, @customer.id),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<div class="pull-right padding-up">
+  <div class="form-group">
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                greenhouse_customers_path(@greenhouse.id), :class => 'btn btn-default'  %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_greenhouse_customer_path(@greenhouse.id, @customer.id), :class => 'btn btn-primary' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                greenhouse_customer_path(@greenhouse.id, @customer.id),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  </div>
 </div>

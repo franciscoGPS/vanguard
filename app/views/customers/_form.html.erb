@@ -1,80 +1,80 @@
 <%= form_for @customer, url: greenhouse_customers_path(@greenhouse.id, @customer.id), :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="row">
     <div class="col-md-3 col-sm-12">
-    <div class="form-group text-center">
-      <%= f.label :logo, :class => 'control-label' %>
-      <div class="thumbnail logo" id="target_parent">
-        <div  id="target">
-          <% if @customer.persisted? %>
-            <%= image_tag @customer.logo.url %>
-          <% else %>
-            <div class="text-muted" style="padding-top:20%; padding-bottom:20%;">
-              <i class="fa fa-picture-o fa-5x"></i>
-            </div>
-          <% end %>
+      <div class="form-group text-center">
+        <%= f.label :logo, :class => 'control-label' %>
+        <div class="thumbnail logo" id="target_parent">
+          <div  id="target">
+            <% if @customer.persisted? %>
+              <%= image_tag @customer.logo.url %>
+            <% else %>
+              <div class="text-muted" style="padding-top:20%; padding-bottom:20%;">
+                <i class="fa fa-picture-o fa-5x"></i>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <%= f.file_field :logo, :id => "pictureInput"  %>
+      </div>
+    </div>
+    <div class="col-md-9 col-sm-12">
+      <div class="form-group">
+        <%= f.label :business_name, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :business_name, :class => 'text_field form-control' %>
         </div>
       </div>
-      <%= f.file_field :logo, :id => "pictureInput"  %>
+      <div class="form-group">
+        <%= f.label :billing_address, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :billing_address, :class => 'text_field form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :shipping_address, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :shipping_address, :class => 'text_field form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :tax_id_number, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :tax_id_number, :class => 'text_field form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :chep_id_number, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :chep_id_number, :class => 'text_field form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :bb_number, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :bb_number, :class => 'text_field form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="contacts" class="panel  panel-default">
+      <div class="panel-heading">
+        <h3>Contacts</h3>
+      </div>
+      <div class="panel-body">
+        <%= f.fields_for :contacts do |contact| %>
+          <%= render 'contact_fields', f: contact %>
+        <% end %>
+        <%= link_to_add_association 'Add contact', f, :contacts, render_options: { wrapper: 'inline' }, :class => "btn btn-primary pull-right btn-small" %>
+      </div>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :business_name, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :business_name, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :billing_address, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :billing_address, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :shipping_address, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :shipping_address, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :warehose_address, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :warehose_address, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :tax_id_number, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :tax_id_number, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :chep_id_number, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :chep_id_number, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :bb_number, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :bb_number, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div id="contacts" class="panel  panel-default">
-    <div class="panel-heading">
-      <h3>Contacts</h3>
-    </div>
-    <div class="panel-body">
-      <%= f.fields_for :contacts do |contact| %>
-        <%= render 'contact_fields', f: contact %>
-      <% end %>
-      <%= link_to_add_association 'Add contact', f, :contacts, render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small" %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+    <div class='pull-right'>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  greenhouse_customers_path(@greenhouse.id), :class => 'btn btn-default' %>
+                  greenhouse_customers_path(@greenhouse.id), :class => 'btn btn-danger' %>
+
+      <%= f.submit nil, :class => 'btn btn-success btn-lg' %>
     </div>
   </div>
 <% end %>

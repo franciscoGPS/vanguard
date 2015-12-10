@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    @customers = Customer.where(greenhouse_id: @greenhouse.id).order(id: :asc)
+    @customers = @greenhouse.customers.order(id: :asc)
   end
 
   # GET /customers/1
@@ -85,7 +85,7 @@ class CustomersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def customer_params
     params.require(:customer).permit(:id, :business_name, :billing_address,
-    :shipping_address, :warehose_address, :tax_id_number, :chep_id_number,:bb_number,
+    :shipping_address, :tax_id_number, :chep_id_number,:bb_number,
     :ships,  :logo, :logo_file_name, :greenhouse_id, :_destroy,
     contacts_attributes: [:id, :name, :email, :phone, :phone_office, :_destroy],
     shipments_attributes: [:id, :product_id, :start_at, :pallets_number,

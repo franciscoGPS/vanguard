@@ -37,23 +37,43 @@ class Shipment < ActiveRecord::Base
   end
 
   def pallet_type
-    PalletType.find(self.pallet_type_id)
+    if(self.pallet_type_id != nil)
+      PalletType.find(self.pallet_type_id)
+    else
+      PalletType.new
+    end
   end
 
   def package_type
-    PackageType.find(self.package_type_id)
+    if(self.package_type_id != nil)
+      PackageType.find(self.package_type_id)
+    else
+      PackageType.new
+    end
   end
 
   def box_type
+    if(self.box_type_id != nil)
     BoxType.find(self.box_type_id)
+  else
+    BoxType.new
+  end
   end
 
   def bag_type
+    if(self.bag_type_id != nil)
     BagType.find(self.bag_type_id)
+  else
+    BagType.new
+  end
   end
 
   def count_type
-    CountType.find(self.count_type_id)
+    if(self.count_type_id != nil)
+      CountType.find(self.count_type_id)
+    else
+      CountType.new
+    end
   end
 
   def product_color_one

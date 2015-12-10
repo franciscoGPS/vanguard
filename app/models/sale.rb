@@ -303,7 +303,6 @@ class Sale < ActiveRecord::Base
     #En los eventos after, se puede hacer uso de los auxilares aasm
     ##puts "changing from #{aasm.from_state} to #{aasm.to_state} (event: #{aasm.current_event})"
 
-
     state_change = ShipmentStateChanges.new
     state_change.sale_id = self.id
     state_change.from_state = $states[aasm.from_state.to_sym][:id]

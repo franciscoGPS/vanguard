@@ -1,4 +1,4 @@
-<%= form_for @color, url: greenhouse_colors_path(@greenhouse.id, @color.id), :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @color, url: greenhouse_colors_path(@greenhouse.id, @color), :html => { :class => 'form-horizontal' } do |f| %>
   <% if @color.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@color.errors.count, "error") %> prohibited this color from being saved:</h2>
