@@ -53,20 +53,26 @@
       </div>
       <div class="panel-body">
         <div class="col-md-12">
-          <% @activities.each do |activity| %>
-            <div class="col-md-6 col-sm-12">
-              <small>
-                <i class="<%= find_icon_activity(activity.key.split(".")[1]) %>"></i>
-                <strong><%= User.find(activity.owner_id).name %></strong>
-                <%= activity.key.split(".")[1] %>
-                a
-                <strong data-toggle="tooltip" data-placement="top" title="<%= find_activity(activity.key.split(".")[0].capitalize, activity.trackable_id).as_json.to_a.to(1) %>">
-                  <%= activity.key.split(".")[0] %>
-                </strong>
-                <i>
-                  <%= activity.created_at.strftime("at %A, %d %b %Y %l:%M %p") %>
-                </i>
-              </small>
+          <% if @activities.any? %>
+            <% @activities.each do |activity| %>
+              <div class="col-md-6 col-sm-12">
+                <small>
+                  <i class="<%= find_icon_activity(activity.key.split(".")[1]) %>"></i>
+                  <strong><%= User.find(activity.owner_id).name %></strong>
+                  <%= activity.key.split(".")[1] %>
+                  a
+                  <strong data-toggle="tooltip" data-placement="top" title="<%= find_activity(activity.key.split(".")[0].capitalize, activity.trackable_id).as_json.to_a.to(1) %>">
+                    <%= activity.key.split(".")[0] %>
+                  </strong>
+                  <i>
+                    <%= activity.created_at.strftime("at %A, %d %b %Y %l:%M %p") %>
+                  </i>
+                </small>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="col-md-12">
+              <p><strong>No data yet.</strong></p>
             </div>
           <% end %>
         </div>
