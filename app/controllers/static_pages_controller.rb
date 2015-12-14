@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, :only => [:admin, :activities]
   layout "home", :only => [:index]
   def index
     set_meta_tags :title => t("home"),

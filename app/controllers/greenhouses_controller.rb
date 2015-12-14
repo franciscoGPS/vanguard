@@ -110,7 +110,6 @@ class GreenhousesController < ApplicationController
         :template => 'greenhouses/purshase_order.pdf.erb',
         :layout => 'pdf.html.erb',
         :show_as_html => params[:debug].present?,
-        :page_size => 'Letter',
         :encoding => 'UTF-8'
       end
       end

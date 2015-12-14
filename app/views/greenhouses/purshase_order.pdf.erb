@@ -1,10 +1,4 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
 <style type="text/css">
-<!--
 body {
 	font: 100%/1.4 "Open Sans", Helvetica;
 	width: 595px;
@@ -72,16 +66,16 @@ th {
 	margin-bottom: 20px;
 	font-style:italic;
 	}
--->
-</style><!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]--></head>
+</style>
+</head>
 
 <body>
 
 <div class="container">
-  <header><!--<img src="../indesign/purshase_order-web-resources/image/AgaveSoloNegro.png" width="71" height="63" alt="Logo" style="padding-top:10px;"/>-->
-    <h1> <%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :class => "img-circle") %> Invernadero <%= "#{@greenhouse.business_name}"  %>
+  <header>
+    <h1>
+        <%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :style => "width:71px;height:63px;padding-top:10px;") %>
+        Invernadero <%= "#{@greenhouse.business_name}"  %>
     </h1>
 
   </header>
@@ -216,4 +210,3 @@ th {
     </div>
 </div>
 </body>
-</html>
