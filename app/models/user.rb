@@ -14,14 +14,4 @@ has_many :collection_bills
   ROLES = %w[superadmin admin user banned sales]
 
 
-  #before_create :set_default_role
-  #private
-  #def set_default_role
-  #  self.role ||= Role.find_by_name('registered')
-  #end
-  #
-
-  # Public Activity
-  include PublicActivity::Model
-  tracked owner:  ->(controller, model) { controller.c_user }
 end
