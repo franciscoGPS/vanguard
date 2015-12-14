@@ -91,4 +91,22 @@ module ApplicationHelper
     else  "fa fa-question text-info"
     end
   end
+
+  def find_user_name(id)
+    case id
+    when ""
+      "Unknown"
+    when nil
+      "Unknown"
+    when " "
+      "Unknown"
+    else
+      x = User.find(id)
+      if x.name.blank?
+        "Unknown"
+      else
+        return x.name
+      end
+    end
+  end
 end
