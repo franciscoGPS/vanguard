@@ -145,6 +145,7 @@ GEM
       mimemagic (= 0.3.0)
     paranoia (2.1.4)
       activerecord (~> 4.0)
+    pdfkit (0.8.2)
     pg (0.18.4)
     public_activity (1.4.2)
       actionpack (>= 3.0.0)
@@ -257,6 +258,7 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     wicked_pdf (1.0.2)
+    wisepdf (1.4.0)
     wkhtmltopdf-binary (0.9.9.3)
     wkhtmltopdf-heroku (2.12.2.4)
 
@@ -290,6 +292,7 @@ DEPENDENCIES
   numbers_and_words (~> 0.10.0)
   paperclip (~> 4.3)
   paranoia (~> 2.0)
+  pdfkit
   pg
   public_activity
   puma
@@ -307,6 +310,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   wicked_pdf
+  wisepdf
   wkhtmltopdf-binary
   wkhtmltopdf-heroku
 
