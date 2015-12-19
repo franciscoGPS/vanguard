@@ -111,7 +111,7 @@ class SalesController < ApplicationController
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale.destroy
     respond_to do |format|
-      format.html { redirect_to greenhouse_sales_path(@greenhouse.id), notice: 'Sale was successfully destroyed.' }
+      format.html { redirect_to greenhouse_path(@greenhouse.id), notice: 'Sale was successfully destroyed.' }
       #format.json { head :no_content }
     end
   end
