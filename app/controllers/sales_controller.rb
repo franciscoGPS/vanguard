@@ -65,10 +65,16 @@ class SalesController < ApplicationController
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
     @sale.greenhouse = @greenhouse
-    @sale.save
 
-    respond_to do |format|
-      format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
+    if(@sale.shipments.count > 0)
+      @sale.save
+      respond_to do |format|
+        format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to new_greenhouse_sale_path(@greenhouse.id), alert: 'No es posible crear venta sin productos. Revise sus datos.' }
+      end
     end
   end
 
