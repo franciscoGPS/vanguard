@@ -28,7 +28,7 @@ class Greenhouse < ActiveRecord::Base
     products.where("active = true")
   end
   def week_sales
-    sales.group_by_day(:created_at, range: 1.weeks.ago.midnight..Time.now)
+    sales.where("EXTRACT(WEEK FROM sales.created_at) = #{Time.now.strftime("%U")}")
   end
 
 end
