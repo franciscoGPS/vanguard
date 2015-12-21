@@ -2,73 +2,34 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:role) %></th>
-      <th><%= model_class.human_attribute_name(:job) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:deleted_at) %></th>
-      <th><%= model_class.human_attribute_name(:encrypted_password) %></th>
-      <th><%= model_class.human_attribute_name(:reset_password_token) %></th>
-      <th><%= model_class.human_attribute_name(:reset_password_sent_at) %></th>
-      <th><%= model_class.human_attribute_name(:remember_created_at) %></th>
-      <th><%= model_class.human_attribute_name(:current_sign_in_at) %></th>
-      <th><%= model_class.human_attribute_name(:last_sign_in_at) %></th>
-      <th><%= model_class.human_attribute_name(:current_sign_in_ip) %></th>
-      <th><%= model_class.human_attribute_name(:last_sign_in_ip) %></th>
-      <th><%= model_class.human_attribute_name(:failed_attempts) %></th>
-      <th><%= model_class.human_attribute_name(:unlock_token) %></th>
-      <th><%= model_class.human_attribute_name(:locked_at) %></th>
-      <th><%= model_class.human_attribute_name(:role_id) %></th>
-      <th><%= model_class.human_attribute_name(:admin) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-          <td><%= user.name %></td>
-          <td><%= user.role %></td>
-          <td><%= user.job %></td>
-          <td><%= user.phone %></td>
-          <td><%= user.email %></td>
-          <td><%= user.deleted_at %></td>
-          <td><%= user.encrypted_password %></td>
-          <td><%= user.reset_password_token %></td>
-          <td><%= user.reset_password_sent_at %></td>
-          <td><%= user.remember_created_at %></td>
-          <td><%= user.current_sign_in_at %></td>
-          <td><%= user.last_sign_in_at %></td>
-          <td><%= user.current_sign_in_ip %></td>
-          <td><%= user.last_sign_in_ip %></td>
-          <td><%= user.failed_attempts %></td>
-          <td><%= user.unlock_token %></td>
-          <td><%= user.locked_at %></td>
-          <td><%= user.role_id %></td>
-          <td><%= user.admin %></td>
-        <td><%=l user.created_at, format: :long %></td>
-        <td>
-          <%= link_to user_path(user), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-          <%- end -%>
-          <%= link_to edit_user_path(user), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-          <%= link_to user_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
-          <%- end -%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<di>
+<div class="pull-right">
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+  <%= link_to t('.new', :default => t("helpers.links.new")),
             new_user_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-success btn-lg' %>
+</div>
+</div>
+<% @users.each  do |user| %>
+  <%= link_to user_path(user) do %>
+
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>
+          <span class="fa-stack">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-user fa-stack-1x"></i>
+          </span>
+          <%= "#{user.name}" %>
+        </h3>
+      </div>
+      <div class="panel-body panel-text">
+        <p><%= "Role: #{user.role.name}" %></p>
+        <p><%= "Job: #{user.job}" %></p>
+        <p><small class="info"><%=l user.created_at, format: :long%></small></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% end %>

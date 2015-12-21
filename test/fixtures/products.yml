@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  greenhouse: 1
+  package_type: 1
+  box_type:
+  pallet_type: 1
+  bag_type: 1
+  active: false
+
+two:
+  name: MyString
+  greenhouse: 1
+  package_type: 1
+  box_type:
+  pallet_type: 1
+  bag_type: 1
+  active: false

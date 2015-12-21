@@ -1,0 +1,31 @@
+<h3>Products</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Box Qty</th>
+      <th>Case</th>
+      <th>Weight</th>
+      <th>Product Name</th>
+      <td>Customer</td>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shipments.each do |shipment| %>
+      <tr>
+        <td><%= shipment.box_number %></td>
+        <td><%= BoxType.find(shipment.box_type_id).name %></td>
+        <td><%= shipment.weight %></td>
+        <td><%= shipment.product.name %></td>
+        <td><%= shipment.customer.business_name %></td>
+        <td>$<%= shipment.price %></td>
+        <td>$<%= shipment.price * shipment.box_number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+

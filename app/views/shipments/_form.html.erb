@@ -1,0 +1,182 @@
+<%= form_for @shipment, :html => { :class => 'form-horizontal' } do |f| %>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :purshase_order_number %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :po_number, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :customer_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :customer_id, Customer.where(greenhouse_id: @shipment.greenhouse_id), :id, :business_name,
+                              {prompt: "Selecciona cliente"}, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :product_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :product_id, Product.where(greenhouse_id: @shipment.greenhouse_id), :id, :name,
+                              {prompt: "Selecciona producto"}, :class => "text_field form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :box_ammount %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :box_number, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :pallets_number %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :pallets_number, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+         <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :weight %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :weight, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+     <div class="col-md-2">
+         <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :quality %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :quality, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+         <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :price %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :price, min: 0, max: 100000, step: :any, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :count %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :count, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+            <div class="col-md-12">
+              <%= f.label :plu %>
+            </div>
+            <div class="col-md-12">
+              <%= f.check_box :plu, :class => 'text_field form-control col-md-12' %>
+            </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :package_type_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :package_type_id,  PackageType.all, :id,:name,
+                                {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :box_type_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :box_type_id,  BoxType.all, :id,:name,
+                                {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :bag_type_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :bag_type_id,  BagType.all, :id,:name,
+                                {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :pallet_type_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :pallet_type_id,  PalletType.all, :id,:name,
+                                {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+          </div>
+        </div>
+      </div>
+
+    <div class="form-group">
+    <%= f.label :comments, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :comments, :class => 'text_field form-control' %>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit "Update Settings", :class => 'btn btn-primary' %>
+      <!-- Este siguiente botón es usado al editar los "Shipments" o product_config
+        Al cancelar la acción redirige automaticamente al show de la venta propietaria de este shipment-->
+      <%= link_to "Cancel", :back, {:class => 'btn btn-default'} %>
+      console
+    </div>
+  </div>
+<% end %>

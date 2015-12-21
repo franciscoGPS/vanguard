@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # La siguiente línea sirve para bloquear.
+  before_action :authenticate_user!, :verify_is_admin?, only:[:new, :index, :show, :edit, :update, :destroy]
+
+
+
 
   # GET /users
   # GET /users.json
@@ -30,27 +35,23 @@ class UsersController < ApplicationController
     #if current_user.try(:admin?)
 
 
-      
+
       generated_password = Devise.friendly_token.first(8)
-      
-      
-      @user = User.new(:email => user_params[:email], :password => generated_password, :name => user_params[:name], :role_id => user_params[:role_id], :phone => user_params[:phone])
-    
-      
+
+
+      @user = User.new(:email => user_params[:email], :password => generated_password,
+       :name => user_params[:name], :role_id => user_params[:role_id],
+       :phone => user_params[:phone], :job =>user_params[:job])
+
+
       #@user = User.new(:email => "ejemplo@agaveti.com", :password => generated_password)
 
       respond_to do |format|
         if @user.save
-          
-      RegistrationMailer.welcome(user, generated_password).deliver
-          
-          #user = User.create!(:email => email, :password => generated_password)
 
-          #RegistrationMailer.welcome(user, generated_password).deliver
+          UserMailer.welcome_email(@user, generated_password).deliver
 
-
-
-          format.html { redirect_to @user, notice: 'User was successfully created. \n'  + generated_password }
+          format.html { redirect_to @user, notice: 'User was successfully created. \n'}
           #format.json { render :show, status: :created, location: @user }
 
 
@@ -64,7 +65,7 @@ class UsersController < ApplicationController
     else #####else del if de current_user.try(:admin?) -############
 
       redirect_to :back, notice: "No tiene permisos "
-    end  
+    end
   end
 
   # PATCH/PUT /users/1
@@ -99,9 +100,17 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      accessible = [:name, :phone, :role_id, :job, :email, :password, :password_confirmation, :current_password]
+      accessible = [:name, :phone, :role_id, :job, :email,
+        :password_confirmation, :remember_me, :encrypted_password]
+      accessible << [role_attributes: [:id, :name]]
       params.require(:user).permit(accessible)
     end
+
+protected
+  def verify_is_admin?
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(admin_path) unless current_user.admin?)
+  end
+
 end
 
 

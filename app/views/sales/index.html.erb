@@ -1,0 +1,64 @@
+<%- model_class = Sale -%>
+<ol class="breadcrumb">
+  <li><%= link_to "#{@greenhouse.business_name}", greenhouse_path(@greenhouse) %></li>
+  <li class="active">Sales</li>
+</ol>
+<div class="page-header">
+  <h1>Shipments</h1>
+  <div class="pull-right">
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+                                              new_greenhouse_sale_path(@greenhouse),
+                                            :class => 'btn btn-success btn-lg' %>
+  </div>
+</div>
+
+<% if @sales.present? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th><%= model_class.human_attribute_name(:id) %></th>
+              <th><%= model_class.human_attribute_name(:product) %></th>
+              <th><%= model_class.human_attribute_name(:customer) %></th>
+              <th><%=t '.actions', :default => t("helpers.actions") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sales.each do |sale| %>
+            <tr data-link="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
+                <td><%= radio_button_tag(:selected, sale.id) %></td>
+                <td><%= sale.id %></td>
+                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
+                  <%if !sale.shipments.empty? %>
+                    <%= sale.shipments.first.product.name %>
+                    <%else %>
+                    Detalles
+                  <%end%>
+                  </a></td>
+                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
+                  <%if !sale.shipments.empty? %>
+                  <%= sale.shipments.first.customer.customers_in_sale(sale) %>
+                  <%else %>
+                    Detalles
+                  <%end%>
+                </a></td>
+                <td>
+                  <%= link_to edit_greenhouse_sale_path(sale.greenhouse_id, sale.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+                  <i class="fa fa-pencil fw"></i>
+                  <%- end -%>
+                </td>
+            </tr>
+            <% end %>
+            <!-- El contenido retirado va entre los dos <tbody/>-->
+          </tbody>
+        </table>
+      </div>
+      <%= render "state_machine" %>
+    </div>
+  </div>
+<% else %>
+  <h3 class="text-muted text-center">No data.</h3>
+<% end %>

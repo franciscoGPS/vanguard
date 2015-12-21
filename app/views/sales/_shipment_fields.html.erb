@@ -1,0 +1,246 @@
+
+
+<div class="col-md-12 shipment-fields nested-fields padding-up">
+  <div class="well">
+    <div class="row form-inline ">
+      <div class="pull-right">
+         <%= link_to_remove_association f,  data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-remove fa-lg text-danger"></i>
+         <% end %>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :purshase_order_number %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :po_number, :class => 'text_field form-control', :required => true%>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :customer_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :customer_id, @customers, :id, :business_name,
+                              {prompt: "Selecciona cliente"}, {:class => 'text_field form-control', :required => true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :product_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :product_id, @products, :id, :name,
+                              {prompt: "Producto"}, {:class => "text_field form-control prod" , :required => true} %>
+          </div>
+        </div>
+      </div>
+
+     <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :product_color %>
+          </div>
+          <div class="col-md-12">
+             <%= f.collection_select :product_color, @colors, :id, :name, {prompt: "Color"}, {:class => "text_field form-control" , :required => true} %>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :count_type_id, "Conteo" %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :count_type_id, @counts, :id, :name, {:prompt => "Conteo"}, {:class => "text_field form-control count" , :required => true}  %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :box_ammount %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :box_number, {:class => 'text_field form-control', :required => true}%>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :pallets_number %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :pallets_number, {:class => 'text_field form-control', :required => true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+         <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :weight %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :weight, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+     <div class="col-md-2">
+         <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :quality %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :quality, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+         <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :price %>
+          </div>
+          <div class="col-md-12">
+            <%= f.number_field :price, min: 0, max: 100000, step: :any, :class => 'text_field form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+            <div class="col-md-12">
+              <%= f.label :plu %>
+            </div>
+            <div class="col-md-12">
+              <%= f.check_box :plu, :class => 'text_field form-control col-md-12' %>
+            </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :package_type_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :package_type_id,  PackageType.all, :id,:name,
+                                {prompt: "Selecciona uno"} ,{:class => 'text_field form-control', :required => true} %>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :box_type_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :box_type_id,  BoxType.all, :id,:name,
+                                {prompt: "Selecciona uno"} ,{:class => 'text_field form-control', :required => true}%>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :bag_type_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :bag_type_id,  BagType.all, :id,:name,
+                                {:prompt => "Selecciona uno", :class => 'text_field form-control',  :required => true} %>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.label :pallet_type_id %>
+          </div>
+          <div class="col-md-12">
+            <%= f.collection_select :pallet_type_id,  PalletType.all, :id,:name,
+                                {prompt: "Selecciona uno" ,:class => 'text_field form-control',  :required => true} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  //Adds bootstrapSwitch to current partial
+  $("[type='checkbox']").bootstrapSwitch();
+  $(".shipment-fields select, .shipment-fields input[type='number']").css("width","100%");
+
+
+
+       $('.prod').on('change', function(params){
+          //27 es el tamaño del base_string, es fijo, no cambia.
+          //40 es cuando termina el ID dinámico del producto del que queremos
+          // filtrar sus count_types
+          //var base_string = 'sale[shipments_attributes][';
+          //var end_string = '][product_id]';
+          var shipment_auto_rails_id = params.target.name.substring(27,40);
+          //alert(product_rails_id);
+          //alert(params.target.name);
+
+          product_id_val = $(this).val();
+          var product_select = $(this);
+
+              var params = {
+            product_id: product_id_val
+          };
+          $.ajax({
+            url: '<%= get_product_count_types_path %>',
+            type: 'GET',
+            data: $.param(params),
+            dataType: 'json',
+            success: function (dataRes) {
+              var types_select = $("select[name$='["+shipment_auto_rails_id+"][count_type_id]']")
+              clearTarget(types_select);
+
+              //Se recibe el arreglo de objetos, hay que acomodarlos en el select
+            var types = $.parseJSON(dataRes);
+            filter_count_types(types_select, types);
+
+            }
+          });
+
+
+          function clearTarget(count_types_select){
+               count_types_select.children().remove().end()
+               .append('<option selected value="0">N/A</option>');
+          }
+
+
+          function filter_count_types(count_types_select, types){
+                $.each(types, function(key, value) {
+              count_types_select
+             .append($("<option></option>")
+             .attr("value" , value[0])
+             .text(value[1]));
+              });
+          }
+
+
+       });
+</script>

@@ -1,0 +1,39 @@
+ 
+
+<h1>Listing Collections Bills</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sale</th>
+      <th>Invoice number</th>
+      <th>Shipment consecutive</th>
+      <th>Po number</th>
+      <th>Payment terms</th>
+      <th>Bol date</th>
+      <th>Total amt</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collections_bills.each do |collections_bill| %>
+      <tr>
+        <td><%= collections_bill.sale_id %></td>
+        <td><%= collections_bill.invoice_number %></td>
+        <td><%= collections_bill.shipment_consecutive %></td>
+        <td><%= collections_bill.po_number %></td>
+        <td><%= collections_bill.payment_terms %></td>
+        <td><%= collections_bill.bol_date %></td>
+        <td><%= collections_bill.total_amt %></td>
+        <td><%= link_to 'Show', collections_bill %></td>
+        <td><%= link_to 'Edit', edit_collections_bill_path(collections_bill) %></td>
+        <td><%= link_to 'Destroy', collections_bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Collections bill', new_collections_bill_path %>

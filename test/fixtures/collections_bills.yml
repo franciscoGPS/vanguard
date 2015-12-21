@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale_id: 1
+  invoice_number: 1
+  shipment_consecutive: 1
+  po_number: 1
+  payment_terms: MyString
+  bol_date: 2015-10-28 18:43:02
+  total_amt: 1.5
+
+two:
+  sale_id: 1
+  invoice_number: 1
+  shipment_consecutive: 1
+  po_number: 1
+  payment_terms: MyString
+  bol_date: 2015-10-28 18:43:02
+  total_amt: 1.5

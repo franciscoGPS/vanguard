@@ -1,57 +1,85 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   root "static_pages#index"
-  resources :users
-  resources :roles
-  resources :greenhouses
-  resources :contacts
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get 'admin', to: "static_pages#admin"
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  scope :admin  do
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+    devise_for :users
+    resources :users
+    resources :roles
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    resources :box_types
+    resources :bag_types
+    resources :pallet_types
+    resources :package_types
+    resources :count_types
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+    resources :greenhouses do
+        get 'info' => 'greenhouses#info', as: 'info'
+        get 'average-prices' => 'greenhouses#average_price_week', as: "average_price_week"
+        resources :sales do
+          resources :manifests
+          resources :collections_bills
+        end
+        resources :shipments
+        resources :customers do
+          resources :contacts
+        end
+        resources :products
+        resources :colors
+        resources :warehouses
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+    end
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+    #Hash key => value
+    #what the client see => what the system does, as: alias you can use in the system
+
+
+   #Estas siguientes direcciones de PATCH se requieren para que se puedan actualizar
+   #los modelos anidados
+   patch '/greenhouses/:greenhouse_id/customers.:id' => 'customers#update'
+   patch '/greenhouses/:greenhouse_id/products.:id' => 'products#update'
+   patch '/greenhouses/:greenhouse_id/sales.:id' => 'sales#update'
+   patch '/greenhouses/:greenhouse_id/colors.:id' => 'colors#update'
+   patch '/greenhouses/:greenhouse_id/warehouses.:id' => 'warehouses#update'
+   patch '/greenhouses/:greenhouse_id/sales/:sale_id/manifests.:id' => 'manifests#update'
+
+#Acción al cambiar de estados en la venta
+    get 'purshase_order_state_change' => 'sales#purshase_order_state_change'
+#Fin###########
+
+    #Acción que se manda a llamar para cargar los conteos adecuados para cada producto.
+    get 'get_product_count_types' => 'count_types#get_product_count_types'
+    #Fin de esta petición ajax que se llama desde _shipment_fields.html.erb
+
+    post 'purshase_order/greenhouses/:greenhouse_id/sales/:sale_id' => 'sales#purshase_order', as: "purshase_order"
+    get 'customs_billing/sales/:greenhouse_id/:sale_id' => 'sales#customs_bill', as: "customs_billing"
+    get 'customs_bill/greenhouses/:greenhouse_id/sales/:sale_id' => 'manifests#new', as: 'customs'
+
+    get 'manifests/customs_invoice' => 'manifests#to_customs_invoice', as: "to_customs_invoice"
+    post 'collections_bills/invoice/:id' => 'collections_bills#to_invoice', as: "to_invoice"
+
+    get 'collections_bill' => 'sales#collections_bill', as: "sales_collections_bills"
+    #get 'collections_bill/:sale_id' => 'collections_bills#index', as: "collections_bills_index"
+    post 'collections_bill' => 'collections_bills#new', as: "new_bill"
+
+
+
+
+
+
+    get 'order' => 'greenhouses#order'
+    get 'greenhouse/:greenhouse_id/:customer_id/:sale_id/invoice/:id' => 'greenhouses#invoice', as: "billing_invoice"
+    get 'purshase_order/greenhouses/:greenhouse_id/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
+    #get 'purshase_order/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
+    get 'customs_invoice/sales/:sale_id' => 'greenhouses#customs_invoice', as: "cust_inv_pdf"
+    get 'customs_invoice/manifests/:sale_id' => 'greenhouses#customs_invoice', as: 'customs_invoice'
+
+    get 'activities' => 'static_pages#activities'
+
+
+  end #Admin scope
+
 end

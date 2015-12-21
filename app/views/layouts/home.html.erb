@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Vanguard" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Vanguard" %>">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+    <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'fonts', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>  
+  </body>
+</html>

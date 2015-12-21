@@ -1,40 +1,66 @@
 <%= form_for @greenhouse, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="form-group">
-    <%= f.label :business_name, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :business_name, :class => 'text_field form-control' %>
+  <div class="col-md-3 col-sm-12">
+    <div class="form-group text-center">
+      <%= f.label :logo, :class => 'control-label' %>
+      <div class="thumbnail logo" id="target_parent">
+        <div  id="target">
+          <% if @greenhouse.persisted? %>
+            <%= image_tag @greenhouse.logo.url %>
+          <% else %>
+            <div class="text-muted" style="padding-top:20%; padding-bottom:20%;">
+              <i class="fa fa-picture-o fa-5x"></i>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%= f.file_field :logo, :id => "pictureInput"  %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :fiscal_address, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :fiscal_address, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :greenhouse_address, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :greenhouse_address, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :rfc, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :rfc, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :category, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :category, :class => 'text_field form-control' %>
-    </div>
-  </div>
+  <div class="col-md-9">
 
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+    <div class="form-group">
+      <%= f.label :business_name, :class => 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :business_name, :class => 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :fiscal_address, :class => 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_area :fiscal_address, :class => 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :greenhouse_address, :class => 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_area :greenhouse_address, :class => 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :rfc, :class => 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :rfc, :class => 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :fda_num, :class => 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :fda_num, :class => 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :category, :class => 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :category, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="pull-right">
+      <%= f.submit nil, :class => 'btn btn-success' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   greenhouses_path, :class => 'btn btn-default' %>
     </div>
+
   </div>
 <% end %>

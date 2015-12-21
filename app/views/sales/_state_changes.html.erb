@@ -1,0 +1,23 @@
+<h3>Changes</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>From State</th>
+      <th>To State</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @state_changes.each_with_index do |change, index| %>
+      <tr>
+        <td><%= @sale.id %></td>
+        <td><%= states_index[change.from_state.to_s][:name] %></td>
+        <td><%= states_index[change.to_state.to_s][:name] %></td>
+        <td><%=  change.created_at %></td>
+        <td><%= change.change_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @state_changes %>

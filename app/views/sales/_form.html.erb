@@ -1,0 +1,68 @@
+<%= form_for @sale, :url => greenhouse_sales_path(@greenhouse.id, @sale.id), :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :season, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :season, :class => 'text_field form-control', :required => true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :departure_date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :departure_date, :class => 'text_field form-control', :required => true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :arrival_date, :class => 'control-label col-md-2', :required => true %>
+    <div class="col-md-10">
+      <%= f.date_select :arrival_date, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <!--<div class="form-group">
+    < f.label :product_color, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <!-- f.select :product_color, product_colors,
+                              {prompt: "Color"}, {:multiple => true, :selected => {"2.- Breakers", "3.- Turning"}, :class => "text_field form-control" }%>-->
+      <!-- f.select :product_color, options_for_select(product_colors, ["2.- Breakers", "3.- Turning"]), {prompt: "Color"}, {:multiple => true, :class => "text_field form-control" }%>--
+
+    </div>
+  </div>-->
+  <div id="products" class="panel  panel-default">
+    <div class="panel-heading">
+      <h3>Products</h3>
+    </div>
+    <div class="panel-body">
+      <%= link_to_add_association 'Add Product', f, :shipments,
+            render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small margin-up pull-right" %>
+      <%= f.fields_for :shipments do |shipments| %>
+          <%= render 'shipment_fields', :f  => shipments %>
+      <% end %>
+    </div>
+  </div>
+
+
+    <!-- render :partial => 'preshipments_table' %>-->
+  <div class="form-group">
+    <%= f.label :annotation, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :annotation, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <!--<div class="form-group">
+    < f.label :comment, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      < f.text_field :comment, :class => 'text_field form-control' %>
+    </div>
+  </div>-->
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  :back, :class => 'btn btn-default' %>
+                  <% if @sale.own?(current_user)%>
+      <%= link_to t('.delete', :default => t("helpers.links.delete")),
+                  greenhouse_sales_path, :class => 'btn btn-danger' %>
+                  <% end %>
+    </div>
+  </div>
+<% end %>

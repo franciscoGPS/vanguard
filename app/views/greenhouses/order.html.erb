@@ -1,0 +1,160 @@
+<%= form_for  @sale, :url => greenhouse_sales_path(@greenhouse.id, @sale.id), :html => { :class => 'form-horizontal' } do |f| %>
+<div class="container-fluid" style="background-color:white;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-header">
+
+							<h1> <%= image_tag @greenhouse.logo.url(:thumb), :class => "img-circle" %> Invernadero <%= "#{@greenhouse.business_name}"  %> </h1>
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<form class="form-horizontal" role="form">
+            <div class="col-md-12">
+              <div class="form-group">
+  							<label class="control-label">
+  								No. Embarque
+  							</label>
+                  <%= text_field_tag nil, @sale.id, class: "form-control" %>
+  						</div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+  							<label for="inputPassword3" class="control-label">
+  								Producto en embarque
+  							</label>
+                  <%= @string_products %>
+  						</div>
+            </div>
+
+					</form>
+				</div>
+				<div class="col-md-6">
+					<form class="form-horizontal" role="form">
+						<div class="col-md-12">
+              <div class="form-group">
+
+                  <label class="control-label">
+                    Fecha de entrega
+                  </label>
+                  <strong><%=@sale.arrival_date %></strong>
+  						</div>
+              <div class="form-group">
+
+                  <label class="control-label">
+                    Fecha de entrega
+                  </label>
+                  <strong><%= %></strong>
+              </div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-striped table-condensed">
+						<thead>
+							<tr>
+								<th># - Cliente</th>
+								<th>Calidad</th>
+								<th>No. tarimas</th>
+                <th>Tipo de tarima</th>
+                <th>No. de cajas</th>
+                <th>Peso - Tipo de Caja</th>
+							</tr>
+						</thead>
+						<tbody>
+              <% @shipments.each do |shipment|%>
+							<tr>
+								<td>
+									<%= shipment.po_number != nil ? shipment.po_number : "" %>
+                  <%= get_customer_name(shipment.customer.id) %>
+								</td>
+								<td>
+									<%= shipment.quality %>
+								</td>
+								<td>
+									<%= shipment.pallets_number %>
+								</td>
+								<td>
+									<%= get_pallet_name(shipment.pallet_type_id) %>
+								</td>
+                <td>
+                  <%= shipment.box_number %>
+                </td>
+                <td>
+                  <%= shipment.weight %> <%= get_box_name(shipment.box_type_id) %>
+                </td>
+							</tr>
+                <% end %>
+
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+        <% @customers.each do |customer|%>
+
+
+				<div class="col-md-6">
+          <h4>Cliente: <strong><%= "#{customer.business_name}" %></strong></h4>
+            <dl class="dl-horizontal">
+              <dt>
+                PO#
+              </dt>
+              <dd>
+                <%= "#{@shipments_by_cust[customer.id][0].po_number}" %>
+              </dd>
+            <dt>
+                Package Specs
+              </dt>
+              <dd>
+              <% @shipments_by_cust[customer.id].each do |shipment|%>
+                <%= "#{shipment.box_number} - #{shipment.weight} lb - #{shipment.product.name} - #{shipment.count_type.name} - #{shipment.plu_to_string} --> #{shipment.pallet_type.name}." %>
+                <br>
+              <% end %>
+              </dd>
+            </dl>
+
+				</div>
+        <% end %>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					 <span class="label label-info">Observaciones</span>
+					<%= f.text_area :annotation, class: "form-control", rows: "5", disabled: true %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row padding-up">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-4">
+
+					<address>
+						<strong>Vanguard, Co.</strong>
+					</address>
+				</div>
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+					<p class="text-right text-muted fix-order">
+						<%= "#{Date.today}" %>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%= link_to 'Printable Receipt (PDF)', p_order_path(@greenhouse.id, @sale.id, format: 'pdf') %>
+<% end %>
+
+
+

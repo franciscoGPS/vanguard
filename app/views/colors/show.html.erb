@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @color.name %>
+</p>
+
+<p>
+  <strong>Greenhouse:</strong>
+  <%= @color.greenhouse.business_name %>
+</p>
+
+<%= link_to 'Edit', edit_greenhouse_color_path(@greenhouse.id, @color.id) %> |
+<%= link_to 'Back', greenhouse_colors_path(@greenhouse.id) %>

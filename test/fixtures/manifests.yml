@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale_id: 1
+  date: 2015-10-26
+  sold_to: 1
+  sent_to: MyText
+  custom_broker: MyString
+  carrier: MyString
+  driver: MyString
+  truck: MyString
+  truck_licence_plate: MyString
+  trailer_num: MyString
+  trailer_num_lp: MyString
+  stamp: MyString
+  thermograph: MyString
+  purshase_order: 1
+  shipment: 1
+  delivery_person: MyString
+  person_receiving: MyString
+  trailer_size: 1
+  caat: MyString
+  alpha: MyString
+  fda_num: MyString
+  pallet_number: 1
+  comments: MyText
+
+two:
+  sale_id: 1
+  date: 2015-10-26
+  sold_to: 1
+  sent_to: MyText
+  custom_broker: MyString
+  carrier: MyString
+  driver: MyString
+  truck: MyString
+  truck_licence_plate: MyString
+  trailer_num: MyString
+  trailer_num_lp: MyString
+  stamp: MyString
+  thermograph: MyString
+  purshase_order: 1
+  shipment: 1
+  delivery_person: MyString
+  person_receiving: MyString
+  trailer_size: 1
+  caat: MyString
+  alpha: MyString
+  fda_num: MyString
+  pallet_number: 1
+  comments: MyText

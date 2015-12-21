@@ -18,7 +18,11 @@ class GreenhousesControllerTest < ActionController::TestCase
 
   test "should create greenhouse" do
     assert_difference('Greenhouse.count') do
-      post :create, greenhouse: { business_name: @greenhouse.business_name, category: @greenhouse.category, fiscal_address: @greenhouse.fiscal_address, greenhouse_address: @greenhouse.greenhouse_address, rfc: @greenhouse.rfc }
+      post :create, greenhouse: { business_name: @greenhouse.business_name,
+       category: @greenhouse.category,
+        fiscal_address: @greenhouse.fiscal_address,
+        greenhouse_address: @greenhouse.greenhouse_address,
+        rfc: @greenhouse.rfc }
     end
 
     assert_redirected_to greenhouse_path(assigns(:greenhouse))

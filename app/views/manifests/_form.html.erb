@@ -1,0 +1,119 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_for @manifest, :url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id, @manifest) do |f| %>
+    <%= f.hidden_field :sale_id, :value => @manifest.sale_id %>
+    <%= hidden_field( :manifest, :sold_to_id )%>
+    <% if @manifest.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@manifest.errors.count, "error") %> prohibited this manifest from being saved:</h2>
+
+        <ul>
+        <% @manifest.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :manifest_number, class: "col-md-2 control-label" %>
+      <%= f.number_field :manifest_number, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :purshase_order_number, class: "col-md-2 control-label" %>
+      <%= f.number_field :purshase_order, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :date, class: "col-md-2 control-label" %>
+      <%= f.date_select :date, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :sold_to, class: "col-md-2 control-label" %>
+      <%= f.text_field :sold_to, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+    <%= f.label :warehouse_id, class: "col-md-2 control-label" %>
+    <%= f.collection_select :warehouse_id, @warehouses, :id, :name_address,
+             {prompt: "Selecciona bodega"}, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :mex_custom_broker, class: "col-md-2 control-label" %>
+      <%= f.text_field :mex_custom_broker, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :usa_custom_broker, class: "col-md-2 control-label" %>
+      <%= f.text_field :usa_custom_broker, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :carrier, class: "col-md-2 control-label" %>
+      <%= f.text_field :carrier, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :driver, class: "col-md-2 control-label" %>
+      <%= f.text_field :driver, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :truck, class: "col-md-2 control-label" %>
+      <%= f.text_field :truck, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :truck_licence_plate, class: "col-md-2 control-label" %>
+      <%= f.text_field :truck_licence_plate, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :trailer_num, class: "col-md-2 control-label" %>
+      <%= f.text_field :trailer_num, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :trailer_num_lp, class: "col-md-2 control-label" %>
+      <%= f.text_field :trailer_num_lp, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :stamp, class: "col-md-2 control-label" %>
+      <%= f.text_field :stamp, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :thermograph, class: "col-md-2 control-label" %>
+      <%= f.text_field :thermograph, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :shipment, class: "col-md-2 control-label" %>
+      <%= f.number_field :shipment, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :delivery_person, class: "col-md-2 control-label" %>
+      <%= f.text_field :delivery_person, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :trailer_size, class: "col-md-2 control-label" %>
+      <%= f.number_field :trailer_size, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :caat, class: "col-md-2 control-label" %>
+      <%= f.text_field :caat, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :alpha, class: "col-md-2 control-label" %>
+      <%= f.text_field :alpha, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :fda_num, class: "col-md-2 control-label" %>
+      <%= f.text_field :fda_num, class: "col-md-10 col-sm-12 form-control" %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :total_pallets, class: "col-md-2 control-label" %>
+      <%= f.number_field :total_pallets, class: "col-md-10 col-sm-12 form-control" %>
+      <span class="col-md-12">
+        <i><%= @total_pallets_words.to_s %></i>
+      </span>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
+      <%= f.label :comments, class: "col-md-2 control-label" %>
+      <%= f.text_area :comments, class: "col-md-12 form-control" %>
+    </div>
+    <div class="pull-right">
+      <%= f.submit, class: "btn btn-lg btn-success" %>
+    </div>
+  <% end %>
+
+  </div>
+</div>

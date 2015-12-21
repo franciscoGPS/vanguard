@@ -1,0 +1,49 @@
+<%= form_for(@collections_bill, :url => greenhouse_sale_collections_bills_path(@greenhouse.id, @sale.id)) do |f| %>
+  <% if @collections_bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@collections_bill.errors.count, "error") %> prohibited this collections_bill from being saved:</h2>
+
+      <ul>
+      <% @collections_bill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sale_id %><br>
+    <%= f.number_field :sale_id %>
+  </div>
+  <div class="field">
+    <%= f.label :invoice_number %><br>
+    <%= f.number_field :invoice_number %>
+  </div>
+  <div class="field">
+    <%= f.label :shipment_consecutive %><br>
+    <%= f.number_field :shipment_consecutive %>
+  </div>
+  <div class="field">
+    <%= f.label :po_number %><br>
+    <%= f.number_field :po_number %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_terms %><br>
+    <%= f.text_field :payment_terms %>
+  </div>
+  <div class="field">
+    <%= f.label :bol_date %><br>
+    <%= f.datetime_select :bol_date %>
+  </div>
+  <div class="field">
+    <%= f.label :total_amt %><br>
+    <%= f.text_field :total_amt %>
+    <%= @total_ammount_money_words %>
+  </div>
+   <%= f.hidden_field(:user_id, :value => @collections_bill.user_id) %>
+   <%= f.hidden_field(:customer_id, :value => @collections_bill.customer_id) %>
+   <!-- hidden_field(:collections_bill, :customer_id) %>-->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,55 @@
+<%= form_for @product, :url => greenhouse_products_path(@greenhouse.id, @product.id), :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.hidden_field(:greenhouse_id, :value => @greenhouse.id) %>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-5">
+      <div class="form-group">
+        <%= f.label :name, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :name, :class => 'text_field form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <div class="form-group">
+        <%= f.label :brand, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :brand, :class => 'text_field form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-2">
+      <div class="form-group">
+        <%= f.label :active, :class => 'control-label col-md-4' %>
+        <div class="col-md-8">
+          <%= f.check_box :active, :class => 'text_field form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="products" class="panel  panel-default">
+      <div class="panel-heading">
+        <h3>Count Types</h3>
+      </div>
+
+      <div class="panel-body">
+        <%= link_to_add_association 'Add Count', f, :count_types,
+              render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small margin-up pull-right" %>
+        <div class="col-sm-12 col-md-4">
+          <%= f.fields_for :count_types do |counts| %>
+              <%= render 'count_type_fields', :f  => counts %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='pull-right'>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  greenhouse_products_path, :class => 'btn btn-danger' %>
+      <%= f.submit nil, :class => 'btn btn-success btn-lg' %>
+    </div>
+  </div>
+<% end %>

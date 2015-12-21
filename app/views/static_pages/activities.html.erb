@@ -1,0 +1,28 @@
+<div class="col-md-offset-3 col-md-6 padding-up">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Activities</h2>
+    </div>
+    <div class="panel-body">
+      <% @activities.each do |activity| %>
+        <div class="col-md-12">
+          <p class="text-justify">
+            <i class="<%= find_icon_activity(activity.key.split(".")[1]) %>"></i>
+            <strong><%= User.find(activity.owner_id).name %></strong>
+            <%= activity.key.split(".")[1] %>
+            a
+            <strong data-toggle="tooltip" data-placement="top" title="<%= find_activity(activity.key.split(".")[0].capitalize, activity.trackable_id).as_json.to_a.to(1) %>">
+              <%= activity.key.split(".")[0] %>
+            </strong>
+            <i>
+              <%= activity.created_at.strftime("at %A, %d %b %Y %l:%M %p") %>
+            </i>
+          </p>
+        </div>
+      <% end %>
+      <div class="pull-right">
+        <%= paginate @activities %>
+      </div>
+    </div>
+  </div>
+</div>

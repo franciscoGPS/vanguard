@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bienvenido a Vanguard, <%= @user.name %></h1>
+    <p>
+      Has sido registrado exitosamente en Vanguard.com.mx,
+      la dirección de correo empleada para el registro es: <%= @user.email %>.<br>
+    </p>
+    <p>
+      Tu contraseña es:<strong> <%= @password0 %><br></strong>
+    </p>
+    <p>
+      Para acceder al sistema, ingresa a la siguiente liga: <%= @url %>.
+    </p>
+    <p>Gracias.</p>
+    <p>Dirección de Vanguard</p>
+  </body>
+</html>
