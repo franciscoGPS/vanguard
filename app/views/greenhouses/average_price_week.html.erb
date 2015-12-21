@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-4">
+    <h3>Search</h3>
+    <%= form_tag greenhouse_average_price_week_path, method: 'get' do %>
+      <div class="form-group">
+        <label>Week Number</label>
+        <%= number_field_tag(:week_number, class: "form-control") %>
+        <%= submit_tag("Search", class: "btn btn-success") %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% if @week_number.nil? %>
+        <h3>
+          Average price at week
+          <%= "#{Time.now.strftime("%U")}" %>
+        </h3>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Average price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @greenhouse.products.each do |product| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td><%= product.average_price(Time.now.strftime("%U")) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h3>
+          Average price at week
+          <%= "#{@week_number}" %>
+        </h3>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Average price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @greenhouse.products.each do |product| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td><%= product.average_price(@week_number) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
