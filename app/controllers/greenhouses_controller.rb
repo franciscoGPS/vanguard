@@ -230,7 +230,7 @@ class GreenhousesController < ApplicationController
           :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
           :sold_to_id, :deleted_at, :warehouse_id, :_destroy],
 
-          warehouses_attributes: [:id, :name, :address, :tax_id, :greenhouses_id, :_destroy],
+          warehouses_attributes: [:id, :name, :address, :tax_id, :phone, :greenhouses_id, :_destroy],
           colors_attributes: [:id, :name, :greenhouses_id, :_destroy]
            ]
 

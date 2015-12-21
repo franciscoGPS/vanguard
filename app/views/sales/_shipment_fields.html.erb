@@ -14,7 +14,7 @@
             <%= f.label :purshase_order_number %>
           </div>
           <div class="col-md-12">
-            <%= f.number_field :po_number, :class => 'text_field form-control' %>
+            <%= f.number_field :po_number, :class => 'text_field form-control', :required => true%>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :customer_id, @customers, :id, :business_name,
-                              {prompt: "Selecciona cliente"}, :class => 'text_field form-control' %>
+                              {prompt: "Selecciona cliente"}, {:class => 'text_field form-control', :required => true} %>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :product_id, @products, :id, :name,
-                              {prompt: "Producto"}, {:class => "text_field form-control prod" } %>
+                              {prompt: "Producto"}, {:class => "text_field form-control prod" , :required => true} %>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@
             <%= f.label :product_color %>
           </div>
           <div class="col-md-12">
-             <%= f.collection_select :product_color, @colors, :id, :name, {prompt: "Color"}, {:class => "text_field form-control" }%>
+             <%= f.collection_select :product_color, @colors, :id, :name, {prompt: "Color"}, {:class => "text_field form-control" , :required => true} %>
           </div>
         </div>
       </div>
@@ -59,10 +59,10 @@
       <div class="col-md-3">
         <div class="form-group">
           <div class="col-md-12">
-            <%= f.label :count_type_id %>
+            <%= f.label :count_type_id, "Conteo" %>
           </div>
           <div class="col-md-12">
-            <%= f.collection_select :count_type_id, @counts, :id, :name, {:prompt => "Conteo"}, {:class => "text_field form-control count" } %>
+            <%= f.collection_select :count_type_id, @counts, :id, :name, {:prompt => "Conteo"}, {:class => "text_field form-control count" , :required => true}  %>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
             <%= f.label :box_ammount %>
           </div>
           <div class="col-md-12">
-            <%= f.number_field :box_number, :class => 'text_field form-control' %>
+            <%= f.number_field :box_number, {:class => 'text_field form-control', :required => true}%>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@
             <%= f.label :pallets_number %>
           </div>
           <div class="col-md-12">
-            <%= f.number_field :pallets_number, :class => 'text_field form-control' %>
+            <%= f.number_field :pallets_number, {:class => 'text_field form-control', :required => true} %>
           </div>
         </div>
       </div>
@@ -142,7 +142,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :package_type_id,  PackageType.all, :id,:name,
-                                {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+                                {prompt: "Selecciona uno"} ,{:class => 'text_field form-control', :required => true} %>
           </div>
         </div>
 
@@ -154,7 +154,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :box_type_id,  BoxType.all, :id,:name,
-                                {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+                                {prompt: "Selecciona uno"} ,{:class => 'text_field form-control', :required => true}%>
           </div>
         </div>
 
@@ -167,7 +167,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :bag_type_id,  BagType.all, :id,:name,
-                                {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+                                {:prompt => "Selecciona uno", :class => 'text_field form-control',  :required => true} %>
           </div>
         </div>
 
@@ -179,7 +179,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :pallet_type_id,  PalletType.all, :id,:name,
-                                {prompt: "Selecciona uno"} ,:class => 'text_field form-control'%>
+                                {prompt: "Selecciona uno" ,:class => 'text_field form-control',  :required => true} %>
           </div>
         </div>
       </div>
