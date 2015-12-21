@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :greenhouses do
         get 'info' => 'greenhouses#info', as: 'info'
+        get 'average-prices' => 'greenhouses#average_price_week', as: "average_price_week"
         resources :sales do
           resources :manifests
           resources :collections_bills

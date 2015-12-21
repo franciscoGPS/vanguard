@@ -11,6 +11,11 @@ class GreenhousesController < ApplicationController
   def info
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
   end
+
+  def average_price_week
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    @week_number = params[:week_number]
+  end
   # GET /greenhouses/1
   # GET /greenhouses/1.json
   def show
