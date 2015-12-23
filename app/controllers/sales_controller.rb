@@ -58,6 +58,7 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
+    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(sale_params)
     #@shipments = params[:sale][:shipments_attributes]
@@ -66,7 +67,7 @@ class SalesController < ApplicationController
     @sale.user_id =! current_user
     @sale.greenhouse = @greenhouse
 
-    if(@sale.shipments.count > 0)
+    if(@sale.shipments.size > 0)
       @sale.save
       respond_to do |format|
         format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }

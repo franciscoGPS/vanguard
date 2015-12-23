@@ -218,7 +218,7 @@ class GreenhousesController < ApplicationController
             :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
             :package_type_id, :bag_type_id, :pallet_type_id,
             :comments, :sale_id, :price, :plu, :count, :product_color, :customer_id,
-            :box_type_id, :weight, :po_number, :quality,
+            :box_type_id, :weight, :po_number, :quality, :_destroy,
                 pallet_type_attributes: [:id, :name, :_destroy],
                 bag_type_attributes: [:id, :name, :_destroy],
                 box_type_attributes: [:id, :name, :_destroy],
