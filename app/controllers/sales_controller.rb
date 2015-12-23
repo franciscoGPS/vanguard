@@ -66,7 +66,7 @@ class SalesController < ApplicationController
     @sale.user_id =! current_user
     @sale.greenhouse = @greenhouse
 
-    if(@sale.shipments.count > 0)
+    if(@sale.shipments.size > 0)
       @sale.save
       respond_to do |format|
         format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
