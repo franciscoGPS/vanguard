@@ -58,7 +58,6 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    byebug
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(sale_params)
     #@shipments = params[:sale][:shipments_attributes]
