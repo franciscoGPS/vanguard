@@ -31,7 +31,6 @@ class SalesController < ApplicationController
     @products = @greenhouse.active_products
 
     @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
-    byebug
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
   end
 
