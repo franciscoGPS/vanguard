@@ -30,8 +30,9 @@ class SalesController < ApplicationController
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
 
-    @counts = CountType.where(product_id: get_products_in_array(@products))
-    @colors = Color.where(greenhouse_id: @greenhouse.id)
+    @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
+    byebug
+    @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
   end
 
   def get_products_in_array(products)
@@ -51,8 +52,8 @@ class SalesController < ApplicationController
     @products = Product.where(greenhouse_id: params[:greenhouse_id])
 
 
-    @counts = CountType.where(product_id: get_products_in_array(@products))
-    @colors = Color.where(greenhouse_id: @greenhouse.id)
+    @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
+    @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
   end
 
   # POST /sales
