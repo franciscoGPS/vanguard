@@ -70,7 +70,7 @@ class Shipment < ActiveRecord::Base
 
   def count_type
     if(self.count_type_id != nil)
-      CountType.find(self.count_type_id)
+      CountType.find(self.count_type_id).order("name ASC")
     else
       CountType.new
     end
