@@ -4,6 +4,7 @@ one:
   name: MyString
   address: MyString
   tax_id: MyString
+  phone: MyPhone
   greenhouse_id:
   deleted_at: 2015-12-09
 
@@ -11,5 +12,6 @@ two:
   name: MyString
   address: MyString
   tax_id: MyString
+  phone: MyPhone
   greenhouse_id:
   deleted_at: 2015-12-09

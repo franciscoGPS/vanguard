@@ -16,10 +16,10 @@
   <tbody>
     <% @warehouses.each do |warehouse| %>
       <tr>
-        <td><%= warehouse.name %></td>
-        <td><%= warehouse.address %></td>
-        <td><%= warehouse.tax_id %></td>
-        <td><%= warehouse.phone %></td>
+        <td><%= "#{warehouse.name}" %></td>
+        <td><%= "#{warehouse.address}" %></td>
+        <td><%= "#{warehouse.tax_id}" %></td>
+        <td><%= "#{warehouse.phone}" %></td>
         <td><%= link_to 'Show', greenhouse_warehouse_path(@greenhouse.id, warehouse.id) %></td>
         <td><%= link_to 'Edit', edit_greenhouse_warehouse_path(@greenhouse.id, warehouse.id) %></td>
         <td><%= link_to 'Delete', greenhouse_warehouse_path(@greenhouse.id, warehouse.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

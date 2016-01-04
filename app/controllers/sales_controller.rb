@@ -30,8 +30,8 @@ class SalesController < ApplicationController
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
 
-    @counts = CountType.where(product_id: get_products_in_array(@products))
-    @colors = Color.where(greenhouse_id: @greenhouse.id)
+    @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
+    @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
   end
 
   def get_products_in_array(products)
@@ -51,8 +51,8 @@ class SalesController < ApplicationController
     @products = Product.where(greenhouse_id: params[:greenhouse_id])
 
 
-    @counts = CountType.where(product_id: get_products_in_array(@products))
-    @colors = Color.where(greenhouse_id: @greenhouse.id)
+    @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
+    @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
   end
 
   # POST /sales
@@ -65,10 +65,16 @@ class SalesController < ApplicationController
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
     @sale.greenhouse = @greenhouse
-    @sale.save
 
-    respond_to do |format|
-      format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
+    if(@sale.shipments.size > 0)
+      @sale.save
+      respond_to do |format|
+        format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to new_greenhouse_sale_path(@greenhouse.id), alert: 'No es posible crear venta sin productos. Revise sus datos.' }
+      end
     end
   end
 
