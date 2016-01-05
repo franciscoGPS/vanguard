@@ -85,7 +85,6 @@
 
 
       $("tr[data-link]").click(function() {
-          debugger;
           window.location = $(this).data("link")
       }).children('input[name=selected]:radio').click(function(e) {
           return false;
