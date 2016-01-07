@@ -4,7 +4,9 @@
 			<div class="page-">
 				<div class="col-md-4">
           <h1>
-  					<%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :class => "img-circle") %>  <%= "#{@greenhouse.business_name}"  %> <small>Invoice</small>
+  					<%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :style => "max-height: 80px;") %>
+            <%= "#{@greenhouse.business_name}" %>
+            <small>Invoice</small>
   				</h1>
           <hr>
 				</div>
