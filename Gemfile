@@ -17,6 +17,8 @@ gem 'devise'                          # Auth Users
 
 group :production do
   gem 'rails_12factor'                  # Use rails_12factor to replaces the need for the plugins on Heroku
+  gem 'wisepdf'                         # PDF library
+  gem 'wkhtmltopdf-heroku'              # Wicked_pdf binaries for heroku
 end
 
 group :test do
@@ -55,8 +57,6 @@ gem 'numbers_and_words', '~> 0.10.0'  # Number to word translater
 gem "paperclip", "~> 4.3"             # Upload images
 gem 'wicked_pdf'                      # A PDF generation plugin for Ruby on Rails
 gem 'pdfkit'                          # PDF library
-gem 'wisepdf'                         # PDF library
-gem 'wkhtmltopdf-heroku'              # Wicked_pdf binaries for heroku
 gem 'wkhtmltopdf-binary'              # Because wicked_pdf is a wrapper for wkhtmltopdf, you'll need to install that, too.
 gem 'groupdate'                       # Generate more ActiveRecord methods
 gem "chartkick"                       # Charts with JS
