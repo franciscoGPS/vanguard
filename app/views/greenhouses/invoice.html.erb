@@ -4,7 +4,9 @@
 			<div class="page-">
 				<div class="col-md-4">
           <h1>
-  					<%= image_tag @customer.logo.url(:thumb), :class => "img-circle"  %> <small>Invoice</small>
+  					<%= image_tag @customer.logo.url(:thumb), :style => "max-height: 80px;" %>
+            <%= "#{@greenhouse.business_name}" %>
+            <small>Invoice</small>
   				</h1>
           <hr>
 				</div>
