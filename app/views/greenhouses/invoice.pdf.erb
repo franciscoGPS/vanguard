@@ -27,71 +27,75 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-6">
+	<div class="row" style="position: relative;height: 90px;">
+		<div class="col-md-6" style="position: absolute; left:0;max-width: 362px;">
 			<p class="text-justify">
 			  <strong>Bill to:</strong><br>
           <%="#{@customer.business_name}" %>
 			</p>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6" style="position: absolute; right:0;max-width: 362px;">
 			<p class="text-justify">
 			  <strong>Ship to:</strong><br>
         <%=  "#{@customer.shipping_address}" %>
 			</p>
 		</div>
-    <div class="col-md-6">
-      <p class="text-justify">
-        <strong>Comment</strong><br>
-        <%=  "#{@sale.comment}" %>
-      </p>
-    </div>
-		<div class="col-md-6">
-			<p class="text-justify">
-			  <strong>Annotations</strong><br>
-        <%=  "#{@sale.annotation}" %>
-			</p>
-		</div>
+    <%- if @sale.comment.present? %>
+      <div class="col-md-6" style="position: absolute; left:0;margin-top: 50px;max-width: 362px;">
+        <p class="text-justify">
+          <strong>Comment</strong><br>
+          <%=  "#{@sale.comment}" %>
+        </p>
+      </div>
+    <% end %>
+		<%- if @sale.annotation.present? %>
+      <div class="col-md-6" style="position: absolute; right:0; margin-top:50px;max-width: 362px;">
+        <p class="text-justify">
+          <strong>Annotations</strong><br>
+          <%=  "#{@sale.annotation}" %>
+        </p>
+      </div>
+    <% end %>
 
 	</div>
-	<div class="row" style="background-color: rgb(132, 189, 196); color: black; margin-top: 2%;">
+	<div class="row" style="background-color: rgb(132, 189, 196); color: black; margin-top: 35px;">
 		<div class="col-md-12 padding-up">
 			<table class="table table-condensed" style="border-color: #333;">
 				<thead>
 					<tr>
-              <th>Cantidad</th>
-                <th>Unidad</th>
-                <th>Peso</th>
-                <th>Cantidad Pallets</th>
-                <th>Descripción</th>
-                <th>Precio Unitario</th>
-                <th>Monto total(pallets*price)</th>
-              </tr>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Weight</th>
+            <th>Qty Pallets</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Total Mount</th>
+          </tr>
 				</thead>
-				<tbody>
+				<tbody style="text-align:center;">
 
             <% @shipments.each do |shipment|%>
               <tr>
                 <td>
-                  <%= shipment.box_number %>
+                  <%= "#{shipment.box_number}" %>
                 </td>
                 <td>
-                  <%= BoxType.find(shipment.box_type_id).name %>
+                  <%= "#{box_type_name(shipment.box_type_id)}" %>
                 </td>
                 <td>
-                  <%=  shipment.weight %>
+                  <%=  "#{shipment.weight}" %>
                 </td>
                 <td>
-                  <%= shipment.pallets_number %>
+                  <%= "#{shipment.pallets_number}" %>
                 </td>
                 <td>
-                  <%= shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name %>
+                  <%= "#{shipment.product.name}  #{shipment.bag_type.name}  #{shipment.plu_to_string}  #{shipment.package_type.name}  #{shipment.pallet_type.name}  #{shipment.box_type.name}" %>
                 </td>
                 <td>
-                  <%= shipment.price %>
+                  <%= "#{shipment.price}" %>
                 </td>
                 <td>
-                  <strong><%= shipment.price * shipment.pallets_number %></strong>
+                  <strong><%= "#{total_mount(shipment.price, shipment.pallets_number)}" %></strong>
                 </td>
               </tr>
                 <% end %>
@@ -116,17 +120,17 @@
                 <tbody>
                   <tr>
                     <td>
-                      <%= number_to_currency(@bill.total_amt) %>
+                      <%= "#{number_to_currency(@bill.total_amt)}" %>
                     </td>
                     <td>
-                      <strong><%=  number_to_currency(@bill.total_amt) %></strong>
+                      <strong><%=  "#{number_to_currency(@bill.total_amt)}" %></strong>
                     </td>
                   </tr>
                   <tr>
                     <td>
                     </td>
                     <td>
-                      <%=  to_words((@bill.total_amt).round(2)) %>
+                      <small><i><%=  "#{to_words((@bill.total_amt).round(2))}" %></i></small>
                     </td>
                   </tr>
                 </tbody>
@@ -137,7 +141,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12 padding-up">
-			<h2 class="text-center">
+			<h2 class="text-center" style="text-align: center;">
 				THANK YOU
 			</h2>
 			<div class="row padding-up">
@@ -151,7 +155,7 @@
           <p class="text-right lead">
             <strong>Terms & Conditions</strong>
           </p>
-					<p class="text-right">
+					<p class="text-right" style="font-size: 10px;">
 						Se señala el precio de venta exclusivamente para cubrir con los
                 requisitos de traslado y trámites aduanales, ya que los productos
                 que contiene este documento son vendidos en firme y posteriormente facturados.
@@ -175,11 +179,6 @@
 					</p>
 				</div>
 			</div>
-			<blockquote>
-				<p>
-					“To be disciplined is to follow in a good way. To be self disciplined is to follow in a better way.”
-				</p> <small><cite>Corita Kent</cite></small>
-			</blockquote>
 		</div>
 	</div>
 </div>

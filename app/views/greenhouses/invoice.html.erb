@@ -1,3 +1,8 @@
+<div class="well well-default">
+  <%= link_to 'Printable Receipt (PDF)',
+    billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @bill.id,  format: 'pdf'),
+    :class => "btn btn-primary" %>
+</div>
 <div class="container-fluid padding-up" style="background-color: white;">
 	<div class="row">
 		<div class="col-md-12">
@@ -59,14 +64,14 @@
 			<table class="table table-condensed" style="border-color: #333;">
 				<thead>
 					<tr>
-              <th>Cantidad</th>
-                <th>Unidad</th>
-                <th>Peso</th>
-                <th>Cantidad Pallets</th>
-                <th>Descripción</th>
-                <th>Precio Unitario</th>
-                <th>Monto total(pallets*price)</th>
-              </tr>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Weight</th>
+            <th>Qty Pallets</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Total Mount</th>
+          </tr>
 				</thead>
 				<tbody>
 
@@ -142,9 +147,9 @@
 			</h2>
 			<div class="row padding-up">
 				<div class="col-md-6">
-
 					<address>
-						 <strong>Vanguard Co. | Marketing & Business Development</strong><br> Dirección de la Empresa<br> <abbr title="Phone">P:</abbr> 011 52 818 365-3950
+						 <strong>Vanguard Co. | Marketing & Business Development</strong><br> Dirección de la Empresa<br>
+             <abbr title="Phone">P:</abbr> 011 52 818 365-3950
 					</address>
 				</div>
 				<div class="col-md-6">
@@ -175,12 +180,11 @@
 					</p>
 				</div>
 			</div>
-			<blockquote>
-				<p>
-					“To be disciplined is to follow in a good way. To be self disciplined is to follow in a better way.”
-				</p> <small><cite>Corita Kent</cite></small>
-			</blockquote>
+      <blockquote>
+        <p>
+          “To be disciplined is to follow in a good way. To be self disciplined is to follow in a better way.”
+        </p> <small><cite>Corita Kent</cite></small>
+      </blockquote>
 		</div>
 	</div>
 </div>
-<%= link_to 'Printable Receipt (PDF)', billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @bill.id,  format: 'pdf') %>
