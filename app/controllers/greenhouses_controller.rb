@@ -176,7 +176,6 @@ class GreenhousesController < ApplicationController
   end
 
   def invoice
-    byebug
     @bill = CollectionsBill.find(params[:id])
     @sale = Sale.find(@bill.sale_id)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)

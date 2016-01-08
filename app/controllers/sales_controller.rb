@@ -25,8 +25,21 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    #last_ship_number = Sale.last(1).first.ship_number.match(/([\d])+/)
+
+
 
     @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
+
+    # Se intenta obtener el ship_number del último objeto Sale en la DB
+    last_ship_number = Sale.last(1).first.ship_number
+    if last_ship_number != nil
+      #En caso de no ser nil, se busca el número con el regex /([\d])+/ (dígito, una o más veces)
+      last_ship_number = last_ship_number.match(/([\d])+/)
+      num_int = last_ship_number.to_a[0].to_i+1
+      @sale.ship_number = num_int.to_s << "-A"
+    end
+
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
@@ -34,12 +47,6 @@ class SalesController < ApplicationController
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
     if session[:tried_sale] != nil
       @sale = session[:tried_sale]
-
-        #if session[:tried_shipments] != nil
-        # session[:tried_shipments].each do |sh|
-        #  @sale.shipments << sh
-        #end
-    #end
 
       session[:tried_sale] = nil
       session[:tried_shipments] = nil
@@ -79,7 +86,6 @@ class SalesController < ApplicationController
     @sale.user_id =! current_user
     @sale.greenhouse = @greenhouse
     if(@sale.shipments.size > 0)
-
 
       begin
         @sale.save
