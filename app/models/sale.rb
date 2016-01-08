@@ -317,30 +317,16 @@ class Sale < ActiveRecord::Base
 
   end
 
-
-
-  #Método en DESUSO
-  def already_sold?
-    #Se hace una validación para que tenga parámetros válidos:
-    #1.- Que el precio de cada shipment de la venta tenga precio mayor a cero,
-    #2.- Que el usuario que haya creado esa venta no esté vacío
-    #3.- Que el cliente a quien se le hizo la venta no esté vacío
-    is_ready = false
-    shipments = Shipment.where("sale_id = ?",self.id)
-    shipments.each do |shipment|
-      if shipment.price > 0 && self.user_id != "" && Customer.find(self.customer_id).deleted_at == nil
-        is_ready = true
-      end
-    end
-    return is_ready
-  end
-
   #Este método regresa todos los clientes que pertenecen en un aventa,
   # dependiendo de sus shipments (configuraciones de productos)
   def sold_to
     Customer.find_by_sql("SELECT customers.* FROM customers
     INNER JOIN shipments ON shipments.customer_id IN (customers.id)
     AND shipments.sale_id = #{self.id} GROUP BY customers.id ORDER BY customers.id ASC")
+  end
+
+  def is_unique(ship_number)
+    return Sale.where(ship_number: ship_number)
   end
 
 

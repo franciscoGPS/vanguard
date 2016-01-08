@@ -25,13 +25,34 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    #last_ship_number = Sale.last(1).first.ship_number.match(/([\d])+/)
+
+
+
     @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
+
+    # Se intenta obtener el ship_number del último objeto Sale en la DB
+    last_ship_number = Sale.last(1).first.ship_number
+    if last_ship_number != nil
+      #En caso de no ser nil, se busca el número con el regex /([\d])+/ (dígito, una o más veces)
+      last_ship_number = last_ship_number.match(/([\d])+/)
+      num_int = last_ship_number.to_a[0].to_i+1
+      @sale.ship_number = num_int.to_s << "-A"
+    end
+
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
-
     @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
+    if session[:tried_sale] != nil
+      @sale = session[:tried_sale]
+
+      session[:tried_sale] = nil
+      session[:tried_shipments] = nil
+
+    end
+
   end
 
   def get_products_in_array(products)
@@ -50,7 +71,6 @@ class SalesController < ApplicationController
     @customers = Customer.own_customers(params[:greenhouse_id])
     @products = Product.where(greenhouse_id: params[:greenhouse_id])
 
-
     @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
   end
@@ -65,12 +85,29 @@ class SalesController < ApplicationController
     # Signo =! significa asignación forzada en rails
     @sale.user_id =! current_user
     @sale.greenhouse = @greenhouse
-
     if(@sale.shipments.size > 0)
-      @sale.save
-      respond_to do |format|
-        format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
+
+      begin
+        @sale.save
+      rescue Exception => e
+         flash[:error] = "Se intentó usar un shipment number en uso. Revise sus datos."
+         session[:tried_sale] = @sale
+         #session[:tried_shipments] = @sale.shipments.as_json
+
       end
+
+      if session[:tried_sale] == nil
+        respond_to do |format|
+          format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale and shipments persisted successfully.' }
+        end
+
+      else
+        respond_to do |format|
+          format.html { redirect_to new_greenhouse_sale_path(@greenhouse.id) }
+        end
+
+      end
+
     else
       respond_to do |format|
         format.html { redirect_to new_greenhouse_sale_path(@greenhouse.id), alert: 'No es posible crear venta sin productos. Revise sus datos.' }
@@ -160,6 +197,10 @@ class SalesController < ApplicationController
     redirect_to collections_bill_path(id: bill.id)
    end
 
+
+  end
+
+  def is_unique
 
   end
 
@@ -271,7 +312,7 @@ class SalesController < ApplicationController
       :out_of_packaging, :docs_reception, :product_color,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :usda, :fda, :ramp, :hold, :hld_qty,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number,
 
       shipments_attributes: [:id, :start_at, :created_at, :updated_at,
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,

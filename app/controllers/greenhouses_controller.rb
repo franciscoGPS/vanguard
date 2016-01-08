@@ -19,8 +19,7 @@ class GreenhousesController < ApplicationController
   # GET /greenhouses/1
   # GET /greenhouses/1.json
   def show
-    @sales = @greenhouse.sales
-
+    @sales = @greenhouse.sales.sort
     # Get chart pie of sold products
     @sold_products = Hash.new(0)
     @greenhouse.sales.each do |sale|
@@ -186,7 +185,7 @@ class GreenhousesController < ApplicationController
     respond_to do |format|
       format.html {render :invoice}
       format.pdf do
-        render :pdf => 'factura_de_cobranza',
+        render :pdf => "factura_de_cobranza",
         :template => 'greenhouses/invoice.pdf.erb',
         :layout => 'pdf.html.erb',
         :show_as_html => params[:debug].present?,
@@ -212,7 +211,7 @@ class GreenhousesController < ApplicationController
       :out_of_packaging, :docs_reception, :product_color,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :usda, :fda, :ramp, :hold, :hld_qty,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number,
 
           shipments_attributes: [:id, :start_at, :created_at, :updated_at,
             :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,

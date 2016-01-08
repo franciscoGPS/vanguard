@@ -16,7 +16,6 @@ module ApplicationHelper
 
 
 
-
   #def pdf_image_tag(image, options = {})
    # options[:src] =  Rails.root + '/public' + image
    # image_tag(:img, options)
