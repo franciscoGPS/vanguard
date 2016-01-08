@@ -63,7 +63,7 @@
                             <%= "#{shipment.box_number}" %>
                         </td>
                         <td style="background-color: #f9f9f9;">
-                            <%= "#{shipment.weight} - #{get_box_name(shipment.box_type_id)}" %>
+                            <%= "#{shipment.weight.round} - #{get_box_name(shipment.box_type_id)}" %>
                         </td>
                     </tr>
                   <% end %>
