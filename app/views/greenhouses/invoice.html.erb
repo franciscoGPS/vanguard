@@ -1,10 +1,17 @@
+<div class="well well-default">
+  <%= link_to 'Printable Receipt (PDF)',
+    billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @bill.id,  format: 'pdf'),
+    :class => "btn btn-primary" %>
+</div>
 <div class="container-fluid padding-up" style="background-color: white;">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-">
 				<div class="col-md-4">
           <h1>
-  					<%= image_tag @customer.logo.url(:thumb), :class => "img-circle"  %> <small>Invoice</small>
+  					<%= image_tag @customer.logo.url(:thumb), :style => "max-height: 80px;" %>
+            <%= "#{@greenhouse.business_name}" %>
+            <small>Invoice</small>
   				</h1>
           <hr>
 				</div>
@@ -57,39 +64,39 @@
 			<table class="table table-condensed" style="border-color: #333;">
 				<thead>
 					<tr>
-              <th>Cantidad</th>
-                <th>Unidad</th>
-                <th>Peso</th>
-                <th>Cantidad Pallets</th>
-                <th>Descripción</th>
-                <th>Precio Unitario</th>
-                <th>Monto total(pallets*price)</th>
-              </tr>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Weight</th>
+            <th>Qty Pallets</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Total Mount</th>
+          </tr>
 				</thead>
 				<tbody>
 
             <% @shipments.each do |shipment|%>
               <tr>
                 <td>
-                  <%= shipment.box_number %>
+                  <%= "#{shipment.box_number}" %>
                 </td>
                 <td>
-                  <%= BoxType.find(shipment.box_type_id).name %>
+                  <%= "#{box_type_name(shipment.box_type_id)}" %>
                 </td>
                 <td>
-                  <%=  shipment.weight %>
+                  <%=  "#{shipment.weight}" %>
                 </td>
                 <td>
-                  <%= shipment.pallets_number %>
+                  <%= "#{shipment.pallets_number}" %>
                 </td>
                 <td>
-                  <%= shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name %>
+                  <%= "#{shipment.product.name}  #{shipment.bag_type.name}   #{shipment.plu_to_string}  #{shipment.package_type.name}  #{shipment.pallet_type.name}  #{shipment.box_type.name}" %>
                 </td>
                 <td>
-                  <%= shipment.price %>
+                  <%= "#{shipment.price}" %>
                 </td>
                 <td>
-                  <strong><%= shipment.price * shipment.pallets_number %></strong>
+                  <strong><%= total_mount(shipment.price, shipment.pallets_number) %></strong>
                 </td>
               </tr>
                 <% end %>
@@ -140,9 +147,9 @@
 			</h2>
 			<div class="row padding-up">
 				<div class="col-md-6">
-
 					<address>
-						 <strong>Vanguard Co. | Marketing & Business Development</strong><br> Dirección de la Empresa<br> <abbr title="Phone">P:</abbr> 011 52 818 365-3950
+						 <strong>Vanguard Co. | Marketing & Business Development</strong><br> Dirección de la Empresa<br>
+             <abbr title="Phone">P:</abbr> 011 52 818 365-3950
 					</address>
 				</div>
 				<div class="col-md-6">
@@ -173,12 +180,6 @@
 					</p>
 				</div>
 			</div>
-			<blockquote>
-				<p>
-					“To be disciplined is to follow in a good way. To be self disciplined is to follow in a better way.”
-				</p> <small><cite>Corita Kent</cite></small>
-			</blockquote>
 		</div>
 	</div>
 </div>
-<%= link_to 'Printable Receipt (PDF)', billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @bill.id,  format: 'pdf') %>
