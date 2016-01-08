@@ -13913,7 +13913,6 @@ return jQuery;
   });
 
   $(document).on('click', '.remove_fields.dynamic, .remove_fields.existing', function(e) {
-    debugger;
     var $this = $(this),
         wrapper_class = $this.data('wrapper-class') || 'nested-fields',
         node_to_delete = $this.closest('.' + wrapper_class),
@@ -13937,7 +13936,6 @@ return jQuery;
   });
 
   $('.remove_fields.existing.destroyed').each(function(i, obj) {
-    debugger;
     var $this = $(this),
         wrapper_class = $this.data('wrapper-class') || 'nested-fields';
 
