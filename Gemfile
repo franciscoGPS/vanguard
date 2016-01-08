@@ -62,3 +62,4 @@ gem 'groupdate'                       # Generate more ActiveRecord methods
 gem "chartkick"                       # Charts with JS
 gem 'kaminari'                        # A Scope & Engine based paginator for modern web app frameworks and ORMs
 gem 'public_activity'                 # Generate tracking of users
+gem 'activerecord-session_store'      # Stores cookies on db insted of client. Useful when large ammount of data need to be stored.

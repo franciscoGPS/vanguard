@@ -25,14 +25,16 @@
   <dl>
       <!--<dt class="label label-default">< model_class.human_attribute_name(:customer) ></dt>
       <dd><pre class="prettyprint"><= @sale.customer.business_name %></pre></dd>-->
+      <dt class="label label-default"><%= model_class.human_attribute_name(:shipment_number) %></dt>
+      <dd><pre class="prettyprint"><%= "#{@sale.ship_number}" %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:season) %></dt>
-      <dd><pre class="prettyprint"><%= @sale.season %></pre></dd>
+      <dd><pre class="prettyprint"><%= "#{@sale.season}" %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:departure_date) %></dt>
-      <dd><pre class="prettyprint"><%= @sale.departure_date %></pre></dd>
+      <dd><pre class="prettyprint"><%= "#{@sale.departure_date}" %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:arrival_date) %></dt>
-      <dd><pre class="prettyprint"><%= @sale.arrival_date %></pre></dd>
+      <dd><pre class="prettyprint"><%= "#{@sale.arrival_date}" %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:annotation) %></dt>
-      <dd><pre class="prettyprint"><%= @sale.annotation %></pre></dd>
+      <dd><pre class="prettyprint"><%= "#{@sale.annotation}" %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:comment) %></dt>
       <dd><pre class="prettyprint"><%= @sale.comment %></pre></dd>
   </dl>
@@ -56,10 +58,10 @@
 
  <div class="row">
    <div class="col-md-6">
-        <h2 id="sale_id_status">Status - <%= @sale.id %></h2>
+        <h2 id="sale_id_status">Status - <%= "#{@sale.id}" %></h2>
         <div class="row">
           <div class="col-md-3">
-            <%= hidden_field_tag(:sale_id_hidden, @sale.id)%>
+            <%= hidden_field_tag(:sale_id_hidden, "#{@sale.id}")%>
             <%= label_tag("Orden de Compra") %>
             <%= check_box_tag(:purshase_order_state_check) %>
           </div>

@@ -13,31 +13,31 @@
 
   <div class="field">
     <%= f.label :sale_id %><br>
-    <%= f.number_field :sale_id %>
+    <%= f.number_field :sale_id, :required => true %>
   </div>
   <div class="field">
     <%= f.label :invoice_number %><br>
-    <%= f.number_field :invoice_number %>
+    <%= f.number_field :invoice_number, :required => true %>
   </div>
   <div class="field">
     <%= f.label :shipment_consecutive %><br>
-    <%= f.number_field :shipment_consecutive %>
+    <%= f.number_field :shipment_consecutive, :required => true %>
   </div>
   <div class="field">
     <%= f.label :po_number %><br>
-    <%= f.number_field :po_number %>
+    <%= f.number_field :po_number, :required => true %>
   </div>
   <div class="field">
     <%= f.label :payment_terms %><br>
-    <%= f.text_field :payment_terms %>
+    <%= f.text_field :payment_terms, :required => true %>
   </div>
   <div class="field">
     <%= f.label :bol_date %><br>
-    <%= f.datetime_select :bol_date %>
+    <%= f.datetime_select :bol_date, :required => true %>
   </div>
   <div class="field">
     <%= f.label :total_amt %><br>
-    <%= f.text_field :total_amt %>
+    <%= f.text_field :total_amt, :required => true %>
     <%= @total_ammount_money_words %>
   </div>
    <%= f.hidden_field(:user_id, :value => @collections_bill.user_id) %>
