@@ -178,7 +178,7 @@ class SalesController < ApplicationController
       redirect_to new_greenhouse_sale_manifest_path(@greenhouse.id, sale.id)
     elsif (manifests.count >= 1)
       mani = manifests.first
-      redirect_to greenhouse_sale_manifest_path(@greenhouse.id, sale.id, mani.id)
+      redirect_to customs_invoice_path(sale.id)
     end
 
   end
