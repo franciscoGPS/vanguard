@@ -9,6 +9,12 @@
    <div class="row text-justify">
               <div class="col-md-3">
                 <p>
+                  <small class="label label-primary">Shipment</small>
+                  <strong><%= "#{@manifest.ship_number}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
                   <small class="label label-primary">Manifest</small>
                   <strong><%= "#{@manifest.manifest_number}" %></strong>
                 </p>
@@ -42,12 +48,6 @@
                 <p>
                   <small class="label label-primary">Purshase Order</small>
                   <strong><%= "#{@manifest.purshase_order}" %></strong>
-                </p>
-              </div>
-              <div class="col-md-3">
-                <p>
-                  <small class="label label-primary">Shipment</small>
-                  <strong><%= "#{@manifest.shipment}" %></strong>
                 </p>
               </div>
               <div class="col-md-3">

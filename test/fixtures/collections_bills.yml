@@ -3,7 +3,7 @@
 one:
   sale_id: 1
   invoice_number: 1
-  shipment_consecutive: 1
+  ship_number: 1
   po_number: 1
   payment_terms: MyString
   bol_date: 2015-10-28 18:43:02
@@ -12,7 +12,7 @@ one:
 two:
   sale_id: 1
   invoice_number: 1
-  shipment_consecutive: 1
+  ship_number: 1
   po_number: 1
   payment_terms: MyString
   bol_date: 2015-10-28 18:43:02

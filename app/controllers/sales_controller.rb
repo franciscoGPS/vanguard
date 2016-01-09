@@ -326,7 +326,7 @@ class SalesController < ApplicationController
 
       manifests_attributes: [:id, :sale_id, :date, :mex_custom_broker,
         :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
-        :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
+        :stamp, :thermograph, :purshase_order, :ship_number, :delivery_person, :usa_custom_broker,
       :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
       :sold_to_id, :deleted_at, :warehouse_id, :_destroy] ]
 

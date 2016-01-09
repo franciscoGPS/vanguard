@@ -22,7 +22,11 @@ class ManifestsController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @shipments = @sale.shipments
     @sold_to_cust = Customer.find(@manifest.sold_to_id)
+    if @manifest.warehouse_id != nil
     @warehouse = Warehouse.find(@manifest.warehouse_id)
+  else
+    @warehouse = Warehouse.new
+  end
   end
 
   # GET /manifests/new
@@ -50,6 +54,7 @@ class ManifestsController < ApplicationController
       @manifest.purshase_order = biggest_po_number
       @manifest.fda_num = @greenhouse.fda_num
       @manifest.total_pallets = @total_pallets
+      @manifest.ship_number = @sale.ship_number
       @manifest.comments = "Se señala el precio de venta exclusivamente para cubrir
        con los requisitos de traslado y trámites aduanales,
         ya que los productos que contiene este documento son vendidos en
@@ -83,7 +88,8 @@ class ManifestsController < ApplicationController
     respond_to do |format|
       #begin #begin del rescue en caso de tener muchos caracteres
         if @manifest.save
-          format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), notice: 'Manifest was successfully created.' }
+          #format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), notice: 'Manifest was successfully created.' }
+          format.html { redirect_to customs_invoice_path(@sale.id), notice: 'Manifest was successfully created.' }
         else
           format.html { redirect_to new_greenhouse_sale_manifest_path(@greenhouse.id, @sale.id), notice: 'Manifest was NOT created. Verify Data' }
         end
@@ -97,11 +103,14 @@ class ManifestsController < ApplicationController
 # PATCH/PUT /manifests/1
 # PATCH/PUT /manifests/1.json
 def update
+  byebug
   @greenhouse = Greenhouse.find(params[:greenhouse_id])
   @sale = Sale.find(params[:sale_id])
   respond_to do |format|
     if @manifest.update(manifest_params)
-      format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id) , notice: 'Manifest was successfully updated.' }
+      #format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id) , notice: 'Manifest was successfully updated.' }
+      format.html { redirect_to customs_invoice_path(@sale.id) , notice: 'Manifest was successfully updated.' }
+
     else
       format.html { render :edit }
     end
@@ -148,7 +157,7 @@ end
 def manifest_params
   params.require(:manifest).permit(:sale_id, :date, :sold_to, :sold_to_id,
   :mex_custom_broker, :usa_custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
-  :trailer_num, :trailer_num_lp, :stamp, :thermograph, :purshase_order, :shipment,
+  :trailer_num, :trailer_num_lp, :stamp, :thermograph, :purshase_order, :ship_number,
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
   :total_pallets, :comments, :manifest_number, :warehouse_id)
 end

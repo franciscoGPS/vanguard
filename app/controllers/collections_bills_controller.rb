@@ -26,7 +26,7 @@ class CollectionsBillsController < ApplicationController
 
     @manifest = Manifest.where("sale_id = ?", @sale.id).first
     @collections_bill = CollectionsBill.new(:sale_id => @sale.id, :customer_id =>
-      @customer.id, :user_id => current_user.id)
+      @customer.id, :user_id => current_user.id, :ship_number => @sale.ship_number)
 
     #Shipments filtered by sale and customer
     @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id )
@@ -34,7 +34,7 @@ class CollectionsBillsController < ApplicationController
 
     if @manifest != nil
       @collections_bill.po_number = @manifest.purshase_order
-      @collections_bill.shipment_consecutive = @manifest.shipment
+      @collections_bill.ship_number = @manifest.ship_number
       @collections_bill.total_amt = @total_ammount_money
       #Fixed 12 is because the state "bol"
       #This following where conditions are for the last time the bol state was updated to true
@@ -118,7 +118,7 @@ class CollectionsBillsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def collections_bill_params
     params.require(:collections_bill).permit(:id, :sale_id, :invoice_number,
-      :shipment_consecutive, :po_number, :payment_terms, :bol_date, :total_amt,
+      :ship_number, :po_number, :payment_terms, :bol_date, :total_amt,
       :user_id, :customer_id, :created_at, :_destroy)
   end
 end

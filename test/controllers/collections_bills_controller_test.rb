@@ -18,7 +18,7 @@ class CollectionsBillsControllerTest < ActionController::TestCase
 
   test "should create collections_bill" do
     assert_difference('CollectionsBill.count') do
-      post :create, collections_bill: { bol_date: @collections_bill.bol_date, invoice_number: @collections_bill.invoice_number, payment_terms: @collections_bill.payment_terms, po_number: @collections_bill.po_number, sale_id: @collections_bill.sale_id, shipment_consecutive: @collections_bill.shipment_consecutive, total_amt: @collections_bill.total_amt }
+      post :create, collections_bill: { bol_date: @collections_bill.bol_date, invoice_number: @collections_bill.invoice_number, payment_terms: @collections_bill.payment_terms, po_number: @collections_bill.po_number, sale_id: @collections_bill.sale_id, ship_number: @collections_bill.ship_number, total_amt: @collections_bill.total_amt }
     end
 
     assert_redirected_to collections_bill_path(assigns(:collections_bill))
@@ -35,7 +35,7 @@ class CollectionsBillsControllerTest < ActionController::TestCase
   end
 
   test "should update collections_bill" do
-    patch :update, id: @collections_bill, collections_bill: { bol_date: @collections_bill.bol_date, invoice_number: @collections_bill.invoice_number, payment_terms: @collections_bill.payment_terms, po_number: @collections_bill.po_number, sale_id: @collections_bill.sale_id, shipment_consecutive: @collections_bill.shipment_consecutive, total_amt: @collections_bill.total_amt }
+    patch :update, id: @collections_bill, collections_bill: { bol_date: @collections_bill.bol_date, invoice_number: @collections_bill.invoice_number, payment_terms: @collections_bill.payment_terms, po_number: @collections_bill.po_number, sale_id: @collections_bill.sale_id, ship_number: @collections_bill.ship_number, total_amt: @collections_bill.total_amt }
     assert_redirected_to collections_bill_path(assigns(:collections_bill))
   end
 
