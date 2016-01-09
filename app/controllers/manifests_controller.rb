@@ -103,7 +103,6 @@ class ManifestsController < ApplicationController
 # PATCH/PUT /manifests/1
 # PATCH/PUT /manifests/1.json
 def update
-  byebug
   @greenhouse = Greenhouse.find(params[:greenhouse_id])
   @sale = Sale.find(params[:sale_id])
   respond_to do |format|
