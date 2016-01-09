@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     get 'customs_bill/greenhouses/:greenhouse_id/sales/:sale_id' => 'manifests#new', as: 'customs'
 
     get 'manifests/customs_invoice' => 'manifests#to_customs_invoice', as: "to_customs_invoice"
-    post 'collections_bills/invoice/:id' => 'collections_bills#to_invoice', as: "to_invoice"
+    get 'collections_bills/invoice/:id' => 'collections_bills#to_invoice', as: "to_invoice"
 
     get 'collections_bill' => 'sales#collections_bill', as: "sales_collections_bills"
     #get 'collections_bill/:sale_id' => 'collections_bills#index', as: "collections_bills_index"

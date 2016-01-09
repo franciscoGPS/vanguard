@@ -69,8 +69,8 @@ class CollectionsBillsController < ApplicationController
     @collections_bill.user_id = current_user.id
     respond_to do |format|
       if @collections_bill.save
-        format.html { redirect_to greenhouse_sale_collections_bill_path(@greenhouse.id,
-          @sale.id, @collections_bill.id), notice: 'Collections bill was successfully created.' }
+        #format.html { redirect_to greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill.id), notice: 'Collections bill was successfully created.' }
+        format.html { redirect_to to_invoice_path(@collections_bill.id), notice: 'Collections bill was successfully created.' }
       else
         format.html { render :new }
       end
@@ -101,6 +101,7 @@ class CollectionsBillsController < ApplicationController
 #This method is called from the CollectionsBill Show view and it redirects to
 #the greenhouse invoice method
   def to_invoice
+    byebug
     bill = CollectionsBill.find(params[:id])
     sale = Sale.find(bill.sale_id)
     greenhouse = Greenhouse.find(sale.greenhouse_id)
