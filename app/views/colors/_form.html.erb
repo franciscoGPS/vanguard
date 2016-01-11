@@ -1,4 +1,7 @@
 <%= form_for @color, url: greenhouse_colors_path(@greenhouse.id, @color), :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.hidden_field :greenhouse_id %>
+
   <% if @color.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@color.errors.count, "error") %> prohibited this color from being saved:</h2>
@@ -10,15 +13,13 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-
-    <%= f.hidden_field :greenhouse_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="col-md-4 col-md-offset-4 col-sm-12">
+    <div class="form-group">
+      <%= f.label :name, class: "control-label" %>
+      <%= f.text_field :name, :required => true, class: "form-control" %>
+    </div>
+    <div class="row pull-right">
+      <%= f.submit class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>

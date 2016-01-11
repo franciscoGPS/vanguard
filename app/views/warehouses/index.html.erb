@@ -1,11 +1,16 @@
+<div class="page-header">
+  <h1>
+    Warehouses -
+    <%= "#{@greenhouse.business_name.capitalize}" %>
+  </h1>
+</div>
+
+<%= render :partial => "greenhouses/submenu", :locals => {:id => @greenhouse.id } %>
 <div class="well">
   <%= link_to 'Back', greenhouse_path(@greenhouse.id), class: "btn btn-default" %>
   <%= link_to 'New Warehouse', new_greenhouse_warehouse_path, class: "btn btn-success pull-right" %>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Listing Warehouses</h3>
-    </div>
     <div class="panel-body">
       <table class="table table-condensed table-hover">
         <thead>
