@@ -15,100 +15,104 @@
       </div>
     <% end %>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :manifest_number, class: "col-md-2 control-label" %>
-      <%= f.number_field :manifest_number, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :manifest_number, class: "control-label" %>
+      <%= f.number_field :manifest_number, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :purshase_order_number, class: "col-md-2 control-label" %>
-      <%= f.number_field :purshase_order, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :purshase_order_number, class: "control-label" %>
+      <%= f.number_field :purshase_order, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :date, class: "col-md-2 control-label" %>
-      <%= f.date_select :date, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :date, class: "control-label col-md-12 row" %>
+      <%= f.date_select :date, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :sold_to, class: "col-md-2 control-label" %>
-      <%= f.text_field :sold_to, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :sold_to, class: "control-label" %>
+      <%= f.text_field :sold_to, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-    <%= f.label :warehouse_id, class: "col-md-2 control-label" %>
+    <%= f.label :warehouse_id, class: "control-label" %>
     <%= f.collection_select :warehouse_id, @warehouses, :id, :name_address,
-             {prompt: "Selecciona bodega"}, class: "col-md-10 col-sm-12 form-control", :required => true %>
+             {prompt: "Selecciona bodega"}, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :mex_custom_broker, class: "col-md-2 control-label" %>
-      <%= f.text_field :mex_custom_broker, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :mex_custom_broker, class: "control-label" %>
+      <%= f.text_field :mex_custom_broker, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :usa_custom_broker, class: "col-md-2 control-label" %>
-      <%= f.text_field :usa_custom_broker, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :usa_custom_broker, class: "control-label" %>
+      <%= f.text_field :usa_custom_broker, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :carrier, class: "col-md-2 control-label" %>
-      <%= f.text_field :carrier, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :carrier, class: "control-label" %>
+      <%= f.text_field :carrier, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :driver, class: "col-md-2 control-label" %>
-      <%= f.text_field :driver, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :driver, class: "control-label" %>
+      <%= f.text_field :driver, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :truck, class: "col-md-2 control-label" %>
-      <%= f.text_field :truck, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :truck, class: "control-label" %>
+      <%= f.text_field :truck, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :truck_licence_plate, class: "col-md-2 control-label" %>
-      <%= f.text_field :truck_licence_plate, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :truck_licence_plate, class: "control-label" %>
+      <%= f.text_field :truck_licence_plate, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :trailer_num, class: "col-md-2 control-label" %>
-      <%= f.text_field :trailer_num, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :trailer_num, class: "control-label" %>
+      <%= f.text_field :trailer_num, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :trailer_num_lp, class: "col-md-2 control-label" %>
-      <%= f.text_field :trailer_num_lp, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :trailer_num_lp, class: "control-label" %>
+      <%= f.text_field :trailer_num_lp, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :stamp, class: "col-md-2 control-label" %>
-      <%= f.text_field :stamp, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :stamp, class: "control-label" %>
+      <%= f.text_field :stamp, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :thermograph, class: "col-md-2 control-label" %>
-      <%= f.text_field :thermograph, class: "col-md-10 col-sm-12 form-control" , :required => true%>
+      <%= f.label :thermograph, class: "control-label" %>
+      <%= f.text_field :thermograph, class: "form-control" , :required => true%>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :shipment, class: "col-md-2 control-label" %>
-      <%= f.number_field :shipment, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :shipment, class: "control-label" %>
+      <%= f.number_field :shipment, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :delivery_person, class: "col-md-2 control-label" %>
-      <%= f.text_field :delivery_person, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :delivery_person, class: "control-label" %>
+      <%= f.text_field :delivery_person, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :trailer_size, class: "col-md-2 control-label" %>
-      <%= f.number_field :trailer_size, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :trailer_size, class: "control-label" %>
+      <%= f.number_field :trailer_size, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :caat, class: "col-md-2 control-label" %>
-      <%= f.text_field :caat, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :caat, class: "control-label" %>
+      <%= f.text_field :caat, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :alpha, class: "col-md-2 control-label" %>
-      <%= f.text_field :alpha, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :alpha, class: "control-label" %>
+      <%= f.text_field :alpha, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :fda_num, class: "col-md-2 control-label" %>
-      <%= f.text_field :fda_num, class: "col-md-10 col-sm-12 form-control", :required => true %>
+      <%= f.label :fda_num, class: "control-label" %>
+      <%= f.text_field :fda_num, class: "form-control", :required => true %>
     </div>
-    <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :total_pallets, class: "col-md-2 control-label" %>
-      <%= f.number_field :total_pallets, class: "col-md-10 col-sm-12 form-control", :required => true %>
-      <span class="col-md-12">
-        <i><%= @total_pallets_words.to_s %></i>
-      </span>
+    <div class="row">
+      <div class="form-group col-sm-12 col-md-4">
+        <%= f.label :total_pallets, class: "control-label col-md-12" %>
+        <div class="col-md-6">
+          <%= f.number_field :total_pallets, class: "form-control", :required => true %>
+        </div>
+        <span class="col-md-6">
+          <i><%= @total_pallets_words.to_s %></i>
+        </span>
+      </div>
     </div>
-    <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :comments, class: "col-md-2 control-label" %>
-      <%= f.text_area :comments, class: "col-md-12 form-control" %>
+    <div class="form-group col-sm-12 col-md-12">
+      <%= f.label :comments, class: "control-label" %>
+      <%= f.text_area :comments, class: "col-md-12 form-control", :rows => "5" %>
     </div>
     <div class="pull-right">
       <%= f.submit nil, class: "btn btn-lg btn-success" %>
