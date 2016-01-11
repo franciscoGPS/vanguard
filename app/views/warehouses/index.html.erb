@@ -1,33 +1,36 @@
-<p id="notice"><%= notice %></p>
-<%= link_to 'Back', greenhouse_path(@greenhouse.id) %>
-<h1>Listing Warehouses</h1>
+<div class="well">
+  <%= link_to 'Back', greenhouse_path(@greenhouse.id), class: "btn btn-default" %>
+  <%= link_to 'New Warehouse', new_greenhouse_warehouse_path, class: "btn btn-success pull-right" %>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Listing Warehouses</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Tax ID</th>
+            <th>Phone</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @warehouses.each do |warehouse| %>
+            <tr>
+              <td><%= "#{warehouse.name}" %></td>
+              <td><%= "#{warehouse.address}" %></td>
+              <td><%= "#{warehouse.tax_id}" %></td>
+              <td><%= "#{warehouse.phone}" %></td>
+              <td>
+                <%= link_to 'Delete', greenhouse_warehouse_path(@greenhouse.id, warehouse.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"%>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Tax ID</th>
-      <th>Phone</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @warehouses.each do |warehouse| %>
-      <tr>
-        <td><%= "#{warehouse.name}" %></td>
-        <td><%= "#{warehouse.address}" %></td>
-        <td><%= "#{warehouse.tax_id}" %></td>
-        <td><%= "#{warehouse.phone}" %></td>
-        <td><%= link_to 'Show', greenhouse_warehouse_path(@greenhouse.id, warehouse.id) %></td>
-        <td><%= link_to 'Edit', edit_greenhouse_warehouse_path(@greenhouse.id, warehouse.id) %></td>
-        <td><%= link_to 'Delete', greenhouse_warehouse_path(@greenhouse.id, warehouse.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Warehouse', new_greenhouse_warehouse_path %>
+    </div>
+</div>
