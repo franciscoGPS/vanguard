@@ -115,4 +115,17 @@ module ApplicationHelper
   def total_mount(price, pallets)
     price * pallets
   end
+
+  def get_next_ship_number
+    last_ship_number = Sale.last(1).first.ship_number
+    if last_ship_number != nil
+      #En caso de no ser nil, se busca el número con el regex /([\d])+/ (dígito, una o más veces)
+      last_ship_number = last_ship_number.match(/([\d])+/)
+      num_int = last_ship_number.to_a[0].to_i+1
+      return num_int.to_s << "-A"
+    end
+  end
+
+
+
 end

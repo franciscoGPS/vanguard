@@ -156,8 +156,8 @@ end
 def manifest_params
   params.require(:manifest).permit(:sale_id, :date, :sold_to, :sold_to_id,
   :mex_custom_broker, :usa_custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
-  :trailer_num, :trailer_num_lp, :stamp, :thermograph, :purshase_order, :ship_number,
+  :trailer_num, :trailer_num_lp, :stamp, :thermograph, :purshase_order,
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
-  :total_pallets, :comments, :manifest_number, :warehouse_id)
+  :total_pallets, :comments, :manifest_number, :warehouse_id, :ship_number)
 end
 end

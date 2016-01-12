@@ -58,7 +58,7 @@
 
  <div class="row">
    <div class="col-md-6">
-        <h2 id="sale_id_status">Status - <%= "#{@sale.id}" %></h2>
+        <h2 id="sale_id_status">Status - <%= "#{@sale.ship_number}" %></h2>
         <div class="row">
           <div class="col-md-3">
             <%= hidden_field_tag(:sale_id_hidden, "#{@sale.id}")%>
@@ -69,8 +69,7 @@
             <%= label_tag("Cuenta con Documentos") %>
             <%= check_box_tag(:documents) %>
           </div>
-        </div>
-        <div class="row">
+
           <div class="col-md-3">
             <%= label_tag("Salió de empaque") %>
             <%= check_box_tag(:out_of_packaging) %>
@@ -86,8 +85,7 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
+
           <div class="col-md-3">
             <%= label_tag("Recepción de documentos") %>
             <%= check_box_tag(:docs_reception) %>
