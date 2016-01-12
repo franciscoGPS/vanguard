@@ -25,26 +25,20 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    #last_ship_number = Sale.last(1).first.ship_number.match(/([\d])+/)
-
-
 
     @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
 
     # Se intenta obtener el ship_number del último objeto Sale en la DB
-    last_ship_number = Sale.last(1).first.ship_number
-    if last_ship_number != nil
-      #En caso de no ser nil, se busca el número con el regex /([\d])+/ (dígito, una o más veces)
-      last_ship_number = last_ship_number.match(/([\d])+/)
-      num_int = last_ship_number.to_a[0].to_i+1
-      @sale.ship_number = num_int.to_s << "-A"
-    end
+    @sale.ship_number = get_next_ship_number
 
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
     @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
+
+    #Al estar creando uno nuevo, si viene diferente de nil, se usan los valores que tiene,
+    #luego se borran de la session
     if session[:tried_sale] != nil
       @sale = session[:tried_sale]
 
@@ -89,7 +83,9 @@ class SalesController < ApplicationController
 
       begin
         @sale.save
+
       rescue Exception => e
+
          flash[:error] = "Se intentó usar un shipment number en uso. Revise sus datos."
          session[:tried_sale] = @sale
          #session[:tried_shipments] = @sale.shipments.as_json
@@ -119,33 +115,60 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1.json
   def update
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    if @sale.update(sale_params)
+    begin
+        @sale.update(sale_params)
+    rescue Exception => e
+        if e.cause.class.to_s == "PG::UniqueViolation"
+         flash[:error] = "Attempted to use an already used Shipment Consecutive.
+         Please verify your data."
+         session[:tried_sale] = @sale
+       end
+    end
 
-      @shipments_to_update = Shipment.to_edit(@sale.id)
-      if @shipments_to_update.present?
-        @shipments_to_update.each do |shipment|
-          shipment.sale_id = @sale.id
-          #price = params[shipment.id.to_s]
-          #shipment.price = price
-          begin
-            shipment.save
-          rescue Exception
-            flash[:error] = 'No shipments persisted.'
-          end
-        end
+      # Si la session[:tried_sale] está vacía es por que no tuvo errores al guardad.
+      if session[:tried_sale] == nil
         respond_to do |format|
-          format.html { redirect_to  greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale was successfully updated.' }
+          format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id),
+            notice: 'Sale and shipments persisted successfully.' }
         end
+        #En caso de no estar vacía la session[:tried_sale] se envía a crear de nuevo la venta,
+        #con un mensaje de error.
+      else
+        respond_to do |format|
+          format.html { redirect_to new_greenhouse_sale_path(@greenhouse.id) }
+        end
+
+      end
+
+
+    #if @sale.update(sale_params)
+
+      #@shipments_to_update = Shipment.to_edit(@sale.id)
+      #if @shipments_to_update.present?
+        #@shipments_to_update.each do |shipment|
+          #shipment.sale_id = @sale.id
+          ##price = params[shipment.id.to_s]
+          ##shipment.price = price
+          #begin
+            #shipment.save
+          #rescue Exception
+            #flash[:error] = 'No shipments persisted.'
+          #end
+        #end
+        #respond_to do |format|
+         # format.html { redirect_to  greenhouse_sale_path(@greenhouse.id, @sale.id), notice: 'Sale was successfully updated.' }
+        #end
 
         #format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
         #format.json { render :show, status: :ok, location: @sale }
-      else
-        respond_to do |format|
-          format.html { render :edit }
-        end
+      #else
+       # respond_to do |format|
+        #  format.html { render :edit }
+        #end
         #format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
-    end
+      #end
+
+    #end
   end
 
   # DELETE /sales/1
@@ -178,7 +201,7 @@ class SalesController < ApplicationController
       redirect_to new_greenhouse_sale_manifest_path(@greenhouse.id, sale.id)
     elsif (manifests.count >= 1)
       mani = manifests.first
-      redirect_to greenhouse_sale_manifest_path(@greenhouse.id, sale.id, mani.id)
+      redirect_to customs_invoice_path(sale.id)
     end
 
   end
@@ -201,6 +224,29 @@ class SalesController < ApplicationController
   end
 
   def is_unique
+
+    if(params[:ship_number] != nil && params[:ship_number] != "")
+      sale = Sale.where(ship_number: params[:ship_number])
+
+      if(sale != nil)
+        #Encontró algo y se lo asignó a sale
+        #flash[:error] = "Wrong shipment number."
+        #session[:error_message] = "Wrong shipment number."
+
+        result = {}
+        result = {:is_unique => false, :next_ship_number => get_next_ship_number , :error_message => "Wrong shipment number -->"}
+        render :json => result.to_json
+      else
+        #No encontró nada similar
+        #
+        result = Hash.new(:is_unique => true, :error_message => "")
+
+      render :json => result.to_json
+    end
+
+    end
+
+
 
   end
 
@@ -326,7 +372,7 @@ class SalesController < ApplicationController
 
       manifests_attributes: [:id, :sale_id, :date, :mex_custom_broker,
         :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
-        :stamp, :thermograph, :purshase_order, :shipment, :delivery_person, :usa_custom_broker,
+        :stamp, :thermograph, :purshase_order, :ship_number, :delivery_person, :usa_custom_broker,
       :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
       :sold_to_id, :deleted_at, :warehouse_id, :_destroy] ]
 

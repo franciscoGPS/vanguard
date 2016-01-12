@@ -1,0 +1,182 @@
+ <div class="well">
+  <%= link_to "Factura Comercial", customs_invoice_path(@sale), class: "btn btn-primary" %>
+  <div class="pull-right">
+    <%= link_to 'Edit', edit_greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, "#{@manifest.id}") %> |
+    <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id) %>
+  </div>
+ </div>
+ <div class="panel panel-default">
+   <div class="panel-body">
+     <div class="row text-justify">
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Shipment</small>
+                  <strong><%= "#{@manifest.ship_number}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Manifest</small>
+                  <strong><%= "#{@manifest.manifest_number}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Sale</small>
+                  <strong><%= "#{@manifest.sale_id}" %></strong>
+                </p>
+              </div>
+
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Date</small>
+                  <strong><%= "#{@manifest.date}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">MEX Custom Broker</small>
+                  <strong><%= "#{@manifest.mex_custom_broker}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">USA Custom Broker</small>
+                  <strong><%= "#{@manifest.usa_custom_broker}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Purshase Order</small>
+                  <strong><%= "#{@manifest.purshase_order}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Delivery Person</small>
+                  <strong><%= "#{@manifest.delivery_person}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Person Receiving</small>
+                  <strong><%= "#{@manifest.person_receiving}" %></strong>
+                </p>
+              </div>
+
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Stamp</small>
+                  <strong><%= "#{@manifest.stamp}" %></strong>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <p>
+                  <small class="label label-primary">Thermograph</small>
+                  <strong><%= "#{@manifest.thermograph}" %></strong>
+                </p>
+              </div>
+
+                  <div class="col-md-3">
+                    <p>
+                      <small class="label label-primary">Trailer Size</small>
+                      <strong><%= "#{@manifest.trailer_size}" %></strong>
+                    </p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>
+                      <small class="label label-primary">Caat</small>
+                      <strong><%= "#{@manifest.caat}" %></strong>
+                    </p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>
+                      <small class="label label-primary">Alpha</small>
+                      <strong><%= "#{@manifest.alpha}" %></strong>
+                    </p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>
+                      <small class="label label-primary">FDA NUM</small>
+                      <strong><%= "#{@manifest.fda_num}" %></strong>
+                    </p>
+                  </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Sold to</small>
+                <strong><%= "#{@manifest.sold_to}" %></strong>
+              </p>
+            </div>
+
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Sold to ID</small>
+                <strong><%= "#{@manifest.sold_to_id}" %></strong>
+              </p>
+            </div>
+
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Send to</small>
+                <strong><%= "#{@warehouse.name}" "#{@warehouse.address}" %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Carrier</small>
+                <strong><%= "#{@manifest.carrier}" %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Driver</small>
+                <strong><%= "#{@manifest.driver}" %></strong>
+              </p>
+            </div>
+
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Truck</small>
+                <strong><%= "#{@manifest.truck}" %></strong>
+              </p>
+            </div>
+
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Truck Licence Plate</small>
+                <strong><%= "#{@manifest.truck_licence_plate}" %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Traile Num</small>
+                <strong><%= "#{@manifest.trailer_num}" %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Trailer Num LP</small>
+                <strong><%= "#{@manifest.trailer_num_lp}" %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Total Pallets</small>
+                <strong><%= "#{@manifest.total_pallets}" %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Comments</small>
+                <strong><%= "#{@manifest.comments}" %></strong>
+              </p>
+            </div>
+       <div class="col-md-12">
+         <div class="well">
+             <%= render :partial => 'shipment_products' %>
+         </div>
+       </div>
+   </div>
+   </div>
+
+ </div>

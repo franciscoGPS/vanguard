@@ -54,12 +54,18 @@ Rails.application.routes.draw do
     get 'get_product_count_types' => 'count_types#get_product_count_types'
     #Fin de esta petición ajax que se llama desde _shipment_fields.html.erb
 
+    #Acción que se manda a ejecutar la validación apropiada.
+    get '/greenhouses/sales/is_unique' => 'sales#is_unique'
+    #Fin de esta petición ajax que se llama desde sales/_form.html.erb
+
+
+
     post 'purshase_order/greenhouses/:greenhouse_id/sales/:sale_id' => 'sales#purshase_order', as: "purshase_order"
     get 'customs_billing/sales/:greenhouse_id/:sale_id' => 'sales#customs_bill', as: "customs_billing"
     get 'customs_bill/greenhouses/:greenhouse_id/sales/:sale_id' => 'manifests#new', as: 'customs'
 
     get 'manifests/customs_invoice' => 'manifests#to_customs_invoice', as: "to_customs_invoice"
-    post 'collections_bills/invoice/:id' => 'collections_bills#to_invoice', as: "to_invoice"
+    get 'collections_bills/invoice/:id' => 'collections_bills#to_invoice', as: "to_invoice"
 
     get 'collections_bill' => 'sales#collections_bill', as: "sales_collections_bills"
     #get 'collections_bill/:sale_id' => 'collections_bills#index', as: "collections_bills_index"
