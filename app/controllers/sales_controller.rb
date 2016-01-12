@@ -29,7 +29,7 @@ class SalesController < ApplicationController
     @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
 
     # Se intenta obtener el ship_number del último objeto Sale en la DB
-    @sale.ship_number = get_next_ship_number
+    @sale.ship_number = get_next_ship_number("0")
 
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
@@ -227,14 +227,10 @@ class SalesController < ApplicationController
 
     if(params[:ship_number] != nil && params[:ship_number] != "")
       sale = Sale.where(ship_number: params[:ship_number])
-
-      if(sale != nil)
+      if(sale != nil && sale.count > 0)
         #Encontró algo y se lo asignó a sale
-        #flash[:error] = "Wrong shipment number."
-        #session[:error_message] = "Wrong shipment number."
-
         result = {}
-        result = {:is_unique => false, :next_ship_number => get_next_ship_number , :error_message => "Wrong shipment number -->"}
+        result = {:is_unique => false, :next_ship_number => get_next_ship_number(params[:ship_number]) , :error_message => "Please verify. Wrong shipment number: "}
         render :json => result.to_json
       else
         #No encontró nada similar

@@ -116,16 +116,49 @@ module ApplicationHelper
     price * pallets
   end
 
-  def get_next_ship_number
-    last_ship_number = Sale.last(1).first.ship_number
+
+
+
+  def get_next_ship_number(wrong_ship_number)
+
+    last_ship_number = Sale.order("ship_number ASC").where.not(:ship_number => nil).first.ship_number
     if last_ship_number != nil
-      #En caso de no ser nil, se busca el número con el regex /([\d])+/ (dígito, una o más veces)
-      last_ship_number = last_ship_number.match(/([\d])+/)
-      num_int = last_ship_number.to_a[0].to_i+1
-      return num_int.to_s << "-A"
-    end
+
+      if(wrong_ship_number != nil && wrong_ship_number != "0")
+          wrong_int_ship_number = wrong_ship_number.to_s.match(/\d+/).to_a[0].to_i
+
+      else
+        #En caso de ser el wrong_ship_number cero, se usa el último en DB como DEFAULT
+        wrong_int_ship_number = last_ship_number.match(/\d+/).to_a[0].to_i
+
+      end
+
+      #En caso de no ser nil, se busca el número con el regex /\d+/ (dígito, una o más veces)
+      last_ship_number = last_ship_number.match(/\d+/).to_a[0].to_i
+      next_ship_int_number = last_ship_number+1
+
+
+       sale = ship_number_exists(next_ship_int_number)
+        if(sale != nil)
+              next_ship_int_number = sale.ship_number.match(/\d+/).to_a[0].to_i+1
+        end
+
+          if next_ship_int_number <= wrong_int_ship_number
+              next_ship_int_number = wrong_int_ship_number+1
+          end
+          return next_ship_int_number.to_s << "-A"
+        end
+
+
+
   end
 
+private
+def ship_number_exists(next_ship_number)
 
+  next_ship_number = next_ship_number.to_s << "-A"
+
+  sale = Sale.where(ship_number: next_ship_number).first
+end
 
 end
