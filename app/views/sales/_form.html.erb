@@ -93,7 +93,7 @@ $('#sale_ship_number').on('change', function(){
 
                     var ship_number = $('#sale_ship_number').val();
                     $('#sale_ship_number').val(dataRes["next_ship_number"]);
-                    $("#messages").html('<div class="alert alert-warning fade in">  '+
+                    $("#messages").html('<div class="alert alert-error fade in">  '+
                       dataRes["error_message"]+" "+ ship_number+'<button class="close" data-dismiss="alert"> x</button></div>');
                 }
 
