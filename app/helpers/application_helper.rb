@@ -112,8 +112,10 @@ module ApplicationHelper
   def box_type_name(id)
     BoxType.find(id).name
   end
-  def total_mount(price, pallets)
-    price * pallets
+
+
+  def total_mount(price, boxes)
+    price * boxes
   end
 
 
