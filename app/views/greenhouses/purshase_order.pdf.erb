@@ -1,6 +1,5 @@
 <div class="well">
-  <%= link_to 'Printable Receipt (PDF)', p_order_path(@greenhouse.id, @sale.id, format: 'pdf'),
-                class: "btn btn-primary" %>  <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), class: "btn btn-primary" %>
+
 </div>
 <div class="container-fluid" style="background-color:white;">
   <div class="row">
@@ -70,10 +69,10 @@
             <thead>
               <tr>
                 <th># - Customer</th>
-                <th>Quantity</th>
-                <th>Pallet Number</th>
+                <th>Quality</th>
+                <th>Pallets</th>
                 <th>Pallet Type</th>
-                <th>Box Type</th>
+                <th>Boxes Qty</th>
                 <th>Weight - Box Type</th>
               </tr>
             </thead>

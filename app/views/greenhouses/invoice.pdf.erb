@@ -1,10 +1,4 @@
-<div class="well well-default">
-  <%= link_to 'Printable Receipt (PDF)',
-    billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @bill.id,  format: 'pdf'),
-    :class => "btn btn-primary" %>    <%= link_to 'Back',
-    greenhouse_sale_path(@greenhouse.id, @sale.id),
-    :class => "btn btn-warning" %>
-</div>
+
 <div class="container-fluid padding-up" style="background-color: white;">
   <div class="row">
     <div class="col-md-12">
@@ -72,7 +66,7 @@
             <th>Qty Pallets</th>
             <th>Description</th>
             <th>Unit Price</th>
-            <th>Total Mount</th>
+            <th>Total Amount</th>
           </tr>
         </thead>
         <tbody>
