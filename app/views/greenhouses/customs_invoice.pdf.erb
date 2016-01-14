@@ -1,279 +1,280 @@
-<%= form_for @sale,:url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id), :html => { :class => 'form-horizontal' } do |f| %>
-<div class="container-fluid" style="background-color:white;">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="page-header">
-						<h1>
-							<%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :class => "img-circle") %>  <%= "#{@greenhouse.business_name}"  %> <small>Custom Invoice</small>
-						</h1>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-6">
-							 <span class="label label-primary">Domicilio fiscal</span>
-							<address>
-								 <strong><%= @greenhouse.business_name %></strong>
-								 <%= @greenhouse.fiscal_address %>
-							</address>
-						</div>
-						<div class="col-md-6">
-							<div class="row">
-								<div class="col-md-6">
-									 <span class="label label-primary">Factura Comercial</span>
-								</div>
-								<div class="col-md-6">
-										<%= text_field_tag nil, @sale.id.to_s + "-" + DateTime.now.to_s, class: "form-control" %>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									 <span class="label label-primary">Fecha</span>
-								</div>
-								<div class="col-md-6">
-										<%= text_field_tag nil, DateTime.now.to_date, class: "form-control" %>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							 <span class="label label-primary">Orden de Compra</span>
-								<%= text_field_tag nil, @manifest.purshase_order, class: "form-control"  %>
-						</div>
-						<div class="col-md-6">
-							 <span class="label label-primary">Manifiesto</span>
-								<%=text_field_tag nil, @manifest.manifest_number, class: "form-control" %>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h3>
-						Contribuyente de Régimen de Transparencia
-					</h3>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<h3 class="panel-title">
-										Vendido a:
-									</h3>
-								</div>
-								<div class="panel-body">
-									<%=text_field_tag nil, @manifest_customer.business_name , class: "form-control" %>
-								</div>
-								<div class="panel-footer">
-									<%=text_field_tag nil, @manifest_customer.billing_address , class: "form-control" %>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<h3 class="panel-title">
-										Enviado a
-									</h3>
-								</div>
-								<div class="panel-body">
-									<%= "#{@manifest_customer.business_name + " " + @manifest_customer.tax_id_number }"%>
-								</div>
-								<div class="panel-footer">
-									<%= "#{@manifest_customer.billing_address}"  %>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<h3 class="panel-title">
-										Agencia Aduanal
-									</h3>
-								</div>
-								<div class="panel-body">
-									<%=text_field_tag :mex_custom_broker, @manifest.mex_custom_broker, class: "form-control" %>
-								</div>
-								<div class="panel-footer">
-									<%=text_field_tag :usa_custom_broker, @manifest.usa_custom_broker, class: "form-control" %>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<h3 class="panel-title">
-										Datos Transportista
-									</h3>
-								</div>
-								<div class="panel-body">
-									<%=text_field_tag :transportist_data, @transportist_data , class: "form-control" %>
-								</div>
-								<div class="panel-footer">
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Cantidad</th>
-								<th>Unidad</th>
-								<th>Peso</th>
-								<th>Cantidad Pallets</th>
-								<th>Descripción</th>
-                <th>Precio Unitario</th>
-                <th>Monto total(pallets*price)</th>
-							</tr>
-						</thead>
-						<tbody>
- 						<% @shipments.each do |shipment|%>
-							<tr>
-								<td>
-									<%= shipment.box_number %>
-								</td>
-								<td>
-									<%= BoxType.find(shipment.box_type_id).name %>
-								</td>
-								<td>
-									<%=  shipment.weight %>
-								</td>
-								<td>
-								  <%= shipment.pallets_number %>
-								</td>
-								<td>
-									<%= shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name %>
-								</td>
+
+<div class="container-fluid" style="background-color:white;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="page-header">
+            <h1>
+
+               <small>Customs Invoice</small>
+            </h1>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+               <span class="label label-primary">Domicilio fiscal</span>
+              <address>
+                 <strong><%= "#{@greenhouse.business_name}" %></strong>
+                 <%= "#{@greenhouse.fiscal_address}" %>
+              </address>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6">
+                   <span class="label label-primary">Factura Comercial</span>
+                </div>
+                <div class="col-md-6">
+                    <%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                   <span class="label label-primary">Fecha</span>
+                </div>
+                <div class="col-md-6">
+                    <%= "#{DateTime.now.to_date}" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+               <span class="label label-primary">Orden de Compra</span>
+                <%= "#{@manifest.purshase_order}" %>
+            </div>
+            <div class="col-md-6">
+               <span class="label label-primary">Manifiesto</span>
+                <%= "#{@manifest.manifest_number}" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h3>
+            Contribuyente de Régimen de Transparencia
+          </h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    Vendido a:
+                  </h3>
+                </div>
+                <div class="panel-body">
+                  <%= "#{@manifest_customer.business_name + " " +@manifest_customer.tax_id_number }"%>
+                </div>
+                <div class="panel-footer">
+                  <%= "#{@manifest_customer.billing_address}"  %>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    Enviado a
+                  </h3>
+                </div>
+                <div class="panel-body">
+                  <%= "#{@warehouse.name}" %>
+                </div>
+                <div class="panel-footer">
+                  <%= "#{@warehouse.address}"  %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    Agencia Aduanal
+                  </h3>
+                </div>
+                <div class="panel-body">
+                  <%= "#{@manifest.mex_custom_broker}" %>
+                </div>
+                <div class="panel-footer">
+                  <%= "#{@manifest.usa_custom_broker}" %>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    Datos Transportista
+                  </h3>
+                </div>
+                <div class="panel-body">
+                  <%=  "#{@transportist_data}" %>
+                </div>
+                <div class="panel-footer">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Cantidad</th>
+                <th>Unidad</th>
+                <th>Peso</th>
+                <th>Pallets</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @shipments.each do |shipment|%>
+              <tr>
                 <td>
-                  <%= shipment.price %>
+                  <%="#{shipment.box_number}" %>
                 </td>
                 <td>
-                  <strong><%= shipment.price * shipment.box_number %></strong>
+                  <%= "#{BoxType.find(shipment.box_type_id).name}" %>
                 </td>
-							</tr>
+                <td>
+                  <%=  "#{shipment.weight}" %>
+                </td>
+                <td>
+                  <%= "#{shipment.pallets_number }"%>
+                </td>
+                <td>
+                  <%= "#{shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name}" %>
+                </td>
+                <td>
+                  <%= "#{shipment.price}" %>
+                </td>
+                <td>
+                  <strong><%= "#{shipment.price * shipment.box_number}" %></strong>
+                </td>
+              </tr>
                 <% end %>
 
-						</tbody>
-					</table>
-					<div class="row">
-						<div class="col-md-6">
-							<dl>
-								<dt>
-									CAAT:
-								</dt>
-								<dd>
-									<%=text_field_tag nil, @manifest.caat , class: "form-control" %>
-								</dd>
-								<dt>
-									Tipo de Caja:
-								</dt>
-								<dd>
-									<%=text_field_tag nil, "Refrigerated Box " + @manifest.trailer_size.to_s + "\"", class: "form-control" %>
-								</dd>
-								<dt>
-									Transfer/Código Alpha Transfer:
-								</dt>
-								<dd>
-									<%=text_field_tag nil, @manifest.alpha, class: "form-control" %>
-								</dd>
-								<dt>
-									FDA
-								</dt>
-								<dt>
-									<%=text_field_tag nil, @manifest.fda_num, class: "form-control" %>
-								</dt>
-								<dt>
-									No. Pallets
-								</dt>
-								<dd>
-									<%=text_field_tag nil, "#{@manifest.total_pallets} - #{@total_pallets_words}" , class: "form-control" %>
-								</dd>
-							</dl>
-						</div>
-						<div class="col-md-6">
-							<table class="table text-center">
-								<thead>
-									<tr>
-										<th>
-											Subtotal
-										</th>
-										<th>
-											Total
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											<%= number_to_currency(@total_ammount_money) %>
-										</td>
-										<td>
-											<strong><%=  number_to_currency(@total_ammount_money) %></strong>
-										</td>
-									</tr>
-									<tr>
-										<td>
-										</td>
-										<td>
-											<%=  to_words((@total_ammount_money).to_f) %>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<p class="text-justify text-muted">
-								Se señala el precio de venta exclusivamente para cubrir con los
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-md-6">
+              <dl>
+                <dt>
+                  CAAT:
+                </dt>
+                <dd>
+                  <%= "#{@manifest.caat}" %>
+                </dd>
+                <dt>
+                  Tipo de Caja:
+                </dt>
+                <dd>
+                  <%= "Refrigerated Box " + "#{@manifest.trailer_size.to_s + "\""}" %>
+                </dd>
+                <dt>
+                  Transfer/Código Alpha Transfer:
+                </dt>
+                <dd>
+                  <%=  "#{@manifest.alpha}" %>
+                </dd>
+                <dt>
+                  FDA
+                </dt>
+                <dt>
+                  <%="#{@manifest.fda_num}" %>
+                </dt>
+                <dt>
+                  No. Pallets
+                </dt>
+                <dd>
+                  <%= "#{@manifest.total_pallets} - #{@total_pallets_words}" %>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-6">
+              <table class="table text-center">
+                <thead>
+                  <tr>
+                    <th>
+                      Subtotal
+                    </th>
+                    <th>
+                      Total
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <%= "#{number_to_currency(@total_ammount_money)}" %>
+                    </td>
+                    <td>
+                      <strong><%=  "#{number_to_currency(@total_ammount_money)}" %></strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                    </td>
+                    <td>
+                      <%=  "#{to_words((@total_ammount_money).round(2).to_f) }"%>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-justify text-muted">
+                Se señala el precio de venta exclusivamente para cubrir con los
                 requisitos de traslado y trámites aduanales, ya que los productos
                 que contiene este documento son vendidos en firme y posteriormente facturados.
                 <br>
-								Estos tomates son vendidos por un firmante del Acuerdo de Suspensión
+                Estos tomates son vendidos por un firmante del Acuerdo de Suspensión
                 del 2013 con el Departamento de Comercio de los Estados Unidos a
-								una entidad Canadiense y están sujetos a los requisitos del Acuerdo
+                una entidad Canadiense y están sujetos a los requisitos del Acuerdo
                 de Suspensión para documentar las ventas a Canadá. En el caso de que
-								estos tomates se revendan a los Estados Unidos, deben ser vendidos
+                estos tomates se revendan a los Estados Unidos, deben ser vendidos
                 en conformidad con los terminos del Acuerdo de Suspensión a una
-								entidad que tenga Licencia PACA y aprecios iguales o superiores al
+                entidad que tenga Licencia PACA y aprecios iguales o superiores al
                 Precio de Referencia, tal como se establece en el Anexo "E".
                 <br>
-								These tomatoes are sold by a signatory of the 2013 Tomato Suspension
+                These tomatoes are sold by a signatory of the 2013 Tomato Suspension
                 Agreement with the U.S. Department of Commerce to a Canadian
-								entity and are subject to Suspension Agreement's requirements for
+                entity and are subject to Suspension Agreement's requirements for
                 documenting sales to Canada. In the event that these tomatoes are
-								resold into the United States , they must be sold in accordance with
+                resold into the United States , they must be sold in accordance with
                 the terms of Suspension Agreeement to an entity with a PACA License
-								and at prices that are at or above the Reference Price as established in Appendix "E".
+                and at prices that are at or above the Reference Price as established in Appendix "E".
                 </p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							 <span class="label label-primary">Entregó</span>
-							<p>
-								<%=text_field_tag nil, @manifest.delivery_person, class: "form-control" %>
-							</p>
-						</div>
-						<div class="col-md-6">
-							 <span class="label label-primary">Recibió</span>
-							<p>
-								<%=text_field_tag nil, @manifest.person_receiving, class: "form-control" %>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+               <span class="label label-primary">Entregó</span>
+              <p>
+                <%= "#{@manifest.delivery_person}" %>
+              </p>
+            </div>
+            <div class="col-md-6">
+               <span class="label label-primary">Recibió</span>
+              <p>
+                <%= "#{@manifest.person_receiving}" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
