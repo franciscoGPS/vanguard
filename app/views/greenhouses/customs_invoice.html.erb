@@ -1,4 +1,5 @@
-<%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), :class => "btn btn-primary"  %>  <%= link_to 'Edit', edit_greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), :class => "btn btn-warning" %>
+<%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), :class => "btn btn-primary"  %> <%= link_to 'Printable Receipt (PDF)', cust_inv_pdf_path(@sale.id, format: 'pdf'),
+                class: "btn btn-primary" %> <%= link_to 'Edit', edit_greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), :class => "btn btn-warning" %>
 <%= form_for @manifest, :url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id), :html => { :class => 'form-horizontal' } do |f| %>
 <div class="container-fluid" style="background-color:white;">
 	<div class="row">
@@ -277,5 +278,4 @@
 		</div>
 	</div>
 </div>
-<%= link_to 'Printable Receipt (PDF)', cust_inv_pdf_path(@sale.id, format: 'pdf') %>
 <% end %>

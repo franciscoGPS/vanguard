@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :sale_id %><br>
-    <%= f.number_field :sale_id, :required => true %>
-  </div>
-  <div class="field">
     <%= f.label :invoice_number %><br>
     <%= f.text_field :invoice_number, :required => true %>
   </div>
@@ -42,6 +38,7 @@
   </div>
    <%= f.hidden_field(:user_id, :value => @collections_bill.user_id) %>
    <%= f.hidden_field(:customer_id, :value => @collections_bill.customer_id) %>
+   <%= f.hidden_field(:sale_id, :value => @sale.id) %>
    <!-- hidden_field(:collections_bill, :customer_id) %>-->
   <div class="actions">
     <%= f.submit %>
