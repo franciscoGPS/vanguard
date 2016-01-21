@@ -47,7 +47,7 @@ $(function () {
 
 
 
-       $('.prod').on('change', function(params){
+       /*$('.prod').on('change', function(params){
           //27 es el tamaño del base_string, es fijo, no cambia.
           //40 es cuando termina el ID dinámico del producto del que queremos
           // filtrar sus count_types
@@ -97,4 +97,4 @@ $(function () {
 
 
        });
-
+*/
