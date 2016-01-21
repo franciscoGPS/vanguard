@@ -25,7 +25,7 @@ class Sale < ActiveRecord::Base
   end
 
     scope :total_month_sales_ammount, -> { select("SUM(shipments.price) AS TOTAL_AMMOUNT")
-    .joins(:shipments).where("EXTRACT(MONTH FROM sales.created_at) = #{Time.now.month}") }
+    .joins(:shipments).where("EXTRACT(MONTH FROM sales.created_at) > #{Time.now.month}") }
 
   #$states_to_s = {:carrier_courtyard_checkin => {:id => "1", :name => "Carrier Courtyard Arrival"},
   #               :courtyard_to_modules_line => {:id => "2", :name => "In course to Modules Line"},

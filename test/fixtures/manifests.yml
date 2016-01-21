@@ -14,7 +14,7 @@ one:
   trailer_num_lp: MyString
   stamp: MyString
   thermograph: MyString
-  purshase_order: 1
+  po_number: PO-1
   shipment: 1
   delivery_person: MyString
   person_receiving: MyString
@@ -39,7 +39,7 @@ two:
   trailer_num_lp: MyString
   stamp: MyString
   thermograph: MyString
-  purshase_order: 1
+  po_number: PO-1
   shipment: 1
   delivery_person: MyString
   person_receiving: MyString

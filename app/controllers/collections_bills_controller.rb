@@ -33,7 +33,7 @@ class CollectionsBillsController < ApplicationController
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
 
     if @manifest != nil
-      @collections_bill.po_number = @manifest.purshase_order
+      @collections_bill.po_number = @manifest.po_number
       @collections_bill.ship_number = @manifest.ship_number
       @collections_bill.total_amt = @total_ammount_money
       #Fixed 12 is because the state "bol"

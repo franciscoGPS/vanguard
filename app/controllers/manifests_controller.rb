@@ -40,10 +40,11 @@ class ManifestsController < ApplicationController
     @sale.shipments.each_with_index do |shipment, index|
       #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
+
       @po_numbers[index] = shipment.po_number
-      if(shipment.po_number > biggest_po_number)
-        biggest_po_number = shipment.po_number
-      end
+      #if(shipment.po_number > biggest_po_number)
+       # biggest_po_number = shipment.po_number
+      #end
     end
     @sold_to_cust = sold_to_cust(@sale)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
@@ -51,7 +52,7 @@ class ManifestsController < ApplicationController
       @manifest = Manifest.new
       @manifest.sold_to_id = @sold_to_cust.id
       @manifest.sold_to = @sold_to_cust.business_name
-      @manifest.purshase_order = biggest_po_number
+      @manifest.po_number = @po_numbers[0]
       @manifest.fda_num = @greenhouse.fda_num
       @manifest.total_pallets = @total_pallets
       @manifest.ship_number = @sale.ship_number
@@ -156,7 +157,7 @@ end
 def manifest_params
   params.require(:manifest).permit(:sale_id, :date, :sold_to, :sold_to_id,
   :mex_custom_broker, :usa_custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
-  :trailer_num, :trailer_num_lp, :stamp, :thermograph, :purshase_order,
+  :trailer_num, :trailer_num_lp, :stamp, :thermograph, :po_number,
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
   :total_pallets, :comments, :manifest_number, :warehouse_id, :ship_number)
 end

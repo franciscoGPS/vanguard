@@ -212,7 +212,7 @@ class SalesController < ApplicationController
     customer_id = params[:customer_id]
     manifest = Manifest.where("sale_id = ?", sale.id).first
     bills = CollectionsBill.where("sale_id = ? AND po_number = ? AND customer_id = ? ",
-     sale.id, manifest.purshase_order, customer_id)
+     sale.id, manifest.po_number, customer_id)
    if(bills.count == 0)
     redirect_to new_greenhouse_sale_collections_bill_path(greenhouse.id, sale.id, :customer_id => customer_id)
    elsif (bills.count == 1)
@@ -368,7 +368,7 @@ class SalesController < ApplicationController
 
       manifests_attributes: [:id, :sale_id, :date, :mex_custom_broker,
         :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
-        :stamp, :thermograph, :purshase_order, :ship_number, :delivery_person, :usa_custom_broker,
+        :stamp, :thermograph, :po_number, :ship_number, :delivery_person, :usa_custom_broker,
       :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
       :sold_to_id, :deleted_at, :warehouse_id, :_destroy] ]
 
