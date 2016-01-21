@@ -64,7 +64,8 @@ class SalesController < ApplicationController
     @action = params[:action]
     @customers = Customer.own_customers(params[:greenhouse_id])
     @products = Product.where(greenhouse_id: params[:greenhouse_id])
-    @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC").map { |type| [type.id, type.name] }
+
+    @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
   end
 
