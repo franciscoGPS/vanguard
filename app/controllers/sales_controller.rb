@@ -34,7 +34,7 @@ class SalesController < ApplicationController
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
-    @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
+    @counts = CountType.where(product_id: 0).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
 
     #Al estar creando uno nuevo, si viene diferente de nil, se usan los valores que tiene,
