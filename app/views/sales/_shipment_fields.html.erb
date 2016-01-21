@@ -63,7 +63,7 @@
             <%= f.label :count_type_id, "Counting" %>
           </div>
           <div class="col-md-12">
-            <%= f.collection_select :count_type_id, @counts, :id, :name, {:prompt => "Conteo"}, {:class => "text_field form-control count", :required => true}  %>
+            <%= f.collection_select :count_type_id, @counts, :id, :name, {:prompt => "Conteo"}, {:class => "text_field form-control count", :required => true, :disabled => "disabled"}  %>
           </div>
         </div>
       </div>
@@ -213,6 +213,7 @@
             dataType: 'json',
             success: function (dataRes) {
               var types_select = $("select[name$='["+shipment_auto_rails_id+"][count_type_id]']")
+              types_select.removeAttr('disabled');
               clearTarget(types_select);
 
               //Se recibe el arreglo de objetos, hay que acomodarlos en el select
@@ -221,6 +222,9 @@
 
             }
           });
+
+
+       });
 
 
           function clearTarget(count_types_select){
@@ -239,5 +243,4 @@
           }
 
 
-       });
 </script>
