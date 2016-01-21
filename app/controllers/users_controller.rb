@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
           UserMailer.welcome_email(@user, generated_password).deliver
 
-          format.html { redirect_to @user, notice: 'User was successfully created. \n'}
+          format.html { redirect_to @user, notice: 'User was successfully created.'}
           #format.json { render :show, status: :created, location: @user }
 
 

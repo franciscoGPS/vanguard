@@ -1,6 +1,7 @@
 class CountTypesController < ApplicationController
   before_action :set_count_type, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :verify_is_admin?
+  before_action :authenticate_user!
+  before_action :verify_is_admin?, :except => [:get_product_count_types]
 
   # GET /count_types
   # GET /count_types.json
