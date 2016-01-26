@@ -115,7 +115,6 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1.json
   def update
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    byebug
     begin
         @sale.update(sale_params)
     rescue Exception => e
