@@ -1,69 +1,66 @@
-
-
 <div class="container-fluid" style="background-color:white;">
   <div class="row">
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-6">
           <div class="page-header">
-            <h1>
-
+            <h3>
                <small>Customs Invoice</small>
-            </h1>
+            </h3>
           </div>
         </div>
         <div class="col-md-6">
           <div class="row">
-            <div class="col-md-6">
-               <span class="label label-primary">Domicilio fiscal</span>
-              <address>
-                 <strong><%= "#{@greenhouse.business_name}" %></strong>
+            <div class="col-md-6 pull-left" style="width: 350px">
+              <p>
+                <span class="label label-primary">Domicilio fiscal</span>
+                 <strong><%= "#{@greenhouse.business_name}" %></strong><br>
                  <%= "#{@greenhouse.fiscal_address}" %>
-              </address>
+              </p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 pull-right" style="width: 350px">
               <div class="row">
                 <div class="col-md-6">
-                   <span class="label label-primary">Factura Comercial</span>
+                    <p>
+                      <span class="label label-primary">Factura Comercial</span>
+                      <%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
+                    </p>
                 </div>
                 <div class="col-md-6">
-                    <%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
+                    <p>
+                    <span class="label label-primary">Fecha</span>
+                      <%= "#{DateTime.now.to_date}" %>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                    <span class="label label-primary">Orden de Compra</span>
+                      <%= "#{@manifest.po_number}" %>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                    <span class="label label-primary">Manifiesto</span>
+                      <%= "#{@manifest.manifest_number}" %>
+                    </p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                   <span class="label label-primary">Fecha</span>
-                </div>
-                <div class="col-md-6">
-                    <%= "#{DateTime.now.to_date}" %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-               <span class="label label-primary">Orden de Compra</span>
-                <%= "#{@manifest.po_number}" %>
-            </div>
-            <div class="col-md-6">
-               <span class="label label-primary">Manifiesto</span>
-                <%= "#{@manifest.manifest_number}" %>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h3>
+          <h4>
             Contribuyente de Régimen de Transparencia
-          </h3>
+          </h4>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 pull-left" style="width: 350px">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title">
+                  <h4 class="panel-title" style="font-size: 15px">
                     Vendido a:
-                  </h3>
+                  </h4>
                 </div>
                 <div class="panel-body">
                   <%= "#{@manifest_customer.business_name + " " +@manifest_customer.tax_id_number }"%>
@@ -73,12 +70,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 pull-right" style="width: 350px">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title">
+                  <h4 class="panel-title" style="font-size: 15px">
                     Enviado a
-                  </h3>
+                  </h4>
                 </div>
                 <div class="panel-body">
                   <%= "#{@warehouse.name}" %>
@@ -90,12 +87,12 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 pull-left" style="width:350px;">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title">
+                  <h4 class="panel-title" style="font-size: 15px">
                     Agencia Aduanal
-                  </h3>
+                  </h4>
                 </div>
                 <div class="panel-body">
                   <%= "#{@manifest.mex_custom_broker}" %>
@@ -105,18 +102,15 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 pull-right" style="width:350px;">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title">
+                  <h4 class="panel-title" style="font-size: 15px">
                     Datos Transportista
-                  </h3>
+                  </h4>
                 </div>
                 <div class="panel-body">
                   <%=  "#{@transportist_data}" %>
-                </div>
-                <div class="panel-footer">
-
                 </div>
               </div>
             </div>
@@ -167,41 +161,39 @@
             </tbody>
           </table>
           <div class="row">
-            <div class="col-md-6">
-              <dl>
-                <dt>
+            <div class="col-md-6 pull-left" style="width:350px;">
+                <small>
                   CAAT:
-                </dt>
-                <dd>
+                </small>
+                <strong>
                   <%= "#{@manifest.caat}" %>
-                </dd>
-                <dt>
+                </strong><br>
+                <small>
                   Tipo de Caja:
-                </dt>
-                <dd>
+                </small>
+                <strong>
                   <%= "Refrigerated Box " + "#{@manifest.trailer_size.to_s + "\""}" %>
-                </dd>
-                <dt>
+                </strong><br>
+                <small>
                   Transfer/Código Alpha Transfer:
-                </dt>
-                <dd>
+                </small>
+                <strong>
                   <%=  "#{@manifest.alpha}" %>
-                </dd>
-                <dt>
+                </strong><br>
+                <small>
                   FDA
-                </dt>
-                <dt>
+                </small>
+                <strong>
                   <%="#{@manifest.fda_num}" %>
-                </dt>
-                <dt>
+                </strong>
+                <small>
                   No. Pallets
-                </dt>
-                <dd>
+                </small>
+                <strong>
                   <%= "#{@manifest.total_pallets} - #{@total_pallets_words}" %>
-                </dd>
-              </dl>
+                </strong>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 pull-right">
               <table class="table text-center">
                 <thead>
                   <tr>
@@ -219,14 +211,8 @@
                       <%= "#{number_to_currency(@total_ammount_money)}" %>
                     </td>
                     <td>
-                      <strong><%=  "#{number_to_currency(@total_ammount_money)}" %></strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                    </td>
-                    <td>
-                      <%=  "#{to_words((@total_ammount_money).round(2).to_f) }"%>
+                      <strong><%=  "#{number_to_currency(@total_ammount_money)}" %></strong><br>
+                      <i><small><%=  "#{to_words((@total_ammount_money).round(2).to_f) }"%></small></i>
                     </td>
                   </tr>
                 </tbody>
@@ -235,7 +221,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <p class="text-justify text-muted">
+              <p class="text-justify text-muted" style="font-size: 7px">
                 Se señala el precio de venta exclusivamente para cubrir con los
                 requisitos de traslado y trámites aduanales, ya que los productos
                 que contiene este documento son vendidos en firme y posteriormente facturados.
@@ -260,15 +246,15 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-               <span class="label label-primary">Entregó</span>
+            <div class="col-md-6 pull-left" style="width: 350px">
               <p>
+                <span class="label label-primary">Entregó</span>
                 <%= "#{@manifest.delivery_person}" %>
               </p>
             </div>
-            <div class="col-md-6">
-               <span class="label label-primary">Recibió</span>
+            <div class="col-md-6 pull-right" style="width: 350px">
               <p>
+                <span class="label label-primary">Recibió</span>
                 <%= "#{@manifest.person_receiving}" %>
               </p>
             </div>
