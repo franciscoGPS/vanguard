@@ -1,62 +1,60 @@
-
 <div class="container-fluid padding-up" style="background-color: white;">
   <div class="row">
-    <div class="col-md-12">
-      <div class="page-">
-        <div class="col-md-4">
-          <h1>
-             <%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :style => "max-height: 80px;") %>
-            <%= "#{@greenhouse.business_name}" %>
-            <small>Invoice</small>
-          </h1>
-          <hr>
-        </div>
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-6">
-              <p class="lead text-center" style="font-size: 10px;">
-               <%= "#{DateTime.now.strftime('%d-%m-%Y')}" %>
-              </p>
-            </div>
-            <div class="col-md-6">
-              <p class="lead text-right" style="font-size: 10px;">
-                No.<%= "#{@bill.invoice_number}" %>
-              </p>
-            </div>
-          </div>
-        </div>
+    <section style="padding-left:22px;font-size: 9px" class="pull-left">
+      <%= "#{DateTime.now.strftime('%d-%m-%Y')}" %>
+    </section>
+    <section style="padding-left:22px;font-size: 9px" class="pull-right">
+      No.<%= "#{@bill.invoice_number}" %>
+    </section>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h1>
+        <%- if @greenhouse.logo.present? %>
+          <%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :style => "max-height: 80px;") %>
+        <% end %>
+        <%= "#{@greenhouse.business_name}" %>
+        <small>Invoice</small>
+      </h1>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row">
+      <div class="col-md-6 pull-left" style="width: 300px;">
+        <p class="text-justify">
+          <strong>Bill to:</strong><br>
+            <%= "#{@customer.business_name}" %>
+        </p>
+      </div>
+      <div class="col-md-6 pull-right" style="width: 300px;">
+        <p class="text-justify">
+          <strong>Ship to:</strong><br>
+          <%= "#{@customer.shipping_address}" %>
+        </p>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
-      <p class="text-justify">
-        <strong>Bill to:</strong><br>
-          <%= "#{@customer.business_name}" %>
-      </p>
+      <%- if @sale.comment.present? %>
+        <div class="col-md-6 pull-left" style="width: 300px;">
+          <p class="text-justify">
+            <strong>Comment</strong><br>
+            <%= "#{@sale.comment}" %>
+          </p>
+        </div>
+      <% end %>
+      <%- if @sale.annotation.present? %>
+         <div class="col-md-6 pull-right" style="width: 300px;">
+          <p class="text-justify">
+            <strong>Annotations</strong><br>
+            <%= "#{@sale.annotation}" %>
+          </p>
+        </div>
+      <% end %>
     </div>
-    <div class="col-md-6">
-      <p class="text-justify">
-        <strong>Ship to:</strong><br>
-        <%= "#{@customer.shipping_address}" %>
-      </p>
-    </div>
-    <div class="col-md-6">
-      <p class="text-justify">
-        <strong>Comment</strong><br>
-        <%= "#{@sale.comment}" %>
-      </p>
-    </div>
-    <div class="col-md-6">
-      <p class="text-justify">
-        <strong>Annotations</strong><br>
-        <%= "#{@sale.annotation}" %>
-      </p>
-    </div>
-
-  </div>
-  <div class="row" style="background-color: rgb(132, 189, 196); color: black; margin-top: 2%;">
-    <div class="col-md-12 padding-up">
+  <div class="row" style="background-color: rgb(132, 189, 196);margin-left: -15px;margin-right: -15px; padding-left: 15px;padding-right: 15px; color: white; margin-top: 2%;">
+    <div class="padding-up">
       <table class="table table-condensed" style="border-color: #333;">
         <thead>
           <tr>
@@ -99,40 +97,22 @@
 
         </tbody>
       </table>
-      <div class="row">
-        <div class="col-md-10">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 pull-left">
+            <h4>
+              Subtotal
+              <small style="color:white; padding-left: 5px;"><%= "#{number_to_currency(@bill.total_amt)}" %></small>
+            </h4>
+          </div>
+          <div class="col-md-6 pull-right">
+            <h3>
+              Total
+              <strong style="padding-left: 5px;"><%=  "#{number_to_currency(@bill.total_amt)}" %></strong><br>
+              <i><small style="color:white"><%=  "#{to_words((@bill.total_amt).round(2))}" %></small></i>
+            </h3>
+          </div>
         </div>
-          <div class="col-md-6">
-            <table class="table text-center">
-                <thead>
-                  <tr>
-                    <th>
-                      Subtotal
-                    </th>
-                    <th>
-                      Total
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <%= "#{number_to_currency(@bill.total_amt)}" %>
-                    </td>
-                    <td>
-                      <strong><%=  "#{number_to_currency(@bill.total_amt)}" %></strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                    </td>
-                    <td>
-                      <%=  "#{to_words((@bill.total_amt).round(2))}" %>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
       </div>
     </div>
   </div>
@@ -141,23 +121,28 @@
       <h2 class="text-center">
         THANK YOU
       </h2>
-      <div class="row padding-up">
-        <div class="col-md-6">
-          <address>
-             <strong>Vanguard Co. | Marketing & Business Development</strong><br> Dirección de la Empresa<br>
-             <abbr title="Phone">P:</abbr> 011 52 818 365-3950
-          </address>
-        </div>
     </div>
-    <div class="row padding-up">
-          <div class="col-md-12">
-                <p class="text-right lead">
-                  <strong>Terms & Conditions</strong>
-                </p>
-                <p class="text">
-                  Se señala el precio de venta exclusivamente para cubrir con los
+    <div class="row">
+        <div class="col-md-6 pull-left" style="width: 400px">
+          <p>
+             <strong>Vanguard Co. | Marketing & Business Development</strong><br>
+             Dirección de la Empresa<br>
+             <abbr title="Phone">P:</abbr> 011 52 818 365-3950
+          </p>
+        </div>
+        <div class="col-md-6 pull-right" style="width: 400px;">
+          <p class="text-right">
+            <strong>Terms & Conditions</strong>
+          </p>
+          <p>
+            Se señala el precio de venta exclusivamente para cubrir con los
                       requisitos de traslado y trámites aduanales, ya que los productos
                       que contiene este documento son vendidos en firme y posteriormente facturados.
+          </p>
+        </div>
+    <div class="row">
+          <div style="min-width: 800px;padding-right: 30px;margin-top: 15px; padding-left: 30px;">
+                <p class="text-justify">
                       <hr>
                       Estos tomates son vendidos por un firmante del Acuerdo de Suspensión
                       del 2013 con el Departamento de Comercio de los Estados Unidos a
