@@ -25,7 +25,12 @@
           at week
           <%= "#{Time.now.strftime("%U")}" %>
         </h3>
-        <%= line_chart @greenhouse.week_sales.count, height: "100px" %>
+
+
+        <!--= line_chart @greenhouse.week_sales, height: "100px" %-->
+        <%= line_chart @week_sales, height: "100px" %>
+
+
       </div>
     </div>
   </div>

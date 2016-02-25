@@ -10,7 +10,7 @@
   </div>
   <div class="col-md-6 col-sm-12">
     <div class="panel panel-default fix-admin-dashboard">
-        <h3>Month Sales</h3>
+        <h3>Month Sales By Customer</h3>
         <div class="panel-body">
           <%= pie_chart @month_sales.group(:business_name).count, height: "180px" %>
         </div>
