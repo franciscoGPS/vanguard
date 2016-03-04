@@ -1,4 +1,19 @@
 <div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <div class="col-md-9 col-sm-12">
+        <h1>
+          Average Price
+          - <%= @greenhouse.business_name %>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <%= render :partial => "greenhouses/submenu", :locals => {:id => @greenhouse.id } %>
+</div>
+<div class="row">
   <div class="col-md-4">
     <h3>Search</h3>
     <%= form_tag greenhouse_average_price_week_path, method: 'get' do %>
@@ -18,7 +33,7 @@
           <%= "#{Time.now.strftime("%U")}" %>
         </h3>
 
-        <table class="table table-hover">
+        <table class="table table-hover"  data-toggle="table" data-pagination="true" data-search="true">
           <thead>
             <tr>
               <th>Product</th>

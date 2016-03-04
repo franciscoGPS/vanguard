@@ -56,6 +56,7 @@ GEM
       sass (~> 3.2)
     bootstrap-sass-extras (0.0.6)
       rails (>= 3.1.0)
+    bootstrap-table-rails (1.10.0)
     builder (3.2.2)
     byebug (8.2.1)
     cancan (1.6.10)
@@ -279,6 +280,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.2.0)
   bootstrap-sass-extras
+  bootstrap-table-rails
   byebug
   cancan
   chartkick

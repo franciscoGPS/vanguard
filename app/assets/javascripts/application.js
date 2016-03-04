@@ -4,8 +4,10 @@
 //= require bootstrap-sprockets
 //= require cocoon
 //= require confirm
-//= require_tree .
 //= require chartkick
+//= require bootstrap-table
+//= require_tree .
+
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
