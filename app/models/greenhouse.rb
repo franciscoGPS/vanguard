@@ -32,9 +32,10 @@ class Greenhouse < ActiveRecord::Base
   def week_sales
     #La siguiente línea extrae los datos para llenar la gràfica de "Ventas de esta semana."
     # Selecciona las ventas de este invernadero que su fecha de envío se encuentre entre el primer día
-    # de la semana y el día actual.
-    self.sales.where(:departure_date => Date.today.to_date.at_beginning_of_week..Date.today.end_of_week.to_date)
-    .sort.group_by_day {|u| u.departure_date}.map { |k, v| [k.strftime("%a, %d, %b, %Y"), v.size] }
+    # de la semana y el día actual.map { |k, v| [k.strftime("%a, %d, %b, %Y"), v.first.ship_number] }
+
+    self.sales.where(:departure_date => Date.today.to_date.at_beginning_of_week..Date.today.end_of_week).sort.group_by_day { |u| u.departure_date}.map { |k, v| [k, v.size] }
+
   end
 
 end
