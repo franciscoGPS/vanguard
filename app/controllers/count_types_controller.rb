@@ -66,7 +66,7 @@ class CountTypesController < ApplicationController
   #Esta se llama desde _shipment_fields.html.erb
   #para cargar los tipos de conteo adecuados por cada producto.
   def get_product_count_types
-    types = CountType.where(product_id: params[:product_id]).map { |type| [type.id, type.name] }
+    types = CountType.where(product_id: params[:product_id]).order("name ASC").map { |type| [type.id, type.name] }
     render :json => types.to_json.to_s.to_json
   end
 

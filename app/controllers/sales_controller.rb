@@ -34,7 +34,7 @@ class SalesController < ApplicationController
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
-    @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
+    @counts = CountType.where(product_id: 0).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
 
     #Al estar creando uno nuevo, si viene diferente de nil, se usan los valores que tiene,
@@ -360,7 +360,7 @@ class SalesController < ApplicationController
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
         :package_type_id, :bag_type_id, :pallet_type_id,
         :comments, :sale_id, :price, :plu, :count_type_id, :product_color, :customer_id,
-        :box_type_id, :weight, :po_number, :quality,
+        :box_type_id, :weight, :po_number, :quality, :_destroy,
         pallet_type_attributes: [:id, :name, :_destroy],
         bag_type_attributes: [:id, :name, :_destroy],
         box_type_attributes: [:id, :name, :_destroy],
