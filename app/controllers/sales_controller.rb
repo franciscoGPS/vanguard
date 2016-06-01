@@ -26,7 +26,8 @@ class SalesController < ApplicationController
   def new
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
 
-    @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1), arrival_date: Time.now.advance(:days => +2))
+    @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1),
+     arrival_date: Time.now.advance(:days => +2), delivery_place: "McAllen, Tx.")
 
     # Se intenta obtener el ship_number del último objeto Sale en la DB
     @sale.ship_number = get_next_ship_number("0")
@@ -354,7 +355,7 @@ class SalesController < ApplicationController
       :out_of_packaging, :docs_reception, :product_color,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place,
 
       shipments_attributes: [:id, :start_at, :created_at, :updated_at,
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
