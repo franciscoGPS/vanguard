@@ -157,8 +157,8 @@ class GreenhousesController < ApplicationController
       @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
     end
 
-    @total_pallets_words = to_words(@manifest.total_pallets)
-
+    #@total_pallets_words = to_words(@manifest.total_pallets)
+    @total_pallets_words = @manifest.total_pallets.to_words
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
 
     respond_to do |format|

@@ -9,7 +9,7 @@
 <%= render :partial => "greenhouses/submenu", :locals => {:id => @greenhouse.id } %>
 <div class="well">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              greenhouse_path(@sale.greenhouse_id) , :class => 'btn btn-warning'  %>
+              greenhouse_path(@sale.greenhouse_id) , :class => "btn btn-warning"  %>
   <%=link_to 'Generar Orden de Compra.', purshase_order_path(@greenhouse.id, @sale.id), class: "btn btn-primary" %>
   <%=link_to 'Factura de cruce', customs_billing_path(@greenhouse.id, @sale.id), class: "btn btn-success" %>
   <%@customers.each do |cust|%>

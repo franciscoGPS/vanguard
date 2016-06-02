@@ -49,7 +49,8 @@ class CollectionsBillsController < ApplicationController
       @collections_bill.po_number = @sale.shipments.first.po_number
     end
 
-    @total_ammount_money_words = to_words(@total_ammount_money.to_f)
+    #@total_ammount_money_words = to_words(@total_ammount_money.to_f)
+    @total_ammount_money_words = @total_ammount_money.to_f.to_words
 
 
   end

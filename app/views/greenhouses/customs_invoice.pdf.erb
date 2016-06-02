@@ -212,7 +212,7 @@
                     </td>
                     <td>
                       <strong><%=  "#{number_to_currency(@total_ammount_money)}" %></strong><br>
-                      <i><small><%=  "#{to_words((@total_ammount_money).round(2).to_f) }"%></small></i>
+                      <i><small><%=  "#{ (@total_ammount_money).round(2).to_f.to_words }"%><%#=  "#{to_words((@total_ammount_money).round(2).to_f) }"%></small></i>
                     </td>
                   </tr>
                 </tbody>

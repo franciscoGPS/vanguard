@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def to_words(number)
-    number_in_words = I18n.with_locale(:en) { number.to_words }
+    number_in_words = I18n.with_locale(:es) { number.to_words hundreds_with_union: true }
     number_in_words = number_in_words.slice(0,1).capitalize + number_in_words.slice(1..-1)
     return number_in_words
   end
