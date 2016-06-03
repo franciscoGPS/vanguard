@@ -15,6 +15,14 @@
     <%= f.label :delivery_place, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :delivery_place, :class => 'text_field form-control', :required => true %>
+      <!--<select class="placeselect" multiple="multiple">
+        <option value="cheese">Cheese</option>
+        <option value="tomatoes">Tomatoes</option>
+        <option value="mozarella">Mozzarella</option>
+        <option value="mushrooms">Mushrooms</option>
+        <option value="pepperoni">Pepperoni</option>
+        <option value="onions">Onions</option>
+      </select>-->
     </div>
   </div>
   <div class="form-group">
@@ -79,6 +87,10 @@
   </div>
 <% end %>
 <script type="text/javascript">
+
+$(document).ready(function() {
+        $('.placeselect').multiselect();
+});
 
 $('#sale_ship_number').on('change', function(){
 

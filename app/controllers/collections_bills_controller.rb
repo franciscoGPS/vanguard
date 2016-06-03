@@ -50,7 +50,7 @@ class CollectionsBillsController < ApplicationController
     end
 
     #@total_ammount_money_words = to_words(@total_ammount_money.to_f)
-    @total_ammount_money_words = @total_ammount_money.to_f.to_words
+    @total_ammount_money_words = @total_ammount_money.to_f.to_words.upcase + " DOLARES 00/100 USD"
 
 
   end

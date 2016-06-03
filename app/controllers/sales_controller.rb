@@ -25,7 +25,6 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
-
     @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1),
      arrival_date: Time.now.advance(:days => +2), delivery_place: "McAllen, Tx.")
 
@@ -45,6 +44,7 @@ class SalesController < ApplicationController
 
       session[:tried_sale] = nil
       session[:tried_shipments] = nil
+
 
     end
 
