@@ -103,7 +103,7 @@ class GreenhousesController < ApplicationController
     @string_products = ""
     diffs_prods = Shipment.different_products_in_sale(@sale.id)
     diffs_prods.each_with_index do |product, index|
-      @string_products += (index+1).to_s + ".- " + product.name + " "
+      @string_products += (index+1).to_s + ".- " + product.name + " <br>"
     end
 
 
