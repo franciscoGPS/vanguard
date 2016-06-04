@@ -115,7 +115,8 @@ class GreenhousesController < ApplicationController
         :template => 'greenhouses/purshase_order.pdf.erb',
         :layout => 'pdf.html.erb',
         :show_as_html => params[:debug].present?,
-        :encoding => 'UTF-8'
+        :encoding => 'UTF-8',
+        :orientation => 'Landscape'
       end
       end
   end
