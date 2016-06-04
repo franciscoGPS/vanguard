@@ -54,6 +54,12 @@
         <%= f.text_field :category, :class => 'text_field form-control' %>
       </div>
     </div>
+    <div class="form-group">
+      <%= f.label :color, class: "control-label col-md-2" %>
+      <div class="col-md-10">
+        <%= f.color_field :color, :required => true, class: "form-control" %>
+      </div>
+    </div>
   </div>
   <div class="col-md-12">
     <div class="pull-right">
