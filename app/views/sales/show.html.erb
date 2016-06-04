@@ -9,13 +9,13 @@
 <%= render :partial => "greenhouses/submenu", :locals => {:id => @greenhouse.id } %>
 <div class="well">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              greenhouse_path(@sale.greenhouse_id) , :class => 'btn btn-default'  %>
+              greenhouse_path(@sale.greenhouse_id) , :class => "btn btn-warning"  %>
   <%=link_to 'Generar Orden de Compra.', purshase_order_path(@greenhouse.id, @sale.id), class: "btn btn-primary" %>
-  <%=link_to 'Manifiesto y Factura', customs_billing_path(@greenhouse.id, @sale.id), class: "btn btn-primary" %>
+  <%=link_to 'Factura de cruce', customs_billing_path(@greenhouse.id, @sale.id), class: "btn btn-success" %>
   <%@customers.each do |cust|%>
     <%= link_to "Facturar a "+ cust.business_name,
           new_greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id,
-                                                                    :customer_id => cust.id), class: "btn btn-primary" %>
+                                                                    :customer_id => cust.id), class: "btn btn-info" %>
   <% end %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_greenhouse_sale_path(@sale.greenhouse_id, @sale.id), :class => 'btn btn-warning' %>
@@ -40,6 +40,10 @@
                 <dd><pre class="prettyprint"><%= "#{@sale.season}" %></pre></dd>
               </div>
               <div class="col-md-4 col-sm-12">
+                <dt class="label label-default"><%= model_class.human_attribute_name(:delivery_place) %></dt>
+                <dd><pre class="prettyprint"><%= "#{@sale.delivery_place}" %></pre></dd>
+              </div>
+              <div class="col-md-4 col-sm-12">
                 <dt class="label label-default"><%= model_class.human_attribute_name(:departure_date) %></dt>
                 <dd><pre class="prettyprint"><%= "#{@sale.departure_date}" %></pre></dd>
               </div>
@@ -47,13 +51,9 @@
                 <dt class="label label-default"><%= model_class.human_attribute_name(:arrival_date) %></dt>
                 <dd><pre class="prettyprint"><%= "#{@sale.arrival_date}" %></pre></dd>
               </div>
-              <div class="col-md-8 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:annotation) %></dt>
+              <div class="col-md-6 col-sm-12">
+                <dt class="label label-default"><%= model_class.human_attribute_name(:observations) %></dt>
                 <dd><pre class="prettyprint"><%= "#{@sale.annotation}" %></pre></dd>
-              </div>
-              <div class="col-md-12 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:comment) %></dt>
-                <dd><pre class="prettyprint"><%= @sale.comment %></pre></dd>
               </div>
           </dl>
 
