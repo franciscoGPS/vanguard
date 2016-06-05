@@ -103,7 +103,7 @@ class GreenhousesController < ApplicationController
     @string_products = ""
     diffs_prods = Shipment.different_products_in_sale(@sale.id)
     diffs_prods.each_with_index do |product, index|
-      @string_products += (index+1).to_s + ".- " + product.name + " "
+      @string_products += (index+1).to_s + ".- " + product.name + " <br>"
     end
 
 
@@ -115,7 +115,8 @@ class GreenhousesController < ApplicationController
         :template => 'greenhouses/purshase_order.pdf.erb',
         :layout => 'pdf.html.erb',
         :show_as_html => params[:debug].present?,
-        :encoding => 'UTF-8'
+        :encoding => 'UTF-8',
+        :orientation => 'Landscape'
       end
       end
   end
@@ -205,7 +206,7 @@ class GreenhousesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def greenhouse_params
       params.require(:greenhouse).permit(:id, :business_name, :fiscal_address,
-        :greenhouse_address, :rfc, :product_id, :category, :logo, :fda_num, :_destroy,
+        :greenhouse_address, :rfc, :product_id, :category, :logo, :fda_num, :color, :_destroy,
 
        sales_attributes:  [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
       :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy, :purshase_order,
