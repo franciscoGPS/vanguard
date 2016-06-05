@@ -1,6 +1,6 @@
 <div class="well">
   <%= link_to 'Printable Receipt (PDF)', p_order_path(@greenhouse.id, @sale.id, format: 'pdf'),
-                class: "btn btn-primary" %>  <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), class: "btn btn-primary" %>
+                class: "btn btn-primary" %>  <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), class: "btn btn-warning" %>
 </div>
 <div class="container-fluid" style="background-color:white;">
 	<div class="row">
@@ -140,11 +140,6 @@
 	<div class="row padding-up">
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-4">
-					<address>
-						<strong>Vanguard, Co.</strong>
-					</address>
-				</div>
 				<div class="col-md-4 col-md-offset-4">
 					<p class="text-right text-muted fix-order">
 						<%= "#{Date.today}" %>

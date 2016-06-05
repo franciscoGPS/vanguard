@@ -2,119 +2,140 @@
   <div class="row">
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-6">
-          <div class="page-header">
-            <h3>
-               <small>Customs Invoice</small>
-            </h3>
-          </div>
+        <div class="pull-left" style="width: 375px">
+          <%- if @greenhouse.logo.present? %>
+          <%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :style => "max-height: 80px;", :class => "pull-left") %>
+          <% end %>
+          <p class="<%= 'pull-right' if @greenhouse.logo.present? %>" style="font-size:10px;">
+            <strong><%= "#{@greenhouse.business_name}" %></strong><br>
+            <%= "#{@greenhouse.fiscal_address}" %>
+          </p>
         </div>
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-md-6 pull-left" style="width: 350px">
-              <p>
-                <span class="label label-primary">Domicilio fiscal</span>
-                 <strong><%= "#{@greenhouse.business_name}" %></strong><br>
-                 <%= "#{@greenhouse.fiscal_address}" %>
-              </p>
-            </div>
-            <div class="col-md-6 pull-right" style="width: 350px">
-              <div class="row">
-                <div class="col-md-6">
-                    <p>
-                      <span class="label label-primary">Factura Comercial</span>
-                      <%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                    <span class="label label-primary">Fecha</span>
-                      <%= "#{DateTime.now.to_date}" %>
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                    <span class="label label-primary">Orden de Compra</span>
-                      <%= "#{@manifest.po_number}" %>
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                    <span class="label label-primary">Manifiesto</span>
-                      <%= "#{@manifest.manifest_number}" %>
-                    </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="pull-right" style="width: 355px;">
+          <p class="text-center" style="font-size:10px;">
+            <span class="label" style="background-color: <%= @greenhouse.color %>">Factura Comercial</span><br>
+            <%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
+          </p>
+          <p class="text-center" style="font-size:10px;">
+            <span class="label" style="background-color: <%= @greenhouse.color %>">Fecha</span><br>
+            <%= "#{DateTime.now.to_date}" %>
+          </p>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
-          <h4>
-            Contribuyente de Régimen de Transparencia
-          </h4>
-          <div class="row">
-            <div class="col-md-6 pull-left" style="width: 350px">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h4 class="panel-title" style="font-size: 15px">
-                    Vendido a:
-                  </h4>
-                </div>
-                <div class="panel-body">
-                  <%= "#{@manifest_customer.business_name + " " +@manifest_customer.tax_id_number }"%>
-                </div>
-                <div class="panel-footer">
-                  <%= "#{@manifest_customer.billing_address}"  %>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 pull-right" style="width: 350px">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h4 class="panel-title" style="font-size: 15px">
-                    Enviado a
-                  </h4>
-                </div>
-                <div class="panel-body">
-                  <%= "#{@warehouse.name}" %>
-                </div>
-                <div class="panel-footer">
-                  <%= "#{@warehouse.address}"  %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 pull-left" style="width:350px;">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h4 class="panel-title" style="font-size: 15px">
-                    Agencia Aduanal
-                  </h4>
-                </div>
-                <div class="panel-body">
-                  <%= "#{@manifest.mex_custom_broker}" %>
-                </div>
-                <div class="panel-footer">
-                  <%= "#{@manifest.usa_custom_broker}" %>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 pull-right" style="width:350px;">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h4 class="panel-title" style="font-size: 15px">
-                    Datos Transportista
-                  </h4>
-                </div>
-                <div class="panel-body">
-                  <%=  "#{@transportist_data}" %>
-                </div>
-              </div>
-            </div>
-          </div>
+        <h4 class="text-center" style="font-size:11px;">
+        Contribuyente de Régimen de Transparencia
+        </h4>
+        <div class="row">
+          <table class="text-center" style="width:750px;border: 1px solid <%= @greenhouse.color %>;">
+            <tbody>
+              <tr>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:300px;"><%= "#{@manifest_customer.business_name }"%></td>
+                <td style="font-size:10px;width:200px;"><%= "#{@manifest_customer.tax_id_number}" %></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>">Vendido a</td>
+                <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
+                <td style="font-size:10px;width:200px;"><strong><small>RFC / TAX ID</small></strong></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:600px;"><%= "#{@manifest_customer.billing_address}"  %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:600px;"><strong><small>Dirección</small></strong></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       <div class="row" style="padding-top:10px;">
+          <table class="text-center" style="width:750px;border: 1px solid <%= @greenhouse.color %>;">
+            <tbody>
+              <tr>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:300px;"><%= "#{@warehouse.name}" %></td>
+                <td style="font-size:10px;width:200px;"><%= "#{@warehouse.tax_id}"  %></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>">Enviado a</td>
+                <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
+                <td style="font-size:10px;width:200px;"><strong><small>RFC / TAX ID</small></strong></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:600px;"><%= "#{@warehouse.address}"  %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:600px;"><strong><small>Dirección</small></strong></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row"  style="padding-top:10px;">
+          <table class="text-center" style="width:750px;border: 1px solid <%= @greenhouse.color %>;">
+            <tbody>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:300px;"><%= "#{@manifest.mex_custom_broker}" %></td>
+                <td style="width:200px;"></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>">Agencia</td>
+                <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
+                <td style="width:200px;"></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>">Aduanal</td>
+                <td style="font-size:10px;width:300px;"><%= "#{@manifest.usa_custom_broker}" %></td>
+                <td style="width:200px;"></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
+                <td style="width:200px;"></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="row" style="padding-top:10px;">
+        <table class="text-center" style="width:750px;border: 1px solid <%= @greenhouse.color %>;">
+            <tbody>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:300px;"></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>">Datos</td>
+                <td style="font-size:10px;width:300px;"><%=  "#{@transportist_data}" %></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>">Transportista</td>
+                <td style="font-size:10px;width:300px;"></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="font-size:10px;width:300px;"></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="">
+        <div style="width:800px">
+          <p class="pull-left" style="width:375px;font-size:10px;">
+            <span class="label" style="background-color: <%= @greenhouse.color %>">Orden de Compra</span>
+            <%= "#{@manifest.po_number}" %>
+          </p>
+          <p class="pull-right" style="width:355px;font-size:10px;">
+            <span class="label" style="background-color: <%= @greenhouse.color %>">Manifiesto</span>
+            <%= "#{@manifest.manifest_number}" %>
+          </p>
         </div>
       </div>
       <div class="row">
@@ -132,66 +153,65 @@
               </tr>
             </thead>
             <tbody>
-            <% @shipments.each do |shipment|%>
+              <% @shipments.each do |shipment|%>
               <tr>
-                <td>
+                <td style="font-size:10px;">
                   <%="#{shipment.box_number}" %>
                 </td>
-                <td>
+                <td style="font-size:10px;">
                   <%= "#{BoxType.find(shipment.box_type_id).name}" %>
                 </td>
-                <td>
+                <td style="font-size:10px;">
                   <%=  "#{shipment.weight}" %>
                 </td>
-                <td>
+                <td style="font-size:10px;">
                   <%= "#{shipment.pallets_number }"%>
                 </td>
-                <td>
+                <td style="font-size:10px;">
                   <%= "#{shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name}" %>
                 </td>
-                <td>
+                <td style="font-size:10px;">
                   <%= "#{shipment.price}" %>
                 </td>
-                <td>
+                <td style="font-size:10px;">
                   <strong><%= "#{shipment.price * shipment.box_number}" %></strong>
                 </td>
               </tr>
-                <% end %>
-
+              <% end %>
             </tbody>
           </table>
           <div class="row">
             <div class="col-md-6 pull-left" style="width:350px;">
-                <small>
-                  CAAT:
-                </small>
-                <strong>
-                  <%= "#{@manifest.caat}" %>
-                </strong><br>
-                <small>
-                  Tipo de Caja:
-                </small>
-                <strong>
-                  <%= "Refrigerated Box " + "#{@manifest.trailer_size.to_s + "\""}" %>
-                </strong><br>
-                <small>
-                  Transfer/Código Alpha Transfer:
-                </small>
-                <strong>
-                  <%=  "#{@manifest.alpha}" %>
-                </strong><br>
-                <small>
-                  FDA
-                </small>
-                <strong>
-                  <%="#{@manifest.fda_num}" %>
-                </strong>
-                <small>
-                  No. Pallets
-                </small>
-                <strong>
-                  <%= "#{@manifest.total_pallets} - #{@total_pallets_words}" %>
-                </strong>
+              <small>
+              CAAT:
+              </small>
+              <strong>
+              <%= "#{@manifest.caat}" %>
+              </strong><br>
+              <small>
+              Tipo de Caja:
+              </small>
+              <strong>
+              <%= "Refrigerated Box " + "#{@manifest.trailer_size.to_s + "\""}" %>
+              </strong><br>
+              <small>
+              Transfer/Código Alpha Transfer:
+              </small>
+              <strong>
+              <%=  "#{@manifest.alpha}" %>
+              </strong><br>
+              <small>
+              FDA
+              </small>
+              <strong>
+              <%="#{@manifest.fda_num}" %>
+              </strong>
+              <small>
+              No. Pallets
+              </small>
+              <strong>
+              <%= "#{@manifest.total_pallets} - #{@total_pallets_words}" %>
+              </strong>
             </div>
             <div class="col-md-6 pull-right">
               <table class="table text-center">
@@ -212,7 +232,7 @@
                     </td>
                     <td>
                       <strong><%=  "#{number_to_currency(@total_ammount_money)}" %></strong><br>
-                      <i><small><%=  "#{to_words((@total_ammount_money).round(2).to_f) }"%></small></i>
+                      <i><small><%=  "#{ (@total_ammount_money).round(2).to_f.to_words }"%><%#=  "#{to_words((@total_ammount_money).round(2).to_f) }"%></small></i>
                     </td>
                   </tr>
                 </tbody>
@@ -242,19 +262,19 @@
                 resold into the United States , they must be sold in accordance with
                 the terms of Suspension Agreeement to an entity with a PACA License
                 and at prices that are at or above the Reference Price as established in Appendix "E".
-                </p>
+              </p>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 pull-left" style="width: 350px">
               <p>
-                <span class="label label-primary">Entregó</span>
+                <span class="label" style="background-color: <%= @greenhouse.color %>">Entregó</span>
                 <%= "#{@manifest.delivery_person}" %>
               </p>
             </div>
             <div class="col-md-6 pull-right" style="width: 350px">
               <p>
-                <span class="label label-primary">Recibió</span>
+                <span class="label" style="background-color: <%= @greenhouse.color %>">Recibió</span>
                 <%= "#{@manifest.person_receiving}" %>
               </p>
             </div>

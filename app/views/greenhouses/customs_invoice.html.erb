@@ -15,7 +15,7 @@
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-6">
-							 <span class="label label-primary">Domicilio fiscal</span>
+							 <span class="label" style="background-color: <%= @greenhouse.color %>">Domicilio fiscal</span>
 							<address>
 								 <strong><%= "#{@greenhouse.business_name}" %></strong>
 								 <%= "#{@greenhouse.fiscal_address}" %>
@@ -24,7 +24,7 @@
 						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-6">
-									 <span class="label label-primary">Factura Comercial</span>
+									 <span class="label" style="background-color: <%= @greenhouse.color %>">Factura Comercial</span>
 								</div>
 								<div class="col-md-6">
 										<%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
@@ -32,7 +32,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-6">
-									 <span class="label label-primary">Fecha</span>
+									 <span class="label" style="background-color: <%= @greenhouse.color %>">Fecha</span>
 								</div>
 								<div class="col-md-6">
 										<%= "#{DateTime.now.to_date}" %>
@@ -42,11 +42,11 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							 <span class="label label-primary">Orden de Compra</span>
+							 <span class="label" style="background-color: <%= @greenhouse.color %>">Orden de Compra</span>
 								<%= "#{@manifest.po_number}" %>
 						</div>
 						<div class="col-md-6">
-							 <span class="label label-primary">Manifiesto</span>
+							 <span class="label" style="background-color: <%= @greenhouse.color %>">Manifiesto</span>
 								<%= "#{@manifest.manifest_number}" %>
 						</div>
 					</div>
@@ -59,7 +59,7 @@
 					</h3>
 					<div class="row">
 						<div class="col-md-6">
-							<div class="panel panel-primary">
+							<div class="panel" style="background-color: <%= @greenhouse.color %>">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										Vendido a:
@@ -74,7 +74,7 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="panel panel-primary">
+							<div class="panel" style="background-color: <%= @greenhouse.color %>">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										Enviado a
@@ -91,7 +91,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<div class="panel panel-primary">
+							<div class="panel" style="background-color: <%= @greenhouse.color %>">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										Agencia Aduanal
@@ -106,7 +106,7 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="panel panel-primary">
+							<div class="panel" style="background-color: <%= @greenhouse.color %>">
 								<div class="panel-heading">
 									<h3 class="panel-title">
 										Datos Transportista
@@ -197,7 +197,7 @@
 									No. Pallets
 								</dt>
 								<dd>
-									<%= "#{@manifest.total_pallets} - #{@total_pallets_words}" %>
+									<%= "#{@manifest.total_pallets} - #{@total_pallets_words}".upcase %>
 								</dd>
 							</dl>
 						</div>
@@ -226,7 +226,8 @@
 										<td>
 										</td>
 										<td>
-											<%=  "#{to_words((@total_ammount_money).round(2).to_f) }"%>
+											<%#=  "#{to_words((@total_ammount_money).round(2).to_f) }"%>
+											(<%= "#{     (@total_ammount_money).round(2).to_f.to_words.upcase        }" %> DOLARES 00/100 USD)
 										</td>
 									</tr>
 								</tbody>
@@ -261,13 +262,13 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							 <span class="label label-primary">Entregó</span>
+							 <span class="label" style="background-color: <%= @greenhouse.color %>">Entregó</span>
 							<p>
 								<%= "#{@manifest.delivery_person}" %>
 							</p>
 						</div>
 						<div class="col-md-6">
-							 <span class="label label-primary">Recibió</span>
+							 <span class="label" style="background-color: <%= @greenhouse.color %>">Recibió</span>
 							<p>
 								<%= "#{@manifest.person_receiving}" %>
 							</p>

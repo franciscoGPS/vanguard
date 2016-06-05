@@ -6,9 +6,10 @@
           <thead>
             <tr>
               <th></th>
-              <th>Shipment Number</th>
-              <th>Sale product</th>
-              <th>Sale customer</th>
+              <th>Shipment</th>
+              <th>Products</th>
+              <th>Customer</th>
+              <th>Date</th>
               <th><%=t '.actions', :default => t("helpers.actions") %></th>
             </tr>
           </thead>
@@ -33,6 +34,7 @@
                     Detalles
                   <%end%>
                 </a></td>
+                <td><%= "#{sale.departure_date}" %></td>
                 <td>
                   <%= link_to edit_greenhouse_sale_path(sale.greenhouse_id, sale.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
                   <i class="fa fa-pencil fw"></i>

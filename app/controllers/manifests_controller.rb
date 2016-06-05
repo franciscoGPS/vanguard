@@ -63,7 +63,7 @@ class ManifestsController < ApplicationController
 
     @manifest.sale = @sale
     #Se manda a la vista la palabra equivalente de la cantidad enviada
-    @total_pallets_words = to_words(@manifest.total_pallets)
+    #@total_pallets_words = to_words(@manifest.total_pallets)
 
     @warehouses = Warehouse.where(greenhouse_id: @greenhouse.id)
 
