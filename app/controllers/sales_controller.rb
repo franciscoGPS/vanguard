@@ -16,6 +16,11 @@ class SalesController < ApplicationController
   def show
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.find(params[:id])
+    if @sale.delivery_place != nil
+      @delivery_place = DeliveryPlace.find(@sale.delivery_place)
+    else
+      @delivery_place = DeliveryPlace.first
+    end
     @shipments = Shipment.where(sale_id: @sale.id).order(customer_id: :asc)
     @customers = @sale.sold_to
     @state_changes = ShipmentStateChanges.where(sale_id: @sale.id).order(created_at: :desc ).page(params[:page])
@@ -65,7 +70,6 @@ class SalesController < ApplicationController
     @action = params[:action]
     @customers = Customer.own_customers(params[:greenhouse_id])
     @products = Product.where(greenhouse_id: params[:greenhouse_id])
-
     @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
   end

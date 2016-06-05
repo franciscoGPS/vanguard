@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Delivery Places</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @delivery_places.each do |delivery_place| %>
+      <tr>
+        <td><%= link_to 'Show', delivery_place %></td>
+        <td><%= link_to 'Edit', edit_delivery_place_path(delivery_place) %></td>
+        <td><%= link_to 'Destroy', delivery_place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Delivery place', new_delivery_place_path %>
