@@ -50,6 +50,11 @@ Rails.application.routes.draw do
     get 'purshase_order_state_change' => 'sales#purshase_order_state_change'
 #Fin###########
 
+
+#Acción al actualizar las anotaciones en el preview de la orden de compra. order.html.erbta
+    post 'annotations_update' => 'sales#annotations_update'
+#Fin###########
+
     #Acción que se manda a llamar para cargar los conteos adecuados para cada producto.
     get 'get_product_count_types' => 'count_types#get_product_count_types'
     #Fin de esta petición ajax que se llama desde _shipment_fields.html.erb

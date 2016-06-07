@@ -52,7 +52,7 @@
                 <dd><pre class="prettyprint"><%= "#{@sale.arrival_date}" %></pre></dd>
               </div>
               <div class="col-md-6 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:observations) %></dt>
+                <dt class="label label-default"><%= model_class.human_attribute_name(:comments) %></dt>
                 <dd><pre class="prettyprint"><%= "#{@sale.annotation}" %></pre></dd>
               </div>
           </dl>
@@ -113,7 +113,7 @@
            <div class=" col-md-6">
             <%= number_field_tag :hld_qty, class: "form-control" %>
           </div>
-           <%= submit_tag "Save", id: "save_qty", class: "col-md-3" %>
+           <%= submit_tag "Save", id: "save_qty", class: "col-md-3 btn-xs" %>
           </div>
             <div class="col-md-3">
               <%= label_tag "Documentacion de carga", nil, class: "col-md-6" %>
@@ -150,6 +150,17 @@
 
 <script type="text/javascript">
 
+  $('#hld_qty').on("input", function(){
+
+          if ("<%= @sale.hld_qty %>" != $('#hld_qty').val()){
+              annotation_changed = true;
+          } else{
+
+            annotation_changed = false;
+          }
+
+          });
+
   $(document)
     .ready(function (data) {
             $('#save_qty').prop('disabled', true);
@@ -164,9 +175,7 @@
           enviar_ajax("", false);
 
         $('#save_qty').on("click", function(){
-
           var qty = $("#hld_qty").val();
-
           enviar_ajax(this.name, qty);
 
         });
@@ -363,9 +372,11 @@
           if (state == false){
             $('#save_qty').prop('disabled', true);
             $('#hld_qty').prop('disabled', true);
+            $('#save_qty').removeClass("btn-warning");
           }else{
             $('#save_qty').prop('disabled', false);
             $('#hld_qty').prop('disabled', false);
+            $('#save_qty').addClass("btn-warning");
           }
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
@@ -416,6 +427,8 @@
               var updated_sale = $.parseJSON(dataRes);
 
               seleccionar_campos(updated_sale);
+
+
 
             }
           });
@@ -468,6 +481,17 @@
         //cantidad retenida en FDA 18
         $('#hld_qty').val(sale.hld_qty);
 
+        if ("<%= @sale.hld_qty %>" == sale.hld_qty){
+          //Do Nothing
+        }else {
+            disableHldFields();
+        }
+      }
+
+      function disableHldFields(){
+            $('#save_qty').prop('disabled', true);
+            $('#hld_qty').prop('disabled', true);
+            $('#save_qty').removeClass("btn-warning");
       }
 
       //Fin del ready y 1er function
