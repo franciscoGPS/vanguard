@@ -14,7 +14,7 @@
         <div class="pull-right" style="width: 355px;">
           <p class="text-center" style="font-size:10px;">
             <span class="label" style="background-color: <%= @greenhouse.color %>">Factura Comercial</span><br>
-            <%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
+            <%=  "#{@sale.id.to_s}-#{DateTime.now.to_date}" %>
           </p>
           <p class="text-center" style="font-size:10px;">
             <span class="label" style="background-color: <%= @greenhouse.color %>">Fecha</span><br>
@@ -112,11 +112,30 @@
                 <td style="font-size:10px;width:300px;"></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>">Datos</td>
-                <td style="font-size:10px;width:300px;"><%=  "#{@transportist_data}" %></td>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>">Datos Transportista</td>
+                <td style="font-size:10px;width:300px;">
+                  <div class="div-table">
+                    <div style="display:table-row;width:auto;clear:both;" class="div-table-row">
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col" align="center"><%= @manifest.truck %>"</div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col"><%= @manifest.truck_licence_plate %></div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col"><%= @manifest.trailer_num %></div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col"><%= @manifest.trailer_num_lp %></div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col">"<%= @manifest.stamp %>"</div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col">"<%= @manifest.thermograph %>"</div>
+                    </div>
+                    <div style="display:table-row;width:auto;clear:both;" class="div-table-row">
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col">Tractor #</div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col">Placas Tractor</div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col">Caja #</div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col">Placas caja</div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col">Seal (unseal#)</div>
+                      <div style="float:left;/*fix for  buggy browsers*/ display:table-column; width:100px; " class="div-table-col">Thermomether</div>
+                    </div>
+                  </div>
+                </td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>">Transportista</td>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
                 <td style="font-size:10px;width:300px;"></td>
               </tr>
               <tr>
