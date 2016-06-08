@@ -251,6 +251,24 @@ class SalesController < ApplicationController
 
   end
 
+  #Events methods. It's calle when updating the annotations field on the
+  #preview of the order (order.html.erb.)(Sale)
+  def annotations_update
+    #Se recoge el parámetro id de la venta con la que se trabajará
+    sale = Sale.find(params[:sale_id])
+    sale.annotation = params[:value]
+    action = params[:action]
+    result = {}
+    if sale.save
+      result = {:status => true, :error_message => "", :action => action}
+
+    else
+      result = {:status => false, :url => url,:error_message => "An unexpected error
+       ocurred when trying to update annotations for this shipment. Please contact support."}
+    end
+    render :json => result
+  end
+
   #Events methods. Son llamados desde las funciones ajax disparadas al accionar
   #los checkboxes propios a los estados de cada Envío.(Venta)
   def purshase_order_state_change

@@ -1,0 +1,73 @@
+<%= search_form_for @search, :remote=>"true", url: greenhouse_sale_path, :method => :get do |f| %>
+  <table class="table table-striped table-bordered table-condensed table-hover">
+    <thead>
+    <tr>
+      <th class="">
+        <%= sort_link @search, :shipment_id, get_label("sale", "shipment id"), {}, { :remote => true, :method => :get } %>
+      </th>
+      <th class="">
+        <%= sort_link @search, :departure_date, get_label("sale", "departure_date"), {}, { :remote => true, :method => :get } %>
+      </th>
+      <th class="">
+        <%= sort_link @search, :customer, get_label("sale", "customer"), {}, { :remote => true, :method => :get } %>
+      </th>
+      <th class="">
+        <%= sort_link @search, :product, get_label("sale", "product"), {}, { :remote => true, :method => :get } %>
+      </th>
+      <th class="action_col"><%= t("basic.action") %></th>
+    </tr>
+    <tr>
+      <th><%= f.text_field :name_cont %></th>
+      <th><%= f.text_field :component_definition_name_cont %></th>
+      <th><%= f.text_field :manufacturer_name_cont %></th>
+      <th><%= f.text_field :source_name_cont %></th>
+      <th><%= f.text_field :level_type_name_cont %></th>
+      <th><%= render  partial: 'shared/search_button_group'%></th>
+    </tr>
+    </thead>
+    <tbody>
+<% @component.each do |component| %> <% end %>
+<table class="table table-striped table-bordered table-condensed table-hover">
+<thead>
+<tr>
+<th class="component_name_header_col"><%= sort_link @search, :name, get_label("component", "name"), {}, { :remote => true, :method => :get } %></th>
+<th class="component_component_definition_name_header_col"><%= sort_link @search, :component_definition_name, get_label("component", "component_definition"), {}, { :remote => true, :method => :get } %></th>
+<th class="component_manufacturer_name_header_col"><%= sort_link @search, :manufacturer_name, get_label("component", "manufacturer"), {}, { :remote => true, :method => :get } %></th>
+<th class="component_source_name_header_col"><%= sort_link @search, :source_name, get_label("component", "source"), {}, { :remote => true, :method => :get } %></th>
+<th class="component_level_type_name_header_col"><%= sort_link @search, :level_type_name, get_label("component", "level_type"), {}, { :remote => true, :method => :get } %></th>
+<th class="action_col"><%= t("basic.action") %></th>
+</tr>
+<tr>
+<th><%= f.text_field :name_cont %></th>
+<th><%= f.text_field :component_definition_name_cont %></th>
+<th><%= f.text_field :manufacturer_name_cont %></th>
+<th><%= f.text_field :source_name_cont %></th>
+<th><%= f.text_field :level_type_name_cont %></th>
+<th><%= render partial: 'shared/search_button_group'%></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="component_name_body_col"><%= component.try(:name) %></td>
+<td class="component_component_definition_body_col"><%= component.component_definition.try(:name) %></td>
+<td class="component_manufacturer_body_col"><%= component.manufacturer.try(:name) %></td>
+<td class="component_source_body_col"><%= component.source.try(:name) %></td>
+<td class="component_level_type_body_col"><%= component.level_type.try(:name) %></td>
+<td>
+<div class="btn-group"><a class="btn dropdown-toggle btn-primary action-btn" href="#" data-toggle="dropdown">
+ <%= t('basic.action') %>
+
+ </a>
+<ul class="dropdown-menu">
+    <li><%= link_to t('basic.show.simple'), component %></li>
+    <li><%= link_to t('basic.edit.simple'), edit_component_path(component) %></li>
+    <li><%= link_to t('basic.destroy.simple'), component, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+</ul>
+</div>
+<!-- button group --></td>
+</tr>
+</tbody>
+</table>
+<%= paginate @component %>
+<% end %>
+

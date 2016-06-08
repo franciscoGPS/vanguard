@@ -1,0 +1,11 @@
+heroku maintenance:on --app=vanguardco-staging
+
+git push vanguardco master
+
+heroku run rake db:version
+heroku run rake db:migrate --app vanguardco-staging
+
+heroku run rake assets:precompile --remote prod
+
+heroku maintenance:off --app=vanguardco
+

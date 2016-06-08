@@ -61,7 +61,9 @@ gem 'wicked_pdf'                      # A PDF generation plugin for Ruby on Rail
 gem 'wkhtmltopdf-binary'              # Because wicked_pdf is a wrapper for wkhtmltopdf, you'll need to install that, too.
 gem 'groupdate'                       # Generate more ActiveRecord methods
 gem "chartkick"                       # Charts with JS
+gem "ransack"                         # Ransack enables the creation of both simple and advanced search forms for your Ruby on Rails application
 gem 'kaminari'                        # A Scope & Engine based paginator for modern web app frameworks and ORMs
+gem 'kaminari-bootstrap'              # Basic Gem for quick default inclusion of Kaminari theme compatible with Twitter Bootstrap 2.0 and Twitter Bootstrap 3.0
 gem 'public_activity'                 # Generate tracking of users
 gem 'activerecord-session_store'      # Stores cookies on db insted of client. Useful when large ammount of data need to be stored.
 gem "bootstrap-table-rails"           # plugin  Rails engine to use it within the asset pipeline.

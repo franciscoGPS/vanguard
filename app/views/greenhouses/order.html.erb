@@ -1,7 +1,9 @@
 <div class="well">
   <%= link_to 'Printable Receipt (PDF)', p_order_path(@greenhouse.id, @sale.id, format: 'pdf'),
-                class: "btn btn-primary" %>  <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), class: "btn btn-warning" %>
+                class: "btn btn-primary", :id => 'btn_pdf_generate' %>
+  <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), class: "btn btn-warning" %>
 </div>
+<%= hidden_field_tag(:sale_id_hidden, "#{@sale.id}")%>
 <div class="container-fluid" style="background-color:white;">
 	<div class="row">
 		<div class="col-md-12">
@@ -127,11 +129,15 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					 <span class="label label-info">Observaciones</span>
-           <div class="well">
-             <p>
-               <%= "#{@sale.annotation}" %>
-             </p>
+					 <!--<span class="label label-info">Observaciones</span>-->
+           <div class="form-group">
+              <%= label_tag :comments, nil, :class => 'label label-info col-md-2' %>
+            </div>
+            <div class="well">
+              <%= text_field :sale, :annotation, :class => 'text_field form-control' %>
+            </div>
+           <div>
+               <%= submit_tag "Save", id: "annotation_btn", class: "btn btn-primary col-md-2" %>
            </div>
 				</div>
 			</div>
@@ -149,3 +155,78 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+
+
+          var annotation_changed = false;
+
+          $('#sale_annotation').on("input", function(){
+            annotation_changed = true;
+            if ("<%= @sale.annotation %>" != $('#sale_annotation').val()){
+            $('#annotation_btn').removeClass('btn-primary');
+            $('#annotation_btn').addClass('btn-warning');
+          } else{
+
+            $('#annotation_btn').addClass('btn-primary');
+            $('#annotation_btn').removeClass('btn-warning');
+          }
+
+          });
+
+            $('#btn_pdf_generate').on("click", function(){
+              if(annotation_changed){
+                if(confirm("Annotations has changed. Do you want to continue without save?")){
+
+                }else {
+                  event.preventDefault();
+                }
+              }
+            });
+
+
+          $('#annotation_btn').on("click", function(){
+            var annotation_txt = $("#sale_annotation").val();
+            enviar_ajax( "<%= annotations_update_path %>", this.name, annotation_txt);
+          });
+
+          function responseFromServer(result){
+            if(result["status"]){
+              var action = result["action"];
+              if (action == "annotations_update"){
+                $('#annotation_btn').removeClass('btn-warning');
+                $('#annotation_btn').addClass('btn-primary');
+                annotation_changed = false;
+              }
+            }else {
+              alert("Unexpected error occured during saving ");
+            }
+          }
+
+
+          //=========================================================
+          function enviar_ajax(url, accion_param, value) {
+
+          var params = {
+            accion: url,
+            //Cuando la función es llamada desde el botón para guardar la cantidad,
+            //el valor de checked es un número y la acción es save_qty
+            value: value,
+            sale_id: $('#sale_id_hidden').val()
+          };
+
+          $.ajax({
+            url: params.accion,
+            type: 'POST',
+            data: $.param(params),
+            dataType: 'json',
+            success: function (dataRes) {
+              responseFromServer(dataRes);
+            }
+          });
+
+
+      }
+      //=========================================================
+
+
+</script>

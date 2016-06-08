@@ -27,7 +27,7 @@
 									 <span class="label" style="background-color: <%= @greenhouse.color %>">Factura Comercial</span>
 								</div>
 								<div class="col-md-6">
-										<%=  "#{@sale.id.to_s + "-" + DateTime.now.to_s}" %>
+										<%=  "#{@sale.id.to_s}-#{DateTime.now.to_date}" %>
 								</div>
 							</div>
 							<div class="row">

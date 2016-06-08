@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
+        <%= paginate(@sales) %>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -14,6 +15,7 @@
             </tr>
           </thead>
           <tbody>
+
             <% @sales.each do |sale| %>
             <tr>
 
@@ -47,6 +49,7 @@
             <!-- El contenido retirado va entre los dos <tbody/>-->
           </tbody>
         </table>
+        <%= paginate(@sales) %>
       </div>
       <div class="col-md-6">
         <h2 id="sale_id_status">Status</h2>
