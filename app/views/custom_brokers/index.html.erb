@@ -1,0 +1,34 @@
+<%- model_class = CustomBroker -%>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Custom Brokers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:country) %></th>
+      <th><%= model_class.human_attribute_name(:greenhouse) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @custom_brokers.each do |custom_broker| %>
+      <tr>
+        <td><%= custom_broker.name %></td>
+        <td><%= custom_broker.address %></td>
+        <td><%= custom_broker.country_code %></td>
+        <td><%= custom_broker.greenhouse_id %></td>
+        <td><%= link_to 'Show', greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id) %></td>
+        <td><%= link_to 'Edit', edit_greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id) %></td>
+        <td><%= link_to 'Destroy', greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Custom broker', new_greenhouse_custom_broker_path(@greenhouse.id) %>

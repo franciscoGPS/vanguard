@@ -1,0 +1,20 @@
+<%# app/views/students/_list.html.erb %>
+<div id="filterrific_results">
+  <table>
+    <tr>
+      <th>Shipment#</th>
+      <th>Customers</th>
+      <th>Productos</th>
+      <th>Dep. Date</th>
+    </tr>
+    <% sales.each do |sale| %>
+      <tr>
+
+        <td><%= link_to(sale.ship_number, greenhouse_sale_path(@greenhouse.id, sale.id)) %></td>
+        <td><%= sale.departure_date %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+

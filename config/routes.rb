@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         resources :products
         resources :colors
         resources :warehouses
+        resources :custom_brokers
 
     end
 

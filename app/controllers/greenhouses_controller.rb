@@ -107,6 +107,8 @@ class GreenhousesController < ApplicationController
       @string_products += (index+1).to_s + ".- " + product.name + " <br>"
     end
 
+    @mex_custom_broker = CustomBroker.find(@manifest.mex_custom_broker)
+    @usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
 
 
     respond_to do |format|
@@ -132,6 +134,9 @@ class GreenhousesController < ApplicationController
     @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
     @warehouse = Warehouse.find(@manifest.warehouse_id)
+
+    @mex_custom_broker = CustomBroker.find(@manifest.mex_custom_broker)
+    @usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
 
     #Aquí se selecciona el cliente que está en el manifiesto
     #y será el mismo que se pondrá en la factura comercial. (La que se envía a las aduanas)
@@ -227,13 +232,15 @@ class GreenhousesController < ApplicationController
                 product_attributes: [:id, :name, :_destroy]],
 
           manifests_attributes: [:id, :sale_id, :date, :mex_custom_broker,
-            :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
+            :carrier, :driver, :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
             :stamp, :thermograph, :po_number, :ship_number, :delivery_person, :usa_custom_broker,
           :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
           :sold_to_id, :deleted_at, :warehouse_id, :_destroy],
 
           warehouses_attributes: [:id, :name, :address, :tax_id, :phone, :greenhouses_id, :_destroy],
-          colors_attributes: [:id, :name, :greenhouses_id, :_destroy]
+          colors_attributes: [:id, :name, :greenhouses_id, :_destroy],
+          custom_brokers_attributes: [:id, :name, :address, :greenhouse_id, :country_code,
+        :created_at, :deleted_at, :updated_at, :_destroy]
            ]
 
 

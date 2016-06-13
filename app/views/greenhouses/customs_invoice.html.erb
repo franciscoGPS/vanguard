@@ -94,14 +94,20 @@
 							<div class="panel" style="background-color: <%= @greenhouse.color %>">
 								<div class="panel-heading">
 									<h3 class="panel-title">
-										Agencia Aduanal
+										Agencias
 									</h3>
 								</div>
 								<div class="panel-body">
-									<%= "#{@manifest.mex_custom_broker}" %>
+									<%= "#{@mex_custom_broker.name}" %>
+									<p>
+										<b>Agencia Aduanal Mexicana</b>
+									</p>
 								</div>
 								<div class="panel-footer">
-									<%= "#{@manifest.usa_custom_broker}" %>
+									<%= "#{@usa_custom_broker.name}" %>
+									<p>
+										<b>Agencia Aduanal Americana</b>
+									</p>
 								</div>
 							</div>
 						</div>

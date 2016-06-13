@@ -23,10 +23,10 @@ class ManifestsController < ApplicationController
     @shipments = @sale.shipments
     @sold_to_cust = Customer.find(@manifest.sold_to_id)
     if @manifest.warehouse_id != nil
-    @warehouse = Warehouse.find(@manifest.warehouse_id)
-  else
-    @warehouse = Warehouse.new
-  end
+      @warehouse = Warehouse.find(@manifest.warehouse_id)
+    else
+      @warehouse = Warehouse.new
+    end
   end
 
   # GET /manifests/new
@@ -36,6 +36,10 @@ class ManifestsController < ApplicationController
     @total_pallets = 0
     @po_numbers = {}
     biggest_po_number = 0
+
+
+    @mex_custom_broker_select = get_country_customs_brokers(@greenhouse.id, "mex")
+    @usa_custom_broker_select = get_country_customs_brokers(@greenhouse.id, "usa")
 
     @sale.shipments.each_with_index do |shipment, index|
       #total_pallets = total_pallets != nil ? total_pallets : 0
@@ -77,6 +81,8 @@ class ManifestsController < ApplicationController
     @manifest = Manifest.find(params[:id])
     @sale = Sale.find(params[:sale_id])
     @sold_to_cust = sold_to_cust(@sale)
+    @mex_custom_broker_select = get_country_customs_brokers(@greenhouse.id, "mex")
+    @usa_custom_broker_select = get_country_customs_brokers(@greenhouse.id, "usa")
   end
 
   # POST /manifests
@@ -134,11 +140,23 @@ def to_customs_invoice
 end
 
 
+
 private
 # Use callbacks to share common setup or constraints between actions.
 def set_manifest
   @manifest = Manifest.find(params[:id])
 end
+
+def get_country_customs_brokers(greenhouse_id, country_code)
+  begin
+    CustomBroker.where("greenhouse_id = ? AND country_code = ?", greenhouse_id, COUNTRY_CODES[country_code.to_sym])
+  rescue => ex
+    CustomBroker.where("greenhouse_id = ?", greenhouse_id)
+    flash[:error] = "Internal Error Found. Showing all Customs"
+  end
+
+end
+
 
 #Regresa un cliente solamente. Tendrá lógica para seleccionar al cliente
 #en caso de ser varios por Sale.
@@ -153,12 +171,12 @@ def sold_to_cust(sale)
   end
 end
 
-# Never trust parameters from the scary internet, only allow the white list through.
-def manifest_params
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def manifest_params
   params.require(:manifest).permit(:sale_id, :date, :sold_to, :sold_to_id,
   :mex_custom_broker, :usa_custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
   :trailer_num, :trailer_num_lp, :stamp, :thermograph, :po_number,
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
   :total_pallets, :comments, :manifest_number, :warehouse_id, :ship_number)
-end
+  end
 end

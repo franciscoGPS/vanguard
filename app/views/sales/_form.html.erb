@@ -69,8 +69,13 @@
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%if @edit %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  greenhouse_sale_path(@greenhouse.id, @sale.id), :class => 'btn btn-default' %>
+      <%else%>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   greenhouse_path(@greenhouse.id), :class => 'btn btn-default' %>
+      <%end%>
                   <% if @sale.own?(current_user)%>
       <%= link_to t('.delete', :default => t("helpers.links.delete")),
                   greenhouse_sales_path, :class => 'btn btn-danger' %>

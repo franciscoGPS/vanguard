@@ -64,7 +64,7 @@ class SalesController < ApplicationController
 
   # GET /sales/1/edit
   def edit
-    #@sale = Sale.find(params[:id])
+    @sale = Sale.find(params[:id])
     @shipments = Shipment.where(sale_id: params[:id])
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @action = params[:action]
@@ -72,6 +72,7 @@ class SalesController < ApplicationController
     @products = Product.where(greenhouse_id: params[:greenhouse_id])
     @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
+    @edit = true
   end
 
   # POST /sales
@@ -349,16 +350,21 @@ class SalesController < ApplicationController
       sale.hold_state!(current_user)
       sale[:hold] = !sale[:hold]
 
-    when :commit #Es el nombre que se le asigna automático al button_tag
+    when :hld_qty
       sale.hld_qty_state(current_user)
       sale[:hld_qty] = params[:valor]
+      status = "true"
 
     else
 
     end
     sale.save!
 
-    render :json => sale.to_json.to_s.to_json
+    action = params[:accion]
+    result = {:status => status, :error_message => "",:sale => sale, :action => action}
+
+    #render :json => sale.to_json.to_s.to_json
+    render :json => result
   end
 
 
@@ -390,7 +396,7 @@ class SalesController < ApplicationController
         product_attributes: [:id, :name, :_destroy]],
 
       manifests_attributes: [:id, :sale_id, :date, :mex_custom_broker,
-        :carrier, :driver,  :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
+        :carrier, :driver, :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
         :stamp, :thermograph, :po_number, :ship_number, :delivery_person, :usa_custom_broker,
       :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
       :sold_to_id, :deleted_at, :warehouse_id, :_destroy] ]
