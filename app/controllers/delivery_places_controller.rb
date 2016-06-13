@@ -2,13 +2,13 @@ class DeliveryPlacesController < ApplicationController
   before_action :set_delivery_place, only: [:show, :edit, :update, :destroy]
 
   # GET /delivery_places
-  # GET /delivery_places.json
+  ## GET /delivery_places.json
   def index
     @delivery_places = DeliveryPlace.all
   end
 
   # GET /delivery_places/1
-  # GET /delivery_places/1.json
+  ## GET /delivery_places/1.json
   def show
   end
 
@@ -22,7 +22,7 @@ class DeliveryPlacesController < ApplicationController
   end
 
   # POST /delivery_places
-  # POST /delivery_places.json
+  ## POST /delivery_places.json
   def create
     @delivery_place = DeliveryPlace.new(delivery_place_params)
 
@@ -32,32 +32,32 @@ class DeliveryPlacesController < ApplicationController
         format.json { render :show, status: :created, location: @delivery_place }
       else
         format.html { render :new }
-        format.json { render json: @delivery_place.errors, status: :unprocessable_entity }
+        #format.json { render json: @delivery_place.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /delivery_places/1
-  # PATCH/PUT /delivery_places/1.json
+  ## PATCH/PUT /delivery_places/1.json
   def update
     respond_to do |format|
       if @delivery_place.update(delivery_place_params)
         format.html { redirect_to @delivery_place, notice: 'Delivery place was successfully updated.' }
-        format.json { render :show, status: :ok, location: @delivery_place }
+        #format.json { render :show, status: :ok, location: @delivery_place }
       else
         format.html { render :edit }
-        format.json { render json: @delivery_place.errors, status: :unprocessable_entity }
+        #format.json { render json: @delivery_place.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /delivery_places/1
-  # DELETE /delivery_places/1.json
+  ## DELETE /delivery_places/1.json
   def destroy
     @delivery_place.destroy
     respond_to do |format|
       format.html { redirect_to delivery_places_url, notice: 'Delivery place was successfully destroyed.' }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 

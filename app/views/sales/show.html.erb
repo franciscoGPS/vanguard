@@ -150,33 +150,19 @@
 
 <script type="text/javascript">
 
-  $('#hld_qty').on("input", function(){
-
-          if ("<%= @sale.hld_qty %>" != $('#hld_qty').val()){
-              annotation_changed = true;
-          } else{
-
-            annotation_changed = false;
-          }
-
-          });
 
   $(document)
     .ready(function (data) {
+
             $('#save_qty').prop('disabled', true);
             $('#hld_qty').prop('disabled', true);
 
-      /*$("tr[data-link]").click(function() {
-          window.location = $(this).data("link")
-      }).children('input[name=selected]:radio').click(function(e) {
-          return false;
-      });*/
-
+          //Para precargar los valores que tiene el embarque, se hace una petición vacía
           enviar_ajax("", false);
 
         $('#save_qty').on("click", function(){
           var qty = $("#hld_qty").val();
-          enviar_ajax(this.name, qty);
+          enviar_ajax("hld_qty", qty);
 
         });
 
@@ -415,7 +401,7 @@
             sale_id: $('#sale_id_hidden').val()
           };
 
-          $.ajax({
+            $.ajax({
             url: '<%= purshase_order_state_change_path %>',
             type: 'GET',
             data: $.param(params),
@@ -424,15 +410,27 @@
 
               //Recibir el objeto venta(Sale) y acomodar sus booleanos de los estados
               //updated_sale es el objeto tipo venta. Se convierte a objeto y se puede acceder a sus propiedades con el operador .  ej.a lert(updated_sale.aasm_state);
-              var updated_sale = $.parseJSON(dataRes);
+              //var updated_sale = $.parseJSON(dataRes);
 
+              var updated_sale =  dataRes["sale"];
               seleccionar_campos(updated_sale);
 
-
+              var action = dataRes["action"];
+              var status = dataRes["status"];
+              if(status){
+                if(action == "hld_qty"){
+                  disable_saving_fields();
+                }
+              }
 
             }
           });
+      }
 
+      function disable_saving_fields(){
+                $('#save_qty').removeClass("btn-warning");
+                $('#hld_qty').prop('disabled', true);
+                $('#save_qty').prop('disabled', true);
 
       }
 
@@ -481,17 +479,6 @@
         //cantidad retenida en FDA 18
         $('#hld_qty').val(sale.hld_qty);
 
-        if ("<%= @sale.hld_qty %>" == sale.hld_qty){
-          //Do Nothing
-        }else {
-            disableHldFields();
-        }
-      }
-
-      function disableHldFields(){
-            $('#save_qty').prop('disabled', true);
-            $('#hld_qty').prop('disabled', true);
-            $('#save_qty').removeClass("btn-warning");
       }
 
       //Fin del ready y 1er function

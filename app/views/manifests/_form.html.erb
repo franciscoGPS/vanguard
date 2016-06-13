@@ -37,11 +37,11 @@
     </div>
     <div class="form-group col-sm-12 col-md-4">
       <%= f.label :mex_custom_broker, class: "control-label" %>
-      <%= f.text_field :mex_custom_broker, class: "form-control", :required => true %>
+      <%= f.collection_select :mex_custom_broker,  @mex_custom_broker_select, :id,:name, {prompt: "Select MEX Customs Broker"}, {:class => "form-control" , :required => true}%>
     </div>
     <div class="form-group col-sm-12 col-md-4">
       <%= f.label :usa_custom_broker, class: "control-label" %>
-      <%= f.text_field :usa_custom_broker, class: "form-control", :required => true %>
+      <%= f.collection_select :usa_custom_broker,  @usa_custom_broker_select, :id,:name, {prompt: "Select USA Customs Broker"}, {:class => "form-control" , :required => true} %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
       <%= f.label :carrier, class: "control-label" %>
