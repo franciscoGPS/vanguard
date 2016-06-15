@@ -62,6 +62,7 @@ Rails.application.routes.draw do
 
     #Acción que se manda a ejecutar la validación apropiada.
     get '/greenhouses/sales/is_unique' => 'sales#is_unique'
+    post '/greenhouses/manifests/is_unique' => 'manifests#is_unique'
     #Fin de esta petición ajax que se llama desde sales/_form.html.erb
 
 

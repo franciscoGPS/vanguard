@@ -60,6 +60,7 @@ class ManifestsController < ApplicationController
       @manifest.fda_num = @greenhouse.fda_num
       @manifest.total_pallets = @total_pallets
       @manifest.ship_number = @sale.ship_number
+      @manifest.custom_invoice_id = get_next_custom_invoice_id(@greenhouse.id)
       @manifest.comments = "Se señala el precio de venta exclusivamente para cubrir
        con los requisitos de traslado y trámites aduanales,
         ya que los productos que contiene este documento son vendidos en
@@ -138,6 +139,56 @@ def to_customs_invoice
     sale = Sale.find(params[:sale_id])
     redirect_to customs_invoice_path(sale)
 end
+
+  def is_unique
+
+
+
+
+    if(params[:custom_invoice_id] != nil && params[:custom_invoice_id] != "" &&
+     params[:manifest_id] != nil && params[:manifest_id] != "" && params[:greenhouse_id] != nil && params[:greenhouse_id] != "")
+      result = result = {
+          :is_unique => false,
+          :next_custom_invoice_id => get_next_custom_invoice_id(params[:greenhouse_id]),
+          :error_message => "\"Invoice Number\" already in use. Please verify.  "}
+
+
+      manifest = Manifest.includes(:sale).where(custom_invoice_id: params[:custom_invoice_id],
+       :sales => {greenhouse_id: params[:greenhouse_id] } )
+
+      if(manifest.count == 0)
+        #the search was performed, but nothing found
+          manifest = Manifest.find(params[:manifest_id])
+          if(manifest.id != nil)
+             manifest.custom_invoice_id = params[:custom_invoice_id]
+            if(manifest.save)
+                result = {
+                  :is_unique => true,
+                  :error_message => "",
+                  :message => "·Updated·"}
+
+            end
+          end
+      elsif (manifest.count > 0)
+        #Error message already setup, just let the flow continue
+        if(params[:manifest_id] == manifest.first.id.to_s)
+
+          result = {
+                  :is_unique => true,
+                  :error_message => "",
+                  :message => "·Same·"}
+        end
+      end
+
+    else #When parámeter validation fails
+        result = {
+          :is_unique => false,
+          :next_custom_invoice_id => "",
+          :error_message => "Unexpected error ocured. Please contact your system administrator for help. "}
+
+    end#from parámeter validation
+    render :json => result
+  end#from def
 
 
 
