@@ -119,7 +119,23 @@ module ApplicationHelper
   end
 
 
+  #Returns biggest custom_invoice_id + 1
+  def get_next_custom_invoice_id(greenhouse_id)
+    begin
+      last_custom_invoice_id = Manifest.includes(:sale).where(:sales => {greenhouse_id: greenhouse_id}).where.not(:custom_invoice_id => nil).order(:custom_invoice_id => 'DESC').first.custom_invoice_id
+    rescue Exception => e
+      last_custom_invoice_id = nil
+    end
 
+    if last_custom_invoice_id != nil
+       next_custom_invoice_id = last_custom_invoice_id + 1
+    else
+      next_custom_invoice_id = 0
+    end
+
+    return next_custom_invoice_id
+
+  end
 
   def get_next_ship_number(wrong_ship_number)
 
@@ -131,21 +147,21 @@ module ApplicationHelper
 
     if last_ship_number != nil
 
-      if(wrong_ship_number != nil && wrong_ship_number != "0")
-          wrong_int_ship_number = wrong_ship_number.to_s.match(/\d+/).to_a[0].to_i
+        if(wrong_ship_number != nil && wrong_ship_number != "0")
+            wrong_int_ship_number = wrong_ship_number.to_s.match(/\d+/).to_a[0].to_i
 
-      else
+        else
         #En caso de ser el wrong_ship_number cero, se usa el último en DB como DEFAULT
-        wrong_int_ship_number = last_ship_number.match(/\d+/).to_a[0].to_i
+          wrong_int_ship_number = last_ship_number.match(/\d+/).to_a[0].to_i
 
-      end
+        end
 
       #En caso de no ser nil, se busca el número con el regex /\d+/ (dígito, una o más veces)
       last_ship_number = last_ship_number.match(/\d+/).to_a[0].to_i
       next_ship_int_number = last_ship_number+1
 
 
-       sale = ship_number_exists(next_ship_int_number)
+      sale = ship_number_exists(next_ship_int_number)
         if(sale != nil)
               next_ship_int_number = sale.ship_number.match(/\d+/).to_a[0].to_i+1
         end

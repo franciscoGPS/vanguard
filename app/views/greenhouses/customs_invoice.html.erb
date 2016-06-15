@@ -1,6 +1,7 @@
 <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), :class => "btn btn-primary"  %> <%= link_to 'Printable Receipt (PDF)', cust_inv_pdf_path(@sale.id, format: 'pdf'),
-                class: "btn btn-primary" %> <%= link_to 'Edit', edit_greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), :class => "btn btn-warning" %>
+                class: "btn btn-success", :id => "btn-print" %> <%= link_to 'Edit', edit_greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id), :class => "btn btn-warning" %>
 <%= form_for @manifest, :url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id), :html => { :class => 'form-horizontal' } do |f| %>
+
 <div class="container-fluid" style="background-color:white;">
 	<div class="row">
 		<div class="col-md-12">
@@ -24,10 +25,12 @@
 						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-6">
-									 <span class="label" style="background-color: <%= @greenhouse.color %>">Factura Comercial</span>
+									 <span class="label" id="updated_label" style="background-color: <%= @greenhouse.color %>">Factura Comercial</span>
 								</div>
 								<div class="col-md-6">
-										<%=  "#{@sale.id.to_s}-#{DateTime.now.to_date}" %>
+									<%= number_field_tag :customs_invoice_consecutive_id, @manifest.custom_invoice_id, class: "form-control" %>
+               		<!-- button_tag ("Save", :id => "save_qty") %>-->
+
 								</div>
 							</div>
 							<div class="row">
@@ -47,7 +50,7 @@
 						</div>
 						<div class="col-md-6">
 							 <span class="label" style="background-color: <%= @greenhouse.color %>">Manifiesto</span>
-								<%= "#{@manifest.manifest_number}" %>
+								<%= "#{@manifest.ship_number}" %>
 						</div>
 					</div>
 				</div>
@@ -286,3 +289,117 @@
 	</div>
 </div>
 <% end %>
+<script type="text/javascript">
+
+									$("#btn-print").on("click", function(event){
+   									 if ($(this).is("[disabled]")) {
+        								event.preventDefault();
+    								 }
+									});
+
+
+
+									$('#customs_invoice_consecutive_id').on("input", function(){
+
+									});
+
+
+$('#customs_invoice_consecutive_id').on('change', function(){
+
+          if($('#customs_invoice_consecutive_id').val() != ""){
+
+            var params = {
+              custom_invoice_id: $('#customs_invoice_consecutive_id').val(),
+              manifest_id: '<%= "#{@manifest.id}" %>',
+              greenhouse_id: '<%= "#{@greenhouse.id}" %>'
+            };
+
+            $.ajax({
+            url: '<%= greenhouses_manifests_is_unique_path %>',
+            type: 'POST',
+            data: $.param(params),
+            dataType: 'json',
+            success: function (dataRes) {
+							//dataRes = $.parseJSON(json_result);
+            	//alert("regresé " + dataRes["is_unique"] + " " + dataRes);
+
+              if(dataRes["is_unique"] == false){
+              	//Will enter here when the controller finds another manifest with similar id;
+
+                    var custom_invoice_id = $('#customs_invoice_consecutive_id').val();
+
+                    //$('#customs_invoice_consecutive_id').val(dataRes["next_custom_invoice_id"]);
+
+                    $("#messages").html('<div id="error_message_div" class="">  '+
+                      dataRes["error_message"]+' '+ custom_invoice_id + " Next on the list: <b>" +dataRes['next_custom_invoice_id'] + '</b><button class="close" data-dismiss="alert"> x</button></div>');
+
+
+                	$("#error_message_div").addClass("alert alert-danger fade in");
+
+
+                	$('#btn-print').removeClass('btn-success');
+                	$('#btn-print').addClass('btn-warning');
+                	//$('#btn-print').fadeOut();
+
+
+
+									$("#btn-print").attr("disabled", "disabled");
+
+                	setTimeout(function(){
+                		$("#messages").fadeOut();
+  																		}, 3000);
+
+
+                }else {
+                	//Will enter here when the system finds the custom_invoice_id to be unique among others in DB
+
+                	$("#btn-print").removeAttr("disabled");
+
+                	//when valid number, and saved, removes class from warning and add success color
+                	$('#btn-print').removeClass('btn-warning');
+                	$('#btn-print').addClass('btn-success');
+                	//Adds a message and changes its color to the little label next to it
+                	$("#updated_label").text(dataRes["message"]);
+                	$("#updated_label").css("background-color", "#00ff00");
+                	//After 2 seconds, the styles are returned back to normal.
+                	setTimeout(function(){
+                		$("#updated_label").text("Factura Comercial");
+                		$("#updated_label").css("background-color", "<%= @greenhouse.color %>");
+  																		}, 2000);
+                }
+
+              },
+              	 error: function (jqXHR, exception) {
+						       	 /*var msg = '';
+						        if (jqXHR.status === 0) {
+						            msg = 'Not connect.\n Verify Network.';
+						        } else if (jqXHR.status == 404) {
+						            msg = 'Requested page not found. [404]';
+						        } else if (jqXHR.status == 500) {
+						            msg = 'Internal Server Error [500].';
+						        } else if (exception === 'parsererror') {
+						            msg = 'Requested JSON parse failed.';
+						        } else if (exception === 'timeout') {
+						            msg = 'Time out error.';
+						        } else if (exception === 'abort') {
+						            msg = 'Ajax request aborted.';
+						        } else {
+						            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+						        }*/
+
+									$("#updated_label").text("Error.");
+                	$("#updated_label").css("background-color", "yellow");
+                	setTimeout(function(){
+                		$("#updated_label").text("Factura Comercial");
+                		$("#updated_label").css("background-color", "<%= @greenhouse.color %>");
+  																		}, 2000);
+
+    						}
+          });
+
+          }
+
+});
+
+
+</script>

@@ -236,20 +236,15 @@ class SalesController < ApplicationController
       if(sale != nil && sale.count > 0)
         #Encontró algo y se lo asignó a sale
         result = {}
-        result = {:is_unique => false, :next_ship_number => get_next_ship_number(params[:ship_number]) , :error_message => "Please verify. Wrong shipment number: "}
+        result = {:is_unique => false, :next_ship_number => get_next_ship_number(params[:ship_number]),
+         :error_message => "\"Shipment Number\" already in use. Please verify. "}
         render :json => result.to_json
       else
         #No encontró nada similar
-        #
         result = Hash.new(:is_unique => true, :error_message => "")
-
-      render :json => result.to_json
+        render :json => result.to_json
+      end
     end
-
-    end
-
-
-
   end
 
   #Events methods. It's calle when updating the annotations field on the
