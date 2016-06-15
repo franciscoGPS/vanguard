@@ -148,6 +148,7 @@ $('#sale_ship_number').on('change', function(){
                       dataRes["error_message"]+" "+ ship_number+'<button class="close" data-dismiss="alert"> x</button></div>');
                 }
 
+
               }
           });
 
@@ -203,15 +204,15 @@ $('#manifest_custom_invoice_id').on('change', function(){
                   $('#manifest_custom_invoice_id').addClass("alert-danger");
                   $('#btn_save').removeClass('btn-success');
                   $('#btn_save').addClass('btn-warning');
-                  //$('#btn_save').fadeOut();
+                  $('#messages').show();
 
 
 
                   $("#btn_save").attr("disabled", "disabled");
 
                   setTimeout(function(){
-                    //$("#messages").fadeOut();
-                                      }, 3000);
+                    $("#messages").fadeOut();
+                                      }, 5000);
 
 
                 }else {

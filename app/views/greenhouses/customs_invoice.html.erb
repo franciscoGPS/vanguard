@@ -339,7 +339,7 @@ $('#customs_invoice_consecutive_id').on('change', function(){
 
                 	$('#btn-print').removeClass('btn-success');
                 	$('#btn-print').addClass('btn-warning');
-                	//$('#btn-print').fadeOut();
+                	$('#messages').show();
 
 
 
@@ -347,7 +347,7 @@ $('#customs_invoice_consecutive_id').on('change', function(){
 
                 	setTimeout(function(){
                 		$("#messages").fadeOut();
-  																		}, 3000);
+  																		}, 5000);
 
 
                 }else {
