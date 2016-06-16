@@ -107,8 +107,8 @@ class GreenhousesController < ApplicationController
       @string_products += (index+1).to_s + ".- " + product.name + " <br>"
     end
 
-    @mex_custom_broker = CustomBroker.find(@manifest.mex_custom_broker)
-    @usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
+    #@mex_custom_broker = CustomBroker.find(@manifest.mex_custom_broker)
+    #@usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
 
 
     respond_to do |format|
@@ -135,8 +135,24 @@ class GreenhousesController < ApplicationController
     @customers_in_sale = @sale.sold_to
     @warehouse = Warehouse.find(@manifest.warehouse_id)
 
-    @mex_custom_broker = CustomBroker.find(@manifest.mex_custom_broker)
-    @usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
+    @mex_custom_broker = CustomBroker.where(:id => @manifest.mex_custom_broker.to_i)
+    if(@mex_custom_broker.empty?)
+      @mex_custom_broker = CustomBroker.where("greenhouse_id = ? AND country_code = 'MEX' ", @greenhouse.id).first
+      if(@mex_custom_broker == nil)
+
+        #redirect_to new_greenhouse_custom_broker_path(@greenhouse)
+        redirect_to new_greenhouse_custom_broker_path(@greenhouse.id) and return
+      end
+    end
+
+    @usa_custom_broker = CustomBroker.where(:id => @manifest.usa_custom_broker.to_i)
+    if(@usa_custom_broker.empty?)
+      @usa_custom_broker = CustomBroker.where("greenhouse_id = ? AND country_code = 'USA' ", @greenhouse.id).first
+      if(@usa_custom_broker == nil)
+         redirect_to new_greenhouse_custom_broker_path(@greenhouse.id) and return
+      end
+    end
+
 
     #Aquí se selecciona el cliente que está en el manifiesto
     #y será el mismo que se pondrá en la factura comercial. (La que se envía a las aduanas)
