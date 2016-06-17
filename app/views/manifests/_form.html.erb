@@ -218,20 +218,21 @@ $('#manifest_custom_invoice_id').on('change', function(){
                 }else {
                   //Will enter here when the system finds the custom_invoice_id to be unique among others in DB
 
+
+
+
                   $("#btn_save").removeAttr("disabled");
 
                   $('#manifest_custom_invoice_id').removeClass("alert-danger");
                   //when valid number, and saved, removes class from warning and add success color
                   $('#btn_save').removeClass('btn-warning');
                   $('#btn_save').addClass('btn-success');
+                  $("#manifest_custom_invoice_id").addClass('updated');
                   //Adds a message and changes its color to the little label next to it
-                  $("#updated_label").text(dataRes["message"]);
-                  $("#updated_label").css("background-color", "#00ff00");
                   //After 2 seconds, the styles are returned back to normal.
                   setTimeout(function(){
-                    $("#updated_label").text("Factura Comercial");
-                    $("#updated_label").css("background-color", "<%= @greenhouse.color %>");
-                                      }, 2000);
+                    $("#manifest_custom_invoice_id").removeClass('updated');
+                                      }, 300);
                 }
 
               },
@@ -253,11 +254,7 @@ $('#manifest_custom_invoice_id').on('change', function(){
                         msg = 'Uncaught Error.\n' + jqXHR.responseText;
                     }*/
 
-                  $("#updated_label").text("Error.");
-                  $("#updated_label").css("background-color", "yellow");
                   setTimeout(function(){
-                    $("#updated_label").text("Factura Comercial");
-                    $("#updated_label").css("background-color", "<%= @greenhouse.color %>");
                                       }, 2000);
 
                 }
