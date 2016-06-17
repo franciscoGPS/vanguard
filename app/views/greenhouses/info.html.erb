@@ -5,6 +5,7 @@
 
 <%= render :partial => "submenu", :locals => {:id => @greenhouse.id } %>
 
+
 <div class="fieldset">
   <dl>
       <dt class="label label-default"><%= model_class.human_attribute_name(:business_name) %></dt>
@@ -19,6 +20,10 @@
       <dd><pre class="prettyprint"><%= @greenhouse.fda_num %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:category) %></dt>
       <dd><pre class="prettyprint"><%= @greenhouse.category %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:color) %></dt>
+      <dd><pre class="prettyprint"><div style="background-color: <%= @greenhouse.color %>;">
+</div></pre></dd>
+
   </dl>
 </div>
 

@@ -168,7 +168,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :bag_type_id,  BagType.all, :id,:name,
-                                {:prompt => "Selecciona uno", :class => 'text_field form-control',  :required => true} %>
+                                {:prompt => "Selecciona uno"},{ :class => 'text_field form-control',  :required => true} %>
           </div>
         </div>
 
@@ -180,7 +180,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :pallet_type_id,  PalletType.all, :id,:name,
-                                {prompt: "Selecciona uno" ,:class => 'text_field form-control',  :required => true} %>
+                                {prompt: "Selecciona uno" },{:class => 'text_field form-control',  :required => true} %>
           </div>
         </div>
       </div>
