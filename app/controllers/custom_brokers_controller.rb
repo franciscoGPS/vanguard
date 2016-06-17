@@ -53,7 +53,7 @@ class CustomBrokersController < ApplicationController
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     respond_to do |format|
       if @custom_broker.update(custom_broker_params)
-        format.html { redirect_to greenhouse_custom_brokers_path(@greenhouse.id, @custom_broker.id), notice: 'Custom broker was successfully updated.' }
+        format.html { redirect_to greenhouse_custom_brokers_path(@greenhouse.id), notice: 'Custom broker was successfully updated.' }
         #format.json { render :show, status: :ok, location: @custom_broker }
       else
         format.html { render :edit }
