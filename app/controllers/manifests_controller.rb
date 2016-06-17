@@ -67,6 +67,8 @@ class ManifestsController < ApplicationController
          firme y posteriormente facrurados"
 
     @manifest.sale = @sale
+
+
     #Se manda a la vista la palabra equivalente de la cantidad enviada
     #@total_pallets_words = to_words(@manifest.total_pallets)
 
@@ -143,11 +145,13 @@ end
   def is_unique
 
 
+    if(params[:manifest_id] == nil || params[:manifest_id] == "")
+      is_new_manifest = true
+    end
 
+    if(params[:custom_invoice_id] != nil && params[:custom_invoice_id] != "" && params[:greenhouse_id] != nil && params[:greenhouse_id] != "")
 
-    if(params[:custom_invoice_id] != nil && params[:custom_invoice_id] != "" &&
-     params[:manifest_id] != nil && params[:manifest_id] != "" && params[:greenhouse_id] != nil && params[:greenhouse_id] != "")
-      result = result = {
+     result = {
           :is_unique => false,
           :next_custom_invoice_id => get_next_custom_invoice_id(params[:greenhouse_id]),
           :error_message => "\"Invoice Number\" already in use. Please verify.  "}
@@ -158,6 +162,14 @@ end
 
       if(manifest.count == 0)
         #the search was performed, but nothing found
+
+        if is_new_manifest
+          result = {
+                  :is_unique => true,
+                  :error_message => "",
+                  :message => "·Updated·"}
+        else
+
           manifest = Manifest.find(params[:manifest_id])
           if(manifest.id != nil)
              manifest.custom_invoice_id = params[:custom_invoice_id]
@@ -169,6 +181,7 @@ end
 
             end
           end
+        end
       elsif (manifest.count > 0)
         #Error message already setup, just let the flow continue
         if(params[:manifest_id] == manifest.first.id.to_s)

@@ -31,12 +31,12 @@ end
 
 group :development, :test do
   gem 'byebug'                        # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'web-console', '~> 2.0'         # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'spring'                        # Spring speeds up development by keeping your application running in the background.
   gem 'mailcatcher'                   # Use mailcatcher to see mail in localhost:1080 (run "mailcatcher" in terminal to activate)
 end
 group :development do
   gem 'rails_layout'			            # Generate layout with framework (boostrap or foundation)
+  gem 'web-console', '~> 2.0'         # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'bootstrap-sass-extras'		      # Generate news layouts with bootstrap theme
   gem "better_errors"                 # Replaces the standard Rails error page with a much better and more useful error page.
   gem "binding_of_caller"             # Better Errors' advanced features (REPL, local/instance variable inspection, pretty stack frame names)

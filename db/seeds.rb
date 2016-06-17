@@ -18,3 +18,7 @@ User.create(name: "Diana Saenz",
             admin: true,
             role_id: 1)
 
+DeliveryPlace.create(name: "McAllen, Tx.")
+DeliveryPlace.create(name: "Houston, Tx.")
+
+

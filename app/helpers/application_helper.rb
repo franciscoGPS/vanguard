@@ -130,7 +130,7 @@ module ApplicationHelper
     if last_custom_invoice_id != nil
        next_custom_invoice_id = last_custom_invoice_id + 1
     else
-      next_custom_invoice_id = 0
+      next_custom_invoice_id = 1
     end
 
     return next_custom_invoice_id
