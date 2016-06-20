@@ -39,7 +39,7 @@
                 <td style="font-size:10px;width:200px;"><%= "#{@manifest_customer.tax_id_number}" %></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"><b>Vendido a</b></td>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Vendido a</strong></td>
                 <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
                 <td style="font-size:10px;width:200px;"><strong><small>RFC / TAX ID</small></strong></td>
               </tr>
@@ -65,7 +65,7 @@
                 <td style="font-size:10px;width:200px;"><%= "#{@warehouse.tax_id}"  %></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"><b>Enviado a:</b></td>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Enviado a:</strong></td>
                 <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
                 <td style="font-size:10px;width:200px;"><strong><small>RFC / TAX ID</small></strong></td>
               </tr>
@@ -85,25 +85,29 @@
         <div class="row"  style="padding-top:10px;">
           <table class="text-center col-md-8 col-md-offset-2" style="border: 1px solid <%= @greenhouse.color %>;">
             <tbody>
+        	  <tr>
+        		<td style="background-color: <%= @greenhouse.color %>"></td>
+        		<td style="width:200px;font-size:10px;"><small><strong>Agencia Aduanal Mexicana</strong></small></td>
+        	  </tr>
               <tr>
                 <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
                 <td style="font-size:10px;width:300px;"><%= "#{@mex_custom_broker.name}" %></td>
-                <td style="width:200px;"></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><b>Agencia</b></td>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Agencia</strong></td>
                 <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
-                <td style="width:200px;"><b>Agencia Aduanal Mexicana</b></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><b>Aduanal</b></td>
+              	<td style="font-size:10px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Aduanal</strong></td>
+              	<td style="width:200px;font-size:10px;"><small><strong>Agencia Aduanal Americana</strong></small></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
                 <td style="font-size:10px;width:300px;"><%= "#{@usa_custom_broker.name}" %></td>
-                <td style="width:200px;">Agencia Aduanal Americana</td>
               </tr>
               <tr>
                 <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
                 <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
-                <td style="width:200px;"></td>
               </tr>
             </tbody>
           </table>
@@ -116,7 +120,7 @@
                 <td style="font-size:10px;width:300px;"></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><b>Datos Transportista</b></td>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Datos Transportista</strong></td>
                 <td style="font-size:10px;width:300px;">
                   <div class="div-table">
                     <div style="display:table-row;width:auto;clear:both;border: 1px solid <%= @greenhouse.color %>;">
@@ -128,20 +132,20 @@
                         <div style="float:left;display:table-column; width:50%;border: 1px solid <%= @greenhouse.color %>; ">Compañía</div>
                     </div>
                     <div style="display:table-row;width:auto;clear:both;border: 1px solid <%= @greenhouse.color %>;">
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; " align="center"><%= @manifest.truck %>"</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; "><%= @manifest.truck_licence_plate %></div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; "><%= @manifest.trailer_num %></div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; "><%= @manifest.trailer_num_lp %></div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">"<%= @manifest.stamp %>"</div>
-                      <div style="float:left;display:table-column; width:103px;border: 1px solid <%= @greenhouse.color %>; ">"<%= @manifest.thermograph %>"</div>
+                      <div style="float:left;display:table-column; width:99px;" align="center"><%= @manifest.truck %>"</div>
+                      <div style="float:left;display:table-column; width:99px;"><%= @manifest.truck_licence_plate %></div>
+                      <div style="float:left;display:table-column; width:99px;"><%= @manifest.trailer_num %></div>
+                      <div style="float:left;display:table-column; width:99px;"><%= @manifest.trailer_num_lp %></div>
+                      <div style="float:left;display:table-column; width:99px;">"<%= @manifest.stamp %>"</div>
+                      <div style="float:left;display:table-column; width:103px;">"<%= @manifest.thermograph %>"</div>
                     </div>
                     <div style="display:table-row;width:auto;clear:both;border: 1px solid <%= @greenhouse.color %>;">
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Tractor #</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Placas Tractor</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Caja #</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Placas caja</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Seal (unseal#)</div>
-                      <div style="float:left;display:table-column; width:103px;border: 1px solid <%= @greenhouse.color %>; ">Thermomether</div>
+                      <div style="float:left;display:table-column; width:99px;">Tractor #</div>
+                      <div style="float:left;display:table-column; width:99px;">Placas Tractor</div>
+                      <div style="float:left;display:table-column; width:99px;">Caja #</div>
+                      <div style="float:left;display:table-column; width:99px;">Placas caja</div>
+                      <div style="float:left;display:table-column; width:99px;">Seal (unseal#)</div>
+                      <div style="float:left;display:table-column; width:103px;">Thermomether</div>
                     </div>
                   </div>
                 </td>
@@ -359,7 +363,7 @@ $('#customs_invoice_consecutive_id').on('change', function(){
                     //$('#customs_invoice_consecutive_id').val(dataRes["next_custom_invoice_id"]);
 
                     $("#messages").html('<div id="error_message_div" class="">  '+
-                      dataRes["error_message"]+' '+ custom_invoice_id + " Next on the list: <b>" +dataRes['next_custom_invoice_id'] + '</b><button class="close" data-dismiss="alert"> x</button></div>');
+                      dataRes["error_message"]+' '+ custom_invoice_id + " Next on the list: <strong>" +dataRes['next_custom_invoice_id'] + '</strong><button class="close" data-dismiss="alert"> x</button></div>');
 
 
                 	$("#error_message_div").addClass("alert alert-danger fade in");
