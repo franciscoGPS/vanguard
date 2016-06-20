@@ -35,7 +35,7 @@
                 <td style="font-size:10px;width:200px;"><%= "#{@manifest_customer.tax_id_number}" %></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"><b>Vendido a</b></td>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Vendido a</strong></td>
                 <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
                 <td style="font-size:10px;width:200px;"><strong><small>RFC / TAX ID</small></strong></td>
               </tr>
@@ -61,7 +61,7 @@
                 <td style="font-size:10px;width:200px;"><%= "#{@warehouse.tax_id}"  %></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"><b>Enviado a:</b></td>
+                <td style="font-size:10px;width:100px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Enviado a:</strong></td>
                 <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
                 <td style="font-size:10px;width:200px;"><strong><small>RFC / TAX ID</small></strong></td>
               </tr>
@@ -83,23 +83,26 @@
             <tbody>
               <tr>
                 <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
+                <td style="width:200px;font-size:10px"><strong><small>
+                  Agencia Aduanal Mexicana
+                </small></strong></td>
                 <td style="font-size:10px;width:300px;"><%= "#{@mex_custom_broker.name}" %></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Agencia</strong></td>
                 <td style="width:200px;"></td>
-              </tr>
-              <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><b>Agencia</b></td>
                 <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
-                <td style="width:200px;"><b>Agencia Aduanal Mexicana</b></td>
+               
               </tr>
               <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><b>Aduanal</b></td>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Aduanal</strong></td>
+                <td style="width:200px;font-size:10px;"><strong><small>Agencia Aduanal Americana</small></strong></td>
                 <td style="font-size:10px;width:300px;"><%= "#{@usa_custom_broker.name}" %></td>
-                <td style="width:200px;">Agencia Aduanal Americana</td>
               </tr>
               <tr>
                 <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
-                <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
                 <td style="width:200px;"></td>
+                <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
               </tr>
             </tbody>
           </table>
@@ -112,32 +115,32 @@
                 <td style="font-size:10px;width:300px;"></td>
               </tr>
               <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><b>Datos Transportista</b></td>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Datos Transportista</strong></td>
                 <td style="font-size:10px;width:300px;">
                   <div class="div-table">
-                    <div style="display:table-row;width:auto;clear:both;border: 1px solid <%= @greenhouse.color %>;">
-                      <div style="float:left;display:table-column; width:50%;border: 1px solid <%= @greenhouse.color %>; " align="center"><%= "#{@manifest.person_receiving}" %>"</div>
-                      <div style="float:left;display:table-column; width:50%;border: 1px solid <%= @greenhouse.color %>; " align="center"><%= "#{@manifest.carrier}" %>"</div>
+                    <div style="display:table-row;width:auto;clear:both;font-size:10px;">
+                      <div style="float:left;display:table-column; width:50%; " align="center"><%= "#{@manifest.person_receiving}" %></div>
+                      <div style="float:left;display:table-column; width:50%; " align="center"><%= "#{@manifest.carrier}" %></div>
                     </div>
-                      <div style="display:table-row;width:auto;clear:both;border: 1px solid <%= @greenhouse.color %>;">
-                        <div style="float:left;display:table-column; width:50%;border: 1px solid <%= @greenhouse.color %>; ">Operador</div>
-                        <div style="float:left;display:table-column; width:50%;border: 1px solid <%= @greenhouse.color %>; ">Compañía</div>
+                      <div style="display:table-row;width:auto;clear:both;">
+                        <div style="float:left;display:table-column; width:50%;font-size:10px;"><strong><small>Operador</small></strong></div>
+                        <div style="float:left;display:table-column; width:50%;font-size:10px;"><strong><small>Compañía</small></strong></div>
                     </div>
-                    <div style="display:table-row;width:auto;clear:both;border: 1px solid <%= @greenhouse.color %>;">
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; " align="center"><%= @manifest.truck %>"</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; "><%= @manifest.truck_licence_plate %></div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; "><%= @manifest.trailer_num %></div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; "><%= @manifest.trailer_num_lp %></div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">"<%= @manifest.stamp %>"</div>
-                      <div style="float:left;display:table-column; width:103px;border: 1px solid <%= @greenhouse.color %>; ">"<%= @manifest.thermograph %>"</div>
+                    <div style="display:table-row;width:auto;clear:both;font-size:10px">
+                      <div style="float:left;display:table-column; width:99px;" align="center"><%= @manifest.truck %></div>
+                      <div style="float:left;display:table-column; width:99px; "><%= @manifest.truck_licence_plate %></div>
+                      <div style="float:left;display:table-column; width:99px; "><%= @manifest.trailer_num %></div>
+                      <div style="float:left;display:table-column; width:99px; "><%= @manifest.trailer_num_lp %></div>
+                      <div style="float:left;display:table-column; width:99px; "><%= @manifest.stamp %></div>
+                      <div style="float:left;display:table-column; width:103px; "><%= @manifest.thermograph %></div>
                     </div>
-                    <div style="display:table-row;width:auto;clear:both;border: 1px solid <%= @greenhouse.color %>;">
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Tractor #</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Placas Tractor</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Caja #</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Placas caja</div>
-                      <div style="float:left;display:table-column; width:99px;border: 1px solid <%= @greenhouse.color %>; ">Seal (unseal#)</div>
-                      <div style="float:left;display:table-column; width:103px;border: 1px solid <%= @greenhouse.color %>; ">Thermomether</div>
+                    <div style="display:table-row;width:auto;clear:both;">
+                      <div style="float:left;display:table-column; width:99px;font-size:10px"><strong><small>Tractor #</small></strong></div>
+                      <div style="float:left;display:table-column; width:99px;font-size:10px"><strong><small>Placas Tractor</small></strong></div>
+                      <div style="float:left;display:table-column; width:99px;font-size:10px"><strong><small>Caja #</small></strong></div>
+                      <div style="float:left;display:table-column; width:99px;font-size:10px"><strong><small>Placas caja</small></strong></div>
+                      <div style="float:left;display:table-column; width:99px;font-size:10px"><strong><small>Seal (unseal#)</small></strong></div>
+                      <div style="float:left;display:table-column; width:103px;font-size:10px"><strong><small>Thermomether</small></strong></div>
                     </div>
                   </div>
                 </td>
@@ -259,7 +262,7 @@
                     </td>
                     <td>
                       <strong><%=  "#{number_to_currency(@total_ammount_money)}" %></strong><br>
-                      <i><small>(<%= "#{     (@total_ammount_money).round(2).to_f.to_words.upcase        }" %> DOLARES 00/100 USD)<%#=  "#{to_words((@total_ammount_money).round(2).to_f) }"%></small></i>
+                      <i><small><%= "(#{(@total_ammount_money).round(2).to_f.to_words.upcase} 00/100 USD)" %><%#=  "#{to_words((@total_ammount_money).round(2).to_f) }"%></small></i>
                     </td>
                   </tr>
                 </tbody>
