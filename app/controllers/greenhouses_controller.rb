@@ -19,7 +19,10 @@ class GreenhousesController < ApplicationController
   # GET /greenhouses/1
   # GET /greenhouses/1.json
   def show
-    @sales = @greenhouse.sales.order('created_at DESC').page(params[:page]).per(10)
+    @filterrific = initialize_filterrific(Sale, params[:filterrific]) or return
+    @sales = @filterrific.find.page(params[:page])
+
+    #@sales = @greenhouse.sales.order('created_at DESC').page(params[:page]).per(10)
     #@sales = @greenhouse.sales.sort
     @week_sales = @greenhouse.week_sales
     # Get chart pie of sold products
@@ -28,6 +31,15 @@ class GreenhousesController < ApplicationController
       sale.shipments.each do |sh|
         @sold_products[sh.product.name] += 1
       end
+    end
+
+
+
+
+
+    respond_to do |format|
+      format.html
+      format.js
     end
 
   end

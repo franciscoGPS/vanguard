@@ -1,6 +1,9 @@
 class Sale < ActiveRecord::Base
   include AASM
   #Documentación https://github.com/rubyist/aasm
+
+  acts_as_paranoid
+
   belongs_to :greenhouse
   belongs_to :user
   has_many :shipments, :dependent => :destroy, :source_type => "Shipment"
@@ -18,13 +21,26 @@ class Sale < ActiveRecord::Base
   accepts_nested_attributes_for :customers, :reject_if => :all_blank
   accepts_nested_attributes_for :manifests, :allow_destroy => true
 
-  acts_as_paranoid
+
 
   def own? user
     self.user_id == user.id
   end
 
-    scope :total_month_sales_ammount, -> { select("SUM(shipments.price * shipments.box_number) AS TOTAL_AMMOUNT")
+  filterrific(
+  default_filter_params: { sorted_by: 'departure_date' },
+  available_filters: [
+    :sorted_by,
+    :with_ship_number ]
+  )
+
+
+  scope :with_ship_number, -> (ship_number) { where("ship_number LIKE ?", "%#{ship_number}%") if ship_number.present? }
+
+  scope :sorted_by, -> (field) {
+     select("*", field)
+}
+  scope :total_month_sales_ammount, -> { select("SUM(shipments.price * shipments.box_number) AS TOTAL_AMMOUNT")
     .joins(:shipments).where("EXTRACT(MONTH FROM sales.created_at) = #{Time.now.month}") }
 
   #$states_to_s = {:carrier_courtyard_checkin => {:id => "1", :name => "Carrier Courtyard Arrival"},

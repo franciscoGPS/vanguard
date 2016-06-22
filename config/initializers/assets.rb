@@ -13,3 +13,4 @@ Rails.application.config.assets.precompile += %w( home.css )
 Rails.application.config.assets.precompile += %w( fonts.css )
 Rails.application.config.assets.precompile += %w( main.css )
 Rails.application.config.assets.precompile += ['bootstrap.css.scss']
+Rails.application.config.assets.precompile += %w( filterrific/filterrific-spinner.gif )
