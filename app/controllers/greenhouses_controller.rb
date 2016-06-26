@@ -19,8 +19,12 @@ class GreenhousesController < ApplicationController
   # GET /greenhouses/1
   # GET /greenhouses/1.json
   def show
-    @filterrific = initialize_filterrific(Sale, params[:filterrific]) or return
-    @sales = @filterrific.find.page(params[:page])
+    @filterrific = initialize_filterrific(Sale, params[:filterrific],
+      :select_options => {
+        #sorted_by: Student.options_for_sorted_by,
+        with_customer_id: Customer.options_for_select(@greenhouse.id)
+      }) or return
+    @sales = @filterrific.find.page(params[:page]).per(10)
 
     #@sales = @greenhouse.sales.order('created_at DESC').page(params[:page]).per(10)
     #@sales = @greenhouse.sales.sort
@@ -32,8 +36,6 @@ class GreenhousesController < ApplicationController
         @sold_products[sh.product.name] += 1
       end
     end
-
-
 
 
 

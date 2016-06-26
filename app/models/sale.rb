@@ -31,11 +31,27 @@ class Sale < ActiveRecord::Base
   default_filter_params: { sorted_by: 'departure_date' },
   available_filters: [
     :sorted_by,
-    :with_ship_number ]
+    :with_ship_number,
+    :with_customer_id,
+    :with_created_at_after,
+    :with_created_at_before
+     ]
   )
 
 
   scope :with_ship_number, -> (ship_number) { where("ship_number LIKE ?", "%#{ship_number}%") if ship_number.present? }
+
+  scope :with_customer_id, lambda { |customer_ids|
+    Sale.includes(:shipments).where( :shipments => { :customer_id => [*customer_ids] })
+  }
+
+  scope :with_created_at_after, lambda { |ref_date|
+    where('sales.departure_date >= ?', ref_date)
+  }
+
+  scope :with_created_at_before, lambda { |ref_date|
+    where('sales.departure_date <= ?', ref_date)
+  }
 
   scope :sorted_by, -> (field) {
      select("*", field)

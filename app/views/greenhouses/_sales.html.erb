@@ -1,3 +1,10 @@
+<div class=" well well-small">
+  <div class="pull-right">
+    <%= link_to "Reset filters", reset_filterrific_url, :class => 'btn btn-default btn-sm' %>
+    <%= page_entries_info @sales ,:entry_name => 'Shipments'%>
+    <%= render_filterrific_spinner%>
+  </div>
+</div>
 <div id="filterrific_results">
 <% if @sales.present? %>
   <div class="container">
@@ -158,8 +165,6 @@
 
 <script type="text/javascript">
 
-  $(document)
-    .ready(function () {
             $('#save_qty').prop('disabled', true);
             $('#hld_qty').prop('disabled', true);
 
@@ -177,7 +182,7 @@
           $('#sale_id_hidden').val($(this).val());
           //Establece el valor de la venta en la parte d elos controles.
           //Se puede poblar cualquier campo a partir de este id
-          $('#sale_id_status').html("Sale - " + $(this).val());
+          $('#sale_id_status').html("Shipment - " + $(this).val());
 
           enviar_ajax("", false);
 
@@ -501,5 +506,5 @@
       }
 
       //Fin del ready y 1er function
-    });
+
 </script>
