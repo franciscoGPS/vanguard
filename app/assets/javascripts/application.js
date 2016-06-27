@@ -8,7 +8,7 @@
 //= require bootstrap-table
 //= require filterrific/filterrific-jquery
 //= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require_tree .
 
 

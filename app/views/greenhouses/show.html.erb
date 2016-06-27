@@ -71,7 +71,10 @@
     Before
     <%= f.text_field(:with_created_at_before, class: 'js-datepicker') %>
   </div>
-
+   <div>
+    Sorted by
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+  </div>
   <% end %>
 
 <div id="filterrific_results">

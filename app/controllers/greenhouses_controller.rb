@@ -21,7 +21,7 @@ class GreenhousesController < ApplicationController
   def show
     @filterrific = initialize_filterrific(Sale, params[:filterrific],
       :select_options => {
-        #sorted_by: Student.options_for_sorted_by,
+        :sorted_by => Sale.options_for_sorted_by,
         with_customer_id: Customer.options_for_select(@greenhouse.id)
       }) or return
     @sales = @filterrific.find.page(params[:page]).per(10)

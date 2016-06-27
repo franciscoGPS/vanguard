@@ -56,6 +56,37 @@ class Sale < ActiveRecord::Base
   scope :sorted_by, -> (field) {
      select("*", field)
 }
+
+
+    scope :sorted_by, lambda { |sort_option|
+    # extract the sort direction from the param value.
+    direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+    case sort_option.to_s
+    when /^departure_date_/
+      order("sales.departure_date #{ direction }")
+    when /^ship_num_/
+      order("LOWER(ship_number) #{ direction }")
+    when /^customer_/
+      order("LOWER(customers.business_name) #{ direction }").includes(:customers).references(:customers)
+    else
+      raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+    end
+  }
+
+
+  def self.options_for_sorted_by
+    [
+      ['Shipment # (a-z)', 'ship_num_asc'],
+       ['Shipment # (z-a)', 'ship_num_desc'],
+      ['Departure date (newest first)', 'departure_date_desc'],
+      ['Departure date (oldest first)', 'departure_date_asc'],
+      ['Customer (a-z)', 'customer_asc'],
+      ['Customer (z-a)', 'customer_desc']
+    ]
+  end
+
+
+
   scope :total_month_sales_ammount, -> { select("SUM(shipments.price * shipments.box_number) AS TOTAL_AMMOUNT")
     .joins(:shipments).where("EXTRACT(MONTH FROM sales.created_at) = #{Time.now.month}") }
 
