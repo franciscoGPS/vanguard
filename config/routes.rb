@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :pallet_types
     resources :package_types
     resources :count_types
+    resources :delivery_places
 
     resources :greenhouses do
         get 'info' => 'greenhouses#info', as: 'info'

@@ -16,7 +16,8 @@ class SalesController < ApplicationController
   def show
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.find(params[:id])
-    if @sale.delivery_place != nil
+
+    if @sale.delivery_place_id != nil
       @delivery_place = DeliveryPlace.find(@sale.delivery_place)
     else
       @delivery_place = DeliveryPlace.first
@@ -378,7 +379,7 @@ class SalesController < ApplicationController
       :out_of_packaging, :docs_reception, :product_color,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place_id,
 
       shipments_attributes: [:id, :start_at, :created_at, :updated_at,
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
