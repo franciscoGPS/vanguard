@@ -19,8 +19,12 @@ class GreenhousesController < ApplicationController
   # GET /greenhouses/1
   # GET /greenhouses/1.json
   def show
-    @filterrific = initialize_filterrific(Sale, params[:filterrific]) or return
-    @sales = @filterrific.find.page(params[:page])
+    @filterrific = initialize_filterrific(Sale, params[:filterrific],
+      :select_options => {
+        :sorted_by => Sale.options_for_sorted_by,
+        with_customer_id: Customer.options_for_select(@greenhouse.id)
+      }) or return
+    @sales = @filterrific.find.page(params[:page]).per(10)
 
     #@sales = @greenhouse.sales.order('created_at DESC').page(params[:page]).per(10)
     #@sales = @greenhouse.sales.sort
@@ -32,8 +36,6 @@ class GreenhousesController < ApplicationController
         @sold_products[sh.product.name] += 1
       end
     end
-
-
 
 
 
@@ -106,6 +108,12 @@ class GreenhousesController < ApplicationController
     #@manifest = Manifest.where(sale_id: @sale.id).first
 
     @customers = @sale.sold_to
+
+    if @sale.delivery_place_id != nil
+      @delivery_place = DeliveryPlace.find(@sale.delivery_place)
+    else
+      @delivery_place = DeliveryPlace.first
+    end
 
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
 
@@ -247,7 +255,7 @@ class GreenhousesController < ApplicationController
       :out_of_packaging, :docs_reception, :product_color,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place_id,
 
           shipments_attributes: [:id, :start_at, :created_at, :updated_at,
             :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,

@@ -44,11 +44,11 @@
 
 <%= form_for_filterrific @filterrific do |f| %>
   <div>
-    Search
+    Shipment #
     <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
     <%= f.text_field(
       :with_ship_number,
-      class: 'filterrific-periodically-observed'
+      class: 'filterrific-periodically-observed form-control'
     ) %>
   </div>
   <!--<div>
@@ -59,33 +59,36 @@
       { include_blank: '- Any -' }
     ) %>
   </div>-->
-  <!--<div>
-    Sorted by
-    < %= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-  </div>-->
-  <!--<div>
-    Registered after
-    <!%= f.text_field(:with_created_at_gte, class: 'js-datepicker') %>
-  </div>
-
   <div>
-    < %= link_to(
-      'Reset filters',
-      reset_filterrific_url,
-    ) %>
-  </div>-->
-  <%# add an automated spinner to your form when the list is refreshed %>
-  <%= render_filterrific_spinner %>
+    By customer
+    <%= f.select(:with_customer_id, @filterrific.select_options[:with_customer_id], { :include_blank => '- Any -' }) %>
+  </div>
+  <div>
+    After
+    <%= f.text_field(:with_created_at_after, class: 'js-datepicker') %>
+  </div>
+  <div>
+    Before
+    <%= f.text_field(:with_created_at_before, class: 'js-datepicker') %>
+  </div>
+   <div>
+    Sorted by
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+  </div>
   <% end %>
 
+<div id="filterrific_results">
 <%= render(
   partial: 'greenhouses/sales',
   locals: { sales: @sales }
 ) %>
-
+</div>
 
 
 <!--<div class="col-md-12">
   < %= render( :partial 'greenhouses/sales',
               locals: {sales: @sales} )%>
 </div>-->
+<script type="text/javascript">
+$('.js-datepicker').datepicker();
+</script>

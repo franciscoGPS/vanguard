@@ -15,6 +15,9 @@ class Customer < ActiveRecord::Base
 
   scope :own_customers, -> (greenhouse_id) { where(:greenhouse_id => greenhouse_id) }
 
+  def self.options_for_select(greenhouse_id)
+    where(:greenhouse_id => greenhouse_id).order('LOWER(business_name)').map { |e| [e.business_name, e.id] }
+  end
 
   # Public Activity
   include PublicActivity::Model

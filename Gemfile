@@ -68,4 +68,5 @@ gem 'public_activity'                 # Generate tracking of users
 gem 'activerecord-session_store'      # Stores cookies on db insted of client. Useful when large ammount of data need to be stored.
 gem "bootstrap-table-rails"           # plugin  Rails engine to use it within the asset pipeline.
 gem 'filterrific'                     # Filterrific is a Rails Engine plugin that makes it easy to filter, search, and sort your ActiveRecord lists
+gem 'bootstrap-datepicker-rails'      # Project integrates a datepicker with Rails 3 assets pipeline.
 
