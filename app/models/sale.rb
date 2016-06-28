@@ -28,7 +28,7 @@ class Sale < ActiveRecord::Base
   end
 
   filterrific(
-  default_filter_params: { sorted_by: 'departure_date' },
+  default_filter_params: { sorted_by: 'departure_date_desc' },
   available_filters: [
     :sorted_by,
     :with_ship_number,
