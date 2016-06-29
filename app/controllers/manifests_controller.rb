@@ -60,6 +60,7 @@ class ManifestsController < ApplicationController
       @manifest.fda_num = @greenhouse.fda_num
       @manifest.total_pallets = @total_pallets
       @manifest.ship_number = @sale.ship_number
+      @manifest.leyend = ""
       @manifest.custom_invoice_id = get_next_custom_invoice_id(@greenhouse.id)
       @manifest.comments = "Se señala el precio de venta exclusivamente para cubrir
        con los requisitos de traslado y trámites aduanales,
@@ -203,6 +204,30 @@ end
     render :json => result
   end#from def
 
+  def set_leyend
+    result = {}
+    if(params[:manifest_id] != nil && params[:manifest_id] != "" && params[:greenhouse_id] != nil && params[:greenhouse_id] != "")
+
+        manifest = Manifest.find(params[:manifest_id])
+        if manifest.leyend = params[:leyend]
+           begin
+            manifest.save
+
+             result = {
+                  :error_message => "",
+                  :message => "Updated."}
+           rescue Exception => e
+             result = {
+                  :error_message => e.to_s,
+                  :message => e}
+           end
+        end
+    end
+    render :json => result
+  end
+
+
+
 
 
 private
@@ -241,6 +266,7 @@ end
   :mex_custom_broker, :usa_custom_broker, :carrier, :driver, :truck, :truck_licence_plate,
   :trailer_num, :trailer_num_lp, :stamp, :thermograph, :po_number,
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
-  :total_pallets, :comments, :manifest_number, :warehouse_id, :ship_number)
+  :total_pallets, :comments, :manifest_number, :warehouse_id, :ship_number,
+  :leyend)
   end
 end

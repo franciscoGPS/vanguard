@@ -200,7 +200,6 @@ class GreenhousesController < ApplicationController
       @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
     end
 
-    #@total_pallets_words = to_words(@manifest.total_pallets)
     @total_pallets_words = @manifest.total_pallets.to_words
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
 
@@ -271,7 +270,7 @@ class GreenhousesController < ApplicationController
             :carrier, :driver, :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
             :stamp, :thermograph, :po_number, :ship_number, :delivery_person, :usa_custom_broker,
           :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
-          :sold_to_id, :deleted_at, :warehouse_id, :_destroy],
+          :sold_to_id, :deleted_at, :warehouse_id, :leyend, :_destroy],
 
           warehouses_attributes: [:id, :name, :address, :tax_id, :phone, :greenhouses_id, :_destroy],
           colors_attributes: [:id, :name, :greenhouses_id, :_destroy],

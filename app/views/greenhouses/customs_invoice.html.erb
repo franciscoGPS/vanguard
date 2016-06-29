@@ -18,7 +18,7 @@
         <div class="pull-right" style="width: 355px;">
           <p class="text-center" style="font-size:10px;">
             <span class="label" style="background-color: <%= @greenhouse.color %>">Factura Comercial</span><br>
-            <%= number_field_tag :customs_invoice_consecutive_id, @manifest.custom_invoice_id, class: "form-control" %>
+                <%= number_field_tag :customs_invoice_consecutive_id, @manifest.custom_invoice_id, class: "form-control" %>
           </p>
           <p class="text-center" style="font-size:10px;">
             <span class="label" style="background-color: <%= @greenhouse.color %>">Fecha</span><br>
@@ -169,7 +169,7 @@
           </p>
           <p class="pull-right" style="width:355px;font-size:10px;">
             <span class="label" style="background-color: <%= @greenhouse.color %>">Manifiesto</span>
-            <%= "#{@manifest.manifest_number}" %>
+            <%= "#{@manifest.ship_number}" %>
           </p>
         </div>
       </div>
@@ -217,6 +217,10 @@
           </table>
           <div class="row">
             <div class="col-md-6 pull-left" style="width:350px;">
+              <small>
+              <%= text_field_tag :manifest_leyend, @manifest.leyend, class: "form-control" %>
+
+              </small><br>
               <small>
               CAAT:
               </small>
@@ -330,13 +334,7 @@
 									});
 
 
-
-									$('#customs_invoice_consecutive_id').on("input", function(){
-
-									});
-
-
-$('#customs_invoice_consecutive_id').on('change', function(){
+    $('#customs_invoice_consecutive_id').on('change', function(){
 
           if($('#customs_invoice_consecutive_id').val() != ""){
 
@@ -381,8 +379,9 @@ $('#customs_invoice_consecutive_id').on('change', function(){
                 		$("#messages").fadeOut();
   																		}, 5000);
 
-
+                  console.log("Not unique");
                 }else {
+
                 	//Will enter here when the system finds the custom_invoice_id to be unique among others in DB
 
                 	$("#btn-print").removeAttr("disabled");
@@ -432,6 +431,40 @@ $('#customs_invoice_consecutive_id').on('change', function(){
           }
 
 });
+
+
+
+
+  $('#manifest_leyend').on("change", function(){
+            console.log("loggeo en vivo");
+    var lastTime;
+
+      var params = {
+          leyend: $('#manifest_leyend').val(),
+          manifest_id: '<%= "#{@manifest.id}" %>',
+          greenhouse_id: '<%= "#{@greenhouse.id}" %>'
+        };
+
+
+
+
+      $.ajax({
+            url: '<%= greenhouses_manifests_set_leyend_path %>',
+            type: 'POST',
+            data: $.param(params),
+            dataType: 'json',
+            success: function (dataRes) {
+                  if(dataRes["error_message"] == ""){
+
+                  }else {
+                    console.log(dataRes["error_message"])
+                  }
+            }
+
+        });
+  });
+
+
 
 
 </script>
