@@ -11,7 +11,7 @@
               <div class="col-md-3">
                 <p>
                   <small class="label label-primary">Manifest</small>
-                  <strong><%= "#{@manifest.manifest_number}" %></strong>
+                  <strong><%= "#{@manifest.ship_number}" %></strong>
                 </p>
               </div>
               <div class="col-md-3">
@@ -163,6 +163,12 @@
               <p>
                 <small class="label label-primary">Total Pallets</small>
                 <strong><%= "#{@manifest.total_pallets}" %></strong>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                <small class="label label-primary">Footer Leyend</small>
+                <strong><%= "#{@manifest.leyend}" %></strong>
               </p>
             </div>
             <div class="col-md-3">

@@ -115,7 +115,7 @@
               <tr>
                 <td class="header font" style="width:75px;">Agencia</td>
                 <td class="font" style="width:300px;"><strong><small>Agencia Aduanal Mexicana</small></strong></td>
-               
+
               </tr>
               <tr>
                 <td class="header font" style="width:75px;">Aduanal</td>
@@ -179,7 +179,7 @@
           </p>
           <p class="pull-right" style="width:355px;font-size:10px;">
             <span class="label">Manifiesto</span>
-            <%= "#{@manifest.manifest_number}" %>
+            <%= "#{@manifest.ship_number}" %>
           </p>
         </div>
       </div>
@@ -227,6 +227,9 @@
           </table>
           <div class="row">
             <div class="col-md-6 pull-left" style="width:350px;">
+              <small>
+              <%= "#{@manifest.leyend}" %>
+              </small><br>
               <small>
               CAAT:
               </small>

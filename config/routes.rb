@@ -67,7 +67,8 @@ Rails.application.routes.draw do
     post '/greenhouses/manifests/is_unique' => 'manifests#is_unique'
     #Fin de esta petición ajax que se llama desde sales/_form.html.erb
 
-
+    # Ajax Request from customs_invoice preview
+    post '/greenhouses/manifests/set_leyend' => 'manifests#set_leyend'
 
     post 'purshase_order/greenhouses/:greenhouse_id/sales/:sale_id' => 'sales#purshase_order', as: "purshase_order"
     get 'customs_billing/sales/:greenhouse_id/:sale_id' => 'sales#customs_bill', as: "customs_billing"
