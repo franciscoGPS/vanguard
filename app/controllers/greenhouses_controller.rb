@@ -187,6 +187,11 @@ class GreenhousesController < ApplicationController
     if(@manifest_customer == nil)
       @manifest_customer = @customers_in_sale.first
     end
+
+    if(@manifest.leyend == nil)
+      @manifest.leyend = ""
+    end
+
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
 
     #SEPARAR ESTOS DATOS
