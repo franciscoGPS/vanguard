@@ -334,7 +334,7 @@
 									});
 
 
-    $('#customs_invoice_consecutive_id').on('change', function(){
+    $('#customs_invoice_consecutive_id').on('input', function(){
 
           if($('#customs_invoice_consecutive_id').val() != ""){
 
@@ -436,8 +436,6 @@
 
 
   $('#manifest_leyend').on("change", function(){
-            console.log("loggeo en vivo");
-    var lastTime;
 
       var params = {
           leyend: $('#manifest_leyend').val(),

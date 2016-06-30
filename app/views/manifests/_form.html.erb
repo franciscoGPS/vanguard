@@ -27,6 +27,10 @@
       <%= f.date_select :date, class: "form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
+      <%= f.label "Manifest#", class: "col-md-2 control-label" %>
+      <%= f.text_field :ship_number, class: "col-md-10 col-sm-12 form-control", :required => true %>
+    </div>
+    <div class="form-group col-sm-12 col-md-4">
       <%= f.label :sold_to, class: "control-label" %>
       <%= f.text_field :sold_to, class: "form-control", :required => true %>
     </div>
@@ -74,10 +78,6 @@
     <div class="form-group col-sm-12 col-md-4">
       <%= f.label :thermograph, class: "control-label" %>
       <%= f.text_field :thermograph, class: "form-control" , :required => true%>
-    </div>
-    <div class="form-group col-sm-12 col-md-4">
-      <%= f.label :manifest_number, class: "col-md-2 control-label" %>
-      <%= f.text_field :ship_number, class: "col-md-10 col-sm-12 form-control", :required => true %>
     </div>
     <div class="form-group col-sm-12 col-md-4">
       <%= f.label :delivery_person, class: "control-label" %>

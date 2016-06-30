@@ -30,6 +30,10 @@ class Shipment < ActiveRecord::Base
           find(:conditions => [ "sale_id = ?", sale_id]).as_json
     end
 
+  def own_color(greenhouse_id)
+    color = Color.where("greenhouse_id = ? AND id = ?", greenhouse_id, self.product_color).first
+      return color != nil ? color.name : ""
+  end
 
 
   def plu_to_string
