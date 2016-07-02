@@ -47,6 +47,9 @@ module ApplicationHelper
     BoxType.find(id).name
   end
 
+  def formatted_number(number)
+    number_with_delimiter(number)
+  end
 
   def states_index
    #Se definen los estados que se desea estén como parte del proceso de operaciones de la empresa

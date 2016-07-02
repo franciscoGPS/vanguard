@@ -1,5 +1,6 @@
 class Shipment < ActiveRecord::Base
   acts_as_paranoid
+  include ActionView::Helpers::NumberHelper
 #Se entiende como Shipemnt esa combinación de
 #Producto + cliente + orden de venta (Sale)
 #y otras configuraciones.
@@ -90,6 +91,14 @@ class Shipment < ActiveRecord::Base
     else
       product_color
     end
+  end
+
+  def formatted_boxes
+    number_with_delimiter(self.box_number)
+  end
+
+  def formatted_weight
+    number_with_precision(self.weight, precision: 0)
   end
 
 

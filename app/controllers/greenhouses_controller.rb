@@ -110,7 +110,7 @@ class GreenhousesController < ApplicationController
     @customers = @sale.sold_to
 
     if @sale.delivery_place_id != nil
-      @delivery_place = DeliveryPlace.find(@sale.delivery_place)
+      @delivery_place = DeliveryPlace.find(@sale.delivery_place_id)
     else
       @delivery_place = DeliveryPlace.first
     end
@@ -130,6 +130,9 @@ class GreenhousesController < ApplicationController
     #@mex_custom_broker = CustomBroker.find(@manifest.mex_custom_broker)
     #@usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
 
+    @total_pallets =  @shipments.map { |r| r[:pallets_number] }.sum
+    @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
+    @title = "Orden de Compra"
 
     respond_to do |format|
       format.html {render :order}
@@ -208,6 +211,8 @@ class GreenhousesController < ApplicationController
     @total_pallets_words = @manifest.total_pallets.to_words
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
 
+
+    @title = "Factura Comercial"
     respond_to do |format|
       format.html {render :customs_invoice}
       format.pdf do
@@ -230,6 +235,7 @@ class GreenhousesController < ApplicationController
     @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id)
 
 
+    @title = "Factura de Cobro"
     respond_to do |format|
       format.html {render :invoice}
       format.pdf do
