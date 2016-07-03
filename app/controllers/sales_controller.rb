@@ -18,7 +18,7 @@ class SalesController < ApplicationController
     @sale = Sale.find(params[:id])
 
     if @sale.delivery_place_id != nil
-      @delivery_place = DeliveryPlace.find(@sale.delivery_place)
+      @delivery_place = DeliveryPlace.find(@sale.delivery_place_id)
     else
       @delivery_place = DeliveryPlace.first
     end
@@ -32,7 +32,7 @@ class SalesController < ApplicationController
   def new
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.new(greenhouse_id: @greenhouse.id, departure_date: Time.now.advance(:days => +1),
-     arrival_date: Time.now.advance(:days => +2), delivery_place: "McAllen, Tx.")
+     arrival_date: Time.now.advance(:days => +2))
 
     # Se intenta obtener el ship_number del último objeto Sale en la DB
     @sale.ship_number = get_next_ship_number("0")
