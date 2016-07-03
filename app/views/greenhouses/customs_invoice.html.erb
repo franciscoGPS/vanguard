@@ -191,13 +191,13 @@
               <% @shipments.each do |shipment|%>
               <tr>
                 <td style="font-size:10px;">
-                  <%="#{shipment.box_number}" %>
+                  <%="#{shipment.formatted_boxes}" %>
                 </td>
                 <td style="font-size:10px;">
                   <%= "#{BoxType.find(shipment.box_type_id).name}" %>
                 </td>
                 <td style="font-size:10px;">
-                  <%=  "#{shipment.weight}" %>
+                  <%=  "#{shipment.formatted_weight} lb" %>
                 </td>
                 <td style="font-size:10px;">
                   <%= "#{shipment.pallets_number }"%>
@@ -206,13 +206,36 @@
                   <%= "#{shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name}" %>
                 </td>
                 <td style="font-size:10px;">
-                  <%= "#{shipment.price}" %>
+                  <%= "#{number_to_currency(shipment.price)}" %>
                 </td>
                 <td style="font-size:10px;">
-                  <strong><%= "#{shipment.price * shipment.box_number}" %></strong>
+                  <strong><%= "#{number_to_currency(shipment.price * shipment.box_number)}" %></strong>
                 </td>
               </tr>
               <% end %>
+              <!--<tr>
+                <td>
+                  <b>TOTAL </b>< %= "#{formatted_number(@total_boxes)}cs" %>
+                </td>
+                <td>
+                  ---
+                </td>
+                <td>
+                  ---
+                </td>
+                <td>
+                  < %= "#{formatted_number(@total_pallets)}" %>
+                </td>
+                <td>
+                  ---
+                </td>
+                <td>
+                  ---
+                </td>
+                <td>
+                  ---
+                </td>
+              </tr>-->
             </tbody>
           </table>
           <div class="row">

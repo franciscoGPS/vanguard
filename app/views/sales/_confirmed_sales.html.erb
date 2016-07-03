@@ -14,15 +14,35 @@
   <tbody>
     <% @shipments.each do |shipment| %>
       <tr>
-        <td><%= shipment.box_number %></td>
-        <td><%= BoxType.find(shipment.box_type_id).name %></td>
-        <td><%= shipment.weight %></td>
-        <td><%= shipment.product.name %></td>
-        <td><%= shipment.customer.business_name %></td>
-        <td>$<%= shipment.price %></td>
-        <td>$<%= shipment.price * shipment.box_number %></td>
+        <td><%= "#{shipment.formatted_boxes}" %></td>
+        <td><%= "#{BoxType.find(shipment.box_type_id).name}" %></td>
+        <td><%= "#{shipment.formatted_weight} lb" %></td>
+        <td><%= "#{shipment.product.name}" %></td>
+        <td><%= "#{shipment.customer.business_name}" %></td>
+        <td><%= "#{number_to_currency(shipment.price, unit: 'USD $' )}" %></td>
+        <td><%= "#{number_to_currency(shipment.price * shipment.box_number, unit: 'USD $')}" %></td>
       </tr>
     <% end %>
+      <tr>
+                <td>
+                  <b>TOTAL</b>
+                </td>
+                <td>
+                  ---
+                </td>
+                <td>
+                  <%= "#{formatted_number(@total_pallets)}" %>
+                </td>
+                <td>
+                  ---
+                </td>
+                <td>
+                  <%= "#{formatted_number(@total_boxes)}cs" %>
+                </td>
+                <td>
+                  ---
+                </td>
+              </tr>
   </tbody>
 </table>
 
