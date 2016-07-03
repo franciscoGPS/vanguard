@@ -201,13 +201,13 @@
               <% @shipments.each do |shipment|%>
               <tr>
                 <td class="font">
-                  <%="#{shipment.box_number}" %>
+                  <%="#{shipment.formatted_boxes}" %>
                 </td>
                 <td class="font">
                   <%= "#{BoxType.find(shipment.box_type_id).name}" %>
                 </td>
                 <td class="font">
-                  <%=  "#{shipment.weight}" %>
+                  <%=  "#{shipment.formatted_weight } lb" %>
                 </td>
                 <td class="font">
                   <%= "#{shipment.pallets_number }"%>
@@ -216,13 +216,14 @@
                   <%= "#{shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name}" %>
                 </td>
                 <td class="font">
-                  <%= "#{shipment.price}" %>
+                  <%= "#{number_to_currency(shipment.price)}" %>
                 </td>
                 <td class="font">
-                  <strong><%= "#{shipment.price * shipment.box_number}" %></strong>
+                  <strong><%= "#{number_to_currency(shipment.price * shipment.box_number)}" %></strong>
                 </td>
               </tr>
               <% end %>
+
             </tbody>
           </table>
           <div class="row">
