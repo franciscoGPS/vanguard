@@ -210,6 +210,8 @@ class GreenhousesController < ApplicationController
 
     @total_pallets_words = @manifest.total_pallets.to_words
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
+    @total_pallets =  @shipments.map { |r|  r[:pallets_number] }.sum
+    @total_boxes =  @shipments.map { |r|  r[:box_number] }.sum
 
 
     @title = "Factura Comercial"
