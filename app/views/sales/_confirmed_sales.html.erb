@@ -23,26 +23,6 @@
         <td><%= "#{number_to_currency(shipment.price * shipment.box_number, unit: 'USD $')}" %></td>
       </tr>
     <% end %>
-      <tr>
-                <td>
-                  <b>TOTAL</b>
-                </td>
-                <td>
-                  ---
-                </td>
-                <td>
-                  <%= "#{formatted_number(@total_pallets)}" %>
-                </td>
-                <td>
-                  ---
-                </td>
-                <td>
-                  <%= "#{formatted_number(@total_boxes)}cs" %>
-                </td>
-                <td>
-                  ---
-                </td>
-              </tr>
   </tbody>
 </table>
 
