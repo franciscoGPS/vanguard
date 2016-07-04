@@ -32,7 +32,7 @@
                 <td><%= "#{sale.ship_number}" %></td>
                 <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
                   <%if !sale.shipments.empty? %>
-                    <%= sale.shipments.first.product.name %>
+                    <%= "#{sale.shipments.first.product.name}" %>
                     <%else %>
                     Detalles
                   <%end%>
