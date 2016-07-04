@@ -34,8 +34,10 @@ class GreenhousesController < ApplicationController
 
     @greenhouse.sales.each do |sale|
       sale.shipments.each do |sh|
-        if(sh.products != nil)
+        if(sh.product != nil)
           @sold_products[sh.product.name] += 1
+        else
+          byebug
         end
       end
     end

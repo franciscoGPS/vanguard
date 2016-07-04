@@ -17,7 +17,7 @@
         <td><%= "#{shipment.formatted_boxes}" %></td>
         <td><%= "#{BoxType.find(shipment.box_type_id).name}" %></td>
         <td><%= "#{shipment.formatted_weight} lb" %></td>
-        <td><%= "#{shipment.product != nil ? shipment.product : 'Deleted Product' }" %></td>
+        <td><%= "#{shipment.product != nil ? shipment.product.name : 'Deleted Product' }" %></td>
         <td><%= "#{shipment.customer.business_name}" %></td>
         <td><%= "#{number_to_currency(shipment.price, unit: 'USD $' )}" %></td>
         <td><%= "#{number_to_currency(shipment.price * shipment.box_number, unit: 'USD $')}" %></td>
