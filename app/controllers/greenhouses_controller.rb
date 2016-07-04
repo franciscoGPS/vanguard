@@ -36,8 +36,6 @@ class GreenhousesController < ApplicationController
       sale.shipments.each do |sh|
         if(sh.product != nil)
           @sold_products[sh.product.name] += 1
-        else
-          byebug
         end
       end
     end
