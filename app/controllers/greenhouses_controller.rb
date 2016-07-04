@@ -31,9 +31,12 @@ class GreenhousesController < ApplicationController
     @week_sales = @greenhouse.week_sales
     # Get chart pie of sold products
     @sold_products = Hash.new(0)
+
     @greenhouse.sales.each do |sale|
       sale.shipments.each do |sh|
-        @sold_products[sh.product.name] += 1
+        if(sh.products != nil)
+          @sold_products[sh.product.name] += 1
+        end
       end
     end
 
