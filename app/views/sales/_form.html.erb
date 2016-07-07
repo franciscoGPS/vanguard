@@ -49,8 +49,8 @@
     <div class="panel-heading">
       <h3>Products</h3>
     </div>
-    <%= hidden_field(:shipments, :po_number_hidden) %>
-    <%= hidden_field(:shipments, :customer_id_hidden) %>
+    <%= hidden_field_tag(:po_number_hidden) %>
+    <%= hidden_field_tag(:customer_id_hidden) %>
     <div class="panel-body">
       <%= link_to_add_association 'Add Product', f, :shipments,
             render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small margin-up pull-right" %>
@@ -93,9 +93,9 @@
   $("#products").on('cocoon:before-insert', function(e, inserted_item){
       //Selected by parent class and own class of input in which is
       // wanted to set the value when added.
-      $(".nested-fields .po_num", inserted_item).val($('#shipments_po_number_hidden').val());
+      $(".nested-fields .po_num", inserted_item).val($('#po_number_hidden').val());
 
-      $(".nested-fields .cust_id", inserted_item).val($('#shipments_customer_id_hidden').val());
+      $(".nested-fields .cust_id", inserted_item).val($('#customer_id_hidden').val());
 
 
 
