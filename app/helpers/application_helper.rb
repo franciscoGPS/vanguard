@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include ActionView::Helpers::NumberHelper
 
   def bootstrap_flash_class(flash_type)
       { success: 'alert-success',
@@ -187,6 +188,11 @@ def asset_data_base64(path)
   base64 = Base64.encode64(asset.to_s).gsub(/\s+/, "")
   "data:#{asset.content_type};base64,#{Rack::Utils.escape(base64)}"
 end
+
+  def formatted_weight(weight_val)
+    number_with_precision(weight_val, precision: 0)
+  end
+
 
 private
 def ship_number_exists(next_ship_number)

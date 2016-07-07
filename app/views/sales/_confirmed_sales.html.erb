@@ -1,5 +1,5 @@
 <h3>Products</h3>
-<table class="table table-hover">
+<table class="table table-hover table-striped table-bordered">
   <thead>
     <tr>
       <th>Box Qty</th>
@@ -16,13 +16,36 @@
       <tr>
         <td><%= "#{shipment.formatted_boxes}" %></td>
         <td><%= "#{BoxType.find(shipment.box_type_id).name}" %></td>
-        <td><%= "#{shipment.formatted_weight} lb" %></td>
+        <td><%= "#{formatted_weight(shipment.weight)} lb" %></td>
         <td><%= "#{shipment.product != nil ? shipment.product.name : 'Deleted Product' }" %></td>
         <td><%= "#{shipment.customer.business_name}" %></td>
         <td><%= "#{number_to_currency(shipment.price, unit: 'USD $' )}" %></td>
         <td><%= "#{number_to_currency(shipment.price * shipment.box_number, unit: 'USD $')}" %></td>
       </tr>
     <% end %>
+    <tr>
+      <td>
+        <b><%= "#{formatted_number(@total_boxes)}" %></b>
+      </td>
+      <td>
+        ---
+      </td>
+      <td>
+        <b><%= "#{formatted_weight(@total_weight)} lb" %></b>
+      </td>
+      <td>
+                  ---
+      </td>
+      <td>
+                  ---
+      </td>
+      <td>
+                  ---
+      </td>
+      <td>
+        <b><%= "#{number_to_currency(@total_ammount_money, unit: 'USD $')}" %></b>
+      </td>
+    </tr>
   </tbody>
 </table>
 

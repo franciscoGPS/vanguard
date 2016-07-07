@@ -43,22 +43,15 @@
 </div>
 
 <%= form_for_filterrific @filterrific do |f| %>
+
   <div>
-    Shipment #
-    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-    <%= f.text_field(
-      :with_ship_number,
-      class: 'filterrific-periodically-observed form-control'
-    ) %>
+      Shipment #
+    <%= f.fields_for :with_ship_number, OpenStruct.new(@filterrific.with_ship_number) do |with_ship_number_fields| %>
+        <%= with_ship_number_fields.hidden_field :greenhouse_id ,:value => @greenhouse.id %>
+        <%= with_ship_number_fields.text_field :value,
+      class: ' form-control filterrific-periodically-observed' %>
+    <% end %>
   </div>
-  <!--<div>
-    Shipment#
-    < %= f.select(
-      :with_ship_number,
-      @filterrific.select_options[:with_ship_number],
-      { include_blank: '- Any -' }
-    ) %>
-  </div>-->
   <div>
     By customer
     <%= f.select(:with_customer_id, @filterrific.select_options[:with_customer_id], { :include_blank => '- Any -' }) %>

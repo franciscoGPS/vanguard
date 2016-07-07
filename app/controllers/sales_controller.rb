@@ -22,7 +22,11 @@ class SalesController < ApplicationController
     else
       @delivery_place = DeliveryPlace.first
     end
+
     @shipments = Shipment.where(sale_id: @sale.id).order(customer_id: :asc)
+    @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
+    @total_weight =  @shipments.map { |r| r[:weight] }.sum
+    @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
     @customers = @sale.sold_to
     @state_changes = ShipmentStateChanges.where(sale_id: @sale.id).order(created_at: :desc ).page(params[:page])
 
