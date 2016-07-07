@@ -39,7 +39,13 @@ class Sale < ActiveRecord::Base
   )
 
 
-  scope :with_ship_number, -> (ship_number) { where("ship_number LIKE ?", "%#{ship_number}%") if ship_number.present? }
+  scope :with_ship_number, lambda { |ship_number|
+    if(ship_number[:value].empty?)
+      where("greenhouse_id = ?", "#{ship_number[:greenhouse_id]}") if ship_number.greenhouse_id.present?
+    else
+      where("ship_number LIKE ? AND greenhouse_id = ?", "%#{ship_number[:value].downcase.to_i}%", "#{ship_number[:greenhouse_id]}") if ship_number.greenhouse_id.present?
+    end
+   }
 
   scope :with_customer_id, lambda { |customer_ids|
     Sale.includes(:shipments).where( :shipments => { :customer_id => [*customer_ids] })

@@ -1,5 +1,5 @@
 
-
+<div class="nested-fields">
 <div class="col-md-12 shipment-fields nested-fields padding-up">
   <%= "#{@counter}" %>
   <div class="well">
@@ -15,7 +15,7 @@
             <%= f.label :purshase_order_number %>
           </div>
           <div class="col-md-12">
-            <%= f.text_field :po_number, :class => 'text_field form-control', :required => true%>
+            <%= f.text_field :po_number, :class => 'po_num text_field form-control', :required => true%>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
           </div>
           <div class="col-md-12">
             <%= f.collection_select :customer_id, @customers, :id, :business_name,
-                              {prompt: "Selecciona cliente"}, {:class => 'text_field form-control', :required => true} %>
+                              {prompt: "Selecciona cliente"}, {:class => 'cust_id text_field form-control', :required => true} %>
           </div>
         </div>
       </div>
@@ -187,11 +187,42 @@
     </div>
   </div>
 </div>
+</div>
 <script type="text/javascript">
   //Adds bootstrapSwitch to current partial
   $("[type='checkbox']").bootstrapSwitch();
   $(".shipment-fields select, .shipment-fields input[type='number']").css("width","100%");
 
+
+  $(".po_num").on('change', function(params) {
+    //Getting id from the current object.
+    var shipment_auto_rails_id = params.target.name.match(/\d+/);
+
+
+      //No mattert what is the po_number you updated; it will take the value from input and
+      //store it as the latest in the hidden field.
+      //When a new shipment is inserted, the mechanism will take the value from
+      //the hidden field and place it.
+      $('#shipments_po_number_hidden').val($("#sale_shipments_attributes_"
+        +shipment_auto_rails_id+"_po_number").val());
+
+
+  });
+
+
+    $(".cust_id").on('change', function(params) {
+    //Getting id from the current object.
+    var shipment_auto_rails_id = params.target.name.match(/\d+/);
+
+      //No mattert what is the customer_id you choose in the View;
+      //it will take the value from input and
+      //store it as the latest in the hidden field.
+      //When a new shipment is inserted, the mechanism will take the value from
+      //the hidden field and place it.
+      $('#shipments_customer_id_hidden').val($("#sale_shipments_attributes_"
+        +shipment_auto_rails_id+"_customer_id").val());
+
+  });
 
        $(".prod").on('change', function(params){
 
@@ -212,7 +243,7 @@
             data: $.param(params),
             dataType: 'json',
             success: function (dataRes) {
-              var types_select = $("select[name$='["+shipment_auto_rails_id+"][count_type_id]']")
+              var types_select = $("select[name$='["+shipment_auto_rails_id+"][count_type_id]']");
               types_select.removeAttr('disabled');
               clearTarget(types_select);
 

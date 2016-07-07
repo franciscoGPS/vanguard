@@ -30,6 +30,9 @@ class CollectionsBillsController < ApplicationController
 
     #Shipments filtered by sale and customer
     @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id )
+
+    @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
+    @total_weight =  @shipments.map { |r| r[:weight] }.sum
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
 
     if @manifest != nil
