@@ -199,7 +199,7 @@
                   <%=  "#{shipment.formatted_weight} lb" %>
                 </td>
                 <td style="font-size:10px;">
-                  <%= "#{shipment.product.name + " " + shipment.package_type.name + " " + shipment.bag_type.name   + " " + shipment.plu_to_string }" %>
+                  <%= "#{shipment.product.name + " " + shipment.bag_type.name + " " + shipment.package_type.name + " " + shipment.plu_to_string }" %>
                 </td>
                 <td style="font-size:10px;">
                   <%= "#{number_to_currency(shipment.price)}" %>
