@@ -95,7 +95,7 @@
   									<%= "#{get_pallet_name(shipment.pallet_type_id)}" %>
   								</td>
                   <td>
-                    <%= "#{shipment.formatted_boxes}cs - #{shipment.own_color(@greenhouse.id)}"  %>
+                    <%= "#{shipment.formatted_boxes}cs " %><% if  shipment.own_color(@greenhouse.id) != "" %> <%= "- #{shipment.own_color(@greenhouse.id)}"  %> <% end %>
                   </td>
                   <td>
                     <%= "#{shipment.formatted_weight} - #{get_box_name(shipment.box_type_id)}" %>
