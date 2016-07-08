@@ -191,7 +191,6 @@
                 <th>Cantidad</th>
                 <th>Unidad</th>
                 <th>Peso</th>
-                <th>Pallets</th>
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Total</th>
@@ -204,16 +203,13 @@
                   <%="#{shipment.formatted_boxes}" %>
                 </td>
                 <td class="font">
-                  <%= "#{BoxType.find(shipment.box_type_id).name}" %>
+                  <%= "#{shipment.box_type.name}" %>
                 </td>
                 <td class="font">
                   <%=  "#{shipment.formatted_weight } lb" %>
                 </td>
                 <td class="font">
-                  <%= "#{shipment.pallets_number }"%>
-                </td>
-                <td class="font">
-                  <%= "#{shipment.product.name + " " + shipment.bag_type.name  + " " + shipment.plu_to_string + " " + shipment.package_type.name + " " + shipment.pallet_type.name + " " + shipment.box_type.name}" %>
+                  <%= "#{shipment.product.name + " " + shipment.package_type.name + " " + shipment.bag_type.name   + " " + shipment.plu_to_string }" %>
                 </td>
                 <td class="font">
                   <%= "#{number_to_currency(shipment.price)}" %>
