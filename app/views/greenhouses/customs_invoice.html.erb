@@ -87,28 +87,32 @@
             <tbody>
         	  <tr>
         		<td style="background-color: <%= @greenhouse.color %>"></td>
-        		<td style="width:200px;font-size:10px;"><small><strong>Agencia Aduanal Mexicana</strong></small></td>
+        		<td style="width:200px;font-size:10px;"><%= "#{@mex_custom_broker.name}" %></td>
+            <td style="width:200px;font-size:10px;"><%= "#{@mex_custom_broker.address}" %></td>
         	  </tr>
               <tr>
                 <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
-                <td style="font-size:10px;width:300px;"><%= "#{@mex_custom_broker.name}" %></td>
+                <td style="font-size:10px;width:300px;"><small><strong>Agencia Aduanal Mexicana</strong></small></td>
+                <td style="font-size:10px;width:200px;"><small><strong>Dirección</strong></small></td>
               </tr>
               <tr>
                 <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Agencia</strong></td>
-                <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
+                <td style="font-size:10px;width:300px;"><strong><small></small></strong></td>
               </tr>
               <tr>
               	<td style="font-size:10px;background-color: <%= @greenhouse.color %>"><strong style="color:white">Aduanal</strong></td>
-              	<td style="width:200px;font-size:10px;"><small><strong>Agencia Aduanal Americana</strong></small></td>
+              	<td style="width:200px;font-size:10px;"><%= "#{@usa_custom_broker.name}" %></td>
+                <td style="width:200px;font-size:10px;"><%= "#{@usa_custom_broker.address}" %></td>
               </tr>
               <tr>
                 <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
-                <td style="font-size:10px;width:300px;"><%= "#{@usa_custom_broker.name}" %></td>
+                <td style="font-size:10px;width:300px;"><small><strong>Agencia Aduanal Americana</strong></small></td>
+                <td style="font-size:10px;width:200px;"><small><strong>Dirección</strong></small></td>
               </tr>
-              <tr>
-                <td style="font-size:10px;width:75px;max-width:75px;background-color: <%= @greenhouse.color %>"></td>
+              <!--<tr>
+                <td style="font-size:10px;width:75px;max-width:75px;background-color: < %= @greenhouse.color %>"></td>
                 <td style="font-size:10px;width:300px;"><strong><small>Nombre</small></strong></td>
-              </tr>
+              </tr>-->
             </tbody>
           </table>
       </div>
