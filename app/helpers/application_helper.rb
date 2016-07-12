@@ -143,11 +143,11 @@ module ApplicationHelper
 
   def get_next_ship_number(wrong_ship_number)
     begin
-       last_ship_number = Sale.order("ship_number ASC").where.not(:ship_number => nil).last.ship_number
+       ships_array = Sale.where.not(:ship_number => nil).pluck(:ship_number)
+        last_ship_number = ships_array.collect{ |s| s.match(/\d+/).to_a[0].to_i }.sort.last
       rescue Exception => e
         last_ship_number = nil
       end
-
     if last_ship_number != nil
 
         if(wrong_ship_number != nil && wrong_ship_number != "0")
@@ -155,12 +155,12 @@ module ApplicationHelper
 
         else
         #En caso de ser el wrong_ship_number cero, se usa el último en DB como DEFAULT
-          wrong_int_ship_number = last_ship_number.match(/\d+/).to_a[0].to_i
+          wrong_int_ship_number = last_ship_number
 
         end
 
       #En caso de no ser nil, se busca el número con el regex /\d+/ (dígito, una o más veces)
-      last_ship_number = last_ship_number.match(/\d+/).to_a[0].to_i
+      # Comentando desde que last_ship_number regresa como entero. = last_ship_number.match(/\d+/).to_a[0].to_i
       next_ship_int_number = last_ship_number+1
 
 
