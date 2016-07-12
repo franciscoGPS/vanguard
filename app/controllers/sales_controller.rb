@@ -55,9 +55,7 @@ class SalesController < ApplicationController
       session[:tried_sale] = nil
       session[:tried_shipments] = nil
 
-
     end
-
   end
 
   def get_products_in_array(products)
