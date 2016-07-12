@@ -165,7 +165,11 @@ class GreenhousesController < ApplicationController
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
-    @warehouse = Warehouse.find(@manifest.warehouse_id)
+    if(@manifest.warehouse_id.nil?)
+        @warehouse = Warehouse.where("greenhouse_id = ?", @greenhouse.id).first
+    else
+        @warehouse = Warehouse.find(@manifest.warehouse_id)
+    end
 
     @mex_custom_broker = CustomBroker.where(:id => @manifest.mex_custom_broker.to_i).first
     if(@mex_custom_broker.nil?)
