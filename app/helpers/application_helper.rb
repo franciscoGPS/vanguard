@@ -142,9 +142,8 @@ module ApplicationHelper
   end
 
   def get_next_ship_number(wrong_ship_number)
-
     begin
-       last_ship_number = Sale.order("ship_number ASC").where.not(:ship_number => nil).first.ship_number
+       last_ship_number = Sale.order("ship_number ASC").where.not(:ship_number => nil).last.ship_number
       rescue Exception => e
         last_ship_number = nil
       end
