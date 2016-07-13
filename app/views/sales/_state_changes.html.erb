@@ -12,9 +12,9 @@
     <% @state_changes.each_with_index do |change, index| %>
       <tr>
         <td><%= states_index[change.from_state.to_s][:name] %></td>
-        <td><%= states_index[change.from_state.to_s][:name] %></td>
+        <td><%= states_index[change.to_state.to_s][:name] %></td>
         <td><%= change.user_changed.name %></td>
-        <td><%= change.change_time %></td>
+        <td><%= change.created_at.getlocal.strftime("%A, %d %b %Y %l:%M %p") %></td>
       </tr>
     <% end %>
   </tbody>
