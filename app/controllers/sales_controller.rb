@@ -39,13 +39,14 @@ class SalesController < ApplicationController
      arrival_date: Time.now.advance(:days => +2))
 
     # Se intenta obtener el ship_number del último objeto Sale en la DB
-    @sale.ship_number = get_next_ship_number("0")
+    @sale.ship_number = get_next_ship_number(@greenhouse.id,"0")
 
     @customers = Customer.own_customers(params[:greenhouse_id])
     #Poner validaciones de productos no borrados y activos
     @products = @greenhouse.active_products
     @counts = CountType.where(product_id: 0).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
+    @warehouses = Warehouse.where(greenhouse_id: @greenhouse.id)
 
     #Al estar creando uno nuevo, si viene diferente de nil, se usan los valores que tiene,
     #luego se borran de la session
@@ -75,6 +76,7 @@ class SalesController < ApplicationController
     @products = Product.where(greenhouse_id: params[:greenhouse_id])
     @counts = CountType.where(product_id: get_products_in_array(@products)).order("name ASC")
     @colors = Color.where(greenhouse_id: @greenhouse.id).order("name ASC")
+    @warehouses = Warehouse.where(greenhouse_id: @greenhouse.id)
     @edit = true
   end
 
@@ -125,6 +127,12 @@ class SalesController < ApplicationController
   def update
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     begin
+      modified_sale = Sale.find(params[:id].to_i)
+        if(modified_sale.warehouse_id != params[:sale][:warehouse_id])
+          manifest = Manifest.where(:sale => params[:id].to_i).first
+          manifest.warehouse_id = params[:sale][:warehouse_id]
+          manifest.save
+        end
         @sale.update(sale_params)
     rescue Exception => e
         if e.cause.class.to_s == "PG::UniqueViolation"
@@ -138,7 +146,7 @@ class SalesController < ApplicationController
       if session[:tried_sale] == nil
         respond_to do |format|
           format.html { redirect_to greenhouse_sale_path(@greenhouse.id, @sale.id),
-            notice: 'Sale and shipments persisted successfully.' }
+            notice: 'Shipment saved successfully.' }
         end
         #En caso de no estar vacía la session[:tried_sale] se envía a crear de nuevo la venta,
         #con un mensaje de error.
@@ -206,10 +214,10 @@ class SalesController < ApplicationController
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     sale = Sale.find(params[:sale_id])
     manifests = Manifest.where(sale_id: sale.id)
-    if(manifests.count == 0)
+    if(manifests.count == 0 )
       redirect_to new_greenhouse_sale_manifest_path(@greenhouse.id, sale.id)
     elsif (manifests.count >= 1)
-      mani = manifests.first
+      #mani = manifests.first
       redirect_to customs_invoice_path(sale.id)
     end
 
@@ -235,11 +243,13 @@ class SalesController < ApplicationController
   def is_unique
 
     if(params[:ship_number] != nil && params[:ship_number] != "")
-      sale = Sale.where(ship_number: params[:ship_number])
+
+      sale = Sale.where(ship_number: params[:ship_number]).where(greenhouse_id: params[:greenhouse_id])
+      byebug
       if(sale != nil && sale.count > 0)
         #Encontró algo y se lo asignó a sale
         result = {}
-        result = {:is_unique => false, :next_ship_number => get_next_ship_number(params[:ship_number]),
+        result = {:is_unique => false, :next_ship_number => get_next_ship_number(params[:greenhouse_id], params[:ship_number]),
          :error_message => "\"Shipment Number\" already in use. Please verify. "}
         render :json => result.to_json
       else
@@ -382,6 +392,7 @@ class SalesController < ApplicationController
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
       :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place_id,
+      :warehouse_id,
 
       shipments_attributes: [:id, :start_at, :created_at, :updated_at,
         :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,

@@ -128,38 +128,6 @@
 <script type="text/javascript">
 
 
-
-$('#sale_ship_number').on('change', function(){
-
-          if($('#sale_ship_number').val() != ""){
-
-            var params = {
-              ship_number: $('#sale_ship_number').val()
-            };
-
-            $.ajax({
-            url: '<%= greenhouses_manifests_is_unique_path %>',
-            type: 'GET',
-            data: $.param(params),
-            dataType: 'json',
-            success: function (dataRes) {
-
-              if(dataRes["is_unique"] == false){
-
-                    var ship_number = $('#sale_ship_number').val();
-                    $('#sale_ship_number').val(dataRes["next_ship_number"]);
-                    $("#messages").html('<div class="alert alert-error fade in">  '+
-                      dataRes["error_message"]+" "+ ship_number+'<button class="close" data-dismiss="alert"> x</button></div>');
-                }
-
-
-              }
-          });
-
-          }
-
-});
-
                   $("#btn_save").on("click", function(event){
                      if ($(this).is("[disabled]")) {
                         event.preventDefault();

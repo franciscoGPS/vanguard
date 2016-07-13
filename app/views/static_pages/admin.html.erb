@@ -61,11 +61,12 @@
                   <strong><%= "#{ find_user_name(activity.owner_id)}" %></strong>
                   <%= "#{activity.key.split(".")[1]}" %>
                   a
-                  <strong data-toggle="tooltip" data-placement="top" title="<%= find_activity(activity.key.split(".")[0].capitalize, activity.trackable_id).as_json.to_a.to(1) %>">
+                  <strong data-toggle="tooltip" data-placement="top" title="<%= "#{ find_activity(activity.key.split(".")[0].capitalize, activity.trackable_id).as_json.to_a.to(5) } " %>">
                     <%= "#{activity.key.split(".")[0]}" %>
                   </strong>
                   <i>
-                    <%= "#{activity.created_at.strftime("at %A, %d %b %Y %l:%M %p")}" %>
+                    <%= activity.created_at.getlocal.strftime("at %A, %d %b %Y %l:%M %p") %>
+                    <!--< %= "#{activity.created_at.strftime("at %A, %d %b %Y %l:%M %p")}" %>-->
                   </i>
                 </small>
               </div>
