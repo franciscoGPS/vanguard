@@ -23,6 +23,7 @@
               <%= "#{@sale.ship_number}" %>
             </p>
           </div>
+
           <div class="pull-right" style="width: 480px;">
             <p class="pull-left" style="width: 130px;font-size:10px;">
               <strong>Fecha de Entrega en <%= "#{@delivery_place.name}" %></strong>
@@ -41,6 +42,14 @@
             </p>
             <p class="pull-right" style="width: 350px;font-size:10px;">
               <%= @string_products.html_safe %>
+            </p>
+          </div>
+           <div class="pull-right" style="width: 480px;">
+            <p class="pull-left" style="width: 130px;font-size:10px;">
+              <strong>Warehouse</strong>
+            </p>
+            <p class="pull-right" style="width: 350px;font-size:10px;">
+              <%= "#{@warehouse.name}" %>
             </p>
           </div>
         </div>

@@ -141,9 +141,9 @@ module ApplicationHelper
 
   end
 
-  def get_next_ship_number(wrong_ship_number)
+  def get_next_ship_number(gh, wrong_ship_number)
     begin
-       ships_array = Sale.where.not(:ship_number => nil).pluck(:ship_number)
+       ships_array = Sale.where(greenhouse_id: gh).where.not(:ship_number => nil).pluck(:ship_number)
         last_ship_number = ships_array.collect{ |s| s.match(/\d+/).to_a[0].to_i }.sort.last
       rescue Exception => e
         last_ship_number = nil
@@ -172,7 +172,7 @@ module ApplicationHelper
           if next_ship_int_number <= wrong_int_ship_number
               next_ship_int_number = wrong_int_ship_number+1
           end
-          return next_ship_int_number.to_s << "-A"
+          return next_ship_int_number.to_s
         end
 
 
@@ -196,7 +196,7 @@ end
 private
 def ship_number_exists(next_ship_number)
 
-  next_ship_number = next_ship_number.to_s << "-A"
+  next_ship_number = next_ship_number.to_s# << "-A"
 
   sale = Sale.where(ship_number: next_ship_number).first
 end

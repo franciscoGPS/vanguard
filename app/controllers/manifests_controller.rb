@@ -60,6 +60,7 @@ class ManifestsController < ApplicationController
       @manifest.fda_num = @greenhouse.fda_num
       @manifest.total_pallets = @total_pallets
       @manifest.ship_number = @sale.ship_number
+      @manifest.warehouse_id = @sale.warehouse_id
       @manifest.leyend = ""
       @manifest.custom_invoice_id = get_next_custom_invoice_id(@greenhouse.id)
       @manifest.comments = "Se señala el precio de venta exclusivamente para cubrir
@@ -116,6 +117,8 @@ class ManifestsController < ApplicationController
 def update
   @greenhouse = Greenhouse.find(params[:greenhouse_id])
   @sale = Sale.find(params[:sale_id])
+  @sale.warehouse_id = params[:manifest][:warehouse_id].to_i
+  @sale.save
   respond_to do |format|
     if @manifest.update(manifest_params)
       #format.html { redirect_to greenhouse_sale_manifest_path(@greenhouse.id, @sale.id, @manifest.id) , notice: 'Manifest was successfully updated.' }

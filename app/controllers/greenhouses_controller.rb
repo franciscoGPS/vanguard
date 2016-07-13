@@ -138,7 +138,8 @@ class GreenhousesController < ApplicationController
 
     #@mex_custom_broker = CustomBroker.find(@manifest.mex_custom_broker)
     #@usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
-
+    @warehouse = @sale.warehouse_id.nil? ?
+    Warehouse.where(greenhouse_id: @greenhouse.id).first : Warehouse.find(@sale.warehouse_id).first
     @total_pallets =  @shipments.map { |r| r[:pallets_number] }.sum
     @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
     @title = "Orden de Compra"
@@ -279,6 +280,7 @@ class GreenhousesController < ApplicationController
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
       :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place_id,
+      :warehouse_id,
 
           shipments_attributes: [:id, :start_at, :created_at, :updated_at,
             :cancel, :deleted_at, :product_id, :pallets_number, :box_number, :weight,
