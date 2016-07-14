@@ -270,6 +270,6 @@ end
   :trailer_num, :trailer_num_lp, :stamp, :thermograph, :po_number,
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
   :total_pallets, :comments, :manifest_number, :warehouse_id, :ship_number,
-  :leyend)
+  :leyend, :custom_invoice_id)
   end
 end

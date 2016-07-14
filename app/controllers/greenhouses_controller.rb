@@ -139,7 +139,7 @@ class GreenhousesController < ApplicationController
     #@mex_custom_broker = CustomBroker.find(@manifest.mex_custom_broker)
     #@usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
     @warehouse = @sale.warehouse_id.nil? ?
-    Warehouse.where(greenhouse_id: @greenhouse.id).first : Warehouse.find(@sale.warehouse_id).first
+    Warehouse.where(greenhouse_id: @greenhouse.id).first : Warehouse.find(@sale.warehouse_id)
     @total_pallets =  @shipments.map { |r| r[:pallets_number] }.sum
     @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
     @title = "Orden de Compra"
