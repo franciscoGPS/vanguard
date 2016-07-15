@@ -1,9 +1,10 @@
-heroku maintenance:on --app=vanguardco-staging
+heroku maintenance:on --app=vanguardco-staging  ó heroku maintenance:on --remote=prod
 
 git push staging master
 
 heroku run rake db:version
-heroku run rake db:migrate --app vanguardco-staging
+heroku run rake db:migrate --app vanguardco-stagingç
+heroku run rake db:seed --app vanguardco-staging [if needed]
 
 heroku run rake assets:precompile --remote [prod/staging]
 

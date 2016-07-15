@@ -1,26 +1,43 @@
+<%- model_class = DeliveryPlace -%>
 <p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
 
-<h1>Listing Delivery Places</h1>
+<div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-hover"  data-toggle="table" data-pagination="true" data-search="true">
+        <thead>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th><%= model_class.human_attribute_name(:name) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @delivery_places.each do |delivery_place| %>
-      <tr>
-        <td><%= "#{delivery_place.name}" %></td>
-        <td><%= link_to 'Show', delivery_place %></td>
-        <td><%= link_to 'Edit', edit_delivery_place_path(delivery_place) %></td>
-        <td><%= link_to 'Destroy', delivery_place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+        <tbody>
+          <% @delivery_places.each do |delivery_place| %>
+            <tr>
+              <td class='col-md-2'><%= "#{delivery_place.id}" %></td>
+              <td class='col-md-2'><%= "#{delivery_place.name}" %></td>
+               <td>
+                <%= link_to delivery_place_path(delivery_place), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+                  <i class="fa fa-info fw"></i>
+                <%- end -%>
+                <%= link_to edit_delivery_place_path(delivery_place), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+                  <i class="fa fa-pencil fw"></i>
+                <%- end -%>
+                <%= link_to delivery_place_path(delivery_place), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+                  <i class="fa fa-trash-o fw"></i>
+                <%- end -%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_delivery_place_path,
+            :class => 'btn btn-primary' %>
+  </div>
+</div>
 <br>
 
-<%= link_to 'New Delivery place', new_delivery_place_path %>
+

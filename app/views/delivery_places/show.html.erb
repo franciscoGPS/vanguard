@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Name:</strong>
+  <%= @delivery_place.name %>
+</p>
 <%= link_to 'Edit', edit_delivery_place_path(@delivery_place) %> |
 <%= link_to 'Back', delivery_places_path %>

@@ -1,14 +1,16 @@
 <%- model_class = CustomBroker -%>
-
-<h1>Listing Custom Brokers</h1>
-
-<table>
+<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-hover"  data-toggle="table" data-pagination="true" data-search="true">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name(:country) %></th>
-      <th><%= model_class.human_attribute_name(:greenhouse) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -19,15 +21,25 @@
         <td><%= custom_broker.name %></td>
         <td><%= custom_broker.address %></td>
         <td><%= custom_broker.country_code %></td>
-        <td><%= custom_broker.greenhouse_id %></td>
-        <td><%= link_to 'Show', greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id) %></td>
-        <td><%= link_to 'Edit', edit_greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id) %></td>
-        <td><%= link_to 'Destroy', greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+              <i class="fa fa-info fw"></i>
+          <%- end -%>
+          <%= link_to edit_greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+              <i class="fa fa-pencil fw"></i>
+          <%- end -%>
+          <%= link_to greenhouse_custom_broker_path(@greenhouse.id, custom_broker.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+              <i class="fa fa-trash-o fw"></i>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Custom broker', new_greenhouse_custom_broker_path(@greenhouse.id) %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_greenhouse_custom_broker_path(@greenhouse.id),
+            :class => 'btn btn-primary' %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              greenhouse_path(@greenhouse.id) , :class => "btn btn-warning"  %>
+  </div>
+</div>
