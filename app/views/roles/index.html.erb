@@ -15,7 +15,7 @@
     <% @roles.each do |role| %>
       <tr>
         <td><%= role.id %></td>
-          <td><%= role.name %></td>
+        <td><%= role.name %></td>
         <td><%=l role.created_at, format: :long %></td>
         <td>
           <%= link_to role_path(role), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

@@ -10,6 +10,7 @@ class DeliveryPlacesController < ApplicationController
   # GET /delivery_places/1
   ## GET /delivery_places/1.json
   def show
+    @delivery_place = DeliveryPlace.find(params[:id])
   end
 
   # GET /delivery_places/new
@@ -67,8 +68,11 @@ class DeliveryPlacesController < ApplicationController
       @delivery_place = DeliveryPlace.find(params[:id])
     end
 
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def delivery_place_params
-      params.fetch(:delivery_place, {})
+      accessible = [:id, :name, :deleted_at]
+      params.require(:delivery_place).permit(accessible)
     end
 end
