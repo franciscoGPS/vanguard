@@ -1,15 +1,17 @@
+<%- model_class = Warehouse -%>
+<p id="notice"><%= notice %></p>
 <div class="page-header">
-  <h1>
-    Warehouses -
-    <%= "#{@greenhouse.business_name.capitalize}" %>
-  </h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-
 <%= render :partial => "greenhouses/submenu", :locals => {:id => @greenhouse.id } %>
 <div class="well">
   <%= link_to 'Back', greenhouse_path(@greenhouse.id), class: "btn btn-default" %>
   <%= link_to 'New Warehouse', new_greenhouse_warehouse_path, class: "btn btn-success pull-right" %>
 </div>
+
+
+
+
 <div class="panel panel-default">
     <div class="panel-body">
       <table class="table table-condensed table-hover"  data-toggle="table" data-pagination="true" data-search="true">
@@ -19,7 +21,7 @@
             <th>Address</th>
             <th>Tax ID</th>
             <th>Phone</th>
-            <th></th>
+            <th><%=t '.actions', :default => t("helpers.actions") %></th>
           </tr>
         </thead>
         <tbody>
@@ -30,8 +32,16 @@
               <td><%= "#{warehouse.tax_id}" %></td>
               <td><%= "#{warehouse.phone}" %></td>
               <td>
-                <%= link_to 'Delete', greenhouse_warehouse_path(@greenhouse.id, warehouse.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"%>
-                </td>
+                <%= link_to greenhouse_warehouse_path(@greenhouse.id, warehouse.id), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+                  <i class="fa fa-info fw"></i>
+                <%- end -%>
+                <%= link_to edit_greenhouse_warehouse_path(@greenhouse.id, warehouse.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+                  <i class="fa fa-pencil fw"></i>
+                <%- end -%>
+                <%= link_to greenhouse_warehouse_path(@greenhouse.id, warehouse.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+                  <i class="fa fa-trash-o fw"></i>
+                <%- end -%>
+              </td>
             </tr>
           <% end %>
         </tbody>
