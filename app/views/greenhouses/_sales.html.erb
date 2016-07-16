@@ -26,7 +26,17 @@
 
               <%= link_to greenhouse_sale_path(@greenhouse.id, sale.id), :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
                 <td><%= radio_button_tag(:selected, sale.id) %></td>
-                <td><%= "#{sale.ship_number}" %></td>
+
+
+
+
+                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>"><%= "#{sale.ship_number}" %></a></td>
+
+
+
+
+
+
                 <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
                   <%if !sale.shipments.empty? %>
                     <%= "#{sale.shipments.first.product != nil ? sale.shipments.first.product.name : "Details" }" %>
