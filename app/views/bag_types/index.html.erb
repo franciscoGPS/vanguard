@@ -1,27 +1,41 @@
- 
+<%- model_class = BagType -%>
+<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-hover"  data-toggle="table" data-pagination="true" data-search="true">
+          <thead>
+            <tr>
+              <th><%= model_class.human_attribute_name(:id) %></th>
+              <th><%= model_class.human_attribute_name(:name) %></th>
+              <th><%=t '.actions', :default => t("helpers.actions") %></th>
+            </tr>
+          </thead>
 
-<h1>Listing Bag Types</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bag_types.each do |bag_type| %>
-      <tr>
-        <td><%= bag_type.name %></td>
-        <td><%= link_to 'Show', bag_type %></td>
-        <td><%= link_to 'Edit', edit_bag_type_path(bag_type) %></td>
-        <td><%= link_to 'Destroy', bag_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Bag type', new_bag_type_path %>
+          <tbody>
+            <% @bag_types.each do |bag_type| %>
+              <tr>
+                <td><%= bag_type.id %></td>
+                 <td><%= bag_type.name %></td>
+                  <td>
+                    <%= link_to bag_type_path(bag_type.id), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+                        <i class="fa fa-info fw"></i>
+                    <%- end -%>
+                    <%= link_to edit_bag_type_path(bag_type.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+                        <i class="fa fa-pencil fw"></i>
+                    <%- end -%>
+                    <%= link_to bag_type_path(bag_type.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+                        <i class="fa fa-trash-o fw"></i>
+                    <%- end -%>
+                  </td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_bag_type_path,
+            :class => 'btn btn-primary' %>
+  </div>
+</div>
