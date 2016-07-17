@@ -19,9 +19,9 @@ class GreenhousesController < ApplicationController
   # GET /greenhouses/1
   # GET /greenhouses/1.json
   def show
-
     if params[:filterrific] == nil
-      params[:filterrific] = {"with_ship_number"=>{"greenhouse_id"=>params[:id], "value"=>""}}
+      #params[:filterrific] = {"with_ship_number"=>{"greenhouse_id"=>params[:id], "value"=>""}}
+      params[:filterrific] = {"sorted_by" => "created_at_desc"}
     end
 
     @filterrific = initialize_filterrific(Sale, params[:filterrific],

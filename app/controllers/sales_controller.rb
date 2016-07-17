@@ -245,7 +245,6 @@ class SalesController < ApplicationController
     if(params[:ship_number] != nil && params[:ship_number] != "")
 
       sale = Sale.where(ship_number: params[:ship_number]).where(greenhouse_id: params[:greenhouse_id])
-      byebug
       if(sale != nil && sale.count > 0)
         #Encontró algo y se lo asignó a sale
         result = {}
