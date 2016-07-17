@@ -28,7 +28,7 @@ class Sale < ActiveRecord::Base
   end
 
   filterrific(
-  default_filter_params: { sorted_by: 'departure_date_desc' },
+  default_filter_params: { sorted_by: 'created_at_desc' },
   available_filters: [
     :sorted_by,
     :with_ship_number,
@@ -59,11 +59,6 @@ class Sale < ActiveRecord::Base
     where('sales.departure_date <= ?', ref_date)
   }
 
-  scope :sorted_by, -> (field) {
-     select("*", field)
-}
-
-
     scope :sorted_by, lambda { |sort_option|
     # extract the sort direction from the param value.
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
@@ -74,6 +69,8 @@ class Sale < ActiveRecord::Base
       order("LOWER(ship_number) #{ direction }")
     when /^customer_/
       order("LOWER(customers.business_name) #{ direction }").includes(:customers).references(:customers)
+    when /^created_at_/
+      order("sales.created_at #{ direction }")
     else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
