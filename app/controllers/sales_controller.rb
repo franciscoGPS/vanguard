@@ -127,7 +127,6 @@ class SalesController < ApplicationController
   def update
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     begin
-      byebug
       modified_sale = Sale.find(params[:id].to_i)
         if(modified_sale.warehouse_id != params[:sale][:warehouse_id])
           manifest = Manifest.where(:sale => params[:id].to_i).first
