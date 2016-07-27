@@ -30,7 +30,7 @@ class GreenhousesController < ApplicationController
         with_customer_id: Customer.options_for_select(@greenhouse.id)
       }, :persistence_id => false) or return
 
-    @sales = @filterrific.find.page(params[:page]).per(10)
+    @sales = @filterrific.find.where("greenhouse_id = ?", @greenhouse).page(params[:page]).per(10)
 
     #@sales = @greenhouse.sales.order('created_at DESC').page(params[:page]).per(10)
     #@sales = @greenhouse.sales.sort
