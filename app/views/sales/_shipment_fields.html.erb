@@ -61,6 +61,7 @@
         <div class="form-group">
           <div class="col-md-12">
             <%= f.label :count_type_id, "Counting" %>
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" title="Select product to get its count"></span>
           </div>
           <div class="col-md-12">
             <%= f.collection_select :count_type_id, @counts, :id, :name, {:prompt => "Conteo"}, {:class => "text_field form-control count", :required => true, :disabled => "disabled"}  %>
@@ -192,7 +193,7 @@
   //Adds bootstrapSwitch to current partial
   $("[type='checkbox']").bootstrapSwitch();
   $(".shipment-fields select, .shipment-fields input[type='number']").css("width","100%");
-
+  $('[data-toggle="tooltip"]').tooltip();
 
   $(".po_num").on('change', function(params) {
     //Getting id from the current object.
@@ -224,7 +225,9 @@
 
   });
 
-       $(".prod").on('change', function(params) {
+
+
+       $(".prod").on('focusout', function(params) {
 
           // El método .match(d+) regresa cualquier número entero en la palabra
           var shipment_auto_rails_id = params.target.name.match(/\d+/);
@@ -234,7 +237,7 @@
           product_id_val = $(this).val();
           var product_select = $(this);
 
-              var params = {
+          var params = {
             product_id: product_id_val
           };
           $.ajax({

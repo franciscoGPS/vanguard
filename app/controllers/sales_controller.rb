@@ -130,10 +130,13 @@ class SalesController < ApplicationController
       modified_sale = Sale.find(params[:id].to_i)
         if(modified_sale.warehouse_id != params[:sale][:warehouse_id])
           manifest = Manifest.where(:sale => params[:id].to_i).first
-          manifest.warehouse_id = params[:sale][:warehouse_id]
-          manifest.save
+          if manifest != nil
+            manifest.warehouse_id = params[:sale][:warehouse_id]
+            manifest.save
+          end
+          @sale.update(sale_params)
         end
-        @sale.update(sale_params)
+
     rescue Exception => e
         if e.cause.class.to_s == "PG::UniqueViolation"
          flash[:error] = "Attempted to use an already used Shipment Consecutive.
