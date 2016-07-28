@@ -213,7 +213,7 @@
                   <%=  "#{shipment.formatted_weight } lb" %>
                 </td>
                 <td class="font">
-                  <%= "#{shipment.product.name + " " + shipment.bag_type.name + " " + shipment.package_type.name + " " + shipment.plu_to_string }"+" "+ "#{shipment.count_type.name}" %> <%= "#{shipment.own_color(@greenhouse.id)}" %>
+                  <%= "#{shipment.product.name + " " + shipment.bag_type.name + " " + shipment.package_type.name + " " + shipment.plu_to_string }" %> <%= "#{shipment.own_color(@greenhouse.id)}" %>
                 </td>
                 <td class="font">
                   <%= "#{number_to_currency(shipment.price)}" %>
