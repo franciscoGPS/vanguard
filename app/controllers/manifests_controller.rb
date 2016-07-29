@@ -270,6 +270,7 @@ end
   :trailer_num, :trailer_num_lp, :stamp, :thermograph, :po_number,
   :delivery_person, :person_receiving, :trailer_size, :caat, :alpha, :fda_num,
   :total_pallets, :comments, :manifest_number, :warehouse_id, :ship_number,
-  :leyend, :custom_invoice_id)
+  :leyend, :custom_invoice_id, :show_color, :show_count_type, :show_pkg_type,
+  :show_bag_type, :show_plu)
   end
 end

@@ -213,7 +213,28 @@
                   <%=  "#{shipment.formatted_weight } lb" %>
                 </td>
                 <td class="font">
-                  <%= "#{shipment.product.name + " " + shipment.bag_type.name + " " + shipment.package_type.name + " " + shipment.plu_to_string }" %> <%= "#{shipment.own_color(@greenhouse.id)}" %>
+                  <%= "#{shipment.product.name} " %>
+
+                  <% if @manifest.show_bag_type  %>
+                    <%= "#{shipment.bag_type.name} " %>
+                  <% end %>
+
+                  <% if @manifest.show_pkg_type  %>
+                    <%= "#{shipment.package_type.name} " %>
+                  <% end %>
+
+                  <% if @manifest.show_plu  %>
+                    <%= "#{shipment.plu_to_string} " %>
+                  <% end %>
+
+                  <% if @manifest.show_count_type  %>
+                    <%= "#{shipment.count_type.name} " %>
+                  <% end %>
+
+                  <% if @manifest.show_color  %>
+                    <%= "#{shipment.own_color(@greenhouse.id)} " %>
+                  <% end %>
+                  <!--< %= "#{shipment.product.name + " " + shipment.bag_type.name + " " + shipment.package_type.name + " " + shipment.plu_to_string }" %> < %= "#{shipment.own_color(@greenhouse.id)}" %>-->
                 </td>
                 <td class="font">
                   <%= "#{number_to_currency(shipment.price)}" %>
