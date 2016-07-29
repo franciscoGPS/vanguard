@@ -401,16 +401,17 @@ class SalesController < ApplicationController
         :package_type_id, :bag_type_id, :pallet_type_id,
         :comments, :sale_id, :price, :plu, :count_type_id, :product_color, :customer_id,
         :box_type_id, :weight, :po_number, :quality, :_destroy,
-        pallet_type_attributes: [:id, :name, :_destroy],
-        bag_type_attributes: [:id, :name, :_destroy],
-        box_type_attributes: [:id, :name, :_destroy],
-        product_attributes: [:id, :name, :_destroy]],
+      pallet_type_attributes: [:id, :name, :_destroy],
+      bag_type_attributes: [:id, :name, :_destroy],
+      box_type_attributes: [:id, :name, :_destroy],
+      product_attributes: [:id, :name, :_destroy]],
 
       manifests_attributes: [:id, :sale_id, :date, :mex_custom_broker,
         :carrier, :driver, :truck, :truck_licence_plate, :trailer_num, :trailer_num_lp,
         :stamp, :thermograph, :po_number, :ship_number, :delivery_person, :usa_custom_broker,
-      :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
-      :sold_to_id, :deleted_at, :warehouse_id, :_destroy] ]
+        :person_receiving, :trailer_size, :caat, :alpha, :fda_num, :comments,
+        :sold_to_id, :deleted_at, :warehouse_id, :_destroy, :show_color,
+        :show_count_type, :show_pkg_type,  :show_bag_type, :show_plu] ]
 
       params.require(:sale).permit(accessible)
   end
