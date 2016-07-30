@@ -80,6 +80,7 @@
 						<thead>
 							<tr>
 								<th># - Customer</th>
+                <th>Product</th>
 								<th>Quantity</th>
 								<th>Pallet Number</th>
                 <th>Pallet Type</th>
@@ -93,6 +94,9 @@
   								<td>
   									<%= "#{shipment.po_number != nil ? shipment.po_number : ""} - #{get_customer_name(shipment.customer.id)}" %>
   								</td>
+                  <td>
+                    <%= "#{shipment.product.name}" %>
+                  </td>
   								<td>
   									<%= "#{shipment.quality}" %>
   								</td>
@@ -113,6 +117,9 @@
               <tr>
                 <td>
                   <b>TOTAL</b>
+                </td>
+                <td>
+                  ---
                 </td>
                 <td>
                   ---

@@ -68,6 +68,7 @@
             <thead>
               <tr>
                 <th>PO#</th> <!-- Se comentó customer -->
+                <th>Producto</th>
                 <th>Grado</th>
                 <th>No. Tarimas</th>
                 <th>Tipo Tarima</th>
@@ -80,6 +81,9 @@
               <tr>
                 <td style="font-size:10px;">
                   <%= "#{shipment.po_number != nil ? shipment.po_number : ""} #{get_customer_name(shipment.customer.id)}" %>
+                </td>
+                <td style="font-size:10px;">
+                  <%= "#{shipment.product.name}" %>
                 </td>
                 <td style="font-size:10px;">
                   <%= "#{shipment.quality}" %>
@@ -101,6 +105,9 @@
               <tr>
                 <td style="font-size:10px;">
                   <b>TOTAL</b>
+                </td>
+                <td style="font-size:10px;">
+                  ---
                 </td>
                 <td style="font-size:10px;">
                   ---
