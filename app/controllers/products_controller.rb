@@ -67,6 +67,7 @@ class ProductsController < ApplicationController
     if @product.shipments.any?
       format.html { redirect_to greenhouse_products_path(@greenhouse.id), alert: 'Product associated with active shipment.' }
     else
+      @product.active = false
       @product.destroy
       format.html { redirect_to greenhouse_products_path(@greenhouse.id), notice: 'Product was successfully destroyed.' }
     end

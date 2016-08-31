@@ -112,7 +112,7 @@ class GreenhousesController < ApplicationController
 #Método que responde al botón de crear orden de compra
   def purshase_order
     @sale = Sale.find(params[:sale_id])
-    @shipments = Shipment.where(sale_id: @sale.id )
+    @shipments = Shipment.where(sale_id: @sale.id ).order(id: :asc)
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     #@manifest = Manifest.where(sale_id: @sale.id).first
 
@@ -276,7 +276,7 @@ class GreenhousesController < ApplicationController
 
        sales_attributes:  [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
       :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy, :purshase_order,
-      :out_of_packaging, :docs_reception, :product_color,
+      :out_of_packaging, :docs_reception,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
       :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place_id,

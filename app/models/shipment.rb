@@ -81,17 +81,17 @@ class Shipment < ActiveRecord::Base
     end
   end
 
-  def product_color_one
-    if self.product_color = nil
-      if self.sale.product_color = nil
-        "Not defined"
-      else
-        self.sale.product_color
-      end
-    else
-      product_color
-    end
-  end
+  # def product_color_one
+  #   if self.product_color = nil
+  #     if self.sale.product_color = nil
+  #       "Not defined"
+  #     else
+  #       self.sale.product_color
+  #     end
+  #   else
+  #     product_color
+  #   end
+  # end
 
   def formatted_boxes
     number_with_delimiter(self.box_number)

@@ -1,0 +1,8 @@
+Running in verbose mode
+
+-----------------------------------------------------------------
+  pg_upgrade run on Sun Aug  7 17:37:19 2016
+-----------------------------------------------------------------
+
+check for "/usr/local/Cellar/postgresql/9.4.0/bin" failed: No such file or directory
+
