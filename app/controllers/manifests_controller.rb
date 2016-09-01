@@ -35,21 +35,17 @@ class ManifestsController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @total_pallets = 0
     @po_numbers = {}
-    biggest_po_number = 0
+
 
 
     @mex_custom_broker_select = get_country_customs_brokers(@greenhouse.id, "mex")
     @usa_custom_broker_select = get_country_customs_brokers(@greenhouse.id, "usa")
 
     @sale.shipments.each_with_index do |shipment, index|
-      #total_pallets = total_pallets != nil ? total_pallets : 0
       @total_pallets += shipment.pallets_number
-
       @po_numbers[index] = shipment.po_number
-      #if(shipment.po_number > biggest_po_number)
-       # biggest_po_number = shipment.po_number
-      #end
     end
+
     @sold_to_cust = sold_to_cust(@sale)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
 

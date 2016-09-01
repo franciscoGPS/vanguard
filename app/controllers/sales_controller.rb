@@ -23,7 +23,7 @@ class SalesController < ApplicationController
       @delivery_place = DeliveryPlace.first
     end
 
-    @shipments = Shipment.where(sale_id: @sale.id).order(customer_id: :asc)
+    @shipments = Shipment.where(sale_id: @sale.id).order(id: :asc)
     @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
     @total_weight =  @shipments.map { |r| r[:weight] }.sum
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
@@ -390,7 +390,7 @@ class SalesController < ApplicationController
   def sale_params
     accessible = [:id, :season, :departure_date, :arrival_date, :manifest, :annotation,
       :comment, :user_id, :aasm_state, :revision, :greenhouse_id, :_destroy, :purshase_order,
-      :out_of_packaging, :docs_reception, :product_color,
+      :out_of_packaging, :docs_reception,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
       :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place_id,

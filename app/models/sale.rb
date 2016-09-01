@@ -131,14 +131,6 @@ class Sale < ActiveRecord::Base
     :hld_qty => {:id => "17", :name => "QTY"}
   }
 
-  #$product_colors = [["Green", 1], ["Breakers", 2], ["Turning", 3], ["Pink", 4],
-   #["Light Red", 5], ["Red", 6]]
-
- # $product_colors = {:green => 1, :breakers => 2, :turning => 3, :pink  => 4,
-  #:light_red =>  5, :red =>  6 }
-
-
-
   def completed_states_size
     ($states_to_s[self.aasm_state.to_sym][:id].to_f-1)/8*100
   end
