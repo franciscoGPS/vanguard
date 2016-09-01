@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
 
   # Generates the average price of a product
   def average_price(week_number)
-    self.shipments.where("EXTRACT(WEEK FROM shipments.created_at) = #{week_number}")
+    self.shipments.where("EXTRACT(WEEK FROM shipments.created_at) = ?", week_number)
         .average(:price)
   end
 
