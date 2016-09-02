@@ -41,9 +41,9 @@ class Sale < ActiveRecord::Base
 
   scope :with_ship_number, lambda { |ship_number|
     if(ship_number[:value].empty?)
-      where("greenhouse_id = ?", "#{ship_number[:greenhouse_id]}") if ship_number.greenhouse_id.present?
+      where("greenhouse_id = ?", ship_number[:greenhouse_id]) if ship_number.greenhouse_id.present?
     else
-      where("ship_number LIKE ? AND greenhouse_id = ?", "%#{ship_number[:value].downcase.to_i}%", "#{ship_number[:greenhouse_id]}") if ship_number.greenhouse_id.present?
+      where("ship_number LIKE ? AND greenhouse_id = ?", "%#{ship_number[:value].downcase.to_i}%", ship_number[:greenhouse_id]) if ship_number.greenhouse_id.present?
     end
    }
 
@@ -91,7 +91,7 @@ class Sale < ActiveRecord::Base
 
 
   scope :total_month_sales_ammount, -> { select("SUM(shipments.price * shipments.box_number) AS TOTAL_AMMOUNT")
-    .joins(:shipments).where("EXTRACT(MONTH FROM sales.created_at) = #{Time.now.month}") }
+    .joins(:shipments).where("EXTRACT(MONTH FROM sales.created_at) = ?", Time.now.month) }
 
   #$states_to_s = {:carrier_courtyard_checkin => {:id => "1", :name => "Carrier Courtyard Arrival"},
   #               :courtyard_to_modules_line => {:id => "2", :name => "In course to Modules Line"},

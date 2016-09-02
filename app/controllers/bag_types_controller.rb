@@ -63,6 +63,7 @@ class BagTypesController < ApplicationController
   end
 
   private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_bag_type
       @bag_type = BagType.find(params[:id])
