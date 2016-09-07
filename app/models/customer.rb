@@ -45,7 +45,7 @@ class Customer < ActiveRecord::Base
   #end
 
   def shipments_by_sale(sale_id)
-    Shipment.where(:sale_id => sale_id, :customer_id => self.id)
+    Shipment.where(:sale_id => sale_id, :customer_id => self.id).order(id: :asc)
   end
 end
 
