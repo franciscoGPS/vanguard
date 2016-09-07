@@ -127,7 +127,7 @@ class GreenhousesController < ApplicationController
     @shipments_by_cust = {}  #Se declara un nuevo Hash para usar.
 
     @customers.each do |customer|
-      @shipments_by_cust[customer.id] = customer.shipments_by_sale(@sale.id)
+        @shipments_by_cust[customer.id]= customer.shipments_by_sale(@sale.id).to_a.reverse!
     end
 
     @string_products = ""
