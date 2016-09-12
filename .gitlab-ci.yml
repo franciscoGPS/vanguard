@@ -1,0 +1,23 @@
+test:
+  script:
+  - apt-get update -qy
+  - apt-get install -y nodejs
+  - bundle install --path /cache
+  - bundle exec rake db:create RAILS_ENV=test
+  - bundle exec rake test
+
+staging:
+  type: deploy
+  script:
+  - gem install dpl
+  - dpl --provider=heroku --app=vanguardco-staging --api-key=3f8aa2b5-3d4f-4b41-a302-4251e550da3e
+  only:
+  - dev
+
+production:
+  type: deploy
+  script:
+  - gem install dpl
+  - dpl --provider=heroku --app=vanguardco-staging --api-key=3f8aa2b5-3d4f-4b41-a302-4251e550da3e
+  only:
+  - master
