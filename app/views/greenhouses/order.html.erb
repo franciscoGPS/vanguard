@@ -81,10 +81,11 @@
 							<tr>
 								<th># - Customer</th>
                 <th>Product</th>
-								<th>Quantity</th>
-								<th>Pallet Number</th>
+								<th>Grade</th>
+								<th>Pallets</th>
                 <th>Pallet Type</th>
                 <th>Box Count</th>
+                <th>Color</th>
                 <th>Weight - Box Type</th>
 							</tr>
 						</thead>
@@ -107,7 +108,10 @@
   									<%= "#{get_pallet_name(shipment.pallet_type_id)}" %>
   								</td>
                   <td>
-                    <%= "#{shipment.formatted_boxes}cs " %><% if  shipment.own_color(@greenhouse.id) != "" %> <%= "- #{shipment.own_color(@greenhouse.id)}"  %> <% end %>
+                    <%= "#{shipment.formatted_boxes}cs" %>
+                  </td>
+                  <td>
+                    <% if  shipment.own_color(@greenhouse.id) != "" %> <%= "#{shipment.own_color(@greenhouse.id)}"  %> <% end %>
                   </td>
                   <td>
                     <%= "#{shipment.formatted_weight} - #{get_box_name(shipment.box_type_id)}" %>
@@ -132,6 +136,9 @@
                 </td>
                 <td>
                   <%= "#{formatted_number(@total_boxes)}cs" %>
+                </td>
+                <td>
+                  ---
                 </td>
                 <td>
                   ---
@@ -167,10 +174,11 @@
 				<div class="col-md-12">
 					 <!--<span class="label label-info">Observaciones</span>-->
            <div class="form-group">
-              <%= label_tag :comments, nil, :class => 'label label-info col-md-2' %>
+              <%= label_tag :observations, nil, :class => 'label label-info col-md-2' %>
             </div>
             <div class="well">
-              <%= text_field :sale, :annotation, :class => 'text_field form-control' %>
+
+              <%= text_area_tag :sale_annotation, "#{@sale.annotation}", {:class =>"form-control", :rows => 4, :name => "sale[annotation]"} %>
             </div>
            <div>
                <%= submit_tag "Save", id: "annotation_btn", class: "btn btn-primary col-md-2" %>
