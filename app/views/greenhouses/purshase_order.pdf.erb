@@ -70,9 +70,10 @@
                 <th>PO#</th> <!-- Se comentó customer -->
                 <th>Producto</th>
                 <th>Grado</th>
-                <th>No. Tarimas</th>
+                <th>Tarimas</th>
                 <th>Tipo Tarima</th>
                 <th>No. Cajas</th>
+                <th>Color</th>
                 <th>Tipo Caja</th>
               </tr>
             </thead>
@@ -95,8 +96,11 @@
                   <%= "#{get_pallet_name(shipment.pallet_type_id)}" %>
                 </td>
                 <td style="font-size:10px;">
-                  <%= "#{shipment.formatted_boxes}cs " %><% if  shipment.own_color(@greenhouse.id) != "" %> <%= "- #{shipment.own_color(@greenhouse.id)}"  %> <% end %>
+                  <%= "#{shipment.formatted_boxes}cs" %>
                 </td>
+                <td style="font-size:10px;">
+                    <% if  shipment.own_color(@greenhouse.id) != "" %> <%= "#{shipment.own_color(@greenhouse.id)}"  %> <% end %>
+                  </td>
                 <td style="font-size:10px;">
                   <%= "#{shipment.formatted_weight} - #{get_box_name(shipment.box_type_id)}" %>
                 </td>
@@ -120,6 +124,9 @@
                 </td>
                 <td style="font-size:10px;">
                   <%= "#{formatted_number(@total_boxes)}cs" %>
+                </td>
+                <td style="font-size:10px;">
+                  ---
                 </td>
                 <td style="font-size:10px;">
                   ---
