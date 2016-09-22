@@ -69,7 +69,7 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @sale = Sale.find(params[:id])
-    @shipments = Shipment.where(sale_id: params[:id])
+    @shipments = Shipment.where(sale_id: params[:id]).order(id: :asc)
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @action = params[:action]
     @customers = Customer.own_customers(params[:greenhouse_id])
