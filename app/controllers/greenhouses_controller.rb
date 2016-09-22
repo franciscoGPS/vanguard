@@ -162,7 +162,7 @@ class GreenhousesController < ApplicationController
 #Envía el ID de la venta a la que se le hará la factura de cruce
   def customs_invoice
     @sale = Sale.find(params[:sale_id])
-    @shipments = Shipment.where(sale_id: @sale.id )
+    @shipments = Shipment.where(sale_id: @sale.id ).order(id: :asc)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
@@ -246,7 +246,7 @@ class GreenhousesController < ApplicationController
     @sale = Sale.find(@bill.sale_id)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
     @customer = Customer.find(@bill.customer_id)
-    @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id)
+    @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id).order(id: :asc)
 
 
     @title = "Factura de Cobro"

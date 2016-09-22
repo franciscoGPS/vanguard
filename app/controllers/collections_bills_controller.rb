@@ -29,7 +29,7 @@ class CollectionsBillsController < ApplicationController
       @customer.id, :user_id => current_user.id, :ship_number => @sale.ship_number)
 
     #Shipments filtered by sale and customer
-    @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id )
+    @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id ).order(id: :asc)
 
     @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
     @total_weight =  @shipments.map { |r| r[:weight] }.sum

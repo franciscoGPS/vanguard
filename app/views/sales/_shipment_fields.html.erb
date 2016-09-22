@@ -5,10 +5,11 @@
   <div class="well">
     <div class="row form-inline ">
       <div class="pull-right">
-         <%= link_to_remove_association f,  data: { confirm: 'Are you sure?' } do %>
+         <%= link_to_remove_association  f, data: { confirm: 'Are you sure?' } do %>
           <i class="fa fa-remove fa-lg text-danger"></i>
          <% end %>
       </div>
+
       <div class="col-md-3">
         <div class="form-group">
           <div class="col-md-12">
@@ -190,6 +191,7 @@
 </div>
 </div>
 <script type="text/javascript">
+
   //Adds bootstrapSwitch to current partial
   $("[type='checkbox']").bootstrapSwitch();
   $(".shipment-fields select, .shipment-fields input[type='number']").css("width","100%");
@@ -275,6 +277,8 @@
              .text(value[1]));
               });
           }
+
+
 
 
 </script>

@@ -50,11 +50,12 @@
     <%= hidden_field_tag(:po_number_hidden) %>
     <%= hidden_field_tag(:customer_id_hidden) %>
     <div class="panel-body">
-      <%= link_to_add_association 'Add Product', f, :shipments,
-            render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small margin-up pull-right" %>
+
       <%= f.fields_for :shipments do |shipment| %>
           <%= render 'shipment_fields', :f  => shipment %>
       <% end %>
+      <%= link_to_add_association 'Add Product', f, :shipments,
+            render_options: { wrapper: 'inline' }, :class => "btn btn-primary btn-small margin-up pull-right" %>
     </div>
   </div>
 
