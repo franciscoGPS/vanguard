@@ -56,7 +56,7 @@
       <% end %>
       </div>
 
-      <%= link_to_add_association 'Add Product', f, :shipments,  data: {"association-insertion-method" => :after, "association-insertion-node" => "#shipments-list" }, :class => "btn btn-primary btn-small margin-up pull-right" %>
+      <%= link_to_add_association 'Add Product', f, :shipments,  data: {"association-insertion-method" => :append, "association-insertion-node" => "#shipments-list" }, :class => "btn btn-primary btn-small margin-up pull-right" %>
     </div>
   </div>
 
