@@ -69,6 +69,7 @@
               <tr>
                 <th>PO#</th> <!-- Se comentó customer -->
                 <th>Producto</th>
+                <th>Empaque</th>
                 <th>Grado</th>
                 <th>Tarimas</th>
                 <th>Tipo Tarima</th>
@@ -85,6 +86,9 @@
                 </td>
                 <td style="font-size:10px;">
                   <%= "#{shipment.product.name}" %>
+                </td>
+                <td style="font-size:10px;">
+                  <%= "#{shipment.bag_type.name}" %>
                 </td>
                 <td style="font-size:10px;">
                   <%= "#{shipment.quality}" %>
@@ -117,13 +121,16 @@
                   ---
                 </td>
                 <td style="font-size:10px;">
-                  <%= "#{formatted_number(@total_pallets)}" %>
+                  ---
+                </td>
+                <td style="font-size:10px;">
+                  <b><%= "#{formatted_number(@total_pallets)}" %></b>
                 </td>
                 <td style="font-size:10px;">
                   ---
                 </td>
                 <td style="font-size:10px;">
-                  <%= "#{formatted_number(@total_boxes)}cs" %>
+                  <b><%= "#{formatted_number(@total_boxes)}cs" %></b>
                 </td>
                 <td style="font-size:10px;">
                   ---
@@ -152,10 +159,10 @@
                   <%= " #{@shipments_by_cust[customer.id][0].po_number} #{customer.business_name}" %>
                 </p>
               </div>
-              <p class="pull-right" style="width: 400px;font-size:9px;border-style: solid;border-width: 1px;margin-top:-11px; padding-left:1px;">
+              <p class="pull-right" style="width: 400px;font-size:8px;border-style: solid;border-width: 1px;margin-top:-11px; padding-left:1px;">
                 <% @shipments_by_cust[customer.id].each_with_index do |shipment, index|%>
                 <b>&#10148</b>
-                  <%=  " #{shipment.formatted_boxes}cs - #{shipment.formatted_weight} lb - #{shipment.product.name} - #{shipment.own_color(@greenhouse.id)} - #{shipment.count_type.name} - #{shipment.plu_to_string} -> #{shipment.pallet_type.name}." %>
+                  <%=  " #{shipment.formatted_boxes}cs - #{shipment.formatted_weight} lb - #{shipment.product.name} - #{shipment.own_color(@greenhouse.id)} - #{shipment.count_type.name} - #{shipment.bag_type.name} - #{shipment.plu_to_string} -> #{shipment.pallet_type.name}." %>
                   <br>
                 <% end %>
               </p>
