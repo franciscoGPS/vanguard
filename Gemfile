@@ -15,16 +15,18 @@ gem 'newrelic_rpm'                    # User NewRelic like performance monitor
 gem 'sprockets-rails', :require => 'sprockets/railtie' # Use Sprockets to precompile assets
 gem 'devise'                          # Auth Users
 
+
 group :production do
   gem 'rails_12factor'                  # Use rails_12factor to replaces the need for the plugins on Heroku
   gem 'wkhtmltopdf-heroku'              # Wicked_pdf binaries for heroku
-  gem 'pdfkit'                          # PDF library
+
   gem 'wisepdf'                         # PDF library
 end
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
+
   gem 'ffaker'
   gem 'shoulda-matchers'
 end
@@ -33,6 +35,7 @@ group :development, :test do
   gem 'byebug'                        # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'spring'                        # Spring speeds up development by keeping your application running in the background.
   gem 'mailcatcher'                   # Use mailcatcher to see mail in localhost:1080 (run 'mailcatcher' in terminal to activate)
+  gem 'annotate'                      # Add a comment summarizing the current schema
 end
 group :development do
   gem 'rails_layout'			            # Generate layout with framework (boostrap or foundation)
@@ -44,6 +47,7 @@ group :development do
   gem 'brakeman', require: false   # Analysis security vulnerability scanner
 end
 
+gem 'rb-readline'                     # Provides a pure Ruby implementation of the GNU readline C library
 gem 'meta-tags'                       # Create SEO metatags
 
 gem 'cancan'                          # Give rules & access to users

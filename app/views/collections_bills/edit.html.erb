@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @collections_bill %> |
-<%= link_to 'Back', collections_bills_path %>
+<%= link_to 'Show', greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill.id) %> |
+<%= link_to 'Back', greenhouse_sale_path(@greenhouse.id, @sale.id) %>

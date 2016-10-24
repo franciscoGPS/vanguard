@@ -7,109 +7,7 @@ class GreenhousesController < ApplicationController
     @greenhouses = Greenhouse.all
   end
 
-  # GET /greenhouses/1/info
-  def info
-    @greenhouse = Greenhouse.find(params[:greenhouse_id])
-  end
-
-  def average_price_week
-    @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    @week_number = params[:week_number]
-  end
-  # GET /greenhouses/1
-  # GET /greenhouses/1.json
-  def show
-    if params[:filterrific] == nil
-      #params[:filterrific] = {"with_ship_number"=>{"greenhouse_id"=>params[:id], "value"=>""}}
-      params[:filterrific] = {"sorted_by" => "created_at_desc"}
-    end
-
-    @filterrific = initialize_filterrific(Sale, params[:filterrific],
-      :select_options => {
-        :sorted_by => Sale.options_for_sorted_by,
-        with_customer_id: Customer.options_for_select(@greenhouse.id)
-      }, :persistence_id => false) or return
-
-    @sales = @filterrific.find.where("greenhouse_id = ?", @greenhouse.id).page(params[:page]).per(10)
-
-    #@sales = @greenhouse.sales.order('created_at DESC').page(params[:page]).per(10)
-    #@sales = @greenhouse.sales.sort
-    @week_sales = @greenhouse.week_sales
-    # Get chart pie of sold products
-    @sold_products = Hash.new(0)
-
-    @greenhouse.sales.each do |sale|
-      sale.shipments.each do |sh|
-        if(sh.product != nil)
-          @sold_products[sh.product.name] += 1
-        end
-      end
-    end
-
-
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
-
-  end
-
-  # GET /greenhouses/new
-  def new
-    @greenhouse = Greenhouse.new
-  end
-
-  # GET /greenhouses/1/edit
-  def edit
-  end
-
-  # POST /greenhouses
-  # POST /greenhouses.json
-  def create
-    @greenhouse = Greenhouse.new(greenhouse_params)
-
-    respond_to do |format|
-      if @greenhouse.save
-        format.html { redirect_to @greenhouse, notice: 'Greenhouse was successfully created.' }
-        #format.json { render :show, status: :created, location: @greenhouse }
-      else
-        format.html { render :new }
-        #format.json { render json: @greenhouse.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /greenhouses/1
-  # PATCH/PUT /greenhouses/1.json
-  def update
-    respond_to do |format|
-      if @greenhouse.update(greenhouse_params)
-        format.html { redirect_to @greenhouse, notice: 'Greenhouse was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @greenhouse }
-      else
-        format.html { render :edit }
-        #format.json { render json: @greenhouse.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /greenhouses/1
-  # DELETE /greenhouses/1.json
-  def destroy
-
-    @greenhouse.destroy
-    respond_to do |format|
-      format.html { redirect_to greenhouses_url, notice: 'Greenhouse was successfully destroyed.' }
-      #format.json { head :no_content }
-    end
-  end
-
-  def shipments
-    @shipments = Shipment.all
-  end
-
-#Método que responde al botón de crear orden de compra
+  #Método que responde al botón de crear orden de compra
   def purshase_order
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale.id ).order(id: :asc)
@@ -237,21 +135,23 @@ class GreenhousesController < ApplicationController
         :page_size => 'Letter',
         :encoding => 'UTF-8'
       end
-
     end
   end
 
   def invoice
-    @bill = CollectionsBill.find(params[:id])
-    @sale = Sale.find(@bill.sale_id)
+
+
+    @collections_bill = CollectionsBill.find(params[:id])
+    @sale = Sale.find(@collections_bill.sale_id)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
-    @customer = Customer.find(@bill.customer_id)
+    @customer = Customer.find(@collections_bill.customer_id)
     @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id).order(id: :asc)
+    @manifest = Manifest.where(sale_id: @sale.id).first
 
 
     @title = "Factura de Cobro"
     respond_to do |format|
-      format.html {render :invoice}
+      format.html { render :invoice }
       format.pdf do
         render :pdf => "factura_de_cobranza",
         :template => 'greenhouses/invoice.pdf.erb',
@@ -262,6 +162,110 @@ class GreenhousesController < ApplicationController
       end
     end
   end
+
+  # GET /greenhouses/1/info
+  def info
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+  end
+
+  def average_price_week
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    @week_number = params[:week_number]
+  end
+  # GET /greenhouses/1
+  # GET /greenhouses/1.json
+  def show
+    if params[:filterrific] == nil
+      #params[:filterrific] = {"with_ship_number"=>{"greenhouse_id"=>params[:id], "value"=>""}}
+      params[:filterrific] = {"sorted_by" => "created_at_desc"}
+    end
+
+    @filterrific = initialize_filterrific(Sale, params[:filterrific],
+      :select_options => {
+        :sorted_by => Sale.options_for_sorted_by,
+        with_customer_id: Customer.options_for_select(@greenhouse.id)
+      }, :persistence_id => false) or return
+
+    @sales = @filterrific.find.where("greenhouse_id = ?", @greenhouse.id).page(params[:page]).per(10)
+
+    #@sales = @greenhouse.sales.order('created_at DESC').page(params[:page]).per(10)
+    #@sales = @greenhouse.sales.sort
+    @week_sales = @greenhouse.week_sales
+    # Get chart pie of sold products
+    @sold_products = Hash.new(0)
+
+    @greenhouse.sales.each do |sale|
+      sale.shipments.each do |sh|
+        if(sh.product != nil)
+          @sold_products[sh.product.name] += 1
+        end
+      end
+    end
+
+
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+  end
+
+  # GET /greenhouses/new
+  def new
+    @greenhouse = Greenhouse.new
+  end
+
+  # GET /greenhouses/1/edit
+  def edit
+  end
+
+  # POST /greenhouses
+  # POST /greenhouses.json
+  def create
+    @greenhouse = Greenhouse.new(greenhouse_params)
+
+    respond_to do |format|
+      if @greenhouse.save
+        format.html { redirect_to @greenhouse, notice: 'Greenhouse was successfully created.' }
+        #format.json { render :show, status: :created, location: @greenhouse }
+      else
+        format.html { render :new }
+        #format.json { render json: @greenhouse.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /greenhouses/1
+  # PATCH/PUT /greenhouses/1.json
+  def update
+    respond_to do |format|
+      if @greenhouse.update(greenhouse_params)
+        format.html { redirect_to @greenhouse, notice: 'Greenhouse was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @greenhouse }
+      else
+        format.html { render :edit }
+        #format.json { render json: @greenhouse.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /greenhouses/1
+  # DELETE /greenhouses/1.json
+  def destroy
+
+    @greenhouse.destroy
+    respond_to do |format|
+      format.html { redirect_to greenhouses_url, notice: 'Greenhouse was successfully destroyed.' }
+      #format.json { head :no_content }
+    end
+  end
+
+  def shipments
+    @shipments = Shipment.all
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

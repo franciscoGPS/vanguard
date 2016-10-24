@@ -12,10 +12,13 @@
               greenhouse_path(@sale.greenhouse_id) , :class => "btn btn-warning"  %>
   <%=link_to 'Generar Orden de Compra.', purshase_order_path(@greenhouse.id, @sale.id), class: "btn btn-primary" %>
   <%=link_to 'Factura de cruce', customs_billing_path(@greenhouse.id, @sale.id), class: "btn btn-success" %>
-  <%@customers.each do |cust|%>
-    <%= link_to "Facturar a "+ cust.business_name,
-          new_greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id,
-                                                                    :customer_id => cust.id), class: "btn btn-info" %>
+
+
+  <% if @manifest %>
+    <% @customers.each do |cust| %>
+      <%= link_to "Facturar a "+ cust.business_name,
+            new_greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id, :customer_id => cust.id), class: "btn btn-info" %>
+    <% end %>
   <% end %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_greenhouse_sale_path(@sale.greenhouse_id, @sale.id), :class => 'btn btn-warning' %>

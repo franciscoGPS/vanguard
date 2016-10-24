@@ -29,6 +29,7 @@ class SalesController < ApplicationController
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
     @customers = @sale.sold_to
     @state_changes = ShipmentStateChanges.where(sale_id: @sale.id).order(created_at: :desc ).page(params[:page])
+    @manifest = Manifest.where("sale_id = ?", @sale.id).first
 
   end
 
@@ -227,6 +228,7 @@ class SalesController < ApplicationController
   end
 
   def collections_bill
+    byebug
     sale = Sale.find(params[:sale_id])
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     customer_id = params[:customer_id]

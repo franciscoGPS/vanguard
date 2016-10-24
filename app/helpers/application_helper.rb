@@ -123,24 +123,6 @@ module ApplicationHelper
   end
 
 
-  #Returns biggest custom_invoice_id + 1
-  def get_next_custom_invoice_id(greenhouse_id)
-    begin
-      last_custom_invoice_id = Manifest.includes(:sale).where(:sales => {greenhouse_id: greenhouse_id}).where.not(:custom_invoice_id => nil).order(:custom_invoice_id => 'DESC').first.custom_invoice_id
-    rescue Exception => e
-      last_custom_invoice_id = nil
-    end
-
-    if last_custom_invoice_id != nil
-       next_custom_invoice_id = last_custom_invoice_id + 1
-    else
-      next_custom_invoice_id = 1
-    end
-
-    return next_custom_invoice_id
-
-  end
-
   def get_next_ship_number(gh, wrong_ship_number)
     begin
        ships_array = Sale.where(greenhouse_id: gh).where.not(:ship_number => nil).pluck(:ship_number)

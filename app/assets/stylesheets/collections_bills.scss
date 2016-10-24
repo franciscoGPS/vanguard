@@ -1,3 +1,20 @@
 // Place all the styles related to the CollectionsBills controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card {
+  background-color: #999999;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+#confirmed-table {
+  .table {
+    .table-bordered {
+      border-left: 0;
+      border-righr: 0;
+    }
+  }
+}

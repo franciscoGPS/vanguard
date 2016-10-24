@@ -58,7 +58,7 @@ class ManifestsController < ApplicationController
       @manifest.ship_number = @sale.ship_number
       @manifest.warehouse_id = @sale.warehouse_id
       @manifest.leyend = ""
-      @manifest.custom_invoice_id = get_next_custom_invoice_id(@greenhouse.id)
+      @manifest.custom_invoice_id = @greenhouse.next_custom_invoice_id
       @manifest.comments = "Se señala el precio de venta exclusivamente para cubrir
        con los requisitos de traslado y trámites aduanales,
         ya que los productos que contiene este documento son vendidos en
@@ -151,9 +151,11 @@ end
 
     if(params[:custom_invoice_id] != nil && params[:custom_invoice_id] != "" && params[:greenhouse_id] != nil && params[:greenhouse_id] != "")
 
+      @greenhouse = Greenhouse.find(params[:greenhouse_id])
+
      result = {
           :is_unique => false,
-          :next_custom_invoice_id => get_next_custom_invoice_id(params[:greenhouse_id]),
+          :next_custom_invoice_id => @greenhouse.next_custom_invoice_id,
           :error_message => "\"Invoice Number\" already in use. Please verify.  "}
 
 

@@ -1,168 +1,230 @@
-<div class="container-fluid padding-up" style="background-color: white;">
-  <div class="row">
-    <section style="padding-left:22px;font-size: 9px" class="pull-left">
-      <%= "#{DateTime.now.strftime('%d-%m-%Y')}" %>
-    </section>
-    <section style="padding-left:22px;font-size: 9px" class="pull-right">
-      No.<%= "#{@bill.invoice_number}" %>
-    </section>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h1>
-        <%- if @greenhouse.logo.present? %>
-          <%= wicked_pdf_image_tag(@greenhouse.logo.url(:thumb), :style => "max-height: 80px;") %>
-        <% end %>
-        <%= "#{@greenhouse.business_name}" %>
-        <small>Invoice</small>
-      </h1>
-      <hr>
-    </div>
-  </div>
-  <div class="row">
-    <div class="row">
-      <div class="col-md-6 pull-left" style="width: 300px;">
-        <p class="text-justify">
-          <strong>Bill to:</strong><br>
-            <%= "#{@customer.business_name}" %>
-        </p>
-      </div>
-      <div class="col-md-6 pull-right" style="width: 300px;">
-        <p class="text-justify">
-          <strong>Ship to:</strong><br>
-          <%= "#{@customer.shipping_address}" %>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-      <%- if @sale.comment.present? %>
-        <div class="col-md-6 pull-left" style="width: 300px;">
-          <p class="text-justify">
-            <strong>Comment</strong><br>
-            <%= "#{@sale.comment} este campo será reemplazado por el de Annotations." %>
+<div class="container" style="background-color:white;">
+  <div class="center-block">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="pull-left" style="width: 375px">
+          <%- if @greenhouse.logo.present? %>
+          <%= image_tag(@greenhouse.logo.url(:thumb), :style => "max-height: 80px;", :class => "pull-left") %>
+          <% end %>
+          <p class="<%= 'pull-right' if @greenhouse.logo.present? %>" style="font-size:10px;">
+            <strong><%= "#{@greenhouse.business_name}" %></strong><br>
+            <%= simple_format( "#{@greenhouse.fiscal_address}", style: "font-size:10px;" ) %>
           </p>
         </div>
-      <% end %>
-      <%- if @sale.annotation.present? %>
-         <div class="col-md-6 pull-right" style="width: 300px;">
-          <p class="text-justify">
-            <strong>Annotations</strong><br>
-            <%= "#{@sale.annotation}" %>
+        <div class="pull-right col-md-1" style="width: 355px;">
+          <p class="text-center" style="font-size:10px;">
+            <span class="label">Revised on:</span>
+                <%=  @collections_bill.bol_date.getlocal.strftime("%m/%d/%Y") %>
+          </p>
+          <p class="text-center" style="font-size:10px;">
+            <p style="font-size:10px;" >Proforma Invoice</p>
+                <%= @manifest.custom_invoice_id%>
+          </p>
+          <p class="text-center" style="font-size:10px;">
+            <span class="label" style="">Fecha</span><br>
+            <%= "#{@collections_bill.created_at.getlocal.strftime("%m/%d/%Y")}" %>
           </p>
         </div>
-      <% end %>
-    </div>
-  <div class="row" style="background-color: rgb(132, 189, 196);margin-left: -15px;margin-right: -15px; padding-left: 15px;padding-right: 15px; color: white; margin-top: 2%;">
-    <div class="padding-up">
-      <table class="table table-condensed" style="border-color: #333;">
-        <thead>
-          <tr>
-            <th>Quantity</th>
-            <th>Unit</th>
-            <th>Weight</th>
-            <th>Qty Pallets</th>
-            <th>Description</th>
-            <th>Unit Price</th>
-            <th>Total Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-
-            <% @shipments.each do |shipment|%>
+      </div>
+        <div class="row">
+          <table class="col-md-12" style="">
+            <tbody>
               <tr>
-                <td>
-                  <%= "#{shipment.box_number}" %>
+                <td style="font-size:10px;width:500px;border-bottom: 1px solid;;"><b>Bill to:</b></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:500px;border-bottom: 1px solid;"><b>Ship to:</b></td>
+              </tr>
+
+              <tr>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"><%= "#{@greenhouse.business_name}"%></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"><%= "#{@greenhouse.business_name}"%></td>
+              </tr>
+
+
+
+              <tr>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"><%= "#{@manifest.warehouse.name}"%></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"><%= "#{@manifest.warehouse.address}" %></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
+              </tr>
+
+              <tr>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;border-bottom: 1px solid;"</br></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;border-bottom: 1px solid;"></br></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row">
+          L#<%=
+          "#{@collections_bill.ship_number}"
+          %>
+        </div>
+        <div class="row">
+          <table class="col-md-12" style="">
+            <tbody>
+              <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;border-top: 1px solid;">Purshase order: <%= "#{@collections_bill.po_number}" %>    </td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;border-top: 1px solid">Payment terms: <%= "#{@collections_bill.payment_terms}" %></td>
+              </tr>
+              <tr>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;border-bottom: 1px solid;"</br></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:100px;"></td>
+                <td style="font-size:10px;width:670px;border-left: 1px solid;border-right: 1px solid;border-bottom: 1px solid;"></br></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="text-align: center;">Quantity</th>
+                <th style="text-align: center;">Unit</th>
+                <th style="text-align: center;">Description</th>
+                <th style="text-align: center;">Unit Price</th>
+                <th style="text-align: center;">Ext. Price</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <% @shipments.each do |shipment|%>
+              <tr>
+                <td style="font-size:10px;">
+                  <%="#{shipment.formatted_boxes}" %>
                 </td>
-                <td>
-                  <%= "#{box_type_name(shipment.box_type_id)}" %>
+                <td style="font-size:10px;">
+                  <%= "#{shipment.box_type.name}" %>
                 </td>
-                <td>
-                  <%=  "#{shipment.weight}" %>
+                <td style="font-size:10px;">
+                  <%=  "#{shipment.formatted_weight} lb" %>
+                  &nbsp;
+                  <% if @collections_bill.show_color  %>
+                    <%= "#{shipment.own_color(@greenhouse.id)} " %>
+                  <% end %>
+                  <%= "#{shipment.product.name} " %>
+
+                  <% if @collections_bill.show_bag_type  %>
+                    <%= "#{shipment.bag_type.name} " %>
+                  <% end %>
+
+                  <% if @collections_bill.show_pkg_type  %>
+                    <%= "#{shipment.package_type.name} " %>
+                  <% end %>
+
+                  <% if @collections_bill.show_plu  %>
+                    <%= "#{shipment.plu_to_string} " %>
+                  <% end %>
+
+                  <% if @collections_bill.show_count_type  %>
+                    <%= "#{shipment.count_type.name} " %>
+                  <% end %>
+
                 </td>
-                <td>
-                  <%= "#{shipment.pallets_number}" %>
+                <td style="font-size:10px;">
+                  <%= "#{number_to_currency(shipment.price)}" %>
                 </td>
-                <td>
-                  <%= "#{shipment.product.name}  #{shipment.bag_type.name}   #{shipment.plu_to_string}  #{shipment.package_type.name}  #{shipment.pallet_type.name}  #{shipment.box_type.name}" %>
-                </td>
-                <td>
-                  <%= "#{shipment.price}" %>
-                </td>
-                <td>
-                  <strong><%= "#{total_mount(shipment.price, shipment.box_number)}" %></strong>
+                <td style="font-size:10px;">
+                  <strong><%= "#{number_to_currency(shipment.price * shipment.box_number)}" %></strong>
                 </td>
               </tr>
-                <% end %>
+              <% end %>
 
-        </tbody>
-      </table>
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-6 pull-left">
-            <h4>
-              Subtotal
-              <small style="color:white; padding-left: 5px;"><%= "#{number_to_currency(@bill.total_amt)}" %></small>
-            </h4>
-          </div>
-          <div class="col-md-6 pull-right">
-            <h3>
-              Total
-              <strong style="padding-left: 5px;"><%=  "#{number_to_currency(@bill.total_amt)}" %></strong><br>
-              <i><small style="color:white"><%=  "#{to_words((@bill.total_amt).round(2))}" %></small></i>
-            </h3>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 padding-up">
-      <h2 class="text-center">
-        THANK YOU
-      </h2>
-    </div>
-    <div class="row">
-        <div class="col-md-6 pull-left" style="width: 400px">
-          <p>
-             <strong>Vanguard Co. | Marketing & Business Development</strong><br>
-             Dirección de la Empresa<br>
-             <abbr title="Phone">P:</abbr> 011 52 818 365-3950
-          </p>
-        </div>
-        <div class="col-md-6 pull-right" style="width: 400px;">
-          <p class="text-right">
-            <strong>Terms & Conditions</strong>
-          </p>
-          <p>
-            Se señala el precio de venta exclusivamente para cubrir con los
-                      requisitos de traslado y trámites aduanales, ya que los productos
-                      que contiene este documento son vendidos en firme y posteriormente facturados.
-          </p>
-        </div>
-    <div class="row">
-          <div style="min-width: 800px;padding-right: 30px;margin-top: 15px; padding-left: 30px;">
-                <p class="text-justify">
-                      <hr>
-                      Estos tomates son vendidos por un firmante del Acuerdo de Suspensión
-                      del 2013 con el Departamento de Comercio de los Estados Unidos a
-                      una entidad Canadiense y están sujetos a los requisitos del Acuerdo
-                      de Suspensión para documentar las ventas a Canadá. En el caso de que
-                      estos tomates se revendan a los Estados Unidos, deben ser vendidos
-                      en conformidad con los terminos del Acuerdo de Suspensión a una
-                      entidad que tenga Licencia PACA y aprecios iguales o superiores al
-                      Precio de Referencia, tal como se establece en el Anexo "E".
-                      <hr>
-                      These tomatoes are sold by a signatory of the 2013 Tomato Suspension
-                      Agreement with the U.S. Department of Commerce to a Canadian
-                      entity and are subject to Suspension Agreement's requirements for
-                      documenting sales to Canada. In the event that these tomatoes are
-                      resold into the United States , they must be sold in accordance with
-                      the terms of Suspension Agreeement to an entity with a PACA License
-                      and at prices that are at or above the Reference Price as established in Appendix "E".
-                </p>
+              <% 17.times do |index|  %>
+
+                <tr>
+                  <td style="font-size:10px;">
+                    <span>&nbsp;</span>
+                  </td>
+                  <td style="font-size:10px;">
+                    <span>&nbsp;</span>
+                  </td>
+                  <td style="font-size:10px;">
+
+
+
+                  <% if index == 5 %>
+
+                      <%= "#{@collections_bill.label_one}" %>
+
+                    <% elsif index == 9 %>
+                      Bill of lading:  <%= "#{@collections_bill.bill_of_lading}" %></br>
+                    <% elsif index == 10 %>
+                      Date: <%= "#{@collections_bill.created_at.getlocal.strftime("%m/%d/%Y")}" %></br>
+                      <% elsif index == 11 %>
+                      Temp recorder #: <%= "#{@collections_bill.thermograph}" %>
+
+                    <% elsif index == 13 %>
+                      <%= "#{@collections_bill.footer_one}" %>
+                    <% elsif index == 14 %>
+                      <%= "#{@collections_bill.footer_two}" %>
+
+                    <% end %>
+
+
+
+
+                    <span>&nbsp;</span>
+                  </td>
+                  <td style="font-size:10px;">
+                    <% if index == 16%>
+                      <%= "TOTAL" %>
+                    <% end %>
+                  </td>
+                  <td style="font-size:10px;">
+                    <% if index == 16%>
+                      <%= "#{@collections_bill.total_amt}" %> USD
+                    <% end %>
+                  </td>
+                </tr>
+
+              <% end %>
+
+
+            </tbody>
+          </table>
+
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-justify text-muted" style="font-size: 7px">
+
+              </p>
             </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+
   </div>
 </div>

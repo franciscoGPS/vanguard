@@ -1,4 +1,4 @@
-<%= form_for(@collections_bill, :url => greenhouse_sale_collections_bills_path(@greenhouse.id, @sale.id)) do |f| %>
+<%= form_for(@collections_bill, :url => greenhouse_sale_collections_bills_path(@greenhouse.id, @sale.id, @collections_bill.id)) do |f| %>
    <%= f.hidden_field(:user_id, :value => @collections_bill.user_id) %>
    <%= f.hidden_field(:customer_id, :value => @collections_bill.customer_id) %>
    <%= f.hidden_field(:sale_id, :value => @sale.id) %>
@@ -14,51 +14,147 @@
       </ul>
     </div>
   <% end %>
-  <div class="row">
-    <div class="col-md-4">
-      <%= f.label :invoice_number, class: "control-label" %>
-      <%= f.text_field :invoice_number, :required => true, class: "form-control" %>
-    </div>
-    <div class="col-md-4">
-      <%= f.label :shipment_number, class: "control-label" %>
-      <%= f.text_field :ship_number, :required => true, class: "form-control" %>
-    </div>
-    <div class="col-md-4">
-      <%= f.label :po_number, class: "control-label" %>
-      <%= f.text_field :po_number, :required => true, class: "form-control" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <%= f.label :payment_terms, class: "control-label" %>
-      <%= f.text_area :payment_terms, :required => true, class: "form-control" %>
-    </div>
-    <div class="col-md-6">
-      <div class="row">
-        <%= f.label :bol_date, class: "control-label" %>
-      </div>
-      <div class="row">
-        <%= f.datetime_select :bol_date, :required => true, class: "form-control" %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Details</div>
+    <div class="panel-body">
+          <div class="row">
+      <div id="confirmed-table" class="col-md-12 col-xs-12">
+        <%= render 'sales/confirmed_sales' %>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="col-md-12">
-        <%= f.label :total_amt, class: "control-label" %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.label :proforma_invoice, class: "control-label" %>
+          <%= f.text_field :proforma_invoice, :required => true, class: "form-control" %>
+        </div>
+        <div class="col-md-4">
+          <%= f.label "Shipment # ", class: "control-label" %>
+          <%= f.text_field :ship_number, :required => true, class: "form-control" %>
+        </div>
+        <div class="col-md-4">
+          <%= f.label "Purshase order #", class: "control-label" %>
+          <%= f.text_field :po_number, :required => true, class: "form-control" %>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <%= f.text_field :total_amt, :required => true, class: "form-control" %>
+          <%= f.label :payment_terms, class: "control-label" %>
+          <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" title="Max 100 characters"></span>
+          <%= f.text_area :payment_terms, :required => true, class: "form-control",
+          :maxlength => 100, :onkeyup => "check_max_length(this);", cols: 20, rows: 1 %>
         </div>
+        <div class="row">
         <div class="col-md-6">
-          <%= @total_ammount_money_words %>
+            <%= f.label :bol_date, class: "control-label" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.datetime_select :bol_date, :required => true, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="col-md-12">
+            <%= f.label "Total ammount", class: "control-label" %>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.text_field :total_amt, :required => true, class: "form-control" %>
+            </div>
+            <div class="col-md-6">
+              <%= @total_ammount_money_words %>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-6 col-xs-12">
+              <%= f.label :bill_of_lading, class: "control-label" %>
+              <%= f.text_field :bill_of_lading, :required => true, class: "form-control" %>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <%= f.label :thermograph, class: "control-label" %>
+              <%= f.text_field :thermograph, :required => true, class: "form-control" %>
+            </div>
         </div>
       </div>
     </div>
+
+
+        <div class="row detail-switches">
+          <div class="col-md-12 col-md-offset-1">
+            <p>Show Details:</p>
+            <div class="form-group col-sm-4 col-md-2">
+              <%= f.label "Bag Type", class: "control-label col-md-12" %>
+              <div class="col-md-6">
+                <%= f.check_box :show_bag_type, checked: :true, class: "col-md-6"%>
+              </div>
+            </div>
+            <div class="form-group col-sm-4 col-md-2">
+              <%= f.label "Package Type", class: "control-label col-md-12" %>
+              <div class="col-md-6">
+                <%= f.check_box :show_pkg_type, checked: :true, class: "col-md-6" %>
+              </div>
+            </div>
+            <div class="form-group col-sm-4 col-md-2">
+              <%= f.label "Count Type", class: "control-label col-md-12" %>
+              <div class="col-md-6">
+                <%= f.check_box :show_count_type, checked: :true, class: "col-md-6" %>
+              </div>
+            </div>
+            <div class="form-group col-sm-4 col-md-2">
+              <%= f.label "PLU", class: "control-label col-md-12" %>
+              <div class="col-md-6">
+                <%= f.check_box :show_plu, checked: :true, class: "col-md-6" %>
+              </div>
+            </div>
+            <div class="form-group col-sm-4 col-md-2">
+              <%= f.label "Color", class: "control-label col-md-12" %>
+              <div class="col-md-6">
+                <%= f.check_box :show_color, checked: :true, class: "col-md-6" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <%= f.label :label_one, class: "control-label" %>
+            <%= f.text_area :label_one, :required => true, class: "form-control", rows: 5 %>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <%= f.label :label_two, class: "control-label" %>
+            <%= f.text_area :label_two, :required => true, class: "form-control", rows: 5 %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <%= f.label :footer_one, class: "control-label" %>
+            <%= f.text_area :footer_one, :required => true, class: "form-control", rows: 7 %>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <%= f.label :footer_two, class: "control-label" %>
+            <%= f.text_area :footer_two, :required => true, class: "form-control", rows: 7 %>
+          </div>
+
+        </div>
   </div>
+</div>
+
    <!-- hidden_field(:collections_bill, :customer_id) %>-->
   <div class="pull-right">
     <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>
+<script language="javascript" type="text/javascript">
+function check_max_length(text_area_object)
+{
+      var iMaxLen = parseInt(text_area_object.getAttribute('maxlength'));
+      var iCurLen = text_area_object.value.length;
+
+      if ( text_area_object.getAttribute && iCurLen > iMaxLen )
+      {
+          text_area_object.value = text_area_object.value.substring(0, iMaxLen);
+      }
+}
+</script>

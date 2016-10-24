@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: greenhouses
+#
+#  id                 :integer          not null, primary key
+#  business_name      :string
+#  fiscal_address     :text
+#  greenhouse_address :text
+#  rfc                :string
+#  category           :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  deleted_at         :datetime
+#  logo_file_name     :string
+#  logo_content_type  :string
+#  logo_file_size     :integer
+#  logo_updated_at    :datetime
+#  fda_num            :string
+#  color              :string
+#
+
 class Greenhouse < ActiveRecord::Base
   acts_as_paranoid                            # Soft-delete
   has_many :contacts, :as => :contactable, :class_name => "Contact"
@@ -26,6 +47,24 @@ class Greenhouse < ActiveRecord::Base
 
   def active_products
     products.where("active = true")
+  end
+
+    #Returns biggest custom_invoice_id + 1
+  def next_custom_invoice_id
+    begin
+      last_custom_invoice_id = Manifest.includes(:sale).where(:sales => { greenhouse_id: self.id }).where.not(:custom_invoice_id => nil).order(:custom_invoice_id => 'DESC').first.custom_invoice_id
+    rescue Exception
+      last_custom_invoice_id = nil
+    end
+
+    if last_custom_invoice_id != nil
+       next_custom_invoice_id = last_custom_invoice_id + 1
+    else
+      next_custom_invoice_id = 1
+    end
+
+    return next_custom_invoice_id
+
   end
 
 

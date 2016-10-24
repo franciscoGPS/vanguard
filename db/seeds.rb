@@ -38,7 +38,7 @@ end
 
 
 case Rails.env
-  when "development"
+  when "development", "test"
 
 
   if (PackageType.all.count == 0)
@@ -66,7 +66,7 @@ case Rails.env
   end # end del if
 
 
-        ship_number = 1
+
 
         if Greenhouse.all.count == 0
             1.upto(10) do |gh|
@@ -90,7 +90,7 @@ case Rails.env
                   greenhouse_id: greenhouse.id
                   )
 
-      end #end del customer create
+              end #end del customer create
 
               1.upto(5) do |i|
                 Color.create(name: "#{FFaker::Color.name}",
@@ -181,15 +181,65 @@ case Rails.env
                                       pallet_type_id: pallet_type_id_array.sample,
                                       package_type_id: package_type_id_array.sample,
                                       po_number: po_number,
-                                      quality: 1,
+                                      quality: [1..5].sample,
                                       box_number: rand(200..2000),
                                       count_type_id: count_type_id_array_from_product.sample
                                       )
                     end # end del upto del shipment
                 end # del upto de sales
 
+
+
+                Sale.all.each do |sale|
+                  driver =  "#{FFaker::NameMX.first_name}"
+                  total_pallets = 0
+                  sale.shipments.each_with_index do |shipment, index|
+                      total_pallets += shipment.pallets_number
+                  end
+
+                  sale.customers.each do |customer|
+
+                    Manifest.create(sale_id: sale.id,
+                                    date: Time.now,
+                                    carrier: "#{FFaker::Company.name}",
+                                    driver: driver,
+                                    truck: "#{FFaker::Address.building_number}",
+                                    truck_licence_plate: "#{FFaker::AddressAU.building_number}",
+                                    trailer_num: "#{FFaker::Address.building_number}",
+                                    trailer_num_lp: "#{FFaker::AddressAU.building_number}",
+                                    stamp: "#{FFaker::Identification.drivers_license}",
+                                    thermograph: "#{FFaker::Vehicle.vin}",
+                                    po_number: sale.shipments.first.po_number,
+                                    delivery_person: "#{FFaker::NameMX.first_name}",
+                                    person_receiving: driver,
+                                    ship_number: sale.ship_number,
+                                    trailer_size: [40,45,50,55,60 ].sample,
+                                    caat: "#{FFaker::PhoneNumberDE.mobile_prefix}",
+                                    alpha: "#{FFaker::PhoneNumberDE.mobile_prefix}",
+                                    fda_num: "#{FFaker::PhoneNumberDE.home_work_phone_number}",
+                                    comments: "#{FFaker::HealthcareIpsum.paragraph}",
+                                    sold_to: customer.business_name,
+                                    sold_to_id: customer.id,
+                                    total_pallets: total_pallets,
+                                    manifest_number: sale.ship_number,
+                                    mex_custom_broker: CustomBroker.where(greenhouse_id: sale.greenhouse_id).where(:country_code => 'MEX').sample.id,
+                                    usa_custom_broker: CustomBroker.where(greenhouse_id: sale.greenhouse_id).where(:country_code => 'USA').sample.id,
+                                    warehouse_id: Warehouse.where(greenhouse_id: sale.greenhouse_id).sample.id,
+                                    custom_invoice_id: greenhouse.next_custom_invoice_id,
+                                    leyend: "#{FFaker::HealthcareIpsum.phrase}",
+                                    show_color: "#{FFaker::Boolean.random}",
+                                    show_count_type: "#{FFaker::Boolean.random}",
+                                    show_pkg_type: "#{FFaker::Boolean.random}",
+                                    show_bag_type: "#{FFaker::Boolean.random}",
+                                    show_plu: "#{FFaker::Boolean.random}" )
+                    end
+
+                end
+
+
+
           end#end del greenhouse create
-       end# del if de greenhouse
+        end# del if de greenhouse
 
 
 when "production"

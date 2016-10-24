@@ -1,6 +1,6 @@
 
 
-<%= button_to "Facturar", to_invoice_path(@bill)  %>
+<%= button_to "Facturar", to_invoice_path(@collections_bill)  %>
 
 
 
@@ -49,5 +49,65 @@
   <%= @collections_bill.total_amt %>
 </p>
 
+<p>
+  <strong>proforma_invoice:</strong>
+  <%= @collections_bill.proforma_invoice %>
+</p>
 
-<%= link_to 'Back', greenhouse_sale_path(@greenhouse.id, @sale.id) %>
+<p>
+  <strong>Label 1:</strong>
+  <%= @collections_bill.label_one %>
+</p>
+
+<p>
+  <strong>label_two:</strong>
+  <%= @collections_bill.label_two %>
+</p>
+
+<p>
+  <strong>bill_of_lading:</strong>
+  <%= @collections_bill.bill_of_lading %>
+</p>
+
+<p>
+  <strong>thermograph:</strong>
+  <%= @collections_bill.thermograph           %>
+</p>
+
+<p>
+  <strong>footer_one:</strong>
+  <%= @collections_bill.footer_one %>
+</p>
+
+<p>
+  <strong>footer_two:</strong>
+  <%= @collections_bill.footer_two %>
+</p>
+
+<p>
+  <strong>show_color:</strong>
+  <%= @collections_bill.show_color %>
+</p>
+
+<p>
+  <strong>show_plu:</strong>
+  <%= @collections_bill.show_plu %>
+</p>
+
+<p>
+  <strong>show_count_type:</strong>
+  <%= @collections_bill.show_count_type %>
+</p>
+
+<p>
+  <strong>show_pkg_type:</strong>
+  <%= @collections_bill.show_pkg_type %>
+</p>
+
+<p>
+  <strong>show_bag_type:</strong>
+  <%= @collections_bill.show_bag_type %>
+</p>
+
+<%= link_to 'Edit', edit_greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill.id) %> |
+ <%= link_to 'Back', greenhouse_sale_path(@greenhouse.id, @sale.id) %>

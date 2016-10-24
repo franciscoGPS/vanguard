@@ -1,3 +1,43 @@
+# == Schema Information
+#
+# Table name: sales
+#
+#  id                   :integer          not null, primary key
+#  season               :string
+#  departure_date       :date
+#  arrival_date         :date
+#  annotation           :text
+#  comment              :text
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  deleted_at           :datetime
+#  user_id              :integer
+#  aasm_state           :string
+#  revision             :boolean          default(FALSE)
+#  greenhouse_id        :integer
+#  purshase_order       :boolean          default(FALSE)
+#  out_of_packaging     :boolean          default(FALSE)
+#  docs_reception       :boolean          default(FALSE)
+#  loading_docs         :boolean          default(FALSE)
+#  arrived_to_border    :boolean          default(FALSE)
+#  out_of_courtyard     :boolean          default(FALSE)
+#  documents            :boolean          default(FALSE)
+#  mex_customs_mod      :boolean          default(FALSE)
+#  us_customs_mod       :boolean          default(FALSE)
+#  usda                 :boolean          default(FALSE)
+#  ramp                 :boolean          default(FALSE)
+#  fda                  :boolean          default(FALSE)
+#  hold                 :boolean          default(FALSE)
+#  arrived_to_warehouse :boolean          default(FALSE)
+#  picked_up_by_cust    :boolean          default(FALSE)
+#  bol                  :boolean          default(FALSE)
+#  hld_qty              :integer          default(0)
+#  product_color        :string
+#  ship_number          :string
+#  delivery_place_id    :integer
+#  warehouse_id         :integer
+#
+
 class Sale < ActiveRecord::Base
   include AASM
   #Documentación https://github.com/rubyist/aasm
@@ -8,7 +48,7 @@ class Sale < ActiveRecord::Base
   belongs_to :user
   has_many :shipments, :dependent => :destroy, :source_type => "Shipment"
   has_many :customers, :through => :shipments
-  has_one :manifests
+  has_one :manifest
   has_many :shipment_state_changes
   has_many :collection_bills
 
@@ -19,7 +59,7 @@ class Sale < ActiveRecord::Base
    attributes['bag_type_id'].blank? }
 
   accepts_nested_attributes_for :customers, :reject_if => :all_blank
-  accepts_nested_attributes_for :manifests, :allow_destroy => true
+  accepts_nested_attributes_for :manifest, :allow_destroy => true
 
 
 

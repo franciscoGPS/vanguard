@@ -19,6 +19,9 @@ main{
   margin-top: -20px;
   min-height: 100vh;
 }
+body{
+font-family: Roboto, Helvetica, sans-serif;
+}
 .btn:hover, .submit:hover, .authform .button:hover, .button-xs:hover, .btn:focus, .submit:focus, .authform .button:focus, .button-xs:focus {
   color: white;
   text-decoration: none;
