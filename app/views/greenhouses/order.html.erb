@@ -81,11 +81,12 @@
 							<tr>
 								<th># - Customer</th>
                 <th>Product</th>
+                <th>Counting</th>
                 <th>Package</th>
 								<th>Grade</th>
 								<th>Pallets</th>
                 <th>Pallet Type</th>
-                <th>Box Count</th>
+                <th>Box #</th>
                 <th>Color</th>
                 <th>Weight - Box Type</th>
 							</tr>
@@ -98,6 +99,9 @@
   								</td>
                   <td>
                     <%= "#{shipment.product.name}" %>
+                  </td>
+                  <td>
+                    <%= "#{shipment.count_type.name}" %>
                   </td>
                   <td>
                     <%= "#{shipment.bag_type.name}" %>
@@ -125,6 +129,9 @@
               <tr>
                 <td>
                   <b>TOTAL</b>
+                </td>
+                <td>
+                  ---
                 </td>
                 <td>
                   ---
