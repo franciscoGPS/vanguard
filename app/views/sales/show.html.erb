@@ -71,19 +71,19 @@
 
         <%= hidden_field_tag(:sale_id_hidden, "#{@sale.id}")%>
         <h2 id="sale_id_status">Status</h2>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-6">
               <%= label_tag "Orden de Compra", nil, class: "col-md-6" %>
               <%= check_box_tag :purshase_order_state_check, class: "col-md-6" %>
           </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Cuenta con Documentos", nil, class: "col-md-6" %>
               <%= check_box_tag :documents, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Salió de empaque", nil, class: "col-md-6" %>
               <%= check_box_tag :out_of_packaging, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Módulo aduana Mexicana", nil, class: "col-md-6" %>
               <%= check_box_tag :mex_customs_mod, class: "col-md-6" %>
               <div class="col-md-12">
@@ -91,54 +91,54 @@
               <%= check_box_tag :revision, class: "col-md-6" %>
             </div>
           </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Recepción de documentos", nil, class: "col-md-6" %>
               <%= check_box_tag :docs_reception, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Módulo aduana Americana", nil, class: "col-md-6" %>
               <%= check_box_tag :us_customs_mod, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "USDA", nil, class: "col-md-6" %>
               <%= check_box_tag :usda, class: "col-md-6" %>
              </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "FDA", nil, class: "col-md-6" %>
               <%= check_box_tag :fda, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Rampa", nil, class: "col-md-6" %>
               <%= check_box_tag :ramp, class: "col-md-6" %>
             </div>
-          <div class="col-md-3 form-group">
+          <div class="col-md-3 col-sm-6 form-group">
            <%= label_tag :cantidad, nil, class: "col-md-3 control-label" %>
-           <div class=" col-md-6">
-            <%= number_field_tag :hld_qty, class: "form-control" %>
-          </div>
+             <div class=" col-md-8">
+              <%= number_field_tag :hld_qty, class: "form-control" %>
+            </div>
            <%= submit_tag "Save", id: "save_qty", class: "col-md-3 btn-xs" %>
           </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Documentacion de carga", nil, class: "col-md-6" %>
               <%= check_box_tag :loading_docs, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Llegó a bodega", nil, class: "col-md-6" %>
               <%= check_box_tag :arrived_to_warehouse, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Legó a frontera", nil, class: "col-md-6" %>
               <%= check_box_tag :arrived_to_border, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Recogió el cliente", nil, class: "col-md-6" %>
               <%= check_box_tag :picked_up_by_cust, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "Salió del patio", nil, class: "col-md-6" %>
               <%= check_box_tag :out_of_courtyard, class: "col-md-6" %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
               <%= label_tag "BOL", nil, class: "col-md-6" %>
               <%= check_box_tag :bol, class: "col-md-6" %>
             </div>
