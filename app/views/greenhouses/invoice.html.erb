@@ -16,17 +16,17 @@
             <%= simple_format( "#{@greenhouse.fiscal_address}", style: "font-size:12px;" ) %>
           </p>
         </div>
-        <div class="pull-right col-md-2" style="width: 355px;">
+        <div class="pull-right col-md-2" style="width: 355px;border: 1px solid;">
           <p class="text-center" style="font-size:12px;">
-            <span class="label">Revised on:</span>
+            Revised on:
                 <%= text_field_tag :revised_on, @collections_bill.bol_date.getlocal.strftime("%m/%d/%Y"), class: "form-control js-datepicker" %>
           </p>
           <p class="text-center" style="font-size:12px;">
-            <p>Proforma Invoice</p>
+            Proforma Invoice:
                 <%= number_field_tag :proforma_invoice, @manifest.custom_invoice_id, class: "form-control" %>
           </p>
           <p class="text-center" style="font-size:12px;">
-            <span class="label" style="">Fecha</span><br>
+            Fecha:
             <%= "#{@collections_bill.created_at.getlocal.strftime("%m/%d/%Y")}" %>
           </p>
         </div>
@@ -63,12 +63,6 @@
                 <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
               </tr>
 
-              <tr>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
-              </tr>
               <tr>
                 <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
                 <td style="font-size:12px;width:100px;"></td>
@@ -161,38 +155,41 @@
                   <%= "#{number_to_currency(shipment.price)}" %>
                 </td>
                 <td style="font-size:12px;">
-                  <strong><%= "#{number_to_currency(shipment.price * shipment.box_number)}" %></strong>
+                 <%= "#{number_to_currency(shipment.price * shipment.box_number)}" %>
                 </td>
               </tr>
               <% end %>
 
-              <% 17.times do |index|  %>
+            <div class="row">
+            <table >
+               <tbody>
+               <% 12.times do |index|  %>
 
                 <tr>
-                  <td style="font-size:12px;">
+                  <td style="font-size:10px;">
                     <span>&nbsp;</span>
                   </td>
-                  <td style="font-size:12px;">
+                  <td style="font-size:10px;">
                     <span>&nbsp;</span>
                   </td>
-                  <td style="font-size:12px;">
+                  <td style="font-size:10px;">
 
 
 
-                  <% if index == 5 %>
+                  <% if index == 1 %>
 
                       <%= "#{@collections_bill.label_one}" %>
 
-                    <% elsif index == 9 %>
+                    <% elsif index == 3 %>
                       Bill of lading:  <%= "#{@collections_bill.bill_of_lading}" %></br>
-                    <% elsif index == 10 %>
+                    <% elsif index == 5 %>
                       Date: <%= "#{@collections_bill.created_at.getlocal.strftime("%m/%d/%Y")}" %></br>
-                      <% elsif index == 11 %>
+                      <% elsif index == 7 %>
                       Temp recorder #: <%= "#{@collections_bill.thermograph}" %>
 
-                    <% elsif index == 13 %>
+                    <% elsif index == 9 %>
                       <%= "#{@collections_bill.footer_one}" %>
-                    <% elsif index == 14 %>
+                    <% elsif index == 10 %>
                       <%= "#{@collections_bill.footer_two}" %>
 
                     <% end %>
@@ -202,30 +199,20 @@
 
                     <span>&nbsp;</span>
                   </td>
-                  <td style="font-size:12px;">
-                    <% if index == 16%>
+                  <td style="font-size:10px;">
+                    <% if index == 11%>
                       <%= "TOTAL" %>
                     <% end %>
                   </td>
-                  <td style="font-size:12px;">
-                    <% if index == 16%>
-                      <%= "#{@collections_bill.total_amt}" %> USD
+                  <td style="font-size:10px;">
+                    <% if index == 11%>
+                      <%= "#{number_to_currency(@collections_bill.total_amt)}" %> USD
                     <% end %>
                   </td>
                 </tr>
-
+                </tbody>
               <% end %>
-
-
-            </tbody>
-          </table>
-
-          <div class="row">
-            <div class="col-md-12">
-              <p class="text-justify text-muted" style="font-size: 7px">
-
-              </p>
-            </div>
+            </table>
           </div>
 
         </div>

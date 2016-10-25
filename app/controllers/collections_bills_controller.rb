@@ -102,7 +102,6 @@ class CollectionsBillsController < ApplicationController
   # POST /collections_bills
   # POST /collections_bills.json
   def create
-    byebug
     #customer_id comes from a hidden field
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     @sale = Sale.find(params[:sale_id])

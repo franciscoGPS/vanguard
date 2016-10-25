@@ -228,7 +228,6 @@ class SalesController < ApplicationController
   end
 
   def collections_bill
-    byebug
     sale = Sale.find(params[:sale_id])
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     customer_id = params[:customer_id]
