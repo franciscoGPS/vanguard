@@ -184,6 +184,10 @@ class Sale < ActiveRecord::Base
     (12.0 - $states_to_s[self.aasm_state.to_sym][:id].to_f)/12*100
   end
 
+  def total_pallets
+    self.shipments.map { |r|  r[:pallets_number] }.sum
+  end
+
   aasm do # default column: aasm_state
 
     #Los siguientes son los estados de la máquina de estados.

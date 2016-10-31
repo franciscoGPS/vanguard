@@ -38,7 +38,7 @@ class GreenhousesController < ApplicationController
     #@usa_custom_broker = CustomBroker.find(@manifest.usa_custom_broker)
     @warehouse = @sale.warehouse_id.nil? ?
     Warehouse.where(greenhouse_id: @greenhouse.id).first : Warehouse.find(@sale.warehouse_id)
-    @total_pallets =  @shipments.map { |r| r[:pallets_number] }.sum
+    @total_pallets =  @sale.total_pallets
     @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
     @title = "Orden de Compra"
 
@@ -62,6 +62,7 @@ class GreenhousesController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale.id ).order(id: :asc)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
+    byebug
     @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
     if(@manifest.warehouse_id.nil?)
@@ -120,7 +121,7 @@ class GreenhousesController < ApplicationController
 
     @total_pallets_words = @manifest.total_pallets.to_words
     @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
-    @total_pallets =  @shipments.map { |r|  r[:pallets_number] }.sum
+    @total_pallets =  @sale.total_pallets
     @total_boxes =  @shipments.map { |r|  r[:box_number] }.sum
 
 
@@ -139,7 +140,6 @@ class GreenhousesController < ApplicationController
   end
 
   def invoice
-
 
     @collections_bill = CollectionsBill.find(params[:id])
     @sale = Sale.find(@collections_bill.sale_id)

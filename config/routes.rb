@@ -82,6 +82,9 @@ Rails.application.routes.draw do
     #get 'collections_bill/:sale_id' => 'collections_bills#index', as: "collections_bills_index"
     post 'collections_bill' => 'collections_bills#new', as: "new_bill"
 
+    post '/greenhouses/collections_bills/set_bol_date' => 'collections_bills#set_revised_on'
+    post '/greenhouses/collections_bills/set_proforma_invoice' => 'collections_bills#set_proforma_invoice'
+
 
 
 
