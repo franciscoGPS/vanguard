@@ -46,9 +46,13 @@ $(function () {
 });
 
 
+$( document ).ready(function() {
   //Adds bootstrapSwitch to current partial
   $("[type='checkbox']").bootstrapSwitch();
   $(".shipment-fields select, .shipment-fields input[type='number']").css("width","100%");
+
+});
+
 
 
 

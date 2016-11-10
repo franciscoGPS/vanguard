@@ -6,74 +6,72 @@
 <div class="container" style="background-color:white;">
   <div class="center-block">
     <div class="col-md-12">
-      <div class="row">
-        <div class="pull-left" style="width: 375px">
+      <div class="row col-md-10 col-md-offset-1" >
+        <div class="pull-left col-md-4" style="width: 375px">
           <%- if @greenhouse.logo.present? %>
           <%= image_tag(@greenhouse.logo.url(:thumb), :style => "max-height: 80px;", :class => "pull-left") %>
           <% end %>
-          <p class="<%= 'pull-right' if @greenhouse.logo.present? %>" style="font-size:12px;">
+          <p class="<%= 'pull-right' if @greenhouse.logo.present? %>">
             <strong><%= "#{@greenhouse.business_name}" %></strong><br>
             <%= simple_format( "#{@greenhouse.fiscal_address}", style: "font-size:12px;" ) %>
           </p>
         </div>
-        <div class="pull-right col-md-2" style="width: 355px;border: 1px solid;">
-          <p class="text-center" style="font-size:12px;">
+        <div class="pull-right col-md-3 col-md-offset-1">
+          <p class="text-center">
             Revised on:
                 <%= text_field_tag :revised_on, @collections_bill.bol_date.getlocal.strftime("%m/%d/%Y"), class: "form-control js-datepicker" %>
           </p>
-          <p class="text-center" style="font-size:12px;">
+          <p class="text-center">
             Proforma Invoice:
-                <%= number_field_tag :proforma_invoice, @manifest.custom_invoice_id, class: "form-control" %>
+                <%= number_field_tag :proforma_invoice, @collections_bill.proforma_invoice, class: "form-control" %>
           </p>
-          <p class="text-center" style="font-size:12px;">
+          <p class="text-center">
             Fecha:
             <%= "#{@collections_bill.created_at.getlocal.strftime("%m/%d/%Y")}" %>
           </p>
         </div>
       </div>
         <div class="row">
-          <table class="col-md-12" style="">
+          <table class="col-md-10 col-md-offset-1 top-table">
             <tbody>
               <tr>
-                <td style="font-size:12px;width:500px;border-bottom: 1px solid;;"><b>Bill to:</b></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:500px;border-bottom: 1px solid;"><b>Ship to:</b></td>
+                <td class="header  col-md-5"><b>Bill to:</b></td>
+                <td ></td>
+
+                <td class="header col-md-5"><b>Ship to:</b></td>
               </tr>
 
               <tr>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"><%= "#{@greenhouse.business_name}"%></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"><%= "#{@greenhouse.business_name}"%></td>
-              </tr>
+                <td class="cell"><%= "#{@greenhouse.business_name}"%></td>
+                <td ></td>
 
-
-
-              <tr>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"><%= "#{@manifest.warehouse.name}"%></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"><%= "#{@manifest.warehouse.address}" %></td>
-              </tr>
-              <tr>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
+                <td class="cell"><%= "#{@greenhouse.business_name}"%></td>
               </tr>
 
               <tr>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;"></br></td>
+                <td class="cell"><%= "#{@manifest.warehouse.name}"%></td>
+
+                <td ></td>
+                <td class="cell"><%= "#{@manifest.warehouse.address}" %></td>
+              </tr>
+
+              <tr>
+                <td class="cell"></br></td>
+
+                <td ></td>
+                <td class="cell"></br></td>
               </tr>
               <tr>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;border-bottom: 1px solid;"</br></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;border-bottom: 1px solid;"></br></td>
+                <td class="cell"></br></td>
+
+                <td ></td>
+                <td class="cell"></br></td>
+              </tr>
+              <tr>
+                <td class="cell"</br></td>
+
+                <td ></td>
+                <td class="cell"></br></td>
               </tr>
 
             </tbody>
@@ -81,23 +79,30 @@
         </div>
 
         <div class="row">
-          L#<%=
-          "#{@collections_bill.ship_number}"
-          %>
+          <div class="col-md-1 col-md-offset-1">
+            L#<%=
+            "#{@collections_bill.ship_number}"
+            %>
+          </div>
         </div>
         <div class="row">
-          <table class="col-md-12" style="">
+          <table class="col-md-10 col-md-offset-1">
             <tbody>
-              <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;border-top: 1px solid;">Purshase order: <%= "#{@collections_bill.po_number}" %>    </td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;border-top: 1px solid">Payment terms: <%= "#{@collections_bill.payment_terms}" %></td>
+              <td class="cell col-md-5 col-md-offset-1" >Purshase order: <%= "#{@collections_bill.po_number}" %>    </td>
+                <td ></td>
+
+                <td class="cell col-md-5 col-md-offset-1" >Payment terms: <%= "#{@collections_bill.payment_terms}" %></td>
               </tr>
               <tr>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;border-bottom: 1px solid;"</br></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:100px;"></td>
-                <td style="font-size:12px;width:670px;border-left: 1px solid;border-right: 1px solid;border-bottom: 1px solid;"></br></td>
+                <td class="cell">
+                  </br>
+                </td>
+                <td class="">
+                  </br>
+                </td>
+                <td class="cell">
+                  </br>
+                </td>
               </tr>
 
             </tbody>
@@ -105,28 +110,28 @@
         </div>
 
       <div class="row">
-        <div class="col-md-12">
-          <table class="table">
+
+          <table class="top-table col-md-10 col-md-offset-1 ">
             <thead>
               <tr>
-                <th style="text-align: center;">Quantity</th>
-                <th style="text-align: center;">Unit</th>
-                <th style="text-align: center;">Description</th>
-                <th style="text-align: center;">Unit Price</th>
-                <th style="text-align: center;">Ext. Price</th>
+                <th class="header">Quantity</th>
+                <th class="header">Unit</th>
+                <th class="header">Description</th>
+                <th class="header">Unit Price</th>
+                <th class="header">Ext. Price</th>
 
               </tr>
             </thead>
             <tbody>
               <% @shipments.each do |shipment|%>
               <tr>
-                <td style="font-size:12px;">
+                <td class="cell">
                   <%="#{shipment.formatted_boxes}" %>
                 </td>
-                <td style="font-size:12px;">
+                <td class="cell">
                   <%= "#{shipment.box_type.name}" %>
                 </td>
-                <td style="font-size:12px;">
+                <td class="cell">
                   <%=  "#{shipment.formatted_weight} lb" %>
                   &nbsp;
                   <% if @collections_bill.show_color  %>
@@ -151,30 +156,24 @@
                   <% end %>
 
                 </td>
-                <td style="font-size:12px;">
+                <td class="cell">
                   <%= "#{number_to_currency(shipment.price)}" %>
                 </td>
-                <td style="font-size:12px;">
+                <td class="cell">
                  <%= "#{number_to_currency(shipment.price * shipment.box_number)}" %>
                 </td>
               </tr>
               <% end %>
+            </tbody>
+
+        </div>
 
             <div class="row">
-            <table >
+            <table class="col-md-10 col-md-offset-1 clean-table">
                <tbody>
                <% 12.times do |index|  %>
-
                 <tr>
-                  <td style="font-size:10px;">
-                    <span>&nbsp;</span>
-                  </td>
-                  <td style="font-size:10px;">
-                    <span>&nbsp;</span>
-                  </td>
-                  <td style="font-size:10px;">
-
-
+                  <td colspan="3" class="cell">
 
                   <% if index == 1 %>
 
@@ -197,18 +196,25 @@
 
 
 
-                    <span>&nbsp;</span>
+
                   </td>
-                  <td style="font-size:10px;">
-                    <% if index == 11%>
+
+                  <% if index == 11%>
+                    <td class="cell col-md-1">
                       <%= "TOTAL" %>
-                    <% end %>
-                  </td>
-                  <td style="font-size:10px;">
-                    <% if index == 11%>
+                    </td>
+                    <td class="cell col-md-2">
                       <%= "#{number_to_currency(@collections_bill.total_amt)}" %> USD
-                    <% end %>
-                  </td>
+                    </td>
+                    <% else %>
+                    <td class="cell">
+
+                    </td>
+                    <td class="cell">
+
+                    </td>
+                  <% end %>
+
                 </tr>
                 </tbody>
               <% end %>
@@ -225,27 +231,21 @@
 <script type="text/javascript">
 
 //Datepicker
-$('.js-datepicker').datepicker();
-
-                  $("#btn-print").on("click", function(event){
-                     if ($(this).is("[disabled]")) {
-                        event.preventDefault();
-                     }
-                  });
+$('.js-datepicker').datepicker({autoclose: true});
 
 
-    $('#customs_invoice_consecutive_id').on('input', function(){
+    $('#revised_on').on('change', function(){
 
-          if($('#customs_invoice_consecutive_id').val() != ""){
+          if($('#revised_on').val() != ""){
 
             var params = {
-              custom_invoice_id: $('#customs_invoice_consecutive_id').val(),
-              manifest_id: '<%= "#{@manifest.id}" %>',
+              bol_date: new Date($('#revised_on').val()),
+              collections_bill_id: '<%= "#{@collections_bill.id}" %>',
               greenhouse_id: '<%= "#{@greenhouse.id}" %>'
             };
 
             $.ajax({
-            url: '<%= greenhouses_manifests_is_unique_path %>',
+            url: '<%= greenhouses_collections_bills_set_bol_date_path %>',
             type: 'POST',
             data: $.param(params),
             dataType: 'json',
@@ -253,53 +253,13 @@ $('.js-datepicker').datepicker();
               //dataRes = $.parseJSON(json_result);
               //alert("regresé " + dataRes["is_unique"] + " " + dataRes);
 
-              if(dataRes["is_unique"] == false){
-                //Will enter here when the controller finds another manifest with similar id;
+              if(dataRes["success"] == true){
 
-                    var custom_invoice_id = $('#customs_invoice_consecutive_id').val();
+              }else{
+                console.log(dataRes["error_message"])
+              }
 
-                    //$('#customs_invoice_consecutive_id').val(dataRes["next_custom_invoice_id"]);
-
-                    $("#messages").html('<div id="error_message_div" class="">  '+
-                      dataRes["error_message"]+' '+ custom_invoice_id + " Next on the list: <strong>" +dataRes['next_custom_invoice_id'] + '</strong><button class="close" data-dismiss="alert"> x</button></div>');
-
-
-                  $("#error_message_div").addClass("alert alert-danger fade in");
-
-
-                  $('#btn-print').removeClass('btn-success');
-                  $('#btn-print').addClass('btn-warning');
-                  $('#messages').show();
-
-
-
-                  $("#btn-print").attr("disabled", "disabled");
-
-                  setTimeout(function(){
-                    $("#messages").fadeOut();
-                                      }, 5000);
-
-                  console.log("Not unique");
-                }else {
-
-                  //Will enter here when the system finds the custom_invoice_id to be unique among others in DB
-
-                  $("#btn-print").removeAttr("disabled");
-
-                  //when valid number, and saved, removes class from warning and add success color
-                  $('#btn-print').removeClass('btn-warning');
-                  $('#btn-print').addClass('btn-success');
-                  //Adds a message and changes its color to the little label next to it
-                  $("#updated_label").text(dataRes["message"]);
-                  $("#updated_label").css("background-color", "#00ff00");
-                  //After 2 seconds, the styles are returned back to normal.
-                  setTimeout(function(){
-                    $("#updated_label").text("Factura Comercial");
-                    $("#updated_label").css("background-color", "<%= @greenhouse.color %>");
-                                      }, 2000);
-                }
-
-              },
+            },
                  error: function (jqXHR, exception) {
                      /*var msg = '';
                     if (jqXHR.status === 0) {
@@ -318,28 +278,21 @@ $('.js-datepicker').datepicker();
                         msg = 'Uncaught Error.\n' + jqXHR.responseText;
                     }*/
 
-                  $("#updated_label").text("Error.");
-                  $("#updated_label").css("background-color", "yellow");
-                  setTimeout(function(){
-                    $("#updated_label").text("Factura Comercial");
-                    $("#updated_label").css("background-color", "<%= @greenhouse.color %>");
-                                      }, 2000);
-
                 }
           });
 
-          }
+      }
 
 });
 
 
 
 
-  $('#manifest_leyend').on("change", function(){
+  $('#proforma_invoice').on("change", function(){
 
       var params = {
-          leyend: $('#manifest_leyend').val(),
-          manifest_id: '<%= "#{@manifest.id}" %>',
+          proforma_invoice: $('#proforma_invoice').val(),
+          collections_bill_id: '<%= "#{@collections_bill.id}" %>',
           greenhouse_id: '<%= "#{@greenhouse.id}" %>'
         };
 
@@ -347,16 +300,16 @@ $('.js-datepicker').datepicker();
 
 
       $.ajax({
-            url: '<%= greenhouses_manifests_set_leyend_path %>',
+            url: '<%= greenhouses_collections_bills_set_proforma_invoice_path %>',
             type: 'POST',
             data: $.param(params),
             dataType: 'json',
             success: function (dataRes) {
-                  if(dataRes["error_message"] == ""){
+              if(dataRes["success"] == true){
 
-                  }else {
-                    console.log(dataRes["error_message"])
-                  }
+              }else{
+                console.log(dataRes["error_message"])
+              }
             }
 
         });

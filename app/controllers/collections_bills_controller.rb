@@ -140,6 +140,73 @@ class CollectionsBillsController < ApplicationController
     end
   end
 
+  def revised_on
+    collections_bill = CollectionsBill.find(params[:collections_bill_id])
+    collections_bill.bol_date = DateTime.parse(params[:bol_date])
+
+    result = {}
+
+    if collections_bill.save
+
+        result = {
+                  :success => true,
+                  :error_message => "",
+                  :message => "·Updated·"}
+    else
+
+        result = {
+                  :success => false,
+                  :error_message => "Internal error while update.",
+                  :message => "·Error·"}
+    end
+
+    render :json => result
+  end
+
+    def set_revised_on
+    collections_bill = CollectionsBill.find(params[:collections_bill_id])
+    collections_bill.bol_date = DateTime.parse(params[:bol_date])
+
+    result = {}
+
+    if collections_bill.save
+
+        result = {
+                  :success => true,
+                  :message => "·Updated·"}
+    else
+
+        result = {
+                  :error_message => "Internal error while update."}
+    end
+
+    render :json => result
+  end
+
+
+
+def set_proforma_invoice
+    collections_bill = CollectionsBill.find(params[:collections_bill_id])
+    collections_bill.proforma_invoice = params[:proforma_invoice]
+
+    result = {}
+
+    if collections_bill.save
+
+        result = {
+                  :success => true,
+                  :message => "·Updated·"}
+    else
+
+        result = {
+                  :error_message => "Internal error while update."}
+    end
+
+    render :json => result
+  end
+
+
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_collections_bill

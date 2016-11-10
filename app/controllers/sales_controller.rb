@@ -128,15 +128,18 @@ class SalesController < ApplicationController
   def update
     @greenhouse = Greenhouse.find(params[:greenhouse_id])
     begin
-      modified_sale = Sale.find(params[:id].to_i)
-        if(modified_sale.warehouse_id != params[:sale][:warehouse_id])
-          manifest = Manifest.where(:sale => params[:id].to_i).first
-          if manifest != nil
-            manifest.warehouse_id = params[:sale][:warehouse_id]
-            manifest.save
-          end
-          @sale.update(sale_params)
+
+      if @sale.update(sale_params)
+        manifest = Manifest.where(:sale => params[:id].to_i).first
+        if manifest != nil
+          manifest.warehouse_id = params[:sale][:warehouse_id]
+          manifest.total_pallets = @sale.total_pallets
+          manifest.save
         end
+      end
+
+
+
 
     rescue Exception => e
         if e.cause.class.to_s == "PG::UniqueViolation"

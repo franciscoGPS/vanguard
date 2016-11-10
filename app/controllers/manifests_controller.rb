@@ -42,9 +42,10 @@ class ManifestsController < ApplicationController
     @usa_custom_broker_select = get_country_customs_brokers(@greenhouse.id, "usa")
 
     @sale.shipments.each_with_index do |shipment, index|
-      @total_pallets += shipment.pallets_number
       @po_numbers[index] = shipment.po_number
     end
+
+    @total_pallets += @sale.total_pallets
 
     @sold_to_cust = sold_to_cust(@sale)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)

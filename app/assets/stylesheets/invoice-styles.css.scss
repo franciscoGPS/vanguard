@@ -1,0 +1,76 @@
+
+  .container, td, p {
+    font-size: 10px;
+  }
+
+  .div-table, tbody {
+    /*border-collapse: collapse;*/
+  }
+
+  table, .clean-table {
+    margin-top: 5px 30px;
+    empty-cells: hide;
+
+  }
+
+  td {
+    max-height: 12px;
+
+  }
+
+    .header {
+      background-color: #f0f0f0;
+      border: 1px solid #f0f0f0;
+      font-weight: bold;
+      color: black;
+    }
+
+    .cell{
+      border: 1px solid #f0f0f0;
+    }
+
+    .empty-cell{
+      width: 30%;
+    }
+
+
+  .font { font-size: 10px; }
+
+  .label {
+        background-color: #f0f0f0;
+  }
+
+  .card-block{
+    background-color: #f0f0f0;
+  }
+
+  .mid-cell{
+    width: 30%;
+  }
+
+  .invoice-table{
+    margin-top: 5px 30px;
+    empty-cells: hide;
+    width: 100%;
+  }
+
+  .top-table{
+
+  }
+
+  .middle-table{
+
+  }
+
+  .bottom-table{
+    border: 1px solid #f0f0f0;
+  }
+
+  .total-cell{
+    width: 13%;
+  }
+
+
+
+
+
