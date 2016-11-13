@@ -1,74 +1,3 @@
-<div class="well well-small">
-  <%= page_entries_info @sales ,:entry_name => 'Shipments'%>
-  <%= render_filterrific_spinner%>
-</div>
-<div id="filterrific_results">
-<% if @sales.present? %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <%= paginate(@sales) %>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Shipment</th>
-              <th>Products</th>
-              <th>Customer</th>
-              <th>Departure Date</th>
-              <!--<th>Creation Date</th>-->
-              <th><%=t '.actions', :default => t("helpers.actions") %></th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <% @sales.each do |sale| %>
-            <tr>
-
-              <%= link_to greenhouse_sale_path(@greenhouse.id, sale.id), :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-                <td><%= radio_button_tag(:selected, sale.id) %></td>
-
-
-
-
-                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>"><%= "#{sale.ship_number}" %></a></td>
-
-
-
-
-
-
-                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
-                  <%if !sale.shipments.empty? %>
-                    <%= "#{sale.shipments.first.product != nil ? sale.shipments.first.product.name : "Details" }" %>
-                    <%else %>
-                    Details
-                  <%end%>
-                  </a></td>
-                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
-                  <%if !sale.shipments.empty? %>
-                  <%= sale.shipments.first.customer.customers_in_sale(sale) %>
-                  <%else %>
-                    Details
-                  <%end%>
-                </a></td>
-                <td><%= "#{sale.departure_date}" %></td>
-                <!--<td>< %= "#{sale.created_at}" %></td>-->
-                <td>
-                  <%= link_to edit_greenhouse_sale_path(sale.greenhouse_id, sale.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-                  <i class="fa fa-pencil fw"></i>
-                  <%- end -%>
-                </td>
-              <%- end -%>
-            </tr>
-            <% end %>
-
-            <!-- El contenido retirado va entre los dos <tbody/>-->
-          </tbody>
-        </table>
-        <%= paginate(@sales) %>
-      </div>
-      <div class="col-md-6 col-sm-12">
         <h2 id="sale_id_status">Status</h2>
         <div class="row">
           <div class="col-md-3 col-sm-6">
@@ -163,15 +92,7 @@
             <%= check_box_tag(:bol) %>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<% else %>
-  <h3 class="text-muted text-center">No data.</h3>
-<% end %>
-
-<script type="text/javascript">
+        <script type="text/javascript">
 
 
    $('[type="checkbox"]').bootstrapSwitch();

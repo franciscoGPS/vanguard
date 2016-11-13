@@ -1,3 +1,4 @@
+
 <%= form_for(@collections_bill, :url => greenhouse_sale_collections_bills_path(@greenhouse.id, @sale.id, @collections_bill.id)) do |f| %>
    <%= f.hidden_field(:user_id, :value => @collections_bill.user_id) %>
    <%= f.hidden_field(:customer_id, :value => @collections_bill.customer_id) %>
@@ -88,31 +89,31 @@
             <div class="form-group col-sm-4 col-md-2">
               <%= f.label "Bag Type", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box :show_bag_type, checked: :true, class: "col-md-6"%>
+                <%= f.check_box :show_bag_type, {class: "col-md-6"}%>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-2">
               <%= f.label "Package Type", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box :show_pkg_type, checked: :true, class: "col-md-6" %>
+                <%= f.check_box  :show_pkg_type, {class: "col-md-6"} %>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-2">
               <%= f.label "Count Type", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box :show_count_type, checked: :true, class: "col-md-6" %>
+                <%= f.check_box  :show_count_type, {class: "col-md-6"} %>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-2">
               <%= f.label "PLU", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box :show_plu, checked: :true, class: "col-md-6" %>
+                <%= f.check_box  :show_plu, {class: "col-md-6"} %>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-2">
               <%= f.label "Color", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box :show_color, checked: :true, class: "col-md-6" %>
+                <%= f.check_box :show_color, {class: "col-md-6"} %>
               </div>
             </div>
           </div>
@@ -146,15 +147,6 @@
     <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>
-<script language="javascript" type="text/javascript">
-function check_max_length(text_area_object)
-{
-      var iMaxLen = parseInt(text_area_object.getAttribute('maxlength'));
-      var iCurLen = text_area_object.value.length;
-
-      if ( text_area_object.getAttribute && iCurLen > iMaxLen )
-      {
-          text_area_object.value = text_area_object.value.substring(0, iMaxLen);
-      }
-}
+<script type="text/javascript">
+   $('[type="checkbox"]').bootstrapSwitch();
 </script>

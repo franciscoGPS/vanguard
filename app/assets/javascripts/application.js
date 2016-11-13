@@ -1,7 +1,8 @@
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
+//= require turbolinks
 //= require cocoon
 //= require confirm
 //= require chartkick
@@ -12,8 +13,9 @@
 //= require_tree .
 
 
-$(function () {
+$(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
+  alert("checkbox");
   $('[type="checkbox"]').bootstrapSwitch();
   // Make sure checkbox switch works
   $(".add_fields").click( function () {
@@ -43,15 +45,30 @@ $(function () {
     window.location = $(this).data("link");
   });
 
-});
 
+    //Adds bootstrapSwitch to current partial
 
-$( document ).ready(function() {
-  //Adds bootstrapSwitch to current partial
-  $("[type='checkbox']").bootstrapSwitch();
   $(".shipment-fields select, .shipment-fields input[type='number']").css("width","100%");
 
+
+function check_max_length(text_area_object)
+{
+      var iMaxLen = parseInt(text_area_object.getAttribute('maxlength'));
+      var iCurLen = text_area_object.value.length;
+
+      if ( text_area_object.getAttribute && iCurLen > iMaxLen )
+      {
+          text_area_object.value = text_area_object.value.substring(0, iMaxLen);
+      }
+}
+
+
 });
+
+
+
+
+
 
 
 

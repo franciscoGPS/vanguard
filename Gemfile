@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.1.0'        # Use CoffeeScript for .coffee assets and 
 gem 'therubyracer', platforms: :ruby  # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails'                    # Use jquery as the JavaScript library
 gem 'turbolinks'                      # Turbolinks makes following links in your web application faster.
+gem 'jquery-turbolinks'               # Complement for above turbolinks gem, that doesn't interfere with jquery.
 gem 'jbuilder', '~> 2.0'              # Build JSON APIs with ease.
 gem 'puma'                            # Use Puma as the app server
 gem 'newrelic_rpm'                    # User NewRelic like performance monitor
