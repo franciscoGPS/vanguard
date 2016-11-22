@@ -1,84 +1,52 @@
-//= require jquery
-//= require jquery.turbolinks
-//= require jquery_ujs
-//= require bootstrap-sprockets
-//= require turbolinks
-//= require cocoon
-//= require confirm
-//= require chartkick
-//= require bootstrap-table
-//= require filterrific/filterrific-jquery
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
-//= require sales_state_machine
-//= require jquery-readyselector
-//= require_tree .
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
+
+
+//Page specific code. Read more on:
+//http://railsapps.github.io/rails-javascript-include-external.html
+
+      $('body.sales.show').ready(function(){
+          if ($('body.sales.show').length) {
+            initialize_values();
+          }
+      });
+
+      $('body.greenhouses.show').ready(function(){
+          if ($('body.greenhouses.show').length) {
+            initialize_values();
+          }
+      });
+
+
+      function initialize_values(){
+            disable_saving_fields();
+            enviar_ajax("", false);
+      }
+// End of "Page specific code".
+
+      /*$(document).ready(function () {
+        alert("document).ready(function ()");
+       });
+
+
+  document.addEventListener("turbolinks:load", function (data) {
+    alert("sales_state_machine ready");
 
 
 
-$(document).ready(function () {
+            //$('#save_qty').prop('disabled', true);
+            //$('#hld_qty').prop('disabled', true);
 
-  $('[data-toggle="tooltip"]').tooltip();
-  $('[type="checkbox"]').bootstrapSwitch();
-  // Make sure checkbox switch works
-  $(".add_fields").click( function () {
-    $("[type='checkbox']").bootstrapSwitch();
-  });
-  // FIX Adds form-control to date_select
-  $("select").addClass("date-control");
+            /*$("tr[data-link]").click(function() {
+                window.location = $(this).data("link")
+            }).children('input[name=selected]:radio').click(function(e) {
+                return false;
+            });
 
-  // Display current image selected (input file)
-  //$("#target_parent").hide();
-  $('#pictureInput').on('change', function(event) {
-    var files = event.target.files;
-    var image = files[0]
-    var reader = new FileReader();
-    reader.onload = function(file) {
-      var img = new Image();
-      //console.log(file);
-      img.src = file.target.result;
-      $('#target').html(img);
-      //$("#target_parent").show();
-    }
-    reader.readAsDataURL(image);
-    //console.log(files);
-  });
-  //Conver tr into link_to
-  $("tr[data-link]").click(function() {
-    window.location = $(this).data("link");
-  });
+          //Para precargar los valores que tiene el embarque, se hace una petición vacía
 
+        });*/
 
-    //Adds bootstrapSwitch to current partial
-
-  $(".shipment-fields select, .shipment-fields input[type='number']").css("width","100%");
-
-
-  function check_max_length(text_area_object)
-  {
-        var iMaxLen = parseInt(text_area_object.getAttribute('maxlength'));
-        var iCurLen = text_area_object.value.length;
-
-        if ( text_area_object.getAttribute && iCurLen > iMaxLen )
-        {
-            text_area_object.value = text_area_object.value.substring(0, iMaxLen);
-        }
-  }
-
-
-});
-
-function show_error(param){
-  if (param == "server_error"){
-    alert("Server problem, try reload your browser.");
-  }
-}
-
-
-/***************************************************************************************
-//Starts state machine code.
-
-$('input[name=selected]:radio')
+          $('input[name=selected]:radio')
               .on('change', function () {
 
           //Establece el valor en el campo oculto dependiendo de la venta que que se vaya a actualizar
@@ -327,10 +295,10 @@ $('input[name=selected]:radio')
       function enviar_ajax(accion_param, checked) {
 
           var params = {
-            accion: accion_param,
+            event: accion_param,
             //Cuando la función es llamada desde el botón para guardar la cantidad,
             //el valor de checked es un número y la acción es save_qty
-            valor: checked,
+            value: checked,
             sale_id: $('#sale_id_hidden').val()
           };
 
@@ -353,13 +321,14 @@ $('input[name=selected]:radio')
 
 
               if(updated_sale == null){
+                show_error("server_error");
               }
               else{
                 seleccionar_campos(updated_sale);
-                var action = dataRes["action"];
+                var event = dataRes["event"];
                 var status = dataRes["status"];
                 if(status){
-                  if(action == "hld_qty"){
+                  if(event == "hld_qty"){
                     disable_saving_fields();
                   }
                 }
@@ -372,16 +341,8 @@ $('input[name=selected]:radio')
                 $('#save_qty').removeClass("btn-warning");
                 $('#hld_qty').prop('disabled', true);
                 $('#save_qty').prop('disabled', true);
-                enviar_ajax("", false);
 
       }
-
-      function initialize(){
-            $('#save_qty').prop('disabled', true);
-            $('#hld_qty').prop('disabled', true);
-            $('#sale_id_status').html("Shipment - " + $(this).val());
-            enviar_ajax("", false);
-        }
 
       function seleccionar_campos(sale) {
         /*
@@ -393,8 +354,6 @@ $('input[name=selected]:radio')
           The method wrapperClass can accepts a falsy value as second parameter.
            If so, it resets the class to its default.
          */
-        /*
-
         $('#purshase_order_state_check').bootstrapSwitch('state', sale.purshase_order, true);
         //Segunda 2
         $('#out_of_packaging').bootstrapSwitch('state', sale.out_of_packaging, true);
@@ -432,63 +391,5 @@ $('input[name=selected]:radio')
 
       }
 
-      //Ends state machine code
-/*******************************************************************************************/
+      //Fin del ready y 1er function
 
-
-
-
-
-
-
-       /*$('.prod').on('change', function(params){
-          //27 es el tamaño del base_string, es fijo, no cambia.
-          //40 es cuando termina el ID dinámico del producto del que queremos
-          // filtrar sus count_types
-          //var base_string = 'sale[shipments_attributes][';
-          //var end_string = '][product_id]';
-          var shipment_auto_rails_id = params.target.name.substring(27,40);
-          //alert(product_rails_id);
-          //alert(params.target.name);
-
-          product_id_val = $(this).val();
-          var product_select = $(this);
-
-              var params = {
-            product_id: product_id_val
-          };
-          $.ajax({
-            url: '<%= get_product_count_types_path %>',
-            type: 'GET',
-            data: $.param(params),
-            dataType: 'json',
-            success: function (dataRes) {
-              var types_select = $("select[name$='["+shipment_auto_rails_id+"][count_type_id]']")
-              clearTarget(types_select);
-
-              //Se recibe el arreglo de objetos, hay que acomodarlos en el select
-            var types = $.parseJSON(dataRes);
-            filter_count_types(types_select, types);
-
-            }
-          });
-
-
-          function clearTarget(count_types_select){
-               count_types_select.children().remove().end()
-               .append('<option selected value>N/A</option>');
-          }
-
-
-          function filter_count_types(count_types_select, types){
-                $.each(types, function(key, value) {
-              count_types_select
-             .append($("<option></option>")
-             .attr("value" , value[0])
-             .text(value[1]));
-              });
-          }
-
-
-       });
-*/

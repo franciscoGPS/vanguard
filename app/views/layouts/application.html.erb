@@ -5,12 +5,13 @@
     <title><%= content_for?(:title) ? yield(:title) : "Vanguard" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Vanguard" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => "reload" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => :true %>
+
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <header>
       <%= render 'layouts/navigation' %>
     </header>

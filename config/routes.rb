@@ -51,7 +51,8 @@ Rails.application.routes.draw do
    patch '/greenhouses/:greenhouse_id/sales/:sale_id/collections_bills.:id' => 'collections_bills#update'
 
 #Acción al cambiar de estados en la venta
-    get 'purshase_order_state_change' => 'sales#purshase_order_state_change'
+    #get 'purshase_order_state_change' => 'sales#purshase_order_state_change', as: => :purshase_order_state_change
+    get 'purshase_order_state_change', to: :purshase_order_state_change, controller: 'sales'
 #Fin###########
 
 

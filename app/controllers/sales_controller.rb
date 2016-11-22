@@ -287,95 +287,104 @@ class SalesController < ApplicationController
   #Events methods. Son llamados desde las funciones ajax disparadas al accionar
   #los checkboxes propios a los estados de cada Envío.(Venta)
   def purshase_order_state_change
+    byebug
     #Se recoge el parámetro id de la venta con la que se trabajará
-    sale = Sale.find(params[:sale_id])
-    ##CASO ESPECIAL EL DE AQUÍ ABAJO.
-    ##SE USÓ UN NOMBRE DIFERENTE
 
-    case  params[:accion].to_sym
-    when :purshase_order_state_check
-      #The exclamation point autosaves its state change.
-      sale.primera!(current_user)
-      sale[:purshase_order] = !sale[:purshase_order]
+    if params[:sale_id].to_i != 0
+      sale = Sale.find(params[:sale_id])
 
-    when :out_of_packaging
-      sale.segunda!(current_user)
-      sale[:out_of_packaging] = !sale[:out_of_packaging]
+      ##CASO ESPECIAL EL DE AQUÍ ABAJO.
+      ##SE USÓ UN NOMBRE DIFERENTE
 
-    when :docs_reception
-      sale.tercera!(current_user)
-      sale[:docs_reception] = !sale[:docs_reception]
+      case  params[:event].to_sym
+      when :purshase_order_state_check
+        #The exclamation point autosaves its state change.
+        sale.primera!(current_user)
+        sale[:purshase_order] = !sale[:purshase_order]
 
-    when :loading_docs
-      sale.cuarta!(current_user)
-      sale[:loading_docs] = !sale[:loading_docs]
+      when :out_of_packaging
+        sale.segunda!(current_user)
+        sale[:out_of_packaging] = !sale[:out_of_packaging]
 
-    when :arrived_to_border
-      sale.quinta!(current_user)
-      sale[:arrived_to_border] = !sale[:arrived_to_border]
+      when :docs_reception
+        sale.tercera!(current_user)
+        sale[:docs_reception] = !sale[:docs_reception]
 
-    when :out_of_courtyard
-      sale.sexta!(current_user)
-      sale[:out_of_courtyard] = !sale[:out_of_courtyard]
+      when :loading_docs
+        sale.cuarta!(current_user)
+        sale[:loading_docs] = !sale[:loading_docs]
 
-    when :documents
-      sale.septima!(current_user)
-      sale[:documents] = !sale[:documents]
+      when :arrived_to_border
+        sale.quinta!(current_user)
+        sale[:arrived_to_border] = !sale[:arrived_to_border]
 
-    when :mex_customs_mod
-      sale.octava!(current_user)
-      sale[:mex_customs_mod] = !sale[:mex_customs_mod]
+      when :out_of_courtyard
+        sale.sexta!(current_user)
+        sale[:out_of_courtyard] = !sale[:out_of_courtyard]
 
-    when :us_customs_mod
-      sale.novena!(current_user)
-      sale[:us_customs_mod] = !sale[:us_customs_mod]
+      when :documents
+        sale.septima!(current_user)
+        sale[:documents] = !sale[:documents]
 
-    when :arrived_to_warehouse
-      sale.decima!(current_user)
-      sale[:arrived_to_warehouse] = !sale[:arrived_to_warehouse]
+      when :mex_customs_mod
+        sale.octava!(current_user)
+        sale[:mex_customs_mod] = !sale[:mex_customs_mod]
 
-    when :picked_up_by_cust
-      sale.undecima!(current_user)
-      sale[:picked_up_by_cust] = !sale[:picked_up_by_cust]
+      when :us_customs_mod
+        sale.novena!(current_user)
+        sale[:us_customs_mod] = !sale[:us_customs_mod]
 
-    when :bol
-      sale.duodecima!(current_user)
-      sale[:bol] = !sale[:bol]
+      when :arrived_to_warehouse
+        sale.decima!(current_user)
+        sale[:arrived_to_warehouse] = !sale[:arrived_to_warehouse]
 
-    when :revision
-      sale.revision_state!(current_user)
-      sale[:revision] = !sale[:revision]
+      when :picked_up_by_cust
+        sale.undecima!(current_user)
+        sale[:picked_up_by_cust] = !sale[:picked_up_by_cust]
 
-    when :usda
-      sale.usda_state!(current_user)
-      sale[:usda] = !sale[:usda]
+      when :bol
+        sale.duodecima!(current_user)
+        sale[:bol] = !sale[:bol]
 
-    when :fda
-      sale.fda_state!(current_user)
-      sale[:fda] = !sale[:fda]
+      when :revision
+        sale.revision_state!(current_user)
+        sale[:revision] = !sale[:revision]
 
-      #Habilitar el campo de Cantidad
+      when :usda
+        sale.usda_state!(current_user)
+        sale[:usda] = !sale[:usda]
 
-    when :ramp
-      sale.ramp_state!(current_user)
-      sale[:ramp] = !sale[:ramp]
+      when :fda
+        sale.fda_state!(current_user)
+        sale[:fda] = !sale[:fda]
 
-    when :hold
-      sale.hold_state!(current_user)
-      sale[:hold] = !sale[:hold]
+        #Habilitar el campo de Cantidad
 
-    when :hld_qty
-      sale.hld_qty_state(current_user)
-      sale[:hld_qty] = params[:valor]
-      status = "true"
+      when :ramp
+        sale.ramp_state!(current_user)
+        sale[:ramp] = !sale[:ramp]
+
+      when :hold
+        sale.hold_state!(current_user)
+        sale[:hold] = !sale[:hold]
+
+      when :hld_qty
+        sale.hld_qty_state(current_user)
+        sale[:hld_qty] = params[:value]
+        status = "true"
+
+      else
+
+      end
+
+      sale.save!
 
     else
-
+      sale = Sale.new
     end
-    sale.save!
 
-    action = params[:accion]
-    result = {:status => status, :error_message => "",:sale => sale, :action => action}
+    event = params[:event]
+    result = {:status => status, :error_message => "",:sale => sale, :event => event}
 
     #render :json => sale.to_json.to_s.to_json
     render :json => result

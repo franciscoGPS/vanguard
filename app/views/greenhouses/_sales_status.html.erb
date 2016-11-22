@@ -1,3 +1,6 @@
+        <% content_for :javascript_includes do %>
+          <%= javascript_include_tag "sales_state_machine.js" %>
+        <% end %>
         <h2 id="sale_id_status">Status</h2>
         <div class="row">
           <div class="col-md-3 col-sm-6">
@@ -115,7 +118,8 @@
           $('#sale_id_hidden').val($(this).val());
           //Establece el valor de la venta en la parte d elos controles.
           //Se puede poblar cualquier campo a partir de este id
-          $('#sale_id_status').html("Shipment - " + $(this).val());
+          //class="ship_number"
+          $('#sale_id_status').html("Shipment - " + $(this).find(".ship_number").html());
 
           enviar_ajax("", false);
 
