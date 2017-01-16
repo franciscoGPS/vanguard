@@ -19,10 +19,10 @@
 $(document).ready(function () {
 
   $('[data-toggle="tooltip"]').tooltip();
-  $('[type="checkbox"]').bootstrapSwitch();
+  $('[type="checkbox"]').bootstrapSwitch('size', "mini");
   // Make sure checkbox switch works
   $(".add_fields").click( function () {
-    $("[type='checkbox']").bootstrapSwitch();
+    $("[type='checkbox']").bootstrapSwitch('size', "mini");
   });
   // FIX Adds form-control to date_select
   $("select").addClass("date-control");

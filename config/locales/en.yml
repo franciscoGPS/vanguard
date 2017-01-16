@@ -22,3 +22,6 @@
 en:
   home: "Home"
   homedescription: "Welcome to Vanguard Company."
+  helpers:
+    links:
+      show: "Mostrar"

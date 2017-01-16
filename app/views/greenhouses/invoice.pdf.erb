@@ -148,6 +148,23 @@
                 </td>
               </tr>
               <% end %>
+
+
+              <tr class="total-row">
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                  <%= "TOTAL" %>
+                </td>
+                <td colspan="5">
+                  <%= "#{number_to_currency(@collections_bill.total_amt)}" %> USD
+                </td>
+              </tr>
+
             </tbody>
 
         </div>
@@ -158,35 +175,22 @@
                <% 12.times do |index|  %>
                 <tr>
                   <td colspan="3">
-
                   <% if index == 1 %>
-
-                      <%= "#{@collections_bill.label_one}" %>
-
+                    <%= "#{@collections_bill.label_one}" %>
                     <% elsif index == 3 %>
                       Bill of lading:  <%= "#{@collections_bill.bill_of_lading}" %>
                     <% elsif index == 5 %>
                       Date: <%= "#{@collections_bill.created_at.getlocal.strftime("%m/%d/%Y")}" %>
-                      <% elsif index == 7 %>
+                    <% elsif index == 7 %>
                       Temp recorder #: <%= "#{@collections_bill.thermograph}" %>
-
                     <% elsif index == 9 %>
                       <%= "#{@collections_bill.footer_one}" %>
                     <% elsif index == 10 %>
                       <%= "#{@collections_bill.footer_two}" %>
-
                     <% end %>
-
-
                   </td>
-
                   <% if index == 11%>
-                    <td>
-                      <%= "TOTAL" %>
-                    </td>
-                    <td class="total-cell">
-                      <%= "#{number_to_currency(@collections_bill.total_amt)}" %> USD
-                    </td>
+
                     <% else %>
                     <td>
                       &nbsp;

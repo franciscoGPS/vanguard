@@ -53,7 +53,7 @@
           $('#sale_id_hidden').val($(this).val());
           //Establece el valor de la venta en la parte d elos controles.
           //Se puede poblar cualquier campo a partir de este id
-          $('#sale_id_status').html("Shipment - " + $(this).val());
+          $('#sale_id_status').html("Shipment - " + $(this).parent().next().text());
 
           enviar_ajax("", false);
 
@@ -314,11 +314,8 @@
               //Recibir el objeto venta(Sale) y acomodar sus booleanos de los estados
               //updated_sale es el objeto tipo venta. Se convierte a objeto y se puede acceder a sus propiedades con el operador .  ej.a lert(updated_sale.aasm_state);
               //var updated_sale = $.parseJSON(dataRes);
-
               var updated_sale =  dataRes["sale"];
-
-              console.log(updated_sale);
-
+              //console.log(updated_sale);
 
               if(updated_sale == null){
                 show_error("server_error");

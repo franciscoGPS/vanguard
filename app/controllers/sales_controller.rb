@@ -287,7 +287,6 @@ class SalesController < ApplicationController
   #Events methods. Son llamados desde las funciones ajax disparadas al accionar
   #los checkboxes propios a los estados de cada Envío.(Venta)
   def purshase_order_state_change
-    byebug
     #Se recoge el parámetro id de la venta con la que se trabajará
 
     if params[:sale_id].to_i != 0

@@ -1,0 +1,92 @@
+
+        <h2 id="sale_id_status">Status</h2>
+        <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+            <%= hidden_field_tag(:sale_id_hidden, 0)%>
+            <%= label_tag("Orden de Compra") %>
+            <%= check_box_tag(:purshase_order_state_check) %>
+          </div>
+          <div class="col-md-4 switch ">
+            <%= label_tag("Cuenta con Documentos") %>
+            <%= check_box_tag(:documents) %>
+          </div>
+        </div>
+        <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+            <%= label_tag("Salió de empaque") %>
+            <%= check_box_tag(:out_of_packaging) %>
+          </div>
+          <div class="col-md-4 switch">
+            <%= label_tag("Módulo aduana Mexicana") %>
+            <%= check_box_tag(:mex_customs_mod) %>
+          </div>
+        </div>
+        <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+            <%= label_tag("Rojo al pasar?") %>
+            <%= check_box_tag(:revision) %>
+          </div>
+          <div class="col-md-4 switch">
+            <%= label_tag("Módulo aduana Americana") %>
+            <%= check_box_tag(:us_customs_mod) %>
+          </div>
+        </div>
+        <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+            <%= label_tag("Recepción de documentos") %>
+            <%= check_box_tag(:docs_reception) %>
+          </div>
+          <div class="col-md-4 switch">
+            <%= label_tag("FDA") %>
+            <%= check_box_tag(:fda) %>
+          </div>
+        </div>
+       <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+             <%= number_field_tag :hld_qty, 0, min: 0, :step => 'any', class: 'form-control', placeholder: "Cantidad:" %>
+          </div>
+          <div class="col-md-4 switch">
+             <%= submit_tag "Guardar Cantidad", id: "save_qty", class: "btn btn-xs" %>
+          </div>
+       </div>
+       <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+            <%= label_tag("USDA") %>
+            <%= check_box_tag(:usda) %>
+          </div>
+          <div class="col-md-4 switch">
+            <%= label_tag("Rampa") %>
+            <%= check_box_tag(:ramp) %>
+          </div>
+        </div>
+        <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+            <%= label_tag("Documentacion de carga") %>
+            <%= check_box_tag(:loading_docs) %>
+          </div>
+          <div class="col-md-4 switch">
+            <%= label_tag("Llegó a bodega") %>
+            <%= check_box_tag(:arrived_to_warehouse) %>
+          </div>
+        </div>
+        <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+            <%= label_tag("Legó a frontera") %>
+            <%= check_box_tag(:arrived_to_border) %>
+          </div>
+          <div class="col-md-4 switch">
+            <%= label_tag("Recogió el cliente") %>
+            <%= check_box_tag(:picked_up_by_cust) %>
+          </div>
+        </div>
+        <div class="row col-sm-12">
+          <div class="col-md-4 switch">
+            <%= label_tag("Salió del patio") %>
+            <%= check_box_tag(:out_of_courtyard) %>
+          </div>
+          <div class="col-md-4 switch">
+            <%= label_tag("BOL") %>
+            <%= check_box_tag(:bol) %>
+          </div>
+        </div>
+

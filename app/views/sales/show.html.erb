@@ -30,11 +30,11 @@
               :class => 'btn btn-danger pull-right' %>
 </div>
 <div class="container">
-  <div class="row">
+  <div class="row col-sm-6">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="fieldset">
-          <dl class="row">
+          <div class="row">
               <div class="col-md-4 col-sm-12">
                 <dt class="label label-default"><%= model_class.human_attribute_name(:shipment_number) %></dt>
                 <dd><pre class="prettyprint"><%= "#{@sale.ship_number}" %></pre></dd>
@@ -55,11 +55,11 @@
                 <dt class="label label-default"><%= model_class.human_attribute_name(:arrival_date) %></dt>
                 <dd><pre class="prettyprint"><%= "#{@sale.arrival_date}" %></pre></dd>
               </div>
-              <div class="col-md-6 col-sm-12">
+              <div class="col-md-12 col-sm-12">
                 <dt class="label label-default"><%= model_class.human_attribute_name(:observations) %></dt>
                 <dd><pre class="prettyprint"><%= "#{@sale.annotation}" %></pre></dd>
               </div>
-          </dl>
+          </div>
 
           <%= render :partial => 'confirmed_sales' %>
       </div>
@@ -67,83 +67,80 @@
   </div>
 </div>
 
- <div class="row">
-   <div class="col-md-12">
 
-        <%= hidden_field_tag(:sale_id_hidden, "#{@sale.id}")%>
-        <h2 id="sale_id_status">Status</h2>
-          <div class="col-md-3 col-sm-6">
-              <%= label_tag "Orden de Compra", nil, class: "col-md-6" %>
-              <%= check_box_tag :purshase_order_state_check, class: "col-md-6" %>
+    <div class="col-md-6">
+      <h2 id="sale_id_status">Status</h2>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= hidden_field_tag(:sale_id_hidden, @sale.id)%>
+            <%= label_tag("Orden de Compra") %>
+            <%= check_box_tag(:purshase_order_state_check) %>
           </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Cuenta con Documentos", nil, class: "col-md-6" %>
-              <%= check_box_tag :documents, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Salió de empaque", nil, class: "col-md-6" %>
-              <%= check_box_tag :out_of_packaging, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Módulo aduana Mexicana", nil, class: "col-md-6" %>
-              <%= check_box_tag :mex_customs_mod, class: "col-md-6" %>
-              <div class="col-md-12">
-              <%= label_tag "Rojo al pasar?", nil, class: "col-md-6" %>
-              <%= check_box_tag :revision, class: "col-md-6" %>
-            </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch ">
+            <%= label_tag("Cuenta con Documentos") %>
+            <%= check_box_tag(:documents) %>
           </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Recepción de documentos", nil, class: "col-md-6" %>
-              <%= check_box_tag :docs_reception, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Módulo aduana Americana", nil, class: "col-md-6" %>
-              <%= check_box_tag :us_customs_mod, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "USDA", nil, class: "col-md-6" %>
-              <%= check_box_tag :usda, class: "col-md-6" %>
-             </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "FDA", nil, class: "col-md-6" %>
-              <%= check_box_tag :fda, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Rampa", nil, class: "col-md-6" %>
-              <%= check_box_tag :ramp, class: "col-md-6" %>
-            </div>
-          <div class="col-md-3 col-sm-6 form-group">
-           <%= label_tag :cantidad, nil, class: "col-md-3 control-label" %>
-             <div class=" col-md-8">
-              <%= number_field_tag :hld_qty, class: "form-control" %>
-            </div>
-           <%= submit_tag "Save", id: "save_qty", class: "col-md-3 btn-xs" %>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Salió de empaque") %>
+            <%= check_box_tag(:out_of_packaging) %>
           </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Documentacion de carga", nil, class: "col-md-6" %>
-              <%= check_box_tag :loading_docs, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Llegó a bodega", nil, class: "col-md-6" %>
-              <%= check_box_tag :arrived_to_warehouse, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Legó a frontera", nil, class: "col-md-6" %>
-              <%= check_box_tag :arrived_to_border, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Recogió el cliente", nil, class: "col-md-6" %>
-              <%= check_box_tag :picked_up_by_cust, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "Salió del patio", nil, class: "col-md-6" %>
-              <%= check_box_tag :out_of_courtyard, class: "col-md-6" %>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <%= label_tag "BOL", nil, class: "col-md-6" %>
-              <%= check_box_tag :bol, class: "col-md-6" %>
-            </div>
-      </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Módulo aduana Mexicana") %>
+            <%= check_box_tag(:mex_customs_mod) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Rojo al pasar?") %>
+            <%= check_box_tag(:revision) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Módulo aduana Americana") %>
+            <%= check_box_tag(:us_customs_mod) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Recepción de documentos") %>
+            <%= check_box_tag(:docs_reception) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("FDA") %>
+            <%= check_box_tag(:fda) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+             <%= number_field_tag :hld_qty, 0, min: 0, :step => 'any', class: 'form-control', placeholder: "Cantidad:" %>
+             <%= submit_tag "Guardar Cantidad", id: "save_qty", class: "btn btn-xs" %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("USDA") %>
+            <%= check_box_tag(:usda) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Rampa") %>
+            <%= check_box_tag(:ramp) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Documentacion de carga") %>
+            <%= check_box_tag(:loading_docs) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Llegó a bodega") %>
+            <%= check_box_tag(:arrived_to_warehouse) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Legó a frontera") %>
+            <%= check_box_tag(:arrived_to_border) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Recogió el cliente") %>
+            <%= check_box_tag(:picked_up_by_cust) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("Salió del patio") %>
+            <%= check_box_tag(:out_of_courtyard) %>
+          </div>
+          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+            <%= label_tag("BOL") %>
+            <%= check_box_tag(:bol) %>
+          </div>
+        </div>
+
  </div>
 
 
@@ -151,6 +148,9 @@
      <%= render :partial => 'state_changes' %>
   </div>
   <%= javascript_include_tag "sales_state_machine.js" %>
+  <%= content_for :stylesheets do %>
+      <%= stylesheet_link_tag "sales_state_machine", :cache => true %>
+  <% end %>
  </div>
 
 
