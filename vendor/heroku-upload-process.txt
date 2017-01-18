@@ -17,5 +17,5 @@ heroku maintenance:off --app=vanguardco-staging
 //See documentation
 //http://dba.stackexchange.com/questions/51874/pg-dump-custom-format-between-postgres-versions
 //https://www.postgresql.org/docs/9.5/static/app-pgdump.html
-PGPASSWORD=jnqNRJXWK8dfC6v1MFK5QmtLYw pg_dump -Fc --inserts -a --no-acl --no-owner -h ec2-54-83-18-87.compute-1.amazonaws.com -U ilcyjomdkniwua -d d3c97rca33v8sf > staging_databackup.dump
+PGPASSWORD="                          " pg_dump -Fc --inserts -a --no-acl --no-owner -h ec2-54-83-18-87.compute-1.amazonaws.com -U ilcyjomdkniwua -d d3c97rca33v8sf > staging_databackup.dump
 
