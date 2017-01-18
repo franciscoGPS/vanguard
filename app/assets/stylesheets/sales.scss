@@ -2,7 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.boton_rojo{
-
+.btn-margin{
+margin-top: 1.4em;
 }
+
+
+#big-box{
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+}
+

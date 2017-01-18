@@ -278,7 +278,7 @@ class SalesController < ApplicationController
       result = {:status => true, :error_message => "", :action => action}
 
     else
-      result = {:status => false, :url => url,:error_message => "An unexpected error
+      result = {:status => false, :url => url, :error_message => "An unexpected error
        ocurred when trying to update annotations for this shipment. Please contact support."}
     end
     render :json => result
@@ -288,7 +288,6 @@ class SalesController < ApplicationController
   #los checkboxes propios a los estados de cada Envío.(Venta)
   def purshase_order_state_change
     #Se recoge el parámetro id de la venta con la que se trabajará
-
     if params[:sale_id].to_i != 0
       sale = Sale.find(params[:sale_id])
 

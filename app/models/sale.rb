@@ -80,11 +80,13 @@ class Sale < ActiveRecord::Base
 
 
   scope :with_ship_number, lambda { |ship_number|
-    if(ship_number[:value].empty?)
-      where("greenhouse_id = ?", ship_number[:greenhouse_id]) if ship_number.greenhouse_id.present?
-    else
-      where("ship_number LIKE ? AND greenhouse_id = ?", "%#{ship_number[:value].downcase.to_i}%", ship_number[:greenhouse_id]) if ship_number.greenhouse_id.present?
-    end
+
+    where("ship_number LIKE ?", "%#{ship_number}%")
+    # if(ship_number[:value].empty?)
+    #   where("greenhouse_id = ?", ship_number[:greenhouse_id]) if ship_number.greenhouse_id.present?
+    # else
+    #   where("ship_number LIKE ? AND greenhouse_id = ?", "%#{ship_number[:value].downcase.to_i}%", ship_number[:greenhouse_id]) if ship_number.greenhouse_id.present?
+    # end
    }
 
   scope :with_customer_id, lambda { |customer_ids|
@@ -108,7 +110,7 @@ class Sale < ActiveRecord::Base
     when /^ship_num_/
       order("LOWER(ship_number) #{ direction }")
     when /^customer_/
-      order("LOWER(customers.business_name) #{ direction }").includes(:customers).references(:customers)
+      order("LOWER(customers.business_name) #{ direction }").includes(:customers).references(:shipments)
     when /^created_at_/
       order("sales.created_at #{ direction }")
     else

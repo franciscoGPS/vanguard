@@ -36,7 +36,6 @@ group :development, :test do
   gem 'byebug'                        # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'spring'                        # Spring speeds up development by keeping your application running in the background.
   gem 'mailcatcher'                   # Use mailcatcher to see mail in localhost:1080 (run 'mailcatcher' in terminal to activate)
-  gem 'annotate'                      # Add a comment summarizing the current schema
 end
 group :development do
   gem 'rails_layout'			            # Generate layout with framework (boostrap or foundation)
@@ -46,6 +45,7 @@ group :development do
   gem 'binding_of_caller'             # Better Errors' advanced features (REPL, local/instance variable inspection, pretty stack frame names)
   gem 'rubocop', '~> 0.42.0', require: false # Code analyzer, based on the community Ruby style guide.
   gem 'brakeman', require: false   # Analysis security vulnerability scanner
+  gem 'annotate'
 end
 
 gem 'rb-readline'                     # Provides a pure Ruby implementation of the GNU readline C library

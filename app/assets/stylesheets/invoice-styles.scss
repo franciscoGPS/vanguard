@@ -1,4 +1,6 @@
 
+
+$border_color: #A2A2A2;
   .container, td, p {
     font-size: 10px;
   }
@@ -19,14 +21,15 @@
   }
 
     .header {
-      background-color: #f0f0f0;
-      border: 1px solid #f0f0f0;
+      background-color: $border_color;
+      border: 1px solid $border_color;
       font-weight: bold;
       color: black;
     }
 
     .cell{
-      border: 1px solid #f0f0f0;
+      border: 1px solid $border_color;
+      padding: 3px;
     }
 
     .empty-cell{
@@ -37,11 +40,11 @@
   .font { font-size: 10px; }
 
   .label {
-        background-color: #f0f0f0;
+        background-color: $border_color;
   }
 
   .card-block{
-    background-color: #f0f0f0;
+    background-color: $border_color;
   }
 
   .mid-cell{
@@ -63,12 +66,22 @@
   }
 
   .bottom-table{
-    border: 1px solid #f0f0f0;
+    border: 1px solid $border_color;
   }
 
+
+  .total-rowtd{
+
+    border-color: $border_color;
+    border-collapse:collapse;
+    border-spacing:0;
+
+  }
   .total-cell{
     width: 13%;
   }
+
+
 
 
 

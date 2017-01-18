@@ -1,15 +1,22 @@
 <%- model_class = Greenhouse -%>
-<div class="page-header">
-  <h1>
-    <%=t '.title', :default => model_class.model_name.human.titleize %>
-    <%= "#{@greenhouse.business_name.capitalize}" %>
-  </h1>
+
+
+  <div class="row">
+    <h3>
+      <%=t '.title', :default => model_class.model_name.human.titleize %>
+      <%= "#{@greenhouse.business_name.capitalize}" %>
+    </h3>
+  </div>
+
+<div class="row">
+
+  <%= render :partial => "submenu", :locals => {:id => @greenhouse.id } %>
+
 </div>
 
-<%= render :partial => "submenu", :locals => {:id => @greenhouse.id } %>
+<div class="row">
 
-<div class="col-md-12">
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-12 col-md-5">
     <div class="panel panel-default">
       <div class="panel-body">
         <h3 class="text-center">Products on sales</h3>
@@ -17,64 +24,96 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6 col-md-6">
+  <div class="col-sm-12 col-md-7">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h3>
-          Sales
-          at week
-          <%= "#{Time.now.strftime("%U")}" %>
-        </h3>
-
-
-        <!--= line_chart @greenhouse.week_sales, height: "100px" %-->
-        <%= line_chart @week_sales, height: "200px" %>
-
-
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <h3>
+              Sales
+              at week
+              <%= "#{Time.now.strftime("%U")}" %>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 ">
+            <div class="col-md-offset-6">byebug
+              <%= link_to new_greenhouse_sale_path(@greenhouse.id), class: "btn btn-success" do %>
+                <i class="fa fa-plus"></i>
+                New Shipment
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <!--= line_chart @greenhouse.week_sales, height: "100px" %-->
+            <%= line_chart @week_sales, height: "200px" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-2">
-    <%= link_to new_greenhouse_sale_path(@greenhouse.id), class: "btn btn-success" do %>
-      <i class="fa fa-plus"></i>
-      New Shipment
-    <% end %>
-  </div>
+
+
 </div>
 
-        <%= form_for_filterrific @filterrific do |f| %>
 
-          <div>
-              Shipment #
-            <%= f.fields_for :with_ship_number, OpenStruct.new(@filterrific.with_ship_number) do |with_ship_number_fields| %>
-                <%= with_ship_number_fields.hidden_field :greenhouse_id ,:value => @greenhouse.id %>
-                <%= with_ship_number_fields.text_field :value,
-              class: ' form-control filterrific-periodically-observed' %>
-            <% end %>
-            By customer
-            <%= f.select(:with_customer_id, @filterrific.select_options[:with_customer_id], { :include_blank => '- Any -' }) %>
-            After
-            <%= f.text_field(:with_created_at_after, class: 'js-datepicker') %>
-            Before
-            <%= f.text_field(:with_created_at_before, class: 'js-datepicker') %>
+<div class="row">
 
-            Sorted by
-            <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-          </div>
-          <% end %>
-          <%= link_to "Reset filters", reset_filterrific_url, :class => 'btn btn-default btn-sm' %>
+          <div class="panel panel-default form-group">
+            <div class="panel-body">
+              <%= form_for_filterrific @filterrific do |f| %>
+              <div class="row">
+                  <div class="col-md-3 col-xs-12">
+                    <span class="label label-default">Shipment #</span>
+                    <%= f.text_field :with_ship_number, class: ' form-control filterrific-periodically-observed' %>
+                  </div>
+                  <div class="col-md-3 col-xs-12">
+                    <span class="label label-default">After Departure Date</span>
+                    <%= f.text_field(:with_created_at_after, class: 'js-datepicker form-control') %>
+                  </div>
+                <div class="col-md-3 col-xs-12">
+                  <span class="label label-default">Before Departure Date</span>
+                  <%= f.text_field(:with_created_at_before, class: 'js-datepicker form-control') %>
+                </div>
+                  <div class="col-md-3 col-xs-12">
+                    <span class="label label-default">Sort by</span>
+                    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], {}, {class: 'form-control'}) %>
+                  </div>
 
-        <div id="filterrific_results">
-        <%= render(
-          partial: 'greenhouses/sales',
-          locals: { sales: @sales }
-        ) %>
+
+                <div class="col-md-3 col-xs-12">
+                  <span class="label label-default">Customer</span>
+                  <%= f.select(:with_customer_id, @filterrific.select_options[:with_customer_id], { :include_blank => '- Any -' },{ class: 'form-control'}) %>
+                </div>
+
+
+                <div class="col-md-3 col-xs-12">
+                  <div class="btn-margin">
+                    <%= link_to "Reset filters", reset_filterrific_url, :class => 'btn btn-default' %>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+           </div>
+
+
         </div>
+
+      <div id="filterrific_results">
+          <%= render(
+            partial: 'greenhouses/sales',
+            locals: { sales: @sales }
+          ) %>
+      </div>
+</div>
+
+
 
 <!--<div class="col-md-12">
   < %= render( :partial 'greenhouses/sales',
               locals: {sales: @sales} )%>
 </div>-->
 <script type="text/javascript">
-$('.js-datepicker').datepicker();
+  $('.js-datepicker').datepicker();
 </script>

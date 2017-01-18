@@ -62,7 +62,6 @@ class GreenhousesController < ApplicationController
     @sale = Sale.find(params[:sale_id])
     @shipments = Shipment.where(sale_id: @sale.id ).order(id: :asc)
     @greenhouse = Greenhouse.find(@sale.greenhouse_id)
-    byebug
     @manifest = Manifest.where(sale_id: @sale.id).first
     @customers_in_sale = @sale.sold_to
     if(@manifest.warehouse_id.nil?)
@@ -186,7 +185,8 @@ class GreenhousesController < ApplicationController
         with_customer_id: Customer.options_for_select(@greenhouse.id)
       }, :persistence_id => false) or return
 
-    @sales = @filterrific.find.where("greenhouse_id = ?", @greenhouse.id).page(params[:page]).per(10)
+
+    @sales = @filterrific.find.where("sales.greenhouse_id = ?", @greenhouse.id).page(params[:page]).per(10)
 
     #@sales = @greenhouse.sales.order('created_at DESC').page(params[:page]).per(10)
     #@sales = @greenhouse.sales.sort

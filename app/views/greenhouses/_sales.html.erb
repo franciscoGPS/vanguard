@@ -7,65 +7,80 @@
 <% if @sales.present? %>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6">
-        <%= paginate(@sales) %>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Shipment</th>
-              <th>Products</th>
-              <th>Customer</th>
-              <th>Departure Date</th>
-              <!--<th>Creation Date</th>-->
-              <th><%=t '.actions', :default => t("helpers.actions") %></th>
-            </tr>
-          </thead>
-          <tbody>
+      <div class="col-md-6 ">
 
-            <% @sales.each do |sale| %>
-            <tr>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= paginate(@sales) %>
+          </div>
+          <div class="panel-body">
 
-              <%= link_to greenhouse_sale_path(@greenhouse.id, sale.id), :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-                <td><%= radio_button_tag(:selected, sale.id) %></td>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Shipment</th>
+                    <th>Products</th>
+                    <th>Customer</th>
+                    <th>Departure Date</th>
+                    <!--<th>Creation Date</th>-->
+                    <th><%=t '.actions', :default => t("helpers.actions") %></th>
+                  </tr>
+                </thead>
+                <tbody>
 
-                <td id="ship_number"></<a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>"><%= "#{sale.ship_number}" %></a></td>
+                  <% @sales.each do |sale| %>
+                  <tr>
 
-                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
-                  <%if !sale.shipments.empty? %>
-                    <%= "#{sale.shipments.first.product != nil ? sale.shipments.first.product.name : "Details" }" %>
-                    <%else %>
-                    Details
-                  <%end%>
-                  </a></td>
-                <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
-                  <%if !sale.shipments.empty? %>
-                  <%= sale.shipments.first.customer.customers_in_sale(sale) %>
-                  <%else %>
-                    Details
-                  <%end%>
-                </a></td>
-                <td><%= "#{sale.departure_date}" %></td>
-                <!--<td>< %= "#{sale.created_at}" %></td>-->
-                <td>
-                  <%= link_to edit_greenhouse_sale_path(sale.greenhouse_id, sale.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-                  <i class="fa fa-pencil fw"></i>
-                  <%- end -%>
-                </td>
-              <%- end -%>
-            </tr>
-            <% end %>
+                    <%= link_to greenhouse_sale_path(@greenhouse.id, sale.id), :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+                      <td><%= radio_button_tag(:selected, sale.id) %></td>
 
-            <!-- El contenido retirado va entre los dos <tbody/>-->
-          </tbody>
-        </table>
-        <%= paginate(@sales) %>
+                      <td id="ship_number"></<a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>"><%= "#{sale.ship_number}" %></a></td>
+
+                      <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
+                        <%if !sale.shipments.empty? %>
+                          <%= "#{sale.shipments.first.product != nil ? sale.shipments.first.product.name : "Details" }" %>
+                          <%else %>
+                          Details
+                        <%end%>
+                        </a></td>
+                      <td><a href="<%= greenhouse_sale_path(@greenhouse.id, sale.id) %>">
+                        <%if !sale.shipments.empty? %>
+                        <%= sale.shipments.first.customer.customers_in_sale(sale) %>
+                        <%else %>
+                          Details
+                        <%end%>
+                      </a></td>
+                      <td><%= "#{sale.departure_date}" %></td>
+                      <!--<td>< %= "#{sale.created_at}" %></td>-->
+                      <td>
+                        <%= link_to edit_greenhouse_sale_path(sale.greenhouse_id, sale.id), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+                        <i class="fa fa-pencil fw"></i>
+                        <%- end -%>
+                      </td>
+                    <%- end -%>
+                  </tr>
+                  <% end %>
+
+                  <!-- El contenido retirado va entre los dos <tbody/>-->
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-footer">
+                <%= paginate(@sales) %>
+              </div>
+          </div>
+
       </div>
       <div class="col-md-6">
-        <%= render(
-          partial: 'greenhouses/sales/sales_state_machine',
-          locals: { sales: @sales }
-        ) %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= render(
+              partial: 'greenhouses/sales/sales_state_machine',
+              locals: { sales: @sales }
+            ) %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

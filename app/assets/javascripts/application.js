@@ -24,8 +24,7 @@ $(document).ready(function () {
   $(".add_fields").click( function () {
     $("[type='checkbox']").bootstrapSwitch('size', "mini");
   });
-  // FIX Adds form-control to date_select
-  $("select").addClass("date-control");
+
 
   // Display current image selected (input file)
   //$("#target_parent").hide();

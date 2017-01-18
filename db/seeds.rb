@@ -141,9 +141,9 @@ case Rails.env
 
                 warehouse_id_array = Warehouse.where(greenhouse_id: greenhouse.id).order(:id).map{|p| p.id}
                 delivery_place_id_array = DeliveryPlace.all.order(:id).map{|p| p.id}
-                1.upto(10) do |ind|
+                1.upto(20) do |ind|
 
-                    sale = Sale.create(season: "2016-2017",
+                    sale = Sale.create(season: "2017-2018",
                             departure_date: Time.now.advance(:days => +1),
                             arrival_date: Time.now.advance(:days => +2),
                             annotation: "#{FFaker::HipsterIpsum.sentences}",

@@ -30,6 +30,7 @@
               :class => 'btn btn-danger pull-right' %>
 </div>
 <div class="container">
+
   <div class="row col-sm-6">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -66,81 +67,81 @@
     </div>
   </div>
 </div>
-
-
     <div class="col-md-6">
-      <h2 id="sale_id_status">Status</h2>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-3 col-xs-5 switch">
             <%= hidden_field_tag(:sale_id_hidden, @sale.id)%>
             <%= label_tag("Orden de Compra") %>
             <%= check_box_tag(:purshase_order_state_check) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch ">
+          <div class="col-md-3 col-xs-5 switch ">
             <%= label_tag("Cuenta con Documentos") %>
             <%= check_box_tag(:documents) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Salió de empaque") %>
             <%= check_box_tag(:out_of_packaging) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Módulo aduana Mexicana") %>
             <%= check_box_tag(:mex_customs_mod) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Rojo al pasar?") %>
             <%= check_box_tag(:revision) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Módulo aduana Americana") %>
             <%= check_box_tag(:us_customs_mod) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Recepción de documentos") %>
             <%= check_box_tag(:docs_reception) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("FDA") %>
             <%= check_box_tag(:fda) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
-             <%= number_field_tag :hld_qty, 0, min: 0, :step => 'any', class: 'form-control', placeholder: "Cantidad:" %>
+          <div class="col-md-3 col-xs-5 switch">
+             <%= number_field_tag :hld_qty, 0, min: 0, :step => 'any', class: 'form-control input-sm', placeholder: "Cantidad:" %>
              <%= submit_tag "Guardar Cantidad", id: "save_qty", class: "btn btn-xs" %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("USDA") %>
             <%= check_box_tag(:usda) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Rampa") %>
             <%= check_box_tag(:ramp) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Documentacion de carga") %>
             <%= check_box_tag(:loading_docs) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Llegó a bodega") %>
             <%= check_box_tag(:arrived_to_warehouse) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Legó a frontera") %>
             <%= check_box_tag(:arrived_to_border) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Recogió el cliente") %>
             <%= check_box_tag(:picked_up_by_cust) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("Salió del patio") %>
             <%= check_box_tag(:out_of_courtyard) %>
           </div>
-          <div class="col-md-3 col-sm-5 col-xs-12 switch">
+          <div class="col-md-3 col-xs-5 switch">
             <%= label_tag("BOL") %>
             <%= check_box_tag(:bol) %>
           </div>
         </div>
-
+      </div>
+    </div>
  </div>
 
 
