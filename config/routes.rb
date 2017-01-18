@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 
 #Acción al cambiar de estados en la venta
     #get 'purshase_order_state_change' => 'sales#purshase_order_state_change', as: => :purshase_order_state_change
-    get 'purshase_order_state_change', to: :purshase_order_state_change, controller: 'sales'
+    get 'purshase_order_state_change', action: :purshase_order_state_change, controller: 'sales'
 #Fin###########
 
 
