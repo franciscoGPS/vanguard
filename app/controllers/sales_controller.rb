@@ -5,11 +5,11 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
 
-  def index
-    #@sales = Sale.order(:id).all
-    @greenhouse = Greenhouse.find(params[:greenhouse_id])
-    @sales = Sale.where(greenhouse_id: @greenhouse.id).order("id ASC")
-  end
+  # def index
+  #   #@sales = Sale.order(:id).all
+  #   @greenhouse = Greenhouse.find(params[:greenhouse_id])
+  #   @sales = Sale.where(greenhouse_id: @greenhouse.id).order("id ASC")
+  # end
 
   # GET /sales/1
   # GET /sales/1.json
@@ -366,6 +366,10 @@ class SalesController < ApplicationController
         sale.hold_state!(current_user)
         sale[:hold] = !sale[:hold]
 
+      when :rays_scan
+        sale.rays_scan_state!(current_user)
+        sale[:rays_scan] = !sale[:rays_scan]
+
       when :hld_qty
         sale.hld_qty_state(current_user)
         sale[:hld_qty] = params[:value]
@@ -404,7 +408,7 @@ class SalesController < ApplicationController
       :out_of_packaging, :docs_reception,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place_id,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :rays_scan, :ship_number, :delivery_place_id,
       :warehouse_id,
 
       shipments_attributes: [:id, :start_at, :created_at, :updated_at,

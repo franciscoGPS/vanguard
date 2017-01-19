@@ -1,71 +1,137 @@
-<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
+        <% content_for :javascript_includes do %>
+          <%= javascript_include_tag "sales_state_machine.js" %>
+        <% end %>
+        <h2 id="sale_id_status">Status</h2>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <%= hidden_field_tag(:sale_id_hidden, 0)%>
+            <%= label_tag("Orden de Compra") %>
+            <%= check_box_tag(:purshase_order_state_check) %>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Cuenta con Documentos") %>
+            <%= check_box_tag(:documents) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Salió de empaque") %>
+            <%= check_box_tag(:out_of_packaging) %>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Módulo aduana Mexicana") %>
+            <%= check_box_tag(:mex_customs_mod) %>
+            <div class="row">
+              <div class="col-md-8">
+                <%= label_tag("Rojo al pasar?") %>
+                <%= check_box_tag(:revision) %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Recepción de documentos") %>
+            <%= check_box_tag(:docs_reception) %>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Módulo aduana Americana") %>
+            <%= check_box_tag(:us_customs_mod) %>
+          </div>
+        </div>
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <%= label_tag("USDA") %>
+                <%= check_box_tag(:usda) %>
+               </div>
+              <div class="col-md-3 col-sm-6">
+                <%= label_tag("FDA") %>
+                <%= check_box_tag(:fda) %>
+              </div>
+            </div>
+             <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <%= label_tag("Rampa") %>
+                <%= check_box_tag(:ramp) %>
+              </div>
+             </div>
+             <div class="row">
+              <div class="col-md-3 col-sm-6">
+               <%= label_tag :cantidad %>
+               <%= number_field_tag :hld_qty %>
+              </div>
+              <div class="col-md-3 col-sm-6">
+               <!-- button_tag ("Save", :id => "save_qty") %>-->
+               <%= submit_tag "Save", id: "save_qty" %>
+              </div>
+             </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Documentacion de carga") %>
+            <%= check_box_tag(:loading_docs) %>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Llegó a bodega") %>
+            <%= check_box_tag(:arrived_to_warehouse) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Legó a frontera") %>
+            <%= check_box_tag(:arrived_to_border) %>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Recogió el cliente") %>
+            <%= check_box_tag(:picked_up_by_cust) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("Salió del patio") %>
+            <%= check_box_tag(:out_of_courtyard) %>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <%= label_tag("BOL") %>
+            <%= check_box_tag(:bol) %>
+          </div>
+        </div>
+        <script type="text/javascript">
 
 
-//Page specific code. Read more on:
-//http://railsapps.github.io/rails-javascript-include-external.html
+   $('[type="checkbox"]').bootstrapSwitch('size', 'mini');
 
-      $('body.sales.show').ready(function(){
-          if ($('body.sales.show').length) {
-            initialize_values();
-          }
+
+            $('#save_qty').prop('disabled', true);
+            $('#hld_qty').prop('disabled', true);
+
+
+      $("tr[data-link]").click(function() {
+          window.location = $(this).data("link")
+      }).children('input[name=selected]:radio').click(function(e) {
+          return false;
       });
 
-      $('body.greenhouses.show').ready(function(){
-          if ($('body.greenhouses.show').length) {
-            initialize_values();
-          }
-      });
-
-
-      function initialize_values(){
-            disable_saving_fields();
-            enviar_ajax("", false);
-      }
-// End of "Page specific code".
-
-      /*$(document).ready(function () {
-        alert("document).ready(function ()");
-       });
-
-
-  document.addEventListener("turbolinks:load", function (data) {
-    alert("sales_state_machine ready");
-
-
-
-            //$('#save_qty').prop('disabled', true);
-            //$('#hld_qty').prop('disabled', true);
-
-            /*$("tr[data-link]").click(function() {
-                window.location = $(this).data("link")
-            }).children('input[name=selected]:radio').click(function(e) {
-                return false;
-            });
-
-          //Para precargar los valores que tiene el embarque, se hace una petición vacía
-
-        });*/
-
-          $('input[name=selected]:radio')
-              .on('change', function () {
+      $('input[name=selected]:radio')
+        .on('change', function () {
 
           //Establece el valor en el campo oculto dependiendo de la venta que que se vaya a actualizar
           $('#sale_id_hidden').val($(this).val());
           //Establece el valor de la venta en la parte d elos controles.
           //Se puede poblar cualquier campo a partir de este id
-          $('#sale_id_status').html("Shipment - " + $(this).parent().next().text());
+          //class="ship_number"
+          $('#sale_id_status').html("Shipment - " + $(this).find(".ship_number").html());
 
           enviar_ajax("", false);
 
         });
 
         $('#save_qty').on("click", function(){
+
           var qty = $("#hld_qty").val();
-          enviar_ajax("hld_qty", qty);
+
+          enviar_ajax(this.name, qty);
 
         });
-
-
 
       //###########   Los 12 eventos de los checkboxes y sus respectivas lógicas...
       //Ordenados de manera desendente
@@ -259,11 +325,9 @@
           if (state == false){
             $('#save_qty').prop('disabled', true);
             $('#hld_qty').prop('disabled', true);
-            $('#save_qty').removeClass("btn-warning");
           }else{
             $('#save_qty').prop('disabled', false);
             $('#hld_qty').prop('disabled', false);
-            $('#save_qty').addClass("btn-warning");
           }
             //Se envían los valores para los parámetros del ajax
             //Los valores son:
@@ -286,38 +350,22 @@
           }
         });
 
-      //Rayos 18
-      $('#rays_scan')
-        .on('switchChange.bootstrapSwitch', function (event, state) {
-
-          if ($('#sale_id_hidden').val() > 0) {
-            //Se envían los valores para los parámetros del ajax
-            //Los valores son:
-            //-El nombre del campo (Que es el correspondiente al estado solicitado o clickado)
-            //-El valor de si fue clickado hacia TRUE o FALSE
-            enviar_ajax(this.name, state);
-          }
-        });
-
-
       //
       //=============================================================================
 
       function enviar_ajax(accion_param, checked) {
 
           var params = {
-            event: accion_param,
+            accion: accion_param,
             //Cuando la función es llamada desde el botón para guardar la cantidad,
             //el valor de checked es un número y la acción es save_qty
-            value: checked,
+            valor: checked,
             sale_id: $('#sale_id_hidden').val()
           };
 
-
-            $.ajax({
+           $.ajax({
             url: '<%= purshase_order_state_change_path %>',
             type: 'GET',
-
             data: $.param(params),
             dataType: 'json',
             success: function (dataRes) {
@@ -325,35 +373,28 @@
               //Recibir el objeto venta(Sale) y acomodar sus booleanos de los estados
               //updated_sale es el objeto tipo venta. Se convierte a objeto y se puede acceder a sus propiedades con el operador .  ej.a lert(updated_sale.aasm_state);
               //var updated_sale = $.parseJSON(dataRes);
-              var updated_sale =  dataRes["sale"];
-              //console.log(updated_sale);
 
-              if(updated_sale == null){
-                show_error("server_error");
-              }
-              else{
-                seleccionar_campos(updated_sale);
-                var event = dataRes["event"];
-                var status = dataRes["status"];
-                if(status){
-                  if(event == "hld_qty"){
-                    disable_saving_fields();
-                  }
+               var updated_sale =  dataRes["sale"];
+              seleccionar_campos(updated_sale);
+              var action = dataRes["action"];
+              var status = dataRes["status"];
+              if(status){
+                if(action == "save_qty"){
+                  disable_saving_fields();
                 }
               }
+
             }
           });
       }
 
       function disable_saving_fields(){
-                $('#save_qty').removeClass("btn-warning");
-                $('#hld_qty').prop('disabled', true);
-                $('#save_qty').prop('disabled', true);
-
+                $('#save_qty').removeClass('btn-warning');
+                //$('#save_qty').addClass('btn-primary');
       }
 
-      function seleccionar_campos(sale) {
 
+      function seleccionar_campos(sale) {
         /*
         Special Behaviours
           The method state can receive an optional third parameter skip. if true,
@@ -394,12 +435,13 @@
         $('#fda').bootstrapSwitch('state', sale.fda, true);
         //rampa 16
         $('#ramp').bootstrapSwitch('state', sale.ramp, true);
-
-        //cantidad retenida en FDA 17
+        //hold 17
+        //$('#hold').bootstrapSwitch('state', sale.hold, true);
+        //cantidad retenida en FDA 18
         $('#hld_qty').val(sale.hld_qty);
-
-        //Rays_scan 18
-        $('#rays_scan').bootstrapSwitch('state', sale.rays_scan, true);
 
       }
 
+      //Fin del ready y 1er function
+
+</script>

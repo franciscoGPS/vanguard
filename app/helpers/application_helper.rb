@@ -58,7 +58,7 @@ module ApplicationHelper
     #Si se desean editar estos valores, favor de cambiarlos también en el modelo Sale.
     #
      {
-      "0" => {:id => "0", :name => "None"},
+      "0" => {:id => "0", :name => "Inicial"},
       "1" => {:id => "1", :name => "Orden de Compra"},
       "2" => {:id => "2", :name => "Salió de empaque"},
       "3" => {:id => "3", :name => "Recepción de Documentos"},
@@ -71,11 +71,12 @@ module ApplicationHelper
       "10" => {:id => "10", :name => "Legó a Bodega"},
       "11" => {:id => "11", :name => "Recogió el cliente"},
       "12" => {:id => "12", :name => "BOL"},
-      "13" => {:id => "13", :name => "REVISION EN ROJO"},
+      "13" => {:id => "13", :name => "Revisión en Rojo"},
       "14" => {:id => "14", :name => "USDA"},
       "15" => {:id => "15", :name => "FDA"},
-      "16" => {:id => "16", :name => "RAMP"},
-      "17" => {:id => "17", :name => "QTY"}
+      "16" => {:id => "16", :name => "Rampa"},
+      "17" => {:id => "17", :name => "QTY"},
+      "18" => {:id => "18", :name => "Rayos"}
     }
   end
 

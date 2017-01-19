@@ -283,7 +283,7 @@ class GreenhousesController < ApplicationController
       :out_of_packaging, :docs_reception,
       :loading_docs, :arrived_to_border, :out_of_courtyard, :documents,
       :mex_customs_mod, :us_customs_mod, :arrived_to_warehouse, :picked_up_by_cust,
-      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :ship_number, :delivery_place_id,
+      :bol, :usda, :fda, :ramp, :hold, :hld_qty, :rays_scan, :ship_number, :delivery_place_id,
       :warehouse_id,
 
           shipments_attributes: [:id, :start_at, :created_at, :updated_at,
