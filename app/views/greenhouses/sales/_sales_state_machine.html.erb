@@ -1,7 +1,7 @@
 
-      <div class="container">
 
-        <div class="row col-md-6">
+
+        <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-1">
           <h2 id="sale_id_status">Status</h2>
           <div class="col-md-3 col-xs-5 col-sm-3 switch">
             <%= hidden_field_tag(:sale_id_hidden, "#{@sale.id unless @sale.nil?}")%>
@@ -44,7 +44,7 @@
 
 
           <div class="col-md-3 col-xs-5 col-sm-3 switch">
-            <%= label_tag("Módulo aduana Mexicana") %>
+            <%= label_tag("Aduana Mexicana") %>
             <%= check_box_tag(:mex_customs_mod) %>
           </div>
 
@@ -56,7 +56,7 @@
 
 
           <div class="col-md-3 col-xs-5 col-sm-3 switch">
-            <%= label_tag("Módulo aduana Americana") %>
+            <%= label_tag("Aduana Americana") %>
             <%= check_box_tag(:us_customs_mod) %>
           </div>
 
@@ -106,7 +106,7 @@
             <%= check_box_tag(:bol) %>
           </div>
         </div>
-      </div>
+
   <%= javascript_include_tag "sales_state_machine.js" %>
   <%= content_for :stylesheets do %>
       <%= stylesheet_link_tag "sales_state_machine", :cache => true %>

@@ -29,47 +29,52 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger pull-right' %>
 </div>
-<div class="container">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="fieldset">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                  <dt class="label label-default"><%= model_class.human_attribute_name(:shipment_number) %></dt>
+                  <dd><pre class="prettyprint"><%= "#{@sale.ship_number}" %></pre></dd>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <dt class="label label-default"><%= model_class.human_attribute_name(:season) %></dt>
+                  <dd><pre class="prettyprint"><%= "#{@sale.season}" %></pre></dd>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <dt class="label label-default"><%= model_class.human_attribute_name(:delivery_place) %></dt>
+                  <dd><pre class="prettyprint"><%= "#{@delivery_place.name}" %></pre></dd>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <dt class="label label-default"><%= model_class.human_attribute_name(:departure_date) %></dt>
+                  <dd><pre class="prettyprint"><%= "#{@sale.departure_date}" %></pre></dd>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <dt class="label label-default"><%= model_class.human_attribute_name(:arrival_date) %></dt>
+                  <dd><pre class="prettyprint"><%= "#{@sale.arrival_date}" %></pre></dd>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <dt class="label label-default"><%= model_class.human_attribute_name(:observations) %></dt>
+                  <dd><pre class="prettyprint"><%= "#{@sale.annotation}" %></pre></dd>
+                </div>
+            </div>
 
-  <div class="row col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="fieldset">
-          <div class="row">
-              <div class="col-md-4 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:shipment_number) %></dt>
-                <dd><pre class="prettyprint"><%= "#{@sale.ship_number}" %></pre></dd>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:season) %></dt>
-                <dd><pre class="prettyprint"><%= "#{@sale.season}" %></pre></dd>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:delivery_place) %></dt>
-                <dd><pre class="prettyprint"><%= "#{@delivery_place.name}" %></pre></dd>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:departure_date) %></dt>
-                <dd><pre class="prettyprint"><%= "#{@sale.departure_date}" %></pre></dd>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:arrival_date) %></dt>
-                <dd><pre class="prettyprint"><%= "#{@sale.arrival_date}" %></pre></dd>
-              </div>
-              <div class="col-md-12 col-sm-12">
-                <dt class="label label-default"><%= model_class.human_attribute_name(:observations) %></dt>
-                <dd><pre class="prettyprint"><%= "#{@sale.annotation}" %></pre></dd>
-              </div>
-          </div>
-
-          <%= render :partial => 'confirmed_sales' %>
+            <%= render :partial => 'confirmed_sales' %>
+         </div>
+        </div>
+     </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= render :partial => 'greenhouses/sales/sales_state_machine' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-    <div class="col-md-6">
-      <%= render :partial => 'greenhouses/sales/sales_state_machine' %>
-    </div>
   <div class="row">
     <div id="activities_partial" class="col-md-12 col-sm-12 col-xs-12">
 
