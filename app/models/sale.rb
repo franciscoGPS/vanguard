@@ -456,9 +456,7 @@ class Sale < ActiveRecord::Base
   #Este método regresa todos los clientes que pertenecen en un aventa,
   # dependiendo de sus shipments (configuraciones de productos)
   def sold_to
-    Customer.find_by_sql("SELECT customers.* FROM customers
-    INNER JOIN shipments ON shipments.customer_id IN (customers.id)
-    AND shipments.sale_id = #{self.id} GROUP BY customers.id ORDER BY customers.id ASC")
+    Sale.find(self.id).customers.distinct
   end
 
   def is_unique(ship_number)
