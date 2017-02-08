@@ -1,19 +1,22 @@
+<% content_for :head do %>
+   <%= stylesheet_link_tag :order_style -%>
+<% end %>
 <div class="well">
   <%= link_to 'Printable Receipt (PDF)', p_order_path(@greenhouse.id, @sale.id, format: 'pdf'),
                 class: "btn btn-primary", :id => 'btn_pdf_generate' %>
   <%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), class: "btn btn-warning" %>
 </div>
 <%= hidden_field_tag(:sale_id_hidden, "#{@sale.id}")%>
-<div class="container-fluid" style="background-color:white;">
+<div id="order" class="container-fluid" style="background-color:white;">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="page-header">
-							<h1>
+							<h2>
                 <%= image_tag @greenhouse.logo.url(:thumb), :style => "max-height:80px;" %>
                 <%= "#{@greenhouse.business_name}"  %>
-              </h1>
+              </h2>
 					</div>
 				</div>
 			</div>
