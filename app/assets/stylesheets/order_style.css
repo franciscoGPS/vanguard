@@ -1,0 +1,32 @@
+
+/*
+  Este archivo es usado para dar estilo a
+  los componentes de la orden de compra en HTML
+
+ */
+#order .page-header {
+  margin: 1px;
+  padding: 2px;
+}
+
+#order table th{
+  padding: 1px;
+  margin: 2px;
+}
+
+#order table tr td{
+  padding: 1px;
+
+}
+
+#order table tr {
+  padding: 0px;
+}
+
+#order table {
+  padding: 0px;
+}
+
+.row{
+  margin-bottom: 1px;
+}
