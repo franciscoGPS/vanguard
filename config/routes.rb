@@ -50,6 +50,7 @@ Rails.application.routes.draw do
    patch '/greenhouses/:greenhouse_id/custom_brokers.:id' => 'custom_brokers#update'
    patch '/greenhouses/:greenhouse_id/sales/:sale_id/collections_bills.:id' => 'collections_bills#update'
 
+
 #Acción al cambiar de estados en la venta
     #get 'purshase_order_state_change' => 'sales#purshase_order_state_change', as: => :purshase_order_state_change
     get 'purshase_order_state_change', action: :purshase_order_state_change, controller: 'sales'
@@ -85,14 +86,17 @@ Rails.application.routes.draw do
 
     post '/greenhouses/collections_bills/set_bol_date' => 'collections_bills#set_revised_on'
     post '/greenhouses/collections_bills/set_proforma_invoice' => 'collections_bills#set_proforma_invoice'
+    get '/greenhouses/:greenhouse_id/sales/:sale_id/collections_bill/:id/adjust' => 'collections_bills#adjust', as: :adjust_collections_bill
 
+
+    post '/collections_bill/:id/save_adjustment' => 'collections_bill#save_adjustment', as: :save_adjustment
 
 
 
 
 
     get 'order' => 'greenhouses#order'
-    get 'greenhouse/:greenhouse_id/:customer_id/:sale_id/invoice/:id' => 'greenhouses#invoice', as: "billing_invoice"
+    get 'greenhouse/:greenhouse_id/customer/:customer_id/sales/:sale_id/invoice/:id' => 'greenhouses#invoice', as: "billing_invoice"
     get 'purshase_order/greenhouses/:greenhouse_id/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
     #get 'purshase_order/sales/:sale_id' => 'greenhouses#purshase_order', as: "p_order"
     get 'customs_invoice/sales/:sale_id' => 'greenhouses#customs_invoice', as: "cust_inv_pdf"

@@ -24,8 +24,9 @@ class Customer < ActiveRecord::Base
   acts_as_paranoid
   belongs_to :greenhouse
   has_many :contacts, :as => :contactable, :class_name => "Contact", dependent: :destroy
-  has_many :shipments, dependent: :destroy, :source_type => "Shipment"
+  has_many :shipments, dependent: :destroy, :source_type => "Shipment", inverse_of: :customer
   has_many :shipment_state_changes
+  has_many :collections_bills, inverse_of: :customer
   has_many :sales, :through => :shipments, :dependent => :destroy
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "no-logo.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
@@ -65,8 +66,5 @@ class Customer < ActiveRecord::Base
     #inner join shipments ON shipments.customer_id IN (customers.id) AND shipments.sale_id = 88 group by customers.id
   #end
 
-  def shipments_by_sale(sale_id)
-    Shipment.where(:sale_id => sale_id, :customer_id => self.id).order(id: :asc)
-  end
 end
 

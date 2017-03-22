@@ -1,0 +1,60 @@
+<table class="table table-hover table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Box Qty</th>
+      <th>Case</th>
+      <th>Weight</th>
+      <th>Product Name</th>
+      <th>Customer</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= byebug %>
+    <% cb.shipments.each do |shipment| %>
+      <%= fields_for :shipment_adjustment do |f| %>
+      <tr>
+        <td><%= f.number_field :box_number, :value => shipment.box_number, class: "form-control" %> </td>
+        <td><%= "#{shipment.box_type.name}" %></td>
+        <td><%= f.number_field :weight, :value => shipment.weight, class: "form-control" %> </td>
+        <td><%= "#{shipment.product != nil ? shipment.product.name : 'Deleted Product' }" %></td>
+        <td><%= "#{shipment.customer.business_name}" %></td>
+        <td><%= f.number_field :price, :value => shipment.price, class: "form-control" %> </td>
+
+
+        <!-- <td><a class="editable" data-name="price" id="< %= shipment.id %>" data-type="text" data-resource="shipment" data-pk="price" data-url="< %= greenhouse_shipment_path(@greenhouse, shipment ) %>" data-title="Enter new price"> < %= "#{shipment.price}" %></a>
+        </td>-->
+        <td><%= "#{number_to_currency(shipment.price * shipment.box_number, unit: 'USD $')}" %></td>
+      </tr>
+      <% end %>
+    <% end %>
+    <tr>
+      <td>
+        <b><%= "#{formatted_number(@total_boxes)}" %></b>
+      </td>
+      <td>
+        ---
+      </td>
+      <td>
+                  ---
+      </td>
+      <td>
+                  ---
+      </td>
+      <td>
+                  ---
+      </td>
+      <td>
+                  ---
+      </td>
+      <td>
+        <b><%= "#{number_to_currency(@total_ammount_money, unit: 'USD $')}" %></b>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+

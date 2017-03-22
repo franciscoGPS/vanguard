@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shipment_id: 1
+  box_number: 1
+  weight: 1.5
+  price: 9.99
+
+two:
+  shipment_id: 1
+  box_number: 1
+  weight: 1.5
+  price: 9.99

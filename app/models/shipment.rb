@@ -37,10 +37,14 @@ class Shipment < ActiveRecord::Base
 #Estos 4 son parámetros del Shipment
 #La tabla Shipments en la DB contiene los siguientes id's
 
-  has_one :count_type
+
   belongs_to :product
   belongs_to :sale
   belongs_to :customer
+  belongs_to :collection_bills
+  has_one :greenhouse, through: :sale
+  has_one :count_type
+  has_one :shipment_adjustment, dependent: :destroy, inverse_of: :shipment
 
   accepts_nested_attributes_for :product, :reject_if => :all_blank
 

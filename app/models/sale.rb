@@ -70,7 +70,7 @@ class Sale < ActiveRecord::Base
   has_many :customers, :through => :shipments
   has_one :manifest
   has_many :shipment_state_changes
-  has_many :collection_bills
+  has_many :collection_bills, inverse_of: :sale
 
   accepts_nested_attributes_for :shipments,  :allow_destroy => true,
   reject_if: proc { |attributes| attributes['price'].blank? ||
@@ -80,8 +80,6 @@ class Sale < ActiveRecord::Base
 
   accepts_nested_attributes_for :customers, :reject_if => :all_blank
   accepts_nested_attributes_for :manifest, :allow_destroy => true
-
-
 
   def own? user
     self.user_id == user.id

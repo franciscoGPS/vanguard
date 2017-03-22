@@ -31,11 +31,40 @@
 
 class CollectionsBill < ActiveRecord::Base
   acts_as_paranoid           #Soft-delete
+
   belongs_to :user
   belongs_to :sale
-  has_many :shipments, :through => :shipments, :dependent => :destroy
+  has_many :shipments, :through => :sale, :dependent => :destroy# Probar con ->, inverse_of: :collections_bill
+  accepts_nested_attributes_for :sale
+  belongs_to :customer
 
   # Public Activity
   include PublicActivity::Model
   tracked owner:  ->(controller, model) { controller.c_user }
+
+  def adjusted_shipments
+    self.sale.shipments.each do |sh|
+      if sh.shipment_adjustment.present?
+        sh.price = sh.shipment_adjustment.price
+        sh.weight = sh.shipment_adjustment.weight
+        sh.box_number = sh.shipment_adjustment.box_number
+      else
+        return nil
+      end
+    end
+  end
+
+  def adjusted?
+    self.sale.shipments.each do |sh|
+      if sh.shipment_adjustment.present?
+        return true
+      end
+      return false
+    end
+  end
+
+  def own_shipments
+    Shipment.where(:sale_id => self.sale_id, :customer_id => self.customer_id).order(id: :asc)
+  end
+
 end

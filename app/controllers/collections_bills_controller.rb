@@ -1,6 +1,7 @@
 class CollectionsBillsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_collections_bill, only: [:show, :edit, :update, :destroy, :to_invoice]
+  before_action :set_collections_bill, only: [:show, :edit, :update,
+    :destroy, :to_invoice, :adjust]
 
 
 
@@ -24,7 +25,6 @@ class CollectionsBillsController < ApplicationController
 #This method is called from the CollectionsBill Show view and it redirects to
 #the greenhouse invoice method
   def to_invoice
-
     bill = CollectionsBill.find(params[:id])
     sale = Sale.find(bill.sale_id)
     greenhouse = Greenhouse.find(sale.greenhouse_id)
@@ -163,7 +163,7 @@ class CollectionsBillsController < ApplicationController
     render :json => result
   end
 
-    def set_revised_on
+  def set_revised_on
     collections_bill = CollectionsBill.find(params[:collections_bill_id])
     collections_bill.bol_date = DateTime.parse(params[:bol_date])
 
@@ -171,13 +171,10 @@ class CollectionsBillsController < ApplicationController
 
     if collections_bill.save
 
-        result = {
-                  :success => true,
+        result = {:success => true,
                   :message => "·Updated·"}
     else
-
-        result = {
-                  :error_message => "Internal error while update."}
+        result = {:error_message => "Internal error while update."}
     end
 
     render :json => result
@@ -188,24 +185,37 @@ class CollectionsBillsController < ApplicationController
 def set_proforma_invoice
     collections_bill = CollectionsBill.find(params[:collections_bill_id])
     collections_bill.proforma_invoice = params[:proforma_invoice]
-
     result = {}
-
     if collections_bill.save
-
         result = {
                   :success => true,
                   :message => "·Updated·"}
     else
-
-        result = {
-                  :error_message => "Internal error while update."}
+        result = {:error_message => "Internal error while update."}
     end
-
     render :json => result
   end
 
+  def adjust
+    @greenhouse = Greenhouse.find(params[:greenhouse_id])
+    @sale = Sale.find(@collections_bill.sale_id)
+    @customer = Customer.find(@collections_bill.customer_id)
+    set_shipments_values
 
+    # if @collections_bill.adjusted?
+    #     respond_to do |format|
+    #       format.html { redirect_to to_invoice_path(@collections_bill), notice: 'Collections bill was successfully created.' }
+    #   end
+    # else
+      respond_to do |format|
+        format.html { render :adjust }
+      end
+    #end
+  end
+
+  def save_adjustments
+    save_adjusments
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.
@@ -226,9 +236,10 @@ def set_proforma_invoice
       :ship_number, :po_number, :payment_terms, :bol_date, :total_amt,
       :user_id, :customer_id, :created_at, :label_one, :label_two, :bill_of_lading,
       :proforma_invoice, :show_pkg_type, :show_plu, :show_count_type, :show_color,
-      :show_bag_type, :thermograph, :footer_one, :footer_two, :_destroy)
+      :show_bag_type, :thermograph, :footer_one, :footer_two, :_destroy,
+      sale_attributes:[shipments_attributes: [:id, :product_id, :start_at, :pallets_number,
+      :comments, :sale_id, :price, :plu, :count, :product_color, :_destroy,
+      shipment_adjustment_attributes: [:box_number, :price, :weight]]]
+      )
   end
 end
-
-
-

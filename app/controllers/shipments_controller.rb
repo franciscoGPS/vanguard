@@ -1,6 +1,7 @@
 class ShipmentsController < ApplicationController
   before_action :set_shipment, only: [:show, :edit, :update, :destroy, :cancel, :cancel_shipment]
   before_action :authenticate_user!
+  before_action :parse_shipment_adjustments, only: :shipment_adjustments
 
   # GET /shipments
   # GET /shipments.json
@@ -41,10 +42,11 @@ class ShipmentsController < ApplicationController
   # PATCH/PUT /shipments/1
   # PATCH/PUT /shipments/1.json
   def update
+    byebug
     respond_to do |format|
       if @shipment.update(shipment_params)
         format.html { redirect_to sale_path id: @shipment.sale_id }
-        #format.json { render :show, status: :ok, location: @shipment }
+        format.json { render :json,  status: :ok }
       else
         format.html { render :edit }
         #format.json { render json: @shipment.errors, status: :unprocessable_entity }
@@ -78,7 +80,16 @@ class ShipmentsController < ApplicationController
   def order
     #codei
   end
+
+  def shipment_adjustments
+
+  end
   private
+
+    def parse_shipment_adjustments
+
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_shipment
       @shipment = Shipment.find(params[:id])
@@ -95,6 +106,7 @@ class ShipmentsController < ApplicationController
         bag_type_attributes: [:id, :name, :_destroy],
         box_type_attributes: [:id, :name, :_destroy],
         product_attributes: [:id, :name, :_destroy],
-        count_types_attributes: [:id, :name, :_destroy])
+        count_types_attributes: [:id, :name, :_destroy],
+        shipment_adjustment_attributes: [:id, :price, :box_number, :weight])
     end
 end

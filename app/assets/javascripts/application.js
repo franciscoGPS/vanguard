@@ -9,6 +9,7 @@
 //= require bootstrap-table
 //= require filterrific/filterrific-jquery
 //= require bootstrap-datepicker/core
+//= require bootstrap
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require sales_state_machine
 //= require jquery-readyselector

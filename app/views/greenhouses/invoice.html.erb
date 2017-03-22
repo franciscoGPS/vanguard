@@ -1,4 +1,10 @@
-<%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), :class => "btn btn-primary"  %> <%= link_to 'Edit', edit_greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill.id), class: "btn btn-warning" %> <%= link_to 'Printable Receipt (PDF)', billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @collections_bill.id,  format: 'pdf'),
+<%= link_to "Back", greenhouse_sale_path(@greenhouse.id, @sale.id), :class => "btn btn-primary"  %>
+
+<%= link_to 'Edit', edit_greenhouse_sale_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill.id), class: "btn btn-warning" %>
+
+<%= link_to 'Adjust', adjust_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill.id), class: "btn btn-info" %>
+
+<%= link_to 'Printable Receipt (PDF)', billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @collections_bill.id,  format: 'pdf'),
                 class: "btn btn-success", :id => "btn-print" %>
 
 <%= form_for @manifest, :url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id), :html => { :class => 'form-horizontal' } do |f| %>
