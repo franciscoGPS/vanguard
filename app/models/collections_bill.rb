@@ -34,9 +34,12 @@ class CollectionsBill < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :sale
-  has_many :shipments, :through => :sale, :dependent => :destroy# Probar con ->, inverse_of: :collections_bill
+  belongs_to :customer, inverse_of: :collections_bill
+  has_many :shipments, :through => :customer, :dependent => :destroy, inverse_of: :collections_bill
+  has_many :shipment_adjustments, through: :shipments, inverse_of: :collections_bill
+
   accepts_nested_attributes_for :sale
-  belongs_to :customer
+  accepts_nested_attributes_for :shipment_adjustments
 
   # Public Activity
   include PublicActivity::Model

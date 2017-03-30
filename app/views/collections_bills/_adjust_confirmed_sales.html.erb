@@ -11,30 +11,45 @@
     </tr>
   </thead>
   <tbody>
+    <% bill.own_shipments.each do |shipment| %>
 
-
-
-    <% @collections_bill.own_shipments.each do |shipment| %>
-
-    <%= form_for shipment, url: save_adjustment_path(@collections_bill.id) do |f| %>
-
-      <%= f.fields_for :shipment_adjustment do |sha| %>
-      <tr>
-        <td><%= sha.number_field :box_number, :value => shipment.box_number, class: "form-control" %> </td>
-        <td><%= "#{shipment.box_type.name}" %></td>
-        <td><%= sha.number_field :weight, :value => shipment.weight, class: "form-control" %> </td>
-        <td><%= "#{shipment.product != nil ? shipment.product.name : 'Deleted Product' }" %></td>
-        <td><%= "#{shipment.customer.business_name}" %></td>
-        <td><%= sha.number_field :price, :value => shipment.price, class: "form-control" %> </td>
-
-
-        <!-- <td><a class="editable" data-name="price" id="< %= shipment.id %>" data-type="text" data-resource="shipment" data-pk="price" data-url="< %= greenhouse_shipment_path(@greenhouse, shipment ) %>" data-title="Enter new price"> < %= "#{shipment.price}" %></a>
-        </td>-->
-        <td><%= "#{number_to_currency(shipment.price * shipment.box_number, unit: 'USD $')}" %></td>
-      </tr>
-
+      <%= f.fields_for :shipment_adjustments, shipment.adjusted? ? shipment.shipment_adjustment : ShipmentAdjustment.new  do  |sha| %>
+        <%= sha.hidden_field :shipment_id, value: shipment.id %>
+        <tr>
+          <td><%= sha.number_field :box_number, shipment.adjusted? ? shipment.shipment_adjustment.box_number : :value => shipment.box_number, class: "form-control" %> </td>
+          <td><%= "#{shipment.box_type.name}" %></td>
+          <td><%= sha.number_field :weight, shipment.adjusted? ? shipment.shipment_adjustment.weight : :value => shipment.weight, class: "form-control" %> </td>
+          <td><%= "#{shipment.product != nil ? shipment.product.name : 'Deleted Product' }" %></td>
+          <td><%= "#{shipment.customer.business_name}" %></td>
+          <td><%= sha.number_field :price, shipment.adjusted? ? shipment.shipment_adjustment.price : :value => shipment.price, class: "form-control" %> </td>
+          <td><%= shipment.adjusted? ? "#{number_to_currency(shipment.shipment_adjustment.price * shipment.shipment_adjustment.box_number, unit: 'USD $')}" : "#{number_to_currency(shipment.price * shipment.box_number, unit: 'USD $')}" %></td>
+        </tr>
       <% end %>
-      <tr>
+    <% end %>
+          <tr>
+        <td>
+          <b><%= "#{formatted_number(@total_boxes)}" %></b>
+        </td>
+        <td>
+          ---
+        </td>
+        <td>
+                    ---
+        </td>
+        <td>
+                    ---
+        </td>
+        <td>
+                    ---
+        </td>
+        <td>
+                    ---
+        </td>
+        <td>
+          <b><%= "#{number_to_currency(@total_ammount_money, unit: 'USD $')}" %></b>
+        </td>
+    </tr>
+    <tr>
         <td></td>
         <td></td>
         <td></td>
@@ -43,33 +58,8 @@
         <td></td>
         <td><%= f.submit "Submit", class: "btn btn-success" %></td>
       </tr>
-    <% end %>
-
-    <tr>
-      <td>
-        <b><%= "#{formatted_number(@total_boxes)}" %></b>
-      </td>
-      <td>
-        ---
-      </td>
-      <td>
-                  ---
-      </td>
-      <td>
-                  ---
-      </td>
-      <td>
-                  ---
-      </td>
-      <td>
-                  ---
-      </td>
-      <td>
-        <b><%= "#{number_to_currency(@total_ammount_money, unit: 'USD $')}" %></b>
-      </td>
-    </tr>
   </tbody>
 </table>
 
-<% end %>
+
 

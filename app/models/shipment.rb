@@ -41,12 +41,13 @@ class Shipment < ActiveRecord::Base
   belongs_to :product
   belongs_to :sale
   belongs_to :customer
-  belongs_to :collection_bills
+  belongs_to :collections_bill, inverse_of: :shipments
   has_one :greenhouse, through: :sale
   has_one :count_type
   has_one :shipment_adjustment, dependent: :destroy, inverse_of: :shipment
 
   accepts_nested_attributes_for :product, :reject_if => :all_blank
+  accepts_nested_attributes_for :shipment_adjustment
 
   scope :unconfirmed, -> { where("price is ? OR price = ? OR price < ?", nil, 0, 0 ) }
   scope :confirmed, -> { where("price is ? OR price = ? OR price < ?" , nil, 0, 0 ) }
@@ -134,8 +135,9 @@ class Shipment < ActiveRecord::Base
     number_with_precision(self.weight, precision: 0)
   end
 
-
-
+  def adjusted?
+    self.shipment_adjustment.present?
+  end
 
 end
 

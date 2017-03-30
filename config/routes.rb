@@ -89,7 +89,7 @@ Rails.application.routes.draw do
     get '/greenhouses/:greenhouse_id/sales/:sale_id/collections_bill/:id/adjust' => 'collections_bills#adjust', as: :adjust_collections_bill
 
 
-    post '/collections_bill/:id/save_adjustment' => 'collections_bill#save_adjustment', as: :save_adjustment
+    patch '/collections_bill/:id/save_adjustments' => 'collections_bills#save_adjustment', as: :save_adjustment
 
 
 

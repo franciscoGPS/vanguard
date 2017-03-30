@@ -201,7 +201,6 @@ def set_proforma_invoice
     @sale = Sale.find(@collections_bill.sale_id)
     @customer = Customer.find(@collections_bill.customer_id)
     set_shipments_values
-
     # if @collections_bill.adjusted?
     #     respond_to do |format|
     #       format.html { redirect_to to_invoice_path(@collections_bill), notice: 'Collections bill was successfully created.' }
@@ -213,8 +212,16 @@ def set_proforma_invoice
     #end
   end
 
-  def save_adjustments
-    save_adjusments
+  def save_adjustment
+    if save_adjusments
+      respond_to do |format|
+        format.html { redirect_to to_invoice_path(@collections_bill), notice: 'Collections bill was successfully created.' }
+      end
+    else
+      respond_to do |format|
+        format.html { render :adjust }
+      end
+    end
   end
 
   private
@@ -228,6 +235,25 @@ def set_proforma_invoice
       @total_boxes =  @shipments.map { |r| r[:box_number] }.sum
       @total_weight =  @shipments.map { |r| r[:weight] }.sum
       @total_ammount_money =  @shipments.map { |r| r[:price] * r[:box_number] }.sum
+  end
+
+  def save_adjusments
+    success = false
+    shipment_adjustment_attributes = adjustments_params[:shipment_adjustments_attributes]
+    shipment_adjustment_attributes.each do |adjustment|
+      if adjustment.last[:id].present?
+        shipment_adjustment = ShipmentAdjustment.find(adjustment.last[:id])
+        shipment_adjustment.update(adjustment.last) ? success = true : success = false
+      else
+        shipment_adjustment = ShipmentAdjustment.new(adjustment.last)
+        shipment_adjustment.save ? success = true : success = false
+      end
+
+    end
+  end
+
+  def adjustments_params
+    params.require(:collections_bill).permit(:user_id, :customer_id, :sale_id, :shipment_adjustments_attributes => [:id, :shipment_id, :box_number, :price, :weight ] )
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

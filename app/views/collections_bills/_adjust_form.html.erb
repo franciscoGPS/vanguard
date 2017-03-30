@@ -1,8 +1,8 @@
 
-<%= form_for(@collections_bill, :url => greenhouse_sale_collections_bills_path(@greenhouse.id, @sale.id, @collections_bill.id)) do |f| %>
-   <%= f.hidden_field(:user_id, :value => @collections_bill.user_id) %>
-   <%= f.hidden_field(:customer_id, :value => @collections_bill.customer_id) %>
-   <%= f.hidden_field(:sale_id, :value => @sale.id) %>
+<%= form_for @collections_bill, :url =>  save_adjustment_path(@collections_bill.id) do |cb_form| %>
+   <%= cb_form.hidden_field(:user_id, :value => @collections_bill.user_id) %>
+   <%= cb_form.hidden_field(:customer_id, :value => @collections_bill.customer_id) %>
+   <%= cb_form.hidden_field(:sale_id, :value => @sale.id) %>
 
   <% if @collections_bill.errors.any? %>
     <div id="error_explanation">
@@ -21,47 +21,47 @@
     <div class="panel-body">
           <div class="row">
             <div id="confirmed-table" class="col-md-12 col-xs-12">
-              <%= render 'collections_bills/adjust_confirmed_sales', object: @sale %>
+              <%= render :partial => 'collections_bills/adjust_confirmed_sales',  :locals => {:f => cb_form, :bill => @collections_bill }  %>
             </div>
           </div>
       <div class="row">
         <div class="col-md-4">
-          <%= f.label :proforma_invoice, class: "control-label" %>
-          <%= f.text_field :proforma_invoice, :disabled => true, class: "form-control" %>
+          <%= cb_form.label :proforma_invoice, class: "control-label" %>
+          <%= cb_form.text_field :proforma_invoice, :disabled => true, class: "form-control" %>
         </div>
         <div class="col-md-4">
-          <%= f.label "Shipment # ", class: "control-label" %>
-          <%= f.text_field :ship_number, :disabled => true, class: "form-control" %>
+          <%= cb_form.label "Shipment # ", class: "control-label" %>
+          <%= cb_form.text_field :ship_number, :disabled => true, class: "form-control" %>
         </div>
         <div class="col-md-4">
-          <%= f.label "Purshase order #", class: "control-label" %>
-          <%= f.text_field :po_number, :disabled => true, class: "form-control" %>
+          <%= cb_form.label "Purshase order #", class: "control-label" %>
+          <%= cb_form.text_field :po_number, :disabled => true, class: "form-control" %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <%= f.label :payment_terms, class: "control-label" %>
+          <%= cb_form.label :payment_terms, class: "control-label" %>
           <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" title="Max 100 characters"></span>
-          <%= f.text_area :payment_terms, class: "form-control", :disabled => true,
+          <%= cb_form.text_area :payment_terms, class: "form-control", :disabled => true,
           :maxlength => 100, :onkeyup => "check_max_length(this);", cols: 20, rows: 1 %>
         </div>
         <div class="row">
         <div class="col-md-6">
-            <%= f.label :bol_date, class: "control-label" %>
+            <%= cb_form.label :bol_date, class: "control-label" %>
           </div>
           <div class="col-md-6">
-            <%= f.datetime_select :bol_date, :disabled => true, class: "form-control" %>
+            <%= cb_form.datetime_select :bol_date, :disabled => true, class: "form-control" %>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div class="col-md-12">
-            <%= f.label "Total ammount", class: "control-label" %>
+            <%= cb_form.label "Total ammount", class: "control-label" %>
           </div>
           <div class="row">
             <div class="col-md-6">
-              <%= f.text_field :total_amt, :disabled => true, class: "form-control" %>
+              <%= cb_form.text_field :total_amt, :disabled => true, class: "form-control" %>
             </div>
             <div class="col-md-6">
               <%= @total_ammount_money_words %>
@@ -71,12 +71,12 @@
       <div class="row">
         <div class="col-md-6">
             <div class="col-md-6 col-xs-12">
-              <%= f.label :bill_of_lading, class: "control-label" %>
-              <%= f.text_field :bill_of_lading, :disabled => true, class: "form-control" %>
+              <%= cb_form.label :bill_of_lading, class: "control-label" %>
+              <%= cb_form.text_field :bill_of_lading, :disabled => true, class: "form-control" %>
             </div>
             <div class="col-md-6 col-xs-12">
-              <%= f.label :thermograph, class: "control-label" %>
-              <%= f.text_field :thermograph, :disabled => true, class: "form-control" %>
+              <%= cb_form.label :thermograph, class: "control-label" %>
+              <%= cb_form.text_field :thermograph, :disabled => true, class: "form-control" %>
             </div>
         </div>
       </div>
@@ -87,55 +87,55 @@
           <div class="col-md-12 col-md-offset-1">
             <p>Show Details:</p>
             <div class="form-group col-sm-4 col-md-2">
-              <%= f.label "Bag Type", class: "control-label col-md-12" %>
+              <%= cb_form.label "Bag Type", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box :show_bag_type, {:disabled => true, class: "col-md-6"} %>
+                <%= cb_form.check_box :show_bag_type, {:disabled => true, class: "col-md-6"} %>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-2">
-              <%= f.label "Package Type", class: "control-label col-md-12" %>
+              <%= cb_form.label "Package Type", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box  :show_pkg_type, { :disabled => true, class: "col-md-6"} %>
+                <%= cb_form.check_box  :show_pkg_type, { :disabled => true, class: "col-md-6"} %>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-2">
-              <%= f.label "Count Type", class: "control-label col-md-12" %>
+              <%= cb_form.label "Count Type", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box  :show_count_type, { :disabled => true, class: "col-md-6"} %>
+                <%= cb_form.check_box  :show_count_type, { :disabled => true, class: "col-md-6"} %>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-2">
-              <%= f.label "PLU", class: "control-label col-md-12" %>
+              <%= cb_form.label "PLU", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box  :show_plu, { :disabled => true, class: "col-md-6"} %>
+                <%= cb_form.check_box  :show_plu, { :disabled => true, class: "col-md-6"} %>
               </div>
             </div>
             <div class="form-group col-sm-4 col-md-2">
-              <%= f.label "Color", class: "control-label col-md-12" %>
+              <%= cb_form.label "Color", class: "control-label col-md-12" %>
               <div class="col-md-6">
-                <%= f.check_box :show_color, { :disabled => true, class: "col-md-6"} %>
+                <%= cb_form.check_box :show_color, { :disabled => true, class: "col-md-6"} %>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 col-xs-12">
-            <%= f.label :label_one, class: "control-label" %>
-            <%= f.text_area :label_one, class: "form-control", :disabled => true, rows: 5 %>
+            <%= cb_form.label :label_one, class: "control-label" %>
+            <%= cb_form.text_area :label_one, class: "form-control", :disabled => true, rows: 5 %>
           </div>
           <div class="col-md-6 col-xs-12">
-            <%= f.label :label_two, class: "control-label" %>
-            <%= f.text_area :label_two, class: "form-control", :disabled => true, rows: 5 %>
+            <%= cb_form.label :label_two, class: "control-label" %>
+            <%= cb_form.text_area :label_two, class: "form-control", :disabled => true, rows: 5 %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 col-xs-12">
-            <%= f.label :footer_one, class: "control-label" %>
-            <%= f.text_area :footer_one, class: "form-control", :disabled => true, rows: 7 %>
+            <%= cb_form.label :footer_one, class: "control-label" %>
+            <%= cb_form.text_area :footer_one, class: "form-control", :disabled => true, rows: 7 %>
           </div>
           <div class="col-md-6 col-xs-12">
-            <%= f.label :footer_two, class: "control-label" %>
-            <%= f.text_area :footer_two, class: "form-control", :disabled => true, rows: 7 %>
+            <%= cb_form.label :footer_two, class: "control-label" %>
+            <%= cb_form.text_area :footer_two, class: "form-control", :disabled => true, rows: 7 %>
           </div>
 
         </div>
