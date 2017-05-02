@@ -58,16 +58,15 @@ class CollectionsBill < ActiveRecord::Base
   end
 
   def adjusted?
-    self.sale.shipments.each do |sh|
-      if sh.shipment_adjustment.present?
-        return true
-      end
-      return false
-    end
+    self.shipment_adjustments.any? 
   end
 
   def own_shipments
     Shipment.where(:sale_id => self.sale_id, :customer_id => self.customer_id).order(id: :asc)
+  end
+
+  def total_from_adjustments
+    self.shipment_adjustments.map {|r| r[:price] * r[:box_number] }.sum
   end
 
 end

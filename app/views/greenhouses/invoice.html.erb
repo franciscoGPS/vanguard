@@ -4,8 +4,12 @@
 
 <%= link_to 'Adjust', adjust_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill.id), class: "btn btn-info" %>
 
-<%= link_to 'Printable Receipt (PDF)', billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @collections_bill.id,  format: 'pdf'),
+<%= link_to 'Printable Receipt (PDF)', billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @collections_bill.id,  format: 'pdf', :print_adjusted =>  @show_adjusted),
                 class: "btn btn-success", :id => "btn-print" %>
+
+<% if  @collections_bill.adjusted?  %>
+  <%= check_box_tag 'show_adjusted', @show_adjusted, @show_adjusted %>
+<% end %>
 
 <%= form_for @manifest, :url => greenhouse_sale_manifests_path(@greenhouse.id, @sale.id), :html => { :class => 'form-horizontal' } do |f| %>
 
@@ -129,58 +133,28 @@
               </tr>
             </thead>
             <tbody>
+            <% if @show_adjusted %>
               <% @shipments.each do |shipment|%>
-              <tr>
-                <td class="cell">
-                  <%="#{shipment.formatted_boxes}" %>
-                </td>
-                <td class="cell">
-                  <%= "#{shipment.box_type.name}" %>
-                </td>
-                <td class="cell">
-                  <%=  "#{shipment.formatted_weight} lb" %>
-                  &nbsp;
-                  <% if @collections_bill.show_color  %>
-                    <%= "#{shipment.own_color(@greenhouse.id)} " %>
-                  <% end %>
-                  <%= "#{shipment.product.name} " %>
-
-                  <% if @collections_bill.show_bag_type  %>
-                    <%= "#{shipment.bag_type.name} " %>
-                  <% end %>
-
-                  <% if @collections_bill.show_pkg_type  %>
-                    <%= "#{shipment.package_type.name} " %>
-                  <% end %>
-
-                  <% if @collections_bill.show_plu  %>
-                    <%= "#{shipment.plu_to_string} " %>
-                  <% end %>
-
-                  <% if @collections_bill.show_count_type  %>
-                    <%= "#{shipment.count_type.name} " %>
-                  <% end %>
-
-                </td>
-                <td class="cell">
-                  <%= "#{number_to_currency(shipment.price)}" %>
-                </td>
-                <td class="cell">
-                 <%= "#{number_to_currency(shipment.price * shipment.box_number)}" %>
-                </td>
-              </tr>
+               <%= render :partial => 'greenhouses/invoice/adjusted_shipments',  :locals => {:shipment => shipment}  %>
               <% end %>
+            <% else %>
+              <% @shipments.each do |shipment|%>
+               <%= render :partial => 'greenhouses/invoice/original_invoiced_shipments',  :locals => {:shipment => shipment}  %>
+              <% end %>
+            <% end %>
+
+              
             </tbody>
+          </table>
 
         </div>
 
-            <div class="row">
-            <table class="col-md-10 col-md-offset-1 clean-table">
-               <tbody>
-               <% 12.times do |index|  %>
+        <div class="row">
+          <table class="col-md-10 col-md-offset-1 clean-table">
+            <tbody>
+              <% 12.times do |index|  %>
                 <tr>
-                  <td colspan="3" class="cell">
-
+                                    <td colspan="3" class="cell">
                   <% if index == 1 %>
 
                       <%= "#{@collections_bill.label_one}" %>
@@ -199,10 +173,6 @@
 
                     <% end %>
 
-
-
-
-
                   </td>
 
                   <% if index == 11%>
@@ -210,7 +180,11 @@
                       <%= "TOTAL" %>
                     </td>
                     <td class="cell col-md-2">
+                     <% if @show_adjusted %>
+                      <%= "#{number_to_currency(@collections_bill.total_from_adjustments)}" %> USD
+                     <% else %>
                       <%= "#{number_to_currency(@collections_bill.total_amt)}" %> USD
+                     <% end %>    
                     </td>
                     <% else %>
                     <td class="cell">
@@ -220,21 +194,27 @@
 
                     </td>
                   <% end %>
-
                 </tr>
-                </tbody>
               <% end %>
-            </table>
-          </div>
-
+            </tbody>
+          </table>
         </div>
+
       </div>
 
+    </div>
   </div>
+
+</div>
 </div>
 
 <% end %>
 <script type="text/javascript">
+
+
+$(document).ready(function(){
+  $('[type="checkbox"]').bootstrapSwitch('size', 'mini');
+});
 
 //Datepicker
 $('.js-datepicker').datepicker({autoclose: true});
@@ -292,6 +272,22 @@ $('.js-datepicker').datepicker({autoclose: true});
 });
 
 
+
+      $('#show_adjusted')
+        .on('switchChange.bootstrapSwitch', function (event, state) {
+          var location = window.location.href;
+          if (location.indexOf("?") < 0){
+
+          }else {
+            location = location.slice(0, location.indexOf("?"))
+          }
+          if (state  == true){
+            window.location.href = location + "?show_adjusted=true";
+          }else {
+            window.location.href = location + "?show_adjusted=false";
+          }
+
+        });
 
 
   $('#proforma_invoice').on("change", function(){

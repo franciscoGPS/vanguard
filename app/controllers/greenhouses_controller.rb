@@ -146,9 +146,13 @@ class GreenhousesController < ApplicationController
     @customer = Customer.find(@collections_bill.customer_id)
     @shipments = Shipment.where("sale_id = ? AND  customer_id = ?", @sale.id, @customer.id).order(id: :asc)
     @manifest = Manifest.where(sale_id: @sale.id).first
-
-
     @title = "Factura de Cobro"
+
+    if show_adjustments? 
+      @show_adjusted = true
+    end
+
+
     respond_to do |format|
       format.html { render :invoice }
       format.pdf do
@@ -161,6 +165,19 @@ class GreenhousesController < ApplicationController
       end
     end
   end
+
+  def show_adjustments?
+    if params[:show_adjusted].present?
+     if params[:show_adjusted] == "true"
+      return true
+     else
+      return false
+     end
+   else
+    return false
+    end 
+  end
+
 
   # GET /greenhouses/1/info
   def info
@@ -268,6 +285,9 @@ class GreenhousesController < ApplicationController
 
 
   private
+
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_greenhouse
       @greenhouse = Greenhouse.find(params[:id])
@@ -306,14 +326,6 @@ class GreenhousesController < ApplicationController
           colors_attributes: [:id, :name, :greenhouses_id, :_destroy],
           custom_brokers_attributes: [:id, :name, :address, :greenhouse_id, :country_code,
         :created_at, :deleted_at, :updated_at, :_destroy]
-           ]
-
-
-
-
-
-
-
-                                          )
+          ])
     end
 end

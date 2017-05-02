@@ -1,7 +1,7 @@
 class CollectionsBillsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_collections_bill, only: [:show, :edit, :update,
-    :destroy, :to_invoice, :adjust]
+    :destroy, :to_invoice, :adjust, :save_adjustment]
 
 
 
@@ -214,9 +214,9 @@ def set_proforma_invoice
 
   def save_adjustment
     if save_adjusments
-      respond_to do |format|
-        format.html { redirect_to to_invoice_path(@collections_bill), notice: 'Collections bill was successfully created.' }
-      end
+
+      redirect_to to_invoice_path(@collections_bill, :show_adjusted => "true"), notice: 'Collections bill was successfully created.' 
+
     else
       respond_to do |format|
         format.html { render :adjust }
@@ -268,4 +268,5 @@ def set_proforma_invoice
       shipment_adjustment_attributes: [:box_number, :price, :weight]]]
       )
   end
+
 end
