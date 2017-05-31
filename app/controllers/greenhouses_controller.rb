@@ -128,7 +128,7 @@ class GreenhousesController < ApplicationController
     respond_to do |format|
       format.html {render :customs_invoice}
       format.pdf do
-        render :pdf => 'Factura de Aduana',
+        render :pdf => 'factura_comercial',
         :template => 'greenhouses/customs_invoice.pdf.erb',
         :layout => 'pdf.html.erb',
         :show_as_html => params[:debug].present?,
@@ -148,22 +148,8 @@ class GreenhousesController < ApplicationController
     @manifest = Manifest.where(sale_id: @sale.id).first
     @title = "Factura de Cobro"
 
-    if show_adjustments? 
-      @show_adjusted = true
-    end
-
-
-    respond_to do |format|
-      format.html { render :invoice }
-      format.pdf do
-        render :pdf => "factura_de_cobranza",
-        :template => 'greenhouses/invoice.pdf.erb',
-        :layout => 'pdf.html.erb',
-        :show_as_html => params[:debug].present?,
-        :page_size => 'Letter',
-        :encoding => 'UTF-8'
-      end
-    end
+    @show_adjusted = show_adjustments?
+    render_invoiced_shipments
   end
 
   def show_adjustments?
@@ -285,6 +271,20 @@ class GreenhousesController < ApplicationController
 
 
   private
+
+  def render_invoiced_shipments
+    respond_to do |format|
+      format.html { render :invoice }
+      format.pdf do
+        render :pdf => "factura_de_cobranza",
+        :template => 'greenhouses/invoice.pdf.erb',
+        :layout => 'pdf.html.erb',
+        :show_as_html => params[:debug].present? || false,
+        :page_size => 'Letter',
+        :encoding => 'UTF-8'
+      end
+    end
+  end
 
 
 

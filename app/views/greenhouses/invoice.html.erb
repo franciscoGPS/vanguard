@@ -4,8 +4,8 @@
 
 <%= link_to 'Adjust', adjust_collections_bill_path(@greenhouse.id, @sale.id, @collections_bill.id), class: "btn btn-info" %>
 
-<%= link_to 'Printable Receipt (PDF)', billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @collections_bill.id,  format: 'pdf', :print_adjusted =>  @show_adjusted),
-                class: "btn btn-success", :id => "btn-print" %>
+<%= link_to 'Printable Receipt (PDF)', billing_invoice_path(@greenhouse.id, @customer.id, @sale.id, @collections_bill.id,  format: 'pdf', :show_adjusted =>  @show_adjusted),
+                class: "btn btn-success", :id => "btn-print", :target => '_blank'  %>
 
 <% if  @collections_bill.adjusted?  %>
   <%= check_box_tag 'show_adjusted', @show_adjusted, @show_adjusted %>

@@ -1,0 +1,40 @@
+<tr>
+  <td class="cell">
+    <%= "#{shipment.formatted_boxes}" %>
+  </td>
+  <td class="cell">
+    <%= "#{shipment.box_type.name}" %>
+  </td>
+  <td class="cell">
+     <%= "#{shipment.formatted_weight} lb" %>
+    &nbsp;
+    <% if @collections_bill.show_color  %>
+      <%= "#{shipment.own_color(@greenhouse.id)} " %>
+    <% end %>
+    <%= "#{shipment.product.name} " %>
+
+    <% if @collections_bill.show_bag_type  %>
+      <%= "#{shipment.bag_type.name} " %>
+    <% end %>
+
+    <% if @collections_bill.show_pkg_type  %>
+      <%= "#{shipment.package_type.name} " %>
+    <% end %>
+
+    <% if @collections_bill.show_plu  %>
+      <%= "#{shipment.plu_to_string} " %>
+    <% end %>
+
+    <% if @collections_bill.show_count_type  %>
+      <%= "#{shipment.count_type.name} " %>
+    <% end %>
+
+  </td>
+  <td class="cell">
+    <%=  "#{number_to_currency(shipment.price)}" %>
+
+  </td>
+  <td class="cell">
+   <%= "#{number_to_currency(shipment.price * shipment.box_number)}" %>
+  </td>
+</tr>
